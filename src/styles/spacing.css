@@ -1,0 +1,64 @@
+/**
+ * AEVORYN MASTER DESIGN SYSTEM — SPACING SYSTEM LOCK & GRID
+ * Section 6: Spacing System Lock & Section 12: Grid and Responsive Breakpoints
+ */
+
+:root {
+  /* 4px Base Spacing Scale (Section 6) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Centralized Container Width */
+  --container-max-width: 1440px;
+}
+
+/* Master Layout Container */
+.site-container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: clamp(20px, 4vw, 64px);
+  padding-right: clamp(20px, 4vw, 64px);
+}
+
+/* Standardized Section Padding (Section 6) */
+.section-padding {
+  padding-top: clamp(48px, 6.6vw, 96px);
+  padding-bottom: clamp(48px, 6.6vw, 96px);
+}
+
+.section-padding-sm {
+  padding-top: clamp(32px, 4.5vw, 64px);
+  padding-bottom: clamp(32px, 4.5vw, 64px);
+}
+
+/* Standardized Grid Layouts (Section 12) */
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(16px, 2.5vw, 32px);
+}
+
+@media (max-width: 1023px) {
+  .grid-12 {
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .grid-12 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
