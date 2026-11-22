@@ -69,13 +69,15 @@ jobs:
       - name: Install Project Dependencies
         run: npm ci
 
-      - name: Verify Cloudflare Authentication Secrets
+      - name: Verify Cloudflare Authentication
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
-          if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
-            echo "::error title=Missing Secret::CLOUDFLARE_API_TOKEN is not configured in GitHub repository secrets. Please configure it in GitHub Settings > Secrets and variables > Actions (https://github.com/buttsaqlain-15109/aevoryn-web2/settings/secrets/actions)."
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error title=Missing Secret::CLOUDFLARE_API_TOKEN is not configured in GitHub repository secrets."
             exit 1
           fi
-          echo "Cloudflare deployment secrets verified."
+          npx wrangler whoami
 
       - name: Build Next.js Static Export
         run: npm run build
@@ -83,19 +85,8 @@ jobs:
           NEXT_PUBLIC_API_URL: "https://aevoryn-api.smagencywire.workers.dev"
 
       - name: Deploy Frontend to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '41dab4153cb7116c590fbd200392718a' }}
-          wranglerVersion: "4"
-          command: pages deploy out --project-name aevoryn-web --commit-dirty=true
-
-      - name: Deploy Worker API Engine
-        uses: cloudflare/wrangler-action@v3
-        continue-on-error: true
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '41dab4153cb7116c590fbd200392718a' }}
-          wranglerVersion: "4"
-          workingDirectory: worker
-          command: deploy --env=""
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '41dab4153cb7116c590fbd200392718a' }}
+        run: |
+          npx wrangler pages deploy out --project-name aevoryn-web --commit-dirty=true
