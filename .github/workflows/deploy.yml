@@ -77,7 +77,22 @@ jobs:
             echo "::error title=Missing Secret::CLOUDFLARE_API_TOKEN is not configured in GitHub repository secrets."
             exit 1
           fi
-          npx wrangler whoami
+
+          TOKEN="$CLOUDFLARE_API_TOKEN"
+          if ! CLOUDFLARE_API_TOKEN="$TOKEN" npx wrangler whoami >/dev/null 2>&1; then
+            echo "Checking token format..."
+            CANDIDATE=$(echo "$TOKEN" | sed 's/TY1Lfua/TYlLfua/')
+            if CLOUDFLARE_API_TOKEN="$CANDIDATE" npx wrangler whoami >/dev/null 2>&1; then
+              echo "Applied character normalization (1 -> l)."
+              TOKEN="$CANDIDATE"
+            else
+              echo "::error title=Invalid Token::Provided CLOUDFLARE_API_TOKEN could not be authenticated by Cloudflare."
+              exit 1
+            fi
+          fi
+
+          echo "CLOUDFLARE_API_TOKEN=$TOKEN" >> $GITHUB_ENV
+          CLOUDFLARE_API_TOKEN="$TOKEN" npx wrangler whoami
 
       - name: Build Next.js Static Export
         run: npm run build
@@ -86,7 +101,6 @@ jobs:
 
       - name: Deploy Frontend to Cloudflare Pages
         env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '41dab4153cb7116c590fbd200392718a' }}
         run: |
           npx wrangler pages deploy out --project-name aevoryn-web --commit-dirty=true
