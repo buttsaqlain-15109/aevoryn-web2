@@ -16,11 +16,16 @@ import {
   AlertTriangle,
   Clock,
   ShieldCheck,
+  Loader2,
 } from "lucide-react";
+import { submitContactInquiry } from "@/lib/api-client";
 
 export default function ContactPage() {
   const { t, locale, isRTL } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [inquiryRef, setInquiryRef] = useState<string>("");
+  const [apiErrors, setApiErrors] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -30,9 +35,24 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setApiErrors([]);
+
+    try {
+      const res = await submitContactInquiry(formData);
+      if (res.success) {
+        setSubmitted(true);
+        if (res.inquiryId) setInquiryRef(res.inquiryId);
+      } else {
+        setApiErrors(res.errors || ["An error occurred while transmitting your inquiry. Please try again."]);
+      }
+    } catch {
+      setApiErrors(["Network error. Please check your connection and try again."]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -78,8 +98,17 @@ export default function ContactPage() {
                       <p className="text-sm text-secondary max-w-md mx-auto leading-relaxed font-body">
                         {t("contactPage.success")}
                       </p>
+                      {inquiryRef && (
+                        <div className="p-3 border border-hairline bg-surface max-w-xs mx-auto">
+                          <span className="text-[11px] font-mono-tech text-muted block">REFERENCE TRACKING ID</span>
+                          <span className="font-mono-tech font-bold text-brand-cobalt text-xs">{inquiryRef}</span>
+                        </div>
+                      )}
                       <button
-                        onClick={() => setSubmitted(false)}
+                        onClick={() => {
+                          setSubmitted(false);
+                          setInquiryRef("");
+                        }}
                         className="btn-cobalt"
                       >
                         {locale === "en" ? "Submit Another Request" : "إرسال طلب آخر"}
@@ -87,6 +116,19 @@ export default function ContactPage() {
                     </div>
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-4">
+                      {apiErrors.length > 0 && (
+                        <div className="p-4 border border-rose-500/30 bg-rose-500/5 text-rose-600 dark:text-rose-400 text-xs space-y-1">
+                          <div className="flex items-center gap-2 font-bold font-mono-tech">
+                            <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                            <span>{locale === "en" ? "PLEASE REVIEW REQUIRED FIELDS" : "يرجى مراجعة الحقول المطلوبة"}</span>
+                          </div>
+                          <ul className="list-disc list-inside font-body">
+                            {apiErrors.map((err, i) => (
+                              <li key={i}>{err}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                           <label className="form-label-editorial">
@@ -187,10 +229,20 @@ export default function ContactPage() {
 
                         <button
                           type="submit"
-                          className="btn-cobalt flex items-center gap-2"
+                          disabled={loading}
+                          className="btn-cobalt flex items-center gap-2 disabled:opacity-50"
                         >
-                          <Send className="w-3.5 h-3.5" />
-                          <span>{t("contactPage.submit")}</span>
+                          {loading ? (
+                            <>
+                              <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                              <span>{locale === "en" ? "TRANSMITTING..." : "جاري الإرسال..."}</span>
+                            </>
+                          ) : (
+                            <>
+                              <Send className="w-3.5 h-3.5" />
+                              <span>{t("contactPage.submit")}</span>
+                            </>
+                          )}
                         </button>
                       </div>
                     </form>

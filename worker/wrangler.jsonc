@@ -1,0 +1,38 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aevoryn-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-20",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "observability": {
+    "enabled": true
+  },
+  "vars": {
+    "ENVIRONMENT": "production",
+    "CORS_ORIGIN": "https://aevoryn.net,https://www.aevoryn.net,http://localhost:3000,http://127.0.0.1:3000,*"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aevoryn-production",
+      "database_id": "2c831b5f-4048-4f97-901e-06198806d401"
+    }
+  ],
+  "env": {
+    "development": {
+      "workers_dev": true,
+      "vars": {
+        "ENVIRONMENT": "development",
+        "CORS_ORIGIN": "*"
+      },
+      "d1_databases": [
+        {
+          "binding": "DB",
+          "database_name": "aevoryn-development",
+          "database_id": "da3e8912-a618-40f8-ab81-336bf8089725"
+        }
+      ]
+    }
+  }
+}

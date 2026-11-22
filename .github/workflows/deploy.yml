@@ -1,0 +1,79 @@
+name: Aevoryn Production CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Build Verification & Quality Assurance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Runtime
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install Frontend Dependencies
+        run: npm ci
+
+      - name: Next.js Static Export Build
+        run: npm run build
+
+      - name: Verify Export Artifacts
+        run: |
+          test -f out/index.html || exit 1
+          test -f out/about.html || exit 1
+          test -f out/contact.html || exit 1
+          echo "All static routes successfully verified."
+
+  deploy:
+    name: Cloudflare Production Deployment
+    needs: verify
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install Frontend Dependencies
+        run: npm ci
+
+      - name: Build Next.js Static Export
+        run: npm run build
+        env:
+          NEXT_PUBLIC_API_URL: "https://api.aevoryn.net"
+
+      - name: Deploy Frontend to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy out --project-name aevoryn-web
+
+      - name: Deploy Worker API Engine
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          workingDirectory: worker
+          command: deploy --env=""

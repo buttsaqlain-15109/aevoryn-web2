@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { X, Send, CheckCircle2, Building2, Phone, Mail, User, ShieldCheck } from "lucide-react";
+import { X, Send, CheckCircle2, Building2, Phone, Mail, User, ShieldCheck, Loader2, AlertTriangle } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { submitRfq } from "@/lib/api-client";
 
 interface RFQModalProps {
   isOpen: boolean;
@@ -12,6 +13,9 @@ interface RFQModalProps {
 export function RFQModal({ isOpen, onClose }: RFQModalProps) {
   const { t, locale, isRTL } = useLanguage();
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [rfqRef, setRfqRef] = useState<string>("");
+  const [apiErrors, setApiErrors] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: "",
     company: "",
@@ -24,9 +28,33 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setApiErrors([]);
+
+    try {
+      const res = await submitRfq({
+        name: formData.name,
+        company: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        division: formData.division,
+        projectLocation: formData.location,
+        scope: formData.message,
+      });
+
+      if (res.success) {
+        setSubmitted(true);
+        if (res.rfqId) setRfqRef(res.rfqId);
+      } else {
+        setApiErrors(res.errors || ["Failed to submit RFQ. Please check the form fields."]);
+      }
+    } catch {
+      setApiErrors(["Network connection error. Please try again."]);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -74,11 +102,18 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
                   ? "Thank you for contacting Aevoryn Services & Contracting Co. Our commercial management team in Riyadh has received your specifications and will respond promptly."
                   : "شكراً لتواصلكم مع شركة إيفورين للخدمات والمقاولات. لقد استلم فريقنا التجاري بالرياض متطلباتكم وسيتواصل معكم في أقرب وقت."}
               </p>
+              {rfqRef && (
+                <div className="p-3 border border-hairline bg-surface max-w-xs mx-auto">
+                  <span className="text-[10px] font-mono-tech text-muted block">RFQ TRACKING NUMBER</span>
+                  <span className="font-mono-tech font-bold text-brand-cobalt text-xs">{rfqRef}</span>
+                </div>
+              )}
               <div className="pt-4">
                 <button
                   type="button"
                   onClick={() => {
                     setSubmitted(false);
+                    setRfqRef("");
                     onClose();
                   }}
                   className="btn-cobalt"
@@ -89,6 +124,19 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {apiErrors.length > 0 && (
+                <div className="p-4 border border-rose-500/30 bg-rose-500/5 text-rose-600 dark:text-rose-400 text-xs space-y-1">
+                  <div className="flex items-center gap-2 font-bold font-mono-tech">
+                    <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                    <span>{locale === "en" ? "SUBMISSION ERROR" : "خطأ في الإرسال"}</span>
+                  </div>
+                  <ul className="list-disc list-inside font-body">
+                    {apiErrors.map((err, i) => (
+                      <li key={i}>{err}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="form-label-editorial">
@@ -205,10 +253,20 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
 
                 <button
                   type="submit"
-                  className="btn-cobalt flex items-center gap-2"
+                  disabled={loading}
+                  className="btn-cobalt flex items-center gap-2 disabled:opacity-50"
                 >
-                  <Send className="w-3.5 h-3.5" />
-                  <span>{locale === "en" ? "TRANSMIT INQUIRY" : "إرسال الطلب"}</span>
+                  {loading ? (
+                    <>
+                      <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      <span>{locale === "en" ? "TRANSMITTING..." : "جاري الإرسال..."}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-3.5 h-3.5" />
+                      <span>{locale === "en" ? "TRANSMIT INQUIRY" : "إرسال الطلب"}</span>
+                    </>
+                  )}
                 </button>
               </div>
             </form>
