@@ -36,13 +36,24 @@ export function validatePhone(phone: string): boolean {
   return cleaned.length >= 7 && cleaned.length <= 20 && /^[0-9]+$/.test(cleaned);
 }
 
+export function normalizeDivision(input: string): string {
+  const norm = input.toLowerCase().trim();
+  if (norm.includes("infra") || norm.includes("earth") || norm.includes("civil") || norm.includes("بنية")) return "infrastructure";
+  if (norm.includes("manpower") || norm.includes("workforce") || norm.includes("قوى") || norm.includes("كوادر")) return "manpower";
+  if (norm.includes("material") || norm.includes("supply") || norm.includes("مواد")) return "materials";
+  if (norm.includes("equip") || norm.includes("fleet") || norm.includes("معدات")) return "equipment";
+  if (norm.includes("general") || norm.includes("عام") || norm === "") return "general";
+  return norm;
+}
+
 export function validateContactInput(payload: any): { valid: boolean; errors: string[]; data: ContactPayload } {
   const errors: string[] = [];
   const name = sanitize(payload.name);
   const company = sanitize(payload.company);
   const email = sanitize(payload.email);
   const phone = sanitize(payload.phone);
-  const division = sanitize(payload.division || "infrastructure").toLowerCase();
+  const rawDivision = sanitize(payload.division || "infrastructure");
+  const division = normalizeDivision(rawDivision);
   const message = sanitize(payload.message);
 
   if (!name || name.length < 2 || name.length > 100) {
@@ -78,7 +89,8 @@ export function validateRfqInput(payload: any): { valid: boolean; errors: string
   const company = sanitize(payload.company);
   const email = sanitize(payload.email);
   const phone = sanitize(payload.phone);
-  const division = sanitize(payload.division || "infrastructure").toLowerCase();
+  const rawDivision = sanitize(payload.division || "infrastructure");
+  const division = normalizeDivision(rawDivision);
   const projectLocation = sanitize(payload.projectLocation || "Riyadh, Saudi Arabia");
   const urgency = sanitize(payload.urgency || "standard").toLowerCase();
   const scope = sanitize(payload.scope || payload.message || "");
