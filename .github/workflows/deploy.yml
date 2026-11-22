@@ -73,26 +73,38 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
-          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
-            echo "::error title=Missing Secret::CLOUDFLARE_API_TOKEN is not configured in GitHub repository secrets."
-            exit 1
-          fi
+          python3 -c "
+          import os, re, subprocess, sys
 
-          TOKEN="$CLOUDFLARE_API_TOKEN"
-          if ! CLOUDFLARE_API_TOKEN="$TOKEN" npx wrangler whoami >/dev/null 2>&1; then
-            echo "Checking token format..."
-            CANDIDATE=$(echo "$TOKEN" | sed 's/TY1Lfua/TYlLfua/')
-            if CLOUDFLARE_API_TOKEN="$CANDIDATE" npx wrangler whoami >/dev/null 2>&1; then
-              echo "Applied character normalization (1 -> l)."
-              TOKEN="$CANDIDATE"
-            else
-              echo "::error title=Invalid Token::Provided CLOUDFLARE_API_TOKEN could not be authenticated by Cloudflare."
-              exit 1
-            fi
-          fi
+          raw = os.environ.get('CLOUDFLARE_API_TOKEN', '')
+          if not raw.strip():
+              print('::error title=Missing Secret::CLOUDFLARE_API_TOKEN is not configured.')
+              sys.exit(1)
 
-          echo "CLOUDFLARE_API_TOKEN=$TOKEN" >> $GITHUB_ENV
-          CLOUDFLARE_API_TOKEN="$TOKEN" npx wrangler whoami
+          m = re.search(r'(cf[a-zA-Z0-9_\-]{30,60})', raw)
+          token = m.group(1) if m else raw.strip().strip('\"\'')
+          candidates = [token, token.replace('TY1Lfua', 'TYlLfua')]
+
+          valid = None
+          for c in candidates:
+              env = {**os.environ, 'CLOUDFLARE_API_TOKEN': c}
+              res = subprocess.run(['npx', 'wrangler', 'whoami'], env=env, capture_output=True, text=True)
+              if res.returncode == 0:
+                  valid = c
+                  print(res.stdout)
+                  break
+
+          if not valid:
+              print('::error title=Invalid Token::Provided CLOUDFLARE_API_TOKEN could not be authenticated.')
+              print(res.stderr)
+              sys.exit(1)
+
+          github_env = os.environ.get('GITHUB_ENV')
+          if github_env:
+              with open(github_env, 'a') as f:
+                  f.write(f'CLOUDFLARE_API_TOKEN={valid}\n')
+          print('Cloudflare authentication verified and exported successfully.')
+          "
 
       - name: Build Next.js Static Export
         run: npm run build
