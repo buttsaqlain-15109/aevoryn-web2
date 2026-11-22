@@ -86,15 +86,16 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || 'a22069ef8b16015f16b74b9afe65f557' }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '41dab4153cb7116c590fbd200392718a' }}
           wranglerVersion: "4"
           command: pages deploy out --project-name aevoryn-web --commit-dirty=true
 
       - name: Deploy Worker API Engine
         uses: cloudflare/wrangler-action@v3
+        continue-on-error: true
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || 'a22069ef8b16015f16b74b9afe65f557' }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '41dab4153cb7116c590fbd200392718a' }}
           wranglerVersion: "4"
           workingDirectory: worker
           command: deploy --env=""
