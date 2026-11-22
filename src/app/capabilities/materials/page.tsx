@@ -61,13 +61,13 @@ export default function MaterialsPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-page text-primary transition-colors duration-200">
       <Header />
       <main className="flex-grow">
         <PageHeader
           title={t("capabilities.items.2.title")}
           subtitle={t("capabilities.items.2.subtitle")}
-          badge={locale === "en" ? "Division 03 • Certified Supply Chain" : "القطاع 03 • سلاسل إمداد المواد المعتمدة"}
+          badge={locale === "en" ? "DIVISION 03 // CERTIFIED SUPPLY CHAIN" : "القطاع 03 // سلاسل إمداد المواد المعتمدة"}
           breadcrumbs={[
             { label: t("nav.capabilities"), href: "/#capabilities" },
             { label: t("capabilities.items.2.title") },
@@ -80,16 +80,15 @@ export default function MaterialsPage() {
           <div className="site-container">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary label-text">
-                  <Boxes className="w-3.5 h-3.5" />
-                  <span>{locale === "en" ? "Direct Material Logistics" : "اللوجستيات المباشرة لمواد البناء"}</span>
-                </div>
-                <h2 className="text-h2 text-primary font-bold">
+                <span className="badge-tech inline-block">
+                  {locale === "en" ? "MATERIAL SUPPLY & LOGISTICS" : "اللوجستيات المباشرة لمواد البناء"}
+                </span>
+                <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-primary">
                   {locale === "en"
                     ? "Verified Raw & Finished Materials for Demanding Projects"
                     : "مواد بناء خام ومصنعة مفحوصة ومطابقة لأعلى المواصفات"}
                 </h2>
-                <div className="space-y-4 body-regular text-secondary">
+                <div className="space-y-4 text-sm sm:text-base text-secondary font-body leading-relaxed">
                   <p>
                     {locale === "en"
                       ? "Aevoryn's Materials Supply division coordinates reliable procurement and bulk logistics of tested construction materials across the Kingdom. We bridge the gap between accredited manufacturers, quarries, and demanding jobsites by delivering materials verified against ASTM, SASO, and client-specific engineering requirements."
@@ -105,13 +104,13 @@ export default function MaterialsPage() {
                 <div className="pt-2 flex flex-wrap gap-4">
                   <button
                     onClick={() => setRfqOpen(true)}
-                    className="btn-primary"
+                    className="btn-cobalt"
                   >
                     {locale === "en" ? "Request Materials Price Schedule" : "طلب جدول أسعار توريد المواد"}
                   </button>
                   <Link
                     href="/contact"
-                    className="btn-secondary"
+                    className="btn-outline"
                   >
                     {t("hero.contactBtn")}
                   </Link>
@@ -120,23 +119,21 @@ export default function MaterialsPage() {
 
               {/* Right Media */}
               <div className="lg:col-span-5">
-                <div className="relative h-96 rounded-[16px] overflow-hidden neu-raised p-2">
-                  <div className="relative w-full h-full rounded-[12px] overflow-hidden">
-                    <Image
-                      src="/images/content/materials.jpg"
-                      alt="Construction Materials & Steel Fabrication"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545]/85 via-transparent to-transparent" />
-                    <div className="absolute bottom-6 left-6 right-6 p-4 rounded-[12px] bg-surface/90 backdrop-blur-md border border-subtle shadow-lg">
-                      <p className="text-xs font-bold text-primary mb-1">
-                        {locale === "en" ? "Batch Traceability Guaranteed" : "تتبع كامل لعينات ودفعات التوريد"}
-                      </p>
-                      <p className="caption-text text-muted">
-                        Complete mill test certificates and lab compliance logs archived for every shipment.
-                      </p>
-                    </div>
+                <div className="relative h-96 border border-hairline bg-page overflow-hidden">
+                  <Image
+                    src="/images/content/materials.jpg"
+                    alt="Construction Materials & Steel Fabrication"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-5 left-5 right-5 p-4 border border-white/20 bg-black/75 backdrop-blur-md">
+                    <p className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono-tech">
+                      {locale === "en" ? "BATCH TRACEABILITY GUARANTEED" : "تتبع كامل لعينات ودفعات التوريد"}
+                    </p>
+                    <p className="text-xs text-white/80 leading-relaxed font-body">
+                      Complete mill test certificates and lab compliance logs archived for every shipment.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -145,42 +142,48 @@ export default function MaterialsPage() {
         </section>
 
         {/* Categories Grid */}
-        <section className="section-padding bg-primary">
+        <section className="section-padding bg-page border-t border-hairline">
           <div className="site-container">
-            <div className="text-center max-w-[1100px] mx-auto space-y-4 mb-16">
-              <h2 className="text-h2 text-primary font-bold">
+            <div className="text-center max-w-[900px] mx-auto space-y-4 mb-14">
+              <span className="badge-tech inline-block">
+                {locale === "en" ? "SUPPLY PORTFOLIO" : "قائمة الأصناف"}
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-primary">
                 {locale === "en" ? "Primary Material Categories" : "أصناف ومجموعات المواد الرئيسية"}
               </h2>
-              <p className="body-large text-secondary mx-auto">
+              <p className="text-base sm:text-lg text-secondary mx-auto max-w-2xl leading-relaxed">
                 {locale === "en"
                   ? "Standardized and custom materials supplied directly to contractors across Riyadh and regional provinces."
                   : "مواد قياسية ومخصصة يتم توريدها مباشرة للمقاولين في الرياض وكافة المناطق."}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {materials.map((mat, idx) => (
                 <div
                   key={idx}
-                  className="p-8 rounded-[16px] neu-raised skeuo-plate space-y-5 flex flex-col justify-between"
+                  className="p-8 border border-hairline bg-surface flex flex-col justify-between space-y-6 hover:border-brand-cobalt transition-colors duration-200"
                 >
-                  <div className="space-y-3">
-                    <div className="w-10 h-10 rounded-[12px] bg-brand-primary/10 text-brand-primary flex items-center justify-center font-bold text-sm font-mono">
-                      0{idx + 1}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-mono-tech text-brand-cobalt font-bold">
+                        CATEGORY // 0{idx + 1}
+                      </span>
+                      <span className="w-2 h-2 rounded-full bg-brand-cobalt" />
                     </div>
-                    <h3 className="text-h4 font-bold text-primary tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-bold font-display uppercase tracking-tight text-primary">
                       {mat.name}
                     </h3>
-                    <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+                    <p className="text-xs sm:text-sm text-secondary leading-relaxed font-body">
                       {mat.desc}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-subtle space-y-2">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-muted block">
-                      {locale === "en" ? "Quality & Supply Assurance:" : "معايير الجودة والتوريد:"}
+                  <div className="pt-4 border-t border-hairline space-y-2">
+                    <span className="text-[11px] font-mono-tech font-bold uppercase tracking-wider text-muted block">
+                      {locale === "en" ? "QUALITY & SUPPLY ASSURANCE:" : "معايير الجودة والتوريد:"}
                     </span>
-                    <ul className="space-y-1 text-xs text-secondary">
+                    <ul className="space-y-1.5 text-xs text-secondary font-body">
                       {mat.specs.map((sp, sIdx) => (
                         <li key={sIdx} className="flex items-center gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />

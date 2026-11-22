@@ -35,57 +35,56 @@ export function ValuesSection() {
   ];
 
   return (
-    <section className="section-padding bg-primary relative overflow-hidden">
+    <section className="section-padding bg-page border-t border-hairline relative overflow-hidden">
       <div className="site-container relative z-10">
         {/* Header */}
-        <div className="text-center max-w-[1100px] mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary label-text">
-            <Compass className="w-3.5 h-3.5" />
-            <span>{t("values.badge")}</span>
-          </div>
-          <h2 className="text-h2 text-primary font-bold">
+        <div className="text-center max-w-[900px] mx-auto space-y-4 mb-14">
+          <span className="badge-tech inline-block">
+            {t("values.badge")}
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-primary uppercase">
             {t("values.headline")}
           </h2>
         </div>
 
         {/* Vision & Mission Dual Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
           {/* Vision */}
-          <div className="p-8 sm:p-10 rounded-[16px] neu-raised skeuo-plate space-y-4">
+          <div className="p-8 sm:p-10 border border-hairline bg-surface hover:border-brand-cobalt transition-colors duration-200 space-y-5">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-[12px] bg-brand-primary/10 text-brand-primary flex items-center justify-center">
-                <Compass className="w-6 h-6" />
+              <div className="w-10 h-10 border border-hairline bg-page text-brand-cobalt flex items-center justify-center">
+                <Compass className="w-5 h-5" />
               </div>
               <div>
-                <span className="label-text text-muted uppercase">
-                  {locale === "en" ? "Strategic Direction" : "التوجه الاستراتيجي"}
+                <span className="text-[11px] font-mono-tech uppercase tracking-widest text-muted block">
+                  {locale === "en" ? "STRATEGIC DIRECTION" : "التوجه الاستراتيجي"}
                 </span>
-                <h3 className="text-h3 font-bold text-primary">
+                <h3 className="text-xl sm:text-2xl font-bold font-display text-primary uppercase">
                   {t("values.visionTitle")}
                 </h3>
               </div>
             </div>
-            <p className="body-regular text-secondary leading-relaxed pt-2">
+            <p className="text-sm sm:text-base text-secondary leading-relaxed font-body">
               {t("values.visionText")}
             </p>
           </div>
 
           {/* Mission */}
-          <div className="p-8 sm:p-10 rounded-[16px] neu-raised skeuo-plate space-y-4">
+          <div className="p-8 sm:p-10 border border-hairline bg-surface hover:border-brand-cobalt transition-colors duration-200 space-y-5">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-[12px] bg-brand-primary/10 text-brand-primary flex items-center justify-center">
-                <Target className="w-6 h-6" />
+              <div className="w-10 h-10 border border-hairline bg-page text-brand-cobalt flex items-center justify-center">
+                <Target className="w-5 h-5" />
               </div>
               <div>
-                <span className="label-text text-muted uppercase">
-                  {locale === "en" ? "Operational Mandate" : "الغاية التشغيلية"}
+                <span className="text-[11px] font-mono-tech uppercase tracking-widest text-muted block">
+                  {locale === "en" ? "OPERATIONAL MANDATE" : "الغاية التشغيلية"}
                 </span>
-                <h3 className="text-h3 font-bold text-primary">
+                <h3 className="text-xl sm:text-2xl font-bold font-display text-primary uppercase">
                   {t("values.missionTitle")}
                 </h3>
               </div>
             </div>
-            <p className="body-regular text-secondary leading-relaxed pt-2">
+            <p className="text-sm sm:text-base text-secondary leading-relaxed font-body">
               {t("values.missionText")}
             </p>
           </div>
@@ -93,9 +92,14 @@ export function ValuesSection() {
 
         {/* Six Core Values */}
         <div>
-          <h3 className="text-h3 font-bold text-primary text-center mb-8">
-            {t("values.valuesTitle")}
-          </h3>
+          <div className="flex items-center justify-between mb-8 pb-3 border-b border-hairline">
+            <h3 className="text-xl sm:text-2xl font-bold font-display text-primary uppercase">
+              {t("values.valuesTitle")}
+            </h3>
+            <span className="text-xs font-mono-tech text-muted">
+              PILLARS // 01 - 06
+            </span>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {values.map((val: any, idx: number) => {
@@ -103,15 +107,20 @@ export function ValuesSection() {
               return (
                 <div
                   key={idx}
-                  className="p-6 rounded-[16px] neu-subtle space-y-3 hover:neu-raised transition-all duration-200"
+                  className="p-6 border border-hairline bg-surface hover:border-brand-cobalt transition-colors duration-200 space-y-4"
                 >
-                  <div className="w-10 h-10 rounded-[12px] bg-brand-primary/10 text-brand-primary flex items-center justify-center">
-                    <Icon className="w-5 h-5" />
+                  <div className="flex items-center justify-between">
+                    <div className="w-9 h-9 border border-hairline bg-page text-brand-cobalt flex items-center justify-center">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span className="text-[11px] font-mono-tech text-muted">
+                      0{idx + 1}
+                    </span>
                   </div>
-                  <h4 className="text-base font-bold text-primary">
+                  <h4 className="text-base font-bold font-display text-primary uppercase tracking-tight">
                     {val.title}
                   </h4>
-                  <p className="text-xs text-secondary leading-relaxed">
+                  <p className="text-xs sm:text-sm text-secondary leading-relaxed font-body">
                     {val.desc}
                   </p>
                 </div>

@@ -54,7 +54,7 @@ export default function QHSEPage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-page text-primary transition-colors duration-200">
       <Header />
       <main className="flex-grow">
         <PageHeader
@@ -64,7 +64,7 @@ export default function QHSEPage() {
               ? "Our uncompromising commitment to zero harm, environmental sustainability, and rigorous quality assurance across all Saudi contracting operations."
               : "التزام مؤسسي غير قابل للمساومة بثقافة صفر حوادث، والاستدامة البيئية، وضمان الجودة الشامل في كافة مشاريعنا بالمملكة."
           }
-          badge={locale === "en" ? "Zero Harm Philosophy" : "ثقافة صفر حوادث"}
+          badge={locale === "en" ? "ZERO HARM PHILOSOPHY" : "ثقافة صفر حوادث"}
           breadcrumbs={[{ label: t("nav.qhse") }]}
           imageSrc="/images/content/qhse.jpg"
         />
@@ -74,16 +74,15 @@ export default function QHSEPage() {
           <div className="site-container">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 label-text">
-                  <ShieldAlert className="w-3.5 h-3.5" />
-                  <span>{locale === "en" ? "Institutional QHSE Policy" : "سياسة السلامة المؤسسية"}</span>
-                </div>
-                <h2 className="text-h2 text-primary font-bold">
+                <span className="badge-tech inline-block">
+                  {locale === "en" ? "INSTITUTIONAL QHSE POLICY" : "سياسة السلامة المؤسسية"}
+                </span>
+                <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-primary">
                   {locale === "en"
                     ? "Protecting People, Assets, and the Environment"
                     : "حماية الكوادر البشرية والأصول والبيئة المحيطة"}
                 </h2>
-                <div className="space-y-4 body-regular text-secondary">
+                <div className="space-y-4 text-sm sm:text-base text-secondary font-body leading-relaxed">
                   <p>
                     {locale === "en"
                       ? "At Aevoryn Services & Contracting Co., we believe that every worker has the fundamental right to return home safely at the end of every shift. Our Zero-Harm culture is not a regulatory slogan—it is the governing operational discipline embedded in every material delivered, every machine inspected, and every tradesperson deployed."
@@ -97,28 +96,28 @@ export default function QHSEPage() {
                 </div>
 
                 {/* ISO Seal Badges */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 border-t border-subtle">
-                  <div className="p-4 rounded-[12px] neu-subtle flex items-center gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-hairline">
+                  <div className="p-4 border border-hairline bg-page flex items-center gap-3">
                     <ShieldAlert className="w-6 h-6 text-rose-500 flex-shrink-0" />
                     <div>
-                      <p className="text-xs font-bold text-primary">ISO 45001:2018</p>
-                      <p className="caption-text text-muted">Occupational Safety</p>
+                      <p className="text-xs font-bold text-primary font-mono-tech">ISO 45001:2018</p>
+                      <p className="text-[11px] text-muted font-body">Occupational Safety</p>
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-[12px] neu-subtle flex items-center gap-3">
-                    <Award className="w-6 h-6 text-blue-500 flex-shrink-0" />
+                  <div className="p-4 border border-hairline bg-page flex items-center gap-3">
+                    <Award className="w-6 h-6 text-brand-cobalt flex-shrink-0" />
                     <div>
-                      <p className="text-xs font-bold text-primary">ISO 9001:2015</p>
-                      <p className="caption-text text-muted">Quality Management</p>
+                      <p className="text-xs font-bold text-primary font-mono-tech">ISO 9001:2015</p>
+                      <p className="text-[11px] text-muted font-body">Quality Management</p>
                     </div>
                   </div>
 
-                  <div className="p-4 rounded-[12px] neu-subtle flex items-center gap-3">
+                  <div className="p-4 border border-hairline bg-page flex items-center gap-3">
                     <Leaf className="w-6 h-6 text-emerald-500 flex-shrink-0" />
                     <div>
-                      <p className="text-xs font-bold text-primary">ISO 14001:2015</p>
-                      <p className="caption-text text-muted">Environmental System</p>
+                      <p className="text-xs font-bold text-primary font-mono-tech">ISO 14001:2015</p>
+                      <p className="text-[11px] text-muted font-body">Environmental System</p>
                     </div>
                   </div>
                 </div>
@@ -126,23 +125,21 @@ export default function QHSEPage() {
 
               {/* Right Media */}
               <div className="lg:col-span-5">
-                <div className="relative h-96 rounded-[16px] overflow-hidden neu-raised p-2">
-                  <div className="relative w-full h-full rounded-[12px] overflow-hidden">
-                    <Image
-                      src="/images/content/qhse.jpg"
-                      alt="Rigorous QHSE Site Safety Inspection"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545]/85 via-transparent to-transparent" />
-                    <div className="absolute bottom-6 left-6 right-6 p-4 rounded-[12px] bg-surface/90 backdrop-blur-md border border-subtle shadow-lg">
-                      <p className="text-xs font-bold text-primary mb-1">
-                        {locale === "en" ? "Proactive Risk Prevention" : "الوقاية الاستباقية من المخاطر"}
-                      </p>
-                      <p className="caption-text text-muted">
-                        Zero tolerance for safety shortcuts across all active project zones.
-                      </p>
-                    </div>
+                <div className="relative h-96 border border-hairline bg-page overflow-hidden">
+                  <Image
+                    src="/images/content/qhse.jpg"
+                    alt="Rigorous QHSE Site Safety Inspection"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-5 left-5 right-5 p-4 border border-white/20 bg-black/75 backdrop-blur-md">
+                    <p className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono-tech">
+                      {locale === "en" ? "PROACTIVE RISK MITIGATION" : "الوقاية الاستباقية من المخاطر"}
+                    </p>
+                    <p className="text-xs text-white/80 leading-relaxed font-body">
+                      Zero tolerance for safety shortcuts across all active project zones.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -151,34 +148,42 @@ export default function QHSEPage() {
         </section>
 
         {/* Safety Protocols Grid */}
-        <section className="section-padding bg-primary">
+        <section className="section-padding bg-page border-t border-hairline">
           <div className="site-container">
-            <div className="text-center max-w-[1100px] mx-auto space-y-4 mb-16">
-              <h2 className="text-h2 text-primary font-bold">
+            <div className="text-center max-w-[900px] mx-auto space-y-4 mb-14">
+              <span className="badge-tech inline-block">
+                {locale === "en" ? "SAFETY MANAGEMENT" : "إجراءات السلامة الميدانية"}
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-primary">
                 {locale === "en" ? "Core Safety Protocols & Field Controls" : "بروتوكولات السلامة والضوابط الميدانية الأساسية"}
               </h2>
-              <p className="body-large text-secondary mx-auto">
+              <p className="text-base sm:text-lg text-secondary mx-auto max-w-2xl leading-relaxed">
                 {locale === "en"
                   ? "Four essential field pillars that guarantee safe operations on complex contracting environments."
                   : "أربعة مسارات ميدانية حاسمة تضمن السلامة التامة في بيئات المقاولات الإنشائية المعقدة."}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {safetyProtocols.map((sp, idx) => (
                 <div
                   key={idx}
-                  className="p-8 rounded-[16px] neu-raised skeuo-plate space-y-3"
+                  className="p-8 border border-hairline bg-surface flex flex-col justify-between space-y-4 hover:border-brand-cobalt transition-colors duration-200"
                 >
-                  <div className="w-10 h-10 rounded-[12px] bg-brand-primary/10 text-brand-primary flex items-center justify-center font-bold text-sm font-mono">
-                    0{idx + 1}
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-mono-tech text-brand-cobalt font-bold">
+                        PROTOCOL // 0{idx + 1}
+                      </span>
+                      <span className="w-2 h-2 rounded-full bg-brand-cobalt" />
+                    </div>
+                    <h3 className="text-xl font-bold font-display uppercase tracking-tight text-primary">
+                      {sp.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-secondary leading-relaxed font-body">
+                      {sp.desc}
+                    </p>
                   </div>
-                  <h3 className="text-h4 font-bold text-primary">
-                    {sp.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-secondary leading-relaxed">
-                    {sp.desc}
-                  </p>
                 </div>
               ))}
             </div>

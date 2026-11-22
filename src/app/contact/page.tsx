@@ -36,13 +36,13 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-page text-primary transition-colors duration-200">
       <Header />
       <main className="flex-grow">
         <PageHeader
           title={t("contactPage.title")}
           subtitle={t("contactPage.subtitle")}
-          badge={locale === "en" ? "Commercial & Corporate Enquiries" : "قنوات الاتصال والاستفسارات التجارية"}
+          badge={locale === "en" ? "COMMERCIAL & CORPORATE INQUIRIES" : "قنوات الاتصال والاستفسارات التجارية"}
           breadcrumbs={[{ label: t("nav.contact") }]}
           imageSrc="/images/content/contact-hero.jpg"
         />
@@ -52,12 +52,15 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               {/* Left Column: Form (7 cols) */}
               <div className="lg:col-span-7">
-                <div className="p-8 sm:p-10 rounded-[16px] neu-raised bg-surface space-y-6">
+                <div className="p-8 sm:p-10 border border-hairline bg-page space-y-6">
                   <div>
-                    <h2 className="text-h2 text-primary font-bold">
+                    <span className="badge-tech inline-block mb-3">
+                      {locale === "en" ? "INQUIRY SUBMISSION" : "تقديم طلب"}
+                    </span>
+                    <h2 className="text-2xl sm:text-4xl font-bold font-display uppercase tracking-tight text-primary">
                       {t("contactPage.formTitle")}
                     </h2>
-                    <p className="body-large text-secondary pt-1">
+                    <p className="text-sm sm:text-base text-secondary pt-1 font-body">
                       {locale === "en"
                         ? "Complete the inquiry form below. Our commercial estimation team in Riyadh will review your requirements and respond promptly."
                         : "يرجى ملء النموذج أدناه. سيتولى فريق التقدير التجاري بالرياض مراجعة متطلباتكم والتواصل معكم في أسرع وقت."}
@@ -66,18 +69,18 @@ export default function ContactPage() {
 
                   {submitted ? (
                     <div className="py-12 text-center space-y-4">
-                      <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
+                      <div className="w-16 h-16 border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
                         <CheckCircle2 className="w-10 h-10" />
                       </div>
-                      <h4 className="text-xl font-bold text-primary">
+                      <h4 className="text-xl font-bold font-display uppercase tracking-tight text-primary">
                         {locale === "en" ? "Inquiry Successfully Transmitted" : "تم إرسال الطلب بنجاح"}
                       </h4>
-                      <p className="body-regular text-secondary max-w-md mx-auto leading-relaxed">
+                      <p className="text-sm text-secondary max-w-md mx-auto leading-relaxed font-body">
                         {t("contactPage.success")}
                       </p>
                       <button
                         onClick={() => setSubmitted(false)}
-                        className="btn-primary"
+                        className="btn-cobalt"
                       >
                         {locale === "en" ? "Submit Another Request" : "إرسال طلب آخر"}
                       </button>
@@ -86,7 +89,7 @@ export default function ContactPage() {
                     <form onSubmit={handleSubmit} className="space-y-4">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="form-label">
+                          <label className="form-label-editorial">
                             {t("contactPage.fullName")} *
                           </label>
                           <input
@@ -95,12 +98,12 @@ export default function ContactPage() {
                             value={formData.name}
                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                             placeholder={locale === "en" ? "Eng. Saud Al-Ghamdi" : "م. سعود الغامدي"}
-                            className="form-input"
+                            className="form-input-editorial"
                           />
                         </div>
 
                         <div>
-                          <label className="form-label">
+                          <label className="form-label-editorial">
                             {t("contactPage.companyName")} *
                           </label>
                           <input
@@ -109,14 +112,14 @@ export default function ContactPage() {
                             value={formData.company}
                             onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                             placeholder={locale === "en" ? "Contracting & Engineering Co." : "شركة المقاولات والهندسة"}
-                            className="form-input"
+                            className="form-input-editorial"
                           />
                         </div>
                       </div>
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                          <label className="form-label">
+                          <label className="form-label-editorial">
                             {t("contactPage.email")} *
                           </label>
                           <input
@@ -125,12 +128,12 @@ export default function ContactPage() {
                             value={formData.email}
                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                             placeholder="commercial@company.com"
-                            className="form-input"
+                            className="form-input-editorial"
                           />
                         </div>
 
                         <div>
-                          <label className="form-label">
+                          <label className="form-label-editorial">
                             {t("contactPage.phone")} *
                           </label>
                           <input
@@ -139,19 +142,19 @@ export default function ContactPage() {
                             value={formData.phone}
                             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             placeholder="+966 5X XXX XXXX"
-                            className="form-input"
+                            className="form-input-editorial"
                           />
                         </div>
                       </div>
 
                       <div>
-                        <label className="form-label">
+                        <label className="form-label-editorial">
                           {t("contactPage.division")}
                         </label>
                         <select
                           value={formData.division}
                           onChange={(e) => setFormData({ ...formData, division: e.target.value })}
-                          className="form-input"
+                          className="form-input-editorial"
                         >
                           <option value="infrastructure">{t("capabilities.items.0.title")}</option>
                           <option value="manpower">{t("capabilities.items.1.title")}</option>
@@ -161,7 +164,7 @@ export default function ContactPage() {
                       </div>
 
                       <div>
-                        <label className="form-label">
+                        <label className="form-label-editorial">
                           {t("contactPage.message")} *
                         </label>
                         <textarea
@@ -173,18 +176,18 @@ export default function ContactPage() {
                               ? "Provide details on required machinery, manpower trades, material specifications, or jobsite location..."
                               : "يرجى ذكر تفاصيل المعدات المطلوبة، التخصصات العمالية، مواصفات المواد، أو موقع المشروع الميداني..."
                           }
-                          className="form-textarea"
+                          className="form-textarea-editorial"
                         />
                       </div>
 
                       <div className="pt-2 flex items-center justify-between">
-                        <span className="caption-text text-muted font-mono">
+                        <span className="text-xs text-muted font-mono-tech">
                           CR: 7054401679
                         </span>
 
                         <button
                           type="submit"
-                          className="btn-primary flex items-center gap-2"
+                          className="btn-cobalt flex items-center gap-2"
                         >
                           <Send className="w-3.5 h-3.5" />
                           <span>{t("contactPage.submit")}</span>
@@ -198,30 +201,30 @@ export default function ContactPage() {
               {/* Right Column: Corporate Addresses & Contacts (5 cols) */}
               <div className="lg:col-span-5 space-y-6">
                 {/* Riyadh Corporate Headquarters */}
-                <div className="p-7 rounded-[16px] neu-raised space-y-4">
+                <div className="p-8 border border-hairline bg-page space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-[12px] bg-brand-primary/10 text-brand-primary flex items-center justify-center">
+                    <div className="w-10 h-10 border border-hairline bg-surface text-brand-cobalt flex items-center justify-center">
                       <Building2 className="w-5 h-5" />
                     </div>
                     <div>
-                      <h4 className="text-base font-bold text-primary">
+                      <h4 className="text-base font-bold font-display uppercase tracking-tight text-primary">
                         {t("contactPage.riyadhTitle")}
                       </h4>
-                      <span className="text-[10px] text-brand-accent font-semibold uppercase tracking-wider">
-                        {locale === "en" ? "Executive Headquarters" : "المقر التنفيذي والإداري"}
+                      <span className="text-[10px] text-brand-cobalt font-mono-tech uppercase tracking-wider block">
+                        {locale === "en" ? "EXECUTIVE HEADQUARTERS" : "المقر التنفيذي والإداري"}
                       </span>
                     </div>
                   </div>
 
-                  <p className="caption-text text-secondary leading-relaxed flex items-start gap-2">
-                    <MapPin className="w-4 h-4 text-brand-accent flex-shrink-0 mt-0.5" />
+                  <p className="text-xs text-secondary leading-relaxed flex items-start gap-2 font-body">
+                    <MapPin className="w-4 h-4 text-brand-cobalt flex-shrink-0 mt-0.5" />
                     <span>{t("contactPage.riyadhAddress")}</span>
                   </p>
 
-                  <div className="pt-2 border-t border-subtle space-y-2 text-xs">
+                  <div className="pt-3 border-t border-hairline space-y-2 text-xs">
                     <div className="flex items-center gap-2">
-                      <Phone className="w-4 h-4 text-brand-accent" />
-                      <a href="tel:+966173229527" className="font-mono text-primary hover:text-brand-accent font-semibold">
+                      <Phone className="w-4 h-4 text-brand-cobalt" />
+                      <a href="tel:+966173229527" className="font-mono-tech text-primary hover:text-brand-cobalt font-semibold">
                         +966 1732 29527
                       </a>
                     </div>
@@ -229,26 +232,26 @@ export default function ContactPage() {
                 </div>
 
                 {/* Direct Communications Matrix */}
-                <div className="p-7 rounded-[16px] neu-raised space-y-3">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-muted pb-1 border-b border-subtle">
+                <div className="p-8 border border-hairline bg-page space-y-4">
+                  <h4 className="text-xs font-mono-tech font-bold uppercase tracking-wider text-muted pb-2 border-b border-hairline">
                     {t("contactPage.directContacts")}
                   </h4>
                   <div className="space-y-2 text-xs">
-                    <div className="flex items-center justify-between p-2.5 rounded-[8px] neu-inset">
+                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface">
                       <span className="text-muted font-medium">Administration:</span>
-                      <a href="mailto:admin@aevoryn.net" className="font-mono font-bold text-primary hover:text-brand-accent">
+                      <a href="mailto:admin@aevoryn.net" className="font-mono-tech font-bold text-primary hover:text-brand-cobalt">
                         admin@aevoryn.net
                       </a>
                     </div>
-                    <div className="flex items-center justify-between p-2.5 rounded-[8px] neu-inset">
+                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface">
                       <span className="text-muted font-medium">Executive Office (CEO):</span>
-                      <a href="mailto:ceo@aevoryn.net" className="font-mono font-bold text-primary hover:text-brand-accent">
+                      <a href="mailto:ceo@aevoryn.net" className="font-mono-tech font-bold text-primary hover:text-brand-cobalt">
                         ceo@aevoryn.net
                       </a>
                     </div>
-                    <div className="flex items-center justify-between p-2.5 rounded-[8px] neu-inset">
+                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface">
                       <span className="text-muted font-medium">Chairman Office:</span>
-                      <a href="mailto:chairman@aevoryn.net" className="font-mono font-bold text-primary hover:text-brand-accent">
+                      <a href="mailto:chairman@aevoryn.net" className="font-mono-tech font-bold text-primary hover:text-brand-cobalt">
                         chairman@aevoryn.net
                       </a>
                     </div>
@@ -256,12 +259,12 @@ export default function ContactPage() {
                 </div>
 
                 {/* Administrative Address Verification Box */}
-                <div className="p-5 rounded-[16px] bg-amber-500/10 border border-amber-500/30 text-amber-900 dark:text-amber-200 text-xs space-y-1.5">
-                  <div className="flex items-center gap-2 font-bold text-amber-600 dark:text-amber-400">
+                <div className="p-5 border border-amber-500/30 bg-amber-500/5 text-xs space-y-2">
+                  <div className="flex items-center gap-2 font-bold text-amber-600 dark:text-amber-400 font-mono-tech uppercase">
                     <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-                    <span>{locale === "en" ? "Address Disclosure & Facility Notice" : "إفصاح إداري حول مقار ومنشآت الشركة"}</span>
+                    <span>{locale === "en" ? "ADDRESS DISCLOSURE & FACILITY NOTICE" : "إفصاح إداري حول مقار ومنشآت الشركة"}</span>
                   </div>
-                  <p className="leading-relaxed opacity-90">
+                  <p className="leading-relaxed text-secondary font-body">
                     {t("contactPage.adminVerification")}
                   </p>
                 </div>

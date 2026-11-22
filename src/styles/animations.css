@@ -1,202 +1,81 @@
 /**
- * AEVORYN MASTER DESIGN SYSTEM — ANIMATION & TRANSITION LOCK
- * Section 13: Animation & Transition Lock & Cinematic Hero Timeline
+ * AEVORYN MASTER DESIGN SYSTEM — ANIMATIONS & TRANSITIONS
+ * Section 6: Globe Hero, Section 2: Horizon Glow Transition, Section 7: Services Scroll
  */
 
-:root {
-  --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+/* Staggered entrance for hero elements */
+@keyframes editorialFadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ==========================================================================
-   AEVORYN CINEMATIC HERO EXPERIENCE (7.4s Coordinated Timeline)
-   ========================================================================== */
-
-/* Scene 1: Dark Navy Architectural Shutters & Center Emblem */
-@keyframes shutterSlideLeft {
-  0% { transform: translateX(0); visibility: visible; }
-  18% { transform: translateX(0); }
-  35% { transform: translateX(-100%); }
-  99% { transform: translateX(-100%); visibility: visible; }
-  100% { transform: translateX(-100%); visibility: hidden; pointer-events: none; }
+@keyframes editorialGlitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
 }
 
-@keyframes shutterSlideRight {
-  0% { transform: translateX(0); visibility: visible; }
-  18% { transform: translateX(0); }
-  35% { transform: translateX(100%); }
-  99% { transform: translateX(100%); visibility: visible; }
-  100% { transform: translateX(100%); visibility: hidden; pointer-events: none; }
+@keyframes pulseCobaltGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
 }
 
-@keyframes shutterEmblemFade {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; visibility: visible; }
-  14% { transform: translate(-50%, -50%) scale(1.06); opacity: 1; }
-  26% { transform: translate(-50%, -50%) scale(1.22); opacity: 0; filter: blur(5px); }
-  99% { opacity: 0; visibility: visible; }
-  100% { opacity: 0; visibility: hidden; pointer-events: none; }
+@keyframes horizonGlowRise {
+  0% {
+    transform: translateY(100%) scaleY(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(0) scaleY(1);
+    opacity: 1;
+  }
 }
 
-/* Scene 2 & 3: Camera Zoom & Parallax Layers */
-@keyframes cinematicCameraZoom {
-  0% { transform: scale(1.15) translate3d(0, -6px, 0); }
-  35% { transform: scale(1.08) translate3d(0, -3px, 0); }
-  70% { transform: scale(1.03) translate3d(0, -1px, 0); }
-  100% { transform: scale(1.01) translate3d(0, 0, 0); }
+/* Utility Animation Classes */
+.animate-editorial-fade-up {
+  animation: editorialFadeUp 0.8s var(--ease-out-expo) forwards;
 }
 
-@keyframes layerMidReveal {
-  0% { opacity: 0; transform: translateY(24px) scale(1.08); }
-  28% { opacity: 0; transform: translateY(24px) scale(1.08); }
-  55% { opacity: 0.6; transform: translateY(10px) scale(1.04); }
-  85% { opacity: 1; transform: translateY(0) scale(1.0); }
-  100% { opacity: 1; transform: translateY(0) scale(1.0); }
+.animate-pulse-glow {
+  animation: pulseCobaltGlow 2.5s infinite ease-out;
 }
 
-@keyframes layerForeReveal {
-  0% { opacity: 0; transform: translateY(32px) scale(1.12); }
-  38% { opacity: 0; transform: translateY(32px) scale(1.12); }
-  68% { opacity: 0.75; transform: translateY(10px) scale(1.04); }
-  100% { opacity: 1; transform: translateY(0) scale(1.0); }
-}
-
-/* Scene 4: Brand Kicker & Headline Typography Reveal */
-@keyframes cinematicKickerIn {
-  0% { opacity: 0; transform: translateY(12px); }
-  30% { opacity: 0; transform: translateY(12px); }
-  50% { opacity: 1; transform: translateY(0); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes cinematicHeadlineIn {
-  0% { opacity: 0; transform: translateY(22px); filter: blur(4px); }
-  34% { opacity: 0; transform: translateY(22px); filter: blur(4px); }
-  62% { opacity: 0.85; transform: translateY(6px); filter: blur(1px); }
-  82% { opacity: 1; transform: translateY(0); filter: blur(0); }
-  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-}
-
-@keyframes cinematicSubheadlineIn {
-  0% { opacity: 0; transform: translateY(18px); }
-  45% { opacity: 0; transform: translateY(18px); }
-  72% { opacity: 0.9; transform: translateY(4px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Scene 5: CTAs & Live Industrial Stats Reveal */
-@keyframes cinematicCtasIn {
-  0% { opacity: 0; transform: translateY(20px); pointer-events: none; }
-  60% { opacity: 0; transform: translateY(20px); pointer-events: none; }
-  78% { opacity: 0.8; transform: translateY(6px); pointer-events: auto; }
-  100% { opacity: 1; transform: translateY(0); pointer-events: auto; }
-}
-
-@keyframes cinematicStatsIn {
-  0% { opacity: 0; transform: translateY(16px); }
-  68% { opacity: 0; transform: translateY(16px); }
-  88% { opacity: 0.85; transform: translateY(4px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Ambient Technical Grid Sweep */
-@keyframes ambientSweep {
-  0% { transform: translateX(-100%) rotate(25deg); opacity: 0; }
-  40% { opacity: 0.12; }
-  80% { opacity: 0.12; }
-  100% { transform: translateX(200%) rotate(25deg); opacity: 0; }
-}
-
-/* Applied Animation Classes */
-.anim-shutter-left {
-  animation: shutterSlideLeft 7.4s var(--ease-standard) forwards;
-}
-
-.anim-shutter-right {
-  animation: shutterSlideRight 7.4s var(--ease-standard) forwards;
-}
-
-.anim-shutter-emblem {
-  animation: shutterEmblemFade 7.4s var(--ease-standard) forwards;
-}
-
-.anim-camera-zoom {
-  animation: cinematicCameraZoom 7.4s var(--ease-standard) forwards;
-}
-
-.anim-layer-mid {
-  animation: layerMidReveal 7.4s var(--ease-standard) forwards;
-}
-
-.anim-layer-fore {
-  animation: layerForeReveal 7.4s var(--ease-standard) forwards;
-}
-
-.anim-kicker {
-  animation: cinematicKickerIn 7.4s var(--ease-standard) forwards;
-}
-
-.anim-headline {
-  animation: cinematicHeadlineIn 7.4s var(--ease-standard) forwards;
-}
-
-.anim-subheadline {
-  animation: cinematicSubheadlineIn 7.4s var(--ease-standard) forwards;
-}
-
-.anim-ctas {
-  animation: cinematicCtasIn 7.4s var(--ease-standard) forwards;
-}
-
-.anim-stats {
-  animation: cinematicStatsIn 7.4s var(--ease-standard) forwards;
-}
-
-/* Reduced Motion Override & Skip Intro States */
+/* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
-  .cinematic-shutter,
-  .cinematic-emblem {
-    display: none !important;
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
-  .anim-shutter-left,
-  .anim-shutter-right,
-  .anim-shutter-emblem,
-  .anim-camera-zoom,
-  .anim-layer-mid,
-  .anim-layer-fore,
-  .anim-kicker,
-  .anim-headline,
-  .anim-subheadline,
-  .anim-ctas,
-  .anim-stats {
-    animation: none !important;
-    transform: none !important;
-    opacity: 1 !important;
-    filter: none !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-  }
-}
-
-.hero-skipped .cinematic-shutter,
-.hero-skipped .cinematic-emblem {
-  display: none !important;
-}
-
-.hero-skipped .anim-shutter-left,
-.hero-skipped .anim-shutter-right,
-.hero-skipped .anim-shutter-emblem,
-.hero-skipped .anim-camera-zoom,
-.hero-skipped .anim-layer-mid,
-.hero-skipped .anim-layer-fore,
-.hero-skipped .anim-kicker,
-.hero-skipped .anim-headline,
-.hero-skipped .anim-subheadline,
-.hero-skipped .anim-ctas,
-.hero-skipped .anim-stats {
-  animation: none !important;
-  transform: none !important;
-  opacity: 1 !important;
-  filter: none !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
 }

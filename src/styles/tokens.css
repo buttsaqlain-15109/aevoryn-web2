@@ -1,47 +1,54 @@
 /**
- * AEVORYN MASTER DESIGN SYSTEM — DESIGN TOKENS
- * Section 5: Fixed Color System & Section 7: Border Radius Lock
+ * AEVORYN MASTER DESIGN SYSTEM — NEW MASTER VISUAL IDENTITY (KV FREIGHT DIRECTION)
+ * Section 2: Minimalist Editorial Industrial Aesthetics
+ * Section 3: Approved Color Palette & Fixed Brand Tokens
  */
 
 :root {
-  /* Brand Colors */
-  --brand-primary: #123D70;
-  --brand-deep: #0B2545;
-  --brand-charcoal: #263746;
-  --brand-white: #FFFFFF;
-  --brand-steel: #A8B4C1;
-  --brand-light-bg: #F5F7FA;
-  --brand-accent: #2876BD;
-  --night-accent: #438DD0;
+  /* Master Palette - Core Tokens */
+  --color-primary-ink: #111111;
+  --color-background: #FFFFFF;
+  --color-brand-cobalt: #123D70;
+  --color-cobalt-accent: #2F63FF;
+  --color-cobalt-hover: #1F4FE0;
+  --color-muted-text: #5D6270;
+  --color-secondary-text: #6B6F78;
+  --color-light-blue-wash: #EEF2FF;
+  --color-hairline: #D9DBE0;
+  --color-dark-section: #111111;
 
-  /* Border Radius Lock (Section 7) */
-  --radius-control: 6px;
-  --radius-button: 8px;
-  --radius-input: 8px;
-  --radius-card: 12px;
-  --radius-panel: 16px;
-  --radius-feature: 20px;
-  --radius-pill: 999px;
+  /* Editorial Spacing System (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
 
-  /* Button System Dimensions (Section 8) */
-  --btn-height-desktop: 48px;
-  --btn-height-mobile: 46px;
-  --btn-padding-x: 24px;
-  --btn-font-size: 15px;
-  --btn-font-weight: 600;
-  --btn-radius: 8px;
+  /* Architectural Sharp/Refined Radii */
+  --radius-sharp: 0px;
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-pill: 9999px;
 
-  /* Form System Dimensions (Section 14) */
-  --input-height: 48px;
-  --input-font-size: 15px;
-  --input-radius: 8px;
-  --label-font-size: 13px;
-  --label-font-weight: 600;
-  --textarea-min-height: 120px;
+  /* Layout Widths */
+  --container-max: 1440px;
+  --content-max: 1280px;
+  --text-max: 760px;
+  --heading-max: 1100px;
 
-  /* Interaction & Transition Durations (Section 13) */
-  --transition-small: 150ms ease;
-  --transition-default: 200ms ease;
-  --transition-panel: 300ms ease;
-  --transition-page: 350ms ease;
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 150ms var(--ease-out-expo);
+  --transition-base: 250ms var(--ease-out-expo);
+  --transition-slow: 400ms var(--ease-out-expo);
 }

@@ -1,55 +1,63 @@
 /**
- * AEVORYN MASTER DESIGN SYSTEM — THEMES & DUAL MODE SYSTEM
- * Section 5: Fixed Color System & Section 9: Neumorphic Design System
+ * AEVORYN MASTER DESIGN SYSTEM — DAY & NIGHT DUAL MODE
+ * Section 3: Palette Adaptation & Section 13: Theme Retention
  */
 
 :root {
-  /* DAY MODE (Default) */
-  --bg-page: #F5F7FA;
-  --bg-surface-primary: #FFFFFF;
-  --bg-surface-secondary: #EEF2F7;
-  --text-primary: #172438;
-  --text-secondary: #64748B;
-  --border-color: #E2E8F0;
+  /* =========================================================================
+     DAY MODE (Default Master Editorial Aesthetic)
+     ========================================================================= */
+  --bg-page: #FFFFFF;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #F8F9FA;
+  --bg-wash: #EEF2FF;
+  --bg-dark-section: #111111;
 
-  --btn-primary-bg: #123D70;
-  --btn-primary-text: #FFFFFF;
-  --btn-secondary-border: #123D70;
-  --btn-secondary-text: #123D70;
+  --text-primary: #111111;
+  --text-secondary: #5D6270;
+  --text-muted: #6B6F78;
+  --text-inverse: #FFFFFF;
 
-  /* Standardized Neumorphic Shadows - Day Mode (Section 9) */
-  --neu-shadow-raised: 0 6px 16px rgba(15, 35, 60, 0.08), 0 -3px 10px rgba(255, 255, 255, 0.90);
-  --neu-shadow-recessed: inset 2px 2px 6px rgba(15, 35, 60, 0.08), inset -2px -2px 6px rgba(255, 255, 255, 0.90);
+  --border-hairline: #D9DBE0;
+  --border-subtle: #E8EAEE;
+  --border-focus: #2F63FF;
 
-  /* Skeuomorphic Accents - Day Mode */
-  --skeuo-border-highlight: rgba(255, 255, 255, 0.85);
-  --skeuo-border-metallic: rgba(168, 180, 193, 0.40);
-  --skeuo-gradient-plate: linear-gradient(180deg, #FFFFFF 0%, #F5F7FA 100%);
-  --header-bg: rgba(245, 247, 250, 0.92);
+  --brand-cobalt: #123D70;
+  --cobalt-accent: #2F63FF;
+  --cobalt-hover: #1F4FE0;
+  --cobalt-glow: rgba(47, 99, 255, 0.25);
+
+  --nav-bg: rgba(255, 255, 255, 0.94);
+  --card-bg: #FFFFFF;
+  --card-hover-bg: #F8F9FC;
 }
 
 [data-theme="dark"],
 .dark {
-  /* NIGHT MODE */
-  --bg-page: #0B1220;
-  --bg-surface-primary: #101A28;
-  --bg-surface-secondary: #172438;
-  --text-primary: #F1F5F9;
-  --text-secondary: #A8B4C1;
-  --border-color: #28394E;
+  /* =========================================================================
+     NIGHT MODE (Deep Architectural Navy / Obsidian)
+     ========================================================================= */
+  --bg-page: #0B0F19;
+  --bg-surface: #121826;
+  --bg-subtle: #161D2E;
+  --bg-wash: rgba(47, 99, 255, 0.08);
+  --bg-dark-section: #070A12;
 
-  --btn-primary-bg: #2876BD;
-  --btn-primary-text: #FFFFFF;
-  --btn-secondary-border: #438DD0;
-  --btn-secondary-text: #F1F5F9;
+  --text-primary: #F4F5F8;
+  --text-secondary: #A2A9B8;
+  --text-muted: #7E8799;
+  --text-inverse: #111111;
 
-  /* Standardized Neumorphic Shadows - Night Mode (Section 9) */
-  --neu-shadow-raised: 0 6px 16px rgba(0, 0, 0, 0.28), 0 -2px 8px rgba(75, 110, 160, 0.08);
-  --neu-shadow-recessed: inset 2px 2px 6px rgba(0, 0, 0, 0.25), inset -2px -2px 6px rgba(75, 110, 160, 0.06);
+  --border-hairline: #1F293D;
+  --border-subtle: #243047;
+  --border-focus: #3B72FF;
 
-  /* Skeuomorphic Accents - Night Mode */
-  --skeuo-border-highlight: rgba(67, 141, 208, 0.35);
-  --skeuo-border-metallic: rgba(67, 141, 208, 0.25);
-  --skeuo-gradient-plate: linear-gradient(180deg, #172438 0%, #101A28 100%);
-  --header-bg: rgba(11, 18, 32, 0.92);
+  --brand-cobalt: #1E4E8C;
+  --cobalt-accent: #3B72FF;
+  --cobalt-hover: #2663FF;
+  --cobalt-glow: rgba(59, 114, 255, 0.35);
+
+  --nav-bg: rgba(11, 15, 25, 0.94);
+  --card-bg: #121826;
+  --card-hover-bg: #172033;
 }

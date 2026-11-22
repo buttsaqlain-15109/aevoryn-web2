@@ -61,13 +61,13 @@ export default function InfrastructurePage() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-background text-foreground">
+    <div className="min-h-screen flex flex-col bg-page text-primary transition-colors duration-200">
       <Header />
       <main className="flex-grow">
         <PageHeader
           title={t("capabilities.items.0.title")}
           subtitle={t("capabilities.items.0.subtitle")}
-          badge={locale === "en" ? "Division 01 • Heavy Civil Support" : "القطاع 01 • دعم الهندسة المدنية"}
+          badge={locale === "en" ? "DIVISION 01 // HEAVY CIVIL SUPPORT" : "القطاع 01 // دعم الهندسة المدنية"}
           breadcrumbs={[
             { label: t("nav.capabilities"), href: "/#capabilities" },
             { label: t("capabilities.items.0.title") },
@@ -80,16 +80,15 @@ export default function InfrastructurePage() {
           <div className="site-container">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary label-text">
-                  <Building2 className="w-3.5 h-3.5" />
-                  <span>{locale === "en" ? "Infrastructure Capability Overview" : "نظرة عامة على قدرات البنية التحتية"}</span>
-                </div>
-                <h2 className="text-h2 text-primary font-bold">
+                <span className="badge-tech inline-block">
+                  {locale === "en" ? "INFRASTRUCTURE CAPABILITY" : "قدرات البنية التحتية"}
+                </span>
+                <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-primary">
                   {locale === "en"
                     ? "Precision Site Preparation & Civil Logistics Across Saudi Arabia"
                     : "تجهيز المواقع واللوجستيات المدنية الدقيقة في كافة أنحاء المملكة"}
                 </h2>
-                <div className="space-y-4 body-regular text-secondary">
+                <div className="space-y-4 text-sm sm:text-base text-secondary font-body leading-relaxed">
                   <p>
                     {locale === "en"
                       ? "Aevoryn's Infrastructure & Project Support division provides the vital groundwork that enables large-scale civil, energy, and commercial developments to proceed without schedule disruption. We act as a trusted operational extension to principal contractors, undertaking heavy earthmoving, site access development, utility corridor trenching, and structural subbase preparation."
@@ -105,13 +104,13 @@ export default function InfrastructurePage() {
                 <div className="pt-2 flex flex-wrap gap-4">
                   <button
                     onClick={() => setRfqOpen(true)}
-                    className="btn-primary"
+                    className="btn-cobalt"
                   >
                     {locale === "en" ? "Request Civil Support Quotation" : "طلب عرض سعر للأعمال المدنية"}
                   </button>
                   <Link
                     href="/contact"
-                    className="btn-secondary"
+                    className="btn-outline"
                   >
                     {t("hero.contactBtn")}
                   </Link>
@@ -120,23 +119,21 @@ export default function InfrastructurePage() {
 
               {/* Right Media Box */}
               <div className="lg:col-span-5">
-                <div className="relative h-96 rounded-[16px] overflow-hidden neu-raised p-2">
-                  <div className="relative w-full h-full rounded-[12px] overflow-hidden">
-                    <Image
-                      src="/images/content/infrastructure.jpg"
-                      alt="Civil Infrastructure Project"
-                      fill
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0B2545]/80 via-transparent to-transparent" />
-                    <div className="absolute bottom-6 left-6 right-6 p-4 rounded-[12px] bg-surface/90 backdrop-blur-md border border-subtle shadow-lg">
-                      <p className="text-xs font-bold text-primary mb-1">
-                        {locale === "en" ? "Full Field Quality Control" : "مراقبة جودة ميدانية شاملة"}
-                      </p>
-                      <p className="caption-text text-muted">
-                        ISO 9001:2015 certified compaction and site preparation inspection regime.
-                      </p>
-                    </div>
+                <div className="relative h-96 border border-hairline bg-page overflow-hidden">
+                  <Image
+                    src="/images/content/infrastructure.jpg"
+                    alt="Civil Infrastructure Project"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-5 left-5 right-5 p-4 border border-white/20 bg-black/75 backdrop-blur-md">
+                    <p className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono-tech">
+                      {locale === "en" ? "FULL QUALITY CONTROL REGIME" : "مراقبة جودة ميدانية شاملة"}
+                    </p>
+                    <p className="text-xs text-white/80 leading-relaxed font-body">
+                      ISO 9001:2015 certified compaction and site preparation inspection regime.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -145,42 +142,48 @@ export default function InfrastructurePage() {
         </section>
 
         {/* Detailed Scope Breakdown */}
-        <section className="section-padding bg-primary">
+        <section className="section-padding bg-page border-t border-hairline">
           <div className="site-container">
-            <div className="text-center max-w-[1100px] mx-auto space-y-4 mb-16">
-              <h2 className="text-h2 text-primary font-bold">
+            <div className="text-center max-w-[900px] mx-auto space-y-4 mb-14">
+              <span className="badge-tech inline-block">
+                {locale === "en" ? "SPECIALIZED WORK PACKAGES" : "حزم الأعمال التخصصية"}
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-primary">
                 {locale === "en" ? "Specialized Civil Execution Scope" : "نطاق تنفيذ الأعمال المدنية التخصصية"}
               </h2>
-              <p className="body-large text-secondary mx-auto">
+              <p className="text-base sm:text-lg text-secondary mx-auto max-w-2xl leading-relaxed">
                 {locale === "en"
                   ? "Explore the critical civil and earthworks services executed by Aevoryn field teams."
                   : "استكشف حزمة خدمات الأعمال المدنية والترابية التي تنفذها فرق إيفورين الميدانية."}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-8 rounded-2xl neu-raised skeuo-plate space-y-5 flex flex-col justify-between"
+                  className="p-8 border border-hairline bg-surface flex flex-col justify-between space-y-6 hover:border-brand-cobalt transition-colors duration-200"
                 >
-                  <div className="space-y-3">
-                    <div className="w-10 h-10 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center font-bold text-sm font-mono">
-                      0{idx + 1}
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-mono-tech text-brand-cobalt font-bold">
+                        SERVICE // 0{idx + 1}
+                      </span>
+                      <span className="w-2 h-2 rounded-full bg-brand-cobalt" />
                     </div>
-                    <h3 className="text-xl font-bold text-primary tracking-tight">
+                    <h3 className="text-xl sm:text-2xl font-bold font-display uppercase tracking-tight text-primary">
                       {item.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-secondary leading-relaxed">
+                    <p className="text-xs sm:text-sm text-secondary leading-relaxed font-body">
                       {item.desc}
                     </p>
                   </div>
 
-                  <div className="pt-4 border-t border-subtle space-y-2">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-muted block">
-                      {locale === "en" ? "Technical Compliance Standards:" : "معايير الامتثال الفني:"}
+                  <div className="pt-4 border-t border-hairline space-y-2">
+                    <span className="text-[11px] font-mono-tech font-bold uppercase tracking-wider text-muted block">
+                      {locale === "en" ? "TECHNICAL COMPLIANCE STANDARDS:" : "معايير الامتثال الفني:"}
                     </span>
-                    <ul className="space-y-1 text-xs text-secondary">
+                    <ul className="space-y-1.5 text-xs text-secondary font-body">
                       {item.specs.map((sp, sIdx) => (
                         <li key={sIdx} className="flex items-center gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />

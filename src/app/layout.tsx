@@ -1,12 +1,27 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Sans_Arabic } from "next/font/google";
+import { Anton, Archivo, JetBrains_Mono, IBM_Plex_Sans_Arabic } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 
-const inter = Inter({
+const anton = Anton({
+  weight: "400",
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-anton",
+  display: "swap",
+});
+
+const archivo = Archivo({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-archivo",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
@@ -19,9 +34,9 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://aevoryn.net"),
-  title: "Aevoryn Services & Contracting Co. | Saudi Arabia Infrastructure Support",
+  title: "Aevoryn Services & Contracting Co. | Engineering Progress Across Saudi Arabia",
   description:
-    "Aevoryn Services & Contracting Co. (CR 7054401679) delivers integrated infrastructure support across Saudi Arabia: certified manpower, high-grade construction materials, heavy equipment fleets, and civil contracting support.",
+    "Aevoryn Services & Contracting Co. (CR 7054401679) provides integrated infrastructure support, manpower, materials and heavy equipment solutions for demanding industrial and development projects across Saudi Arabia.",
   keywords: [
     "Aevoryn Services & Contracting Co.",
     "Saudi Arabia contracting",
@@ -34,9 +49,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Aevoryn Services & Contracting Co." }],
   openGraph: {
-    title: "Aevoryn Services & Contracting Co. | Infrastructure & Industrial Support",
+    title: "Aevoryn Services & Contracting Co. | Engineering Progress",
     description:
-      "Premier Saudi contracting and infrastructure support organization. Triple ISO certified, registered in the Saudi Aramco Supplier Management System.",
+      "Integrated infrastructure support, manpower, materials and equipment across Saudi Arabia. Triple ISO certified, registered in the Saudi Aramco Supplier Management System.",
     url: "https://aevoryn.net",
     siteName: "Aevoryn Services & Contracting Co.",
     images: [
@@ -62,7 +77,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning className={`${inter.variable} ${ibmPlexSansArabic.variable}`}>
+    <html
+      lang="en"
+      dir="ltr"
+      suppressHydrationWarning
+      className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} ${ibmPlexSansArabic.variable}`}
+    >
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -112,7 +132,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="font-sans antialiased bg-background text-foreground selection:bg-brand-primary selection:text-white">
+      <body className="font-body antialiased bg-page text-primary selection:bg-brand-cobalt selection:text-white">
         <ThemeProvider>
           <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>

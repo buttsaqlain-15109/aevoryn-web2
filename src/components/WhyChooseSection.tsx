@@ -39,46 +39,50 @@ export function WhyChooseSection() {
   ];
 
   return (
-    <section className="section-padding bg-primary relative overflow-hidden">
+    <section className="section-padding bg-surface border-t border-hairline relative overflow-hidden">
       <div className="site-container relative z-10">
         {/* Header */}
-        <div className="text-center max-w-[1100px] mx-auto space-y-4 mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-primary/10 text-brand-primary label-text">
-            <Award className="w-3.5 h-3.5" />
-            <span>{t("whyChoose.badge")}</span>
-          </div>
-          <h2 className="text-h2 text-primary font-bold">
+        <div className="text-center max-w-[900px] mx-auto space-y-4 mb-14">
+          <span className="badge-tech inline-block">
+            {t("whyChoose.badge")}
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-primary uppercase">
             {t("whyChoose.headline")}
           </h2>
-          <p className="body-large text-secondary mx-auto">
+          <p className="text-base sm:text-lg text-secondary mx-auto max-w-2xl leading-relaxed">
             {t("whyChoose.subheadline")}
           </p>
         </div>
 
-        {/* 8 Strengths Grid with Neumorphic Styling */}
+        {/* 8 Strengths Grid with Editorial Styling */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((item: any, idx: number) => {
             const Icon = icons[idx];
             return (
               <div
                 key={idx}
-                className="p-6 rounded-[16px] neu-raised skeuo-plate flex flex-col justify-between space-y-4 hover:-translate-y-1 transition-transform duration-200"
+                className="p-6 border border-hairline bg-page flex flex-col justify-between space-y-4 hover:border-brand-cobalt transition-colors duration-200"
               >
-                <div className="space-y-3">
-                  <div className="w-12 h-12 rounded-[12px] bg-gradient-to-br from-brand-primary/15 to-brand-accent/10 border border-brand-accent/20 text-brand-primary flex items-center justify-center shadow-inner">
-                    <Icon className="w-6 h-6" />
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="w-10 h-10 border border-hairline bg-surface text-brand-cobalt flex items-center justify-center">
+                      <Icon className="w-5 h-5" />
+                    </div>
+                    <span className="text-[11px] font-mono-tech text-muted">
+                      {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
+                    </span>
                   </div>
-                  <h3 className="text-base font-bold text-primary tracking-tight">
+                  <h3 className="text-base font-bold font-display text-primary tracking-tight uppercase">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-secondary leading-relaxed">
+                  <p className="text-xs sm:text-sm text-secondary leading-relaxed font-body">
                     {item.desc}
                   </p>
                 </div>
 
-                <div className="pt-2 border-t border-subtle flex items-center justify-between text-[11px] font-mono text-muted">
-                  <span>Advantage {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-accent" />
+                <div className="pt-3 border-t border-hairline flex items-center justify-between text-[11px] font-mono-tech text-muted">
+                  <span>ADVANTAGE {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}</span>
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-cobalt" />
                 </div>
               </div>
             );

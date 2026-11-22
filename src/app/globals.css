@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ==========================================================================
-   AEVORYN MASTER DESIGN SYSTEM — CENTRALIZED TOKEN ARCHITECTURE (Section 15)
+   AEVORYN MASTER DESIGN SYSTEM — EDITORIAL TOKEN ARCHITECTURE
    ========================================================================== */
 @import "../styles/tokens.css";
 @import "../styles/themes.css";
@@ -26,18 +26,18 @@ body {
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
-  transition: background-color var(--transition-panel), color var(--transition-panel);
+  transition: background-color var(--transition-base), color var(--transition-base);
 }
 
-/* Base Headings Color Lock */
-h1, h2, h3, h4, h5, h6 {
+/* Headings inherit Anton display font */
+h1, h2, h3 {
   color: var(--text-primary);
 }
 
-/* Custom Standard Scrollbar */
+/* Custom Minimalist Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -45,11 +45,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--brand-steel);
-  border-radius: var(--radius-control);
-  border: 2px solid var(--bg-page);
+  background: var(--border-hairline);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--brand-accent);
+  background: var(--cobalt-accent);
 }
