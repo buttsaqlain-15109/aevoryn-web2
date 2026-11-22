@@ -72,14 +72,10 @@ jobs:
       - name: Verify Cloudflare Authentication Secrets
         run: |
           if [ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]; then
-            echo "::error title=Missing Secret::CLOUDFLARE_API_TOKEN is not configured in GitHub repository secrets. Please configure it in Settings > Secrets and variables > Actions."
+            echo "::error title=Missing Secret::CLOUDFLARE_API_TOKEN is not configured in GitHub repository secrets. Please configure it in GitHub Settings > Secrets and variables > Actions (https://github.com/buttsaqlain-15109/aevoryn-web2/settings/secrets/actions)."
             exit 1
           fi
-          if [ -z "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" ]; then
-            echo "::error title=Missing Secret::CLOUDFLARE_ACCOUNT_ID is not configured in GitHub repository secrets. Please configure it with account ID: a22069ef8b16015f16b74b9afe65f557."
-            exit 1
-          fi
-          echo "Cloudflare deployment secrets are present."
+          echo "Cloudflare deployment secrets verified."
 
       - name: Build Next.js Static Export
         run: npm run build
@@ -90,13 +86,15 @@ jobs:
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || 'a22069ef8b16015f16b74b9afe65f557' }}
+          wranglerVersion: "4"
           command: pages deploy out --project-name aevoryn-web --commit-dirty=true
 
       - name: Deploy Worker API Engine
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || 'a22069ef8b16015f16b74b9afe65f557' }}
+          wranglerVersion: "4"
           workingDirectory: worker
           command: deploy --env=""
