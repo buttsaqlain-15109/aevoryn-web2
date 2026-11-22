@@ -74,29 +74,41 @@ jobs:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
         run: |
           python3 -c "
-          import os, re, subprocess, sys
+          import os, re, subprocess, sys, hashlib
 
           raw = os.environ.get('CLOUDFLARE_API_TOKEN', '')
           if not raw.strip():
-              print('::error title=Missing Secret::CLOUDFLARE_API_TOKEN is not configured.')
+              print('::error title=Missing Secret::CLOUDFLARE_API_TOKEN is empty in GitHub secrets.')
               sys.exit(1)
+
+          h = hashlib.sha256(raw.strip().encode()).hexdigest()
+          print(f'::notice title=Secret Analysis::Received secret length: {len(raw.strip())}, SHA256: {h[:16]}...')
 
           m = re.search(r'(cf[a-zA-Z0-9_\-]{30,60})', raw)
           token = m.group(1) if m else raw.strip().strip('\"\'')
-          candidates = [token, token.replace('TY1Lfua', 'TYlLfua')]
+          candidates = [
+              token,
+              token.replace('TY1Lfua', 'TYlLfua'),
+              token.replace('TYlLfua', 'TY1Lfua'),
+              token.strip()
+          ]
 
+          wrangler_bin = './node_modules/.bin/wrangler' if os.path.exists('./node_modules/.bin/wrangler') else 'wrangler'
           valid = None
-          for c in candidates:
-              env = {**os.environ, 'CLOUDFLARE_API_TOKEN': c}
-              res = subprocess.run(['npx', 'wrangler', 'whoami'], env=env, capture_output=True, text=True)
+          last_err = ''
+
+          for c in set(candidates):
+              env = {**os.environ, 'CLOUDFLARE_API_TOKEN': c, 'CI': '1', 'WRANGLER_SEND_METRICS': 'false'}
+              res = subprocess.run([wrangler_bin, 'whoami'], env=env, capture_output=True, text=True)
               if res.returncode == 0:
                   valid = c
                   print(res.stdout)
                   break
+              else:
+                  last_err = (res.stderr or res.stdout).strip().replace('\n', ' ')
 
           if not valid:
-              print('::error title=Invalid Token::Provided CLOUDFLARE_API_TOKEN could not be authenticated.')
-              print(res.stderr)
+              print(f'::error title=Auth Failed::{last_err}')
               sys.exit(1)
 
           github_env = os.environ.get('GITHUB_ENV')
@@ -115,4 +127,4 @@ jobs:
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '41dab4153cb7116c590fbd200392718a' }}
         run: |
-          npx wrangler pages deploy out --project-name aevoryn-web --commit-dirty=true
+          ./node_modules/.bin/wrangler pages deploy out --project-name aevoryn-web --commit-dirty=true
