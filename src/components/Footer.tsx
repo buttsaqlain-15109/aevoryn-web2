@@ -116,6 +116,21 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/documents" className="hover:text-white transition-colors block">
+                    {locale === "en" ? "Company Documents" : "وثائق الشركة القانونية"}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/supplier-registration" className="hover:text-white text-blue-400 font-semibold transition-colors block">
+                    {locale === "en" ? "Supplier Portal" : "بوابة تأهيل الموردين"}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/admin/suppliers" className="hover:text-white text-neutral-400 text-[11px] font-mono transition-colors block">
+                    {locale === "en" ? "Procurement Admin (Zero Trust)" : "إدارة المشتريات (وصول آمن)"}
+                  </Link>
+                </li>
+                <li>
                   <Link href="/qhse" className="hover:text-white transition-colors block">
                     {locale === "en" ? "QHSE Standards" : "معايير الجودة والسلامة"}
                   </Link>

@@ -8,6 +8,7 @@ import { ServicesScrollSection } from "@/components/services/ServicesScrollSecti
 import { QhseCertificationsSection } from "@/components/certifications/QhseCertificationsSection";
 import { AramcoSection } from "@/components/aramco/AramcoSection";
 import { ClientsSection } from "@/components/clients/ClientsSection";
+import { SupplierCtaSection } from "@/components/portal/SupplierCtaSection";
 import { TestimonialsSection } from "@/components/testimonials/TestimonialsSection";
 import { ContactFooterSection } from "@/components/contact/ContactFooterSection";
 import { Footer } from "@/components/Footer";
@@ -46,10 +47,13 @@ export function HomeClient() {
           <ClientsSection />
         </div>
 
-        {/* SECTION 07: VERIFIED TESTIMONIALS (Hidden when empty) */}
+        {/* SECTION 07: SUPPLIER INTAKE & DOCUMENTS PORTAL */}
+        <SupplierCtaSection />
+
+        {/* SECTION 08: VERIFIED TESTIMONIALS (Hidden when empty) */}
         <TestimonialsSection />
 
-        {/* SECTION 08: CONTACT & DIRECT ESTIMATION */}
+        {/* SECTION 09: CONTACT & DIRECT ESTIMATION */}
         <div id="contact">
           <ContactFooterSection />
         </div>

@@ -19,6 +19,12 @@
       "database_id": "2c831b5f-4048-4f97-901e-06198806d401"
     }
   ],
+  "r2_buckets": [
+    {
+      "binding": "SUPPLIER_FILES",
+      "bucket_name": "aevoryn-supplier-files"
+    }
+  ],
   "env": {
     "development": {
       "workers_dev": true,

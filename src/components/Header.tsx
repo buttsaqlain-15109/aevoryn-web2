@@ -215,6 +215,24 @@ export function Header() {
               </Link>
 
               <Link
+                href="/documents"
+                className={`py-2 whitespace-nowrap transition-colors hover:text-cobalt-accent ${
+                  pathname === "/documents" ? "text-cobalt-accent font-semibold" : ""
+                }`}
+              >
+                {locale === "en" ? "Documents" : "الوثائق"}
+              </Link>
+
+              <Link
+                href="/supplier-registration"
+                className={`py-2 whitespace-nowrap transition-colors hover:text-cobalt-accent ${
+                  pathname === "/supplier-registration" ? "text-cobalt-accent font-semibold" : ""
+                }`}
+              >
+                {locale === "en" ? "Supplier Portal" : "بوابة الموردين"}
+              </Link>
+
+              <Link
                 href="/aramco-registration"
                 className={`py-2 whitespace-nowrap transition-colors hover:text-cobalt-accent ${
                   pathname === "/aramco-registration" ? "text-cobalt-accent font-semibold" : ""
@@ -309,6 +327,18 @@ export function Header() {
                 className="px-4 py-3 rounded-xl hover:bg-subtle text-primary transition-colors border-t border-hairline pt-3"
               >
                 {locale === "en" ? "QHSE & Certifications" : "الجودة والاعتمادات"}
+              </Link>
+              <Link
+                href="/documents"
+                className="px-4 py-3 rounded-xl hover:bg-subtle text-primary transition-colors"
+              >
+                {locale === "en" ? "Company Documents" : "وثائق الشركة الرسمية"}
+              </Link>
+              <Link
+                href="/supplier-registration"
+                className="px-4 py-3 rounded-xl hover:bg-subtle text-primary transition-colors font-bold text-cobalt-accent"
+              >
+                {locale === "en" ? "Supplier Registration Portal" : "بوابة تسجيل الموردين"}
               </Link>
               <Link
                 href="/aramco-registration"

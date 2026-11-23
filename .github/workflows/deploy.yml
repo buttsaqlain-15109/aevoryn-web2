@@ -43,6 +43,9 @@ jobs:
           test -f out/certifications.html || exit 1
           test -f out/aramco-registration.html || exit 1
           test -f out/qhse.html || exit 1
+          test -f out/documents.html || exit 1
+          test -f out/supplier-registration.html || exit 1
+          test -f out/admin/suppliers.html || exit 1
           echo "All static page routes successfully verified."
 
       - name: Verify Worker API TypeScript Compilation
