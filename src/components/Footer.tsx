@@ -10,18 +10,18 @@ export function Footer() {
   const { t, locale, isRTL } = useLanguage();
 
   return (
-    <footer className="bg-[#111111] text-neutral-300 border-t border-neutral-800 relative overflow-hidden">
+    <footer className="bg-[#0B1728] text-neutral-300 border-t border-neutral-800 relative overflow-hidden">
       <div className="site-container pt-16 pb-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-neutral-800">
           {/* Column 1: Brand & Credentials (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
             <Link href="/" className="flex items-center gap-3.5 group">
-              <div className="relative w-12 h-12 rounded-full overflow-hidden p-0.5 bg-white border border-neutral-700">
+              <div className="relative w-12 h-12 rounded-lg overflow-hidden p-1 bg-white border border-neutral-700 shadow-sm flex items-center justify-center flex-shrink-0">
                 <Image
-                  src="/images/aevoryn-logo-circle.png"
-                  alt="Aevoryn Emblem"
+                  src="/images/branding/aevoryn-logo.png"
+                  alt="Aevoryn Services & Contracting Co."
                   fill
-                  className="object-contain"
+                  className="object-contain p-0.5"
                 />
               </div>
               <div>
@@ -45,7 +45,7 @@ export function Footer() {
 
             {/* Strategic Accreditation Badges */}
             <div className="space-y-2 pt-1 font-mono-tech">
-              <div className="p-3 border border-neutral-800 bg-[#161C26] flex items-center gap-3">
+              <div className="p-3 rounded-lg border border-neutral-800 bg-[#111F36] flex items-center gap-3">
                 <ShieldCheck className="w-4 h-4 text-emerald-400 flex-shrink-0" />
                 <div className="text-xs">
                   <span className="font-semibold text-white block">
@@ -57,7 +57,7 @@ export function Footer() {
                 </div>
               </div>
 
-              <div className="p-3 border border-neutral-800 bg-[#161C26] flex items-center gap-3">
+              <div className="p-3 rounded-lg border border-neutral-800 bg-[#111F36] flex items-center gap-3">
                 <Award className="w-4 h-4 text-cobalt-accent flex-shrink-0" />
                 <div className="text-xs">
                   <span className="font-semibold text-white block">
@@ -83,7 +83,7 @@ export function Footer() {
                   className="hover:text-cobalt-accent transition-colors flex items-center justify-between group"
                 >
                   <span>{locale === "en" ? "01 // Infrastructure Support" : "01 // البنية التحتية"}</span>
-                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
@@ -92,7 +92,7 @@ export function Footer() {
                   className="hover:text-cobalt-accent transition-colors flex items-center justify-between group"
                 >
                   <span>{locale === "en" ? "02 // Manpower Supply" : "02 // القوى العاملة"}</span>
-                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
@@ -101,7 +101,7 @@ export function Footer() {
                   className="hover:text-cobalt-accent transition-colors flex items-center justify-between group"
                 >
                   <span>{locale === "en" ? "03 // Construction Materials" : "03 // توريد المواد"}</span>
-                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li>
@@ -110,7 +110,7 @@ export function Footer() {
                   className="hover:text-cobalt-accent transition-colors flex items-center justify-between group"
                 >
                   <span>{locale === "en" ? "04 // Heavy Equipment Rental" : "04 // المعدات والآليات"}</span>
-                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </Link>
               </li>
               <li className="pt-2 border-t border-neutral-800">
@@ -160,6 +160,12 @@ export function Footer() {
               <div className="space-y-1.5 pt-1 font-mono text-[11px]">
                 <div className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-cobalt-accent" />
+                  <a href="mailto:info@aevoryn.net" className="hover:text-white transition-colors">
+                    info@aevoryn.net
+                  </a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <Mail className="w-3.5 h-3.5 text-cobalt-accent" />
                   <a href="mailto:admin@aevoryn.net" className="hover:text-white transition-colors">
                     admin@aevoryn.net
                   </a>
@@ -170,22 +176,16 @@ export function Footer() {
                     ceo@aevoryn.net
                   </a>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Mail className="w-3.5 h-3.5 text-cobalt-accent" />
-                  <a href="mailto:chairman@aevoryn.net" className="hover:text-white transition-colors">
-                    chairman@aevoryn.net
-                  </a>
-                </div>
               </div>
             </div>
           </div>
 
-          {/* Column 4: Administrative Governance & Flag (2 cols) */}
+          {/* Column 4: Administrative Governance & Disclosure (2 cols) */}
           <div className="lg:col-span-2 space-y-4">
             <h4 className="label-tech text-white border-b border-neutral-800 pb-2">
               {locale === "en" ? "GOVERNANCE" : "الحوكمة والإفصاح"}
             </h4>
-            <div className="p-3 border border-amber-500/30 bg-amber-500/10 text-[10px] space-y-1 text-neutral-300">
+            <div className="p-3 rounded-lg border border-amber-500/30 bg-amber-500/10 text-[10px] space-y-1 text-neutral-300">
               <div className="flex items-center gap-1.5 font-bold text-amber-400">
                 <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0" />
                 <span>{locale === "en" ? "Facility Note" : "إفصاح إداري"}</span>

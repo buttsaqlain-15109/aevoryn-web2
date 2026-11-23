@@ -19,10 +19,10 @@ export function CtaSection() {
             <span className="badge-tech inline-block">
               {locale === "en" ? "COMMERCIAL ENGAGEMENT" : "المشاركة التجارية"}
             </span>
-            <h2 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-primary uppercase">
+            <h2 className="text-h2 font-bold font-display tracking-tight text-primary uppercase">
               {t("ctaSection.headline")}
             </h2>
-            <p className="text-base sm:text-lg text-secondary mx-auto max-w-2xl leading-relaxed">
+            <p className="body-large text-secondary mx-auto max-w-2xl leading-relaxed">
               {t("ctaSection.subheadline")}
             </p>
           </div>
@@ -30,7 +30,7 @@ export function CtaSection() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
             <button
               onClick={() => setRfqOpen(true)}
-              className="btn-cobalt flex items-center gap-2 group"
+              className="btn-cobalt flex items-center gap-2 group !h-12 !px-7 !rounded-xl"
             >
               <span>{t("ctaSection.rfqBtn")}</span>
               <Arrow className="w-4 h-4 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
@@ -38,9 +38,9 @@ export function CtaSection() {
 
             <Link
               href="/contact"
-              className="btn-outline flex items-center gap-2"
+              className="btn-outline flex items-center gap-2 !h-12 !px-7 !rounded-xl"
             >
-              <PhoneCall className="w-4 h-4 text-brand-cobalt" />
+              <PhoneCall className="w-4 h-4 text-cobalt-accent" />
               <span>{t("ctaSection.contactBtn")}</span>
             </Link>
           </div>
@@ -51,7 +51,7 @@ export function CtaSection() {
               <span>ARAMCO VENDOR 10120422</span>
             </span>
             <span className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-brand-cobalt" />
+              <CheckCircle2 className="w-4 h-4 text-cobalt-accent" />
               <span>TRIPLE ISO ACCREDITED</span>
             </span>
             <span className="flex items-center gap-2">

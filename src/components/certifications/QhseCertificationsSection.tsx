@@ -11,7 +11,7 @@ export function QhseCertificationsSection() {
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
   const [selectedDoc, setSelectedDoc] = useState<DocumentData | null>(null);
 
-  const certificates: (DocumentData & { icon: any; standard: string; color: string })[] = [
+  const certificates: (DocumentData & { icon: any; standard: string; color: string; badgeBg: string })[] = [
     {
       id: "iso-45001",
       type: "iso",
@@ -27,6 +27,7 @@ export function QhseCertificationsSection() {
         "Certified Operational Site: Baish, Jizan Region, Saudi Arabia. Corporate Headquarters: Riyadh.",
       icon: ShieldAlert,
       color: "text-rose-500",
+      badgeBg: "bg-rose-500/10",
     },
     {
       id: "iso-9001",
@@ -43,6 +44,7 @@ export function QhseCertificationsSection() {
         "Certified Operational Site: Baish, Jizan Region, Saudi Arabia. Corporate Headquarters: Riyadh.",
       icon: Award,
       color: "text-blue-500",
+      badgeBg: "bg-blue-500/10",
     },
     {
       id: "iso-14001",
@@ -59,6 +61,7 @@ export function QhseCertificationsSection() {
         "Certified Operational Site: Baish, Jizan Region, Saudi Arabia. Corporate Headquarters: Riyadh.",
       icon: Leaf,
       color: "text-emerald-500",
+      badgeBg: "bg-emerald-500/10",
     },
   ];
 
@@ -67,14 +70,14 @@ export function QhseCertificationsSection() {
       <section className="section-padding bg-page hairline-y relative">
         <div className="site-container">
           {/* Section Overline */}
-          <div className="flex items-center justify-between pb-8 hairline-b mb-12 lg:mb-16">
+          <div className="flex items-center justify-between pb-6 hairline-b mb-12 lg:mb-16">
             <div className="flex items-center gap-3">
-              <span className="w-2.5 h-2.5 bg-cobalt-accent" />
-              <span className="label-tech text-secondary">
+              <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
+              <span className="label-tech text-secondary text-[11px]">
                 {locale === "en" ? "SECTION 05 // QHSE & CERTIFICATIONS" : "القسم 05 // الجودة والسلامة والاعتمادات"}
               </span>
             </div>
-            <span className="label-tech text-muted hidden sm:inline">
+            <span className="label-tech text-muted text-[11px] hidden sm:inline">
               VATSIN CERTIFICATION AUDITED
             </span>
           </div>
@@ -105,21 +108,21 @@ export function QhseCertificationsSection() {
             </div>
           </div>
 
-          {/* 3 Editorial Certificate Cards */}
+          {/* 3 Matching Editorial Certificate Cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {certificates.map((cert) => {
               const Icon = cert.icon;
               return (
                 <div
                   key={cert.id}
-                  className="p-8 border border-hairline bg-surface hover:border-cobalt-accent transition-all duration-200 flex flex-col justify-between space-y-6"
+                  className="p-8 rounded-2xl border border-hairline bg-surface hover:border-cobalt-accent shadow-subtle hover:shadow-card transition-all duration-300 flex flex-col justify-between space-y-6 hover:-translate-y-1"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <div className="p-2.5 border border-hairline bg-subtle">
+                      <div className={`p-2.5 rounded-xl border border-hairline ${cert.badgeBg}`}>
                         <Icon className={`w-5 h-5 ${cert.color}`} />
                       </div>
-                      <span className="label-tech text-xs text-muted font-mono">
+                      <span className="label-tech text-xs text-cobalt-accent font-mono bg-wash px-2.5 py-1 rounded-md">
                         {cert.certNo}
                       </span>
                     </div>
@@ -128,12 +131,12 @@ export function QhseCertificationsSection() {
                       <h3 className="text-h3 font-display text-primary leading-tight">
                         {cert.title}
                       </h3>
-                      <p className="label-tech text-cobalt-accent pt-1">
+                      <p className="label-tech text-cobalt-accent text-xs pt-1">
                         {cert.standard}
                       </p>
                     </div>
 
-                    <div className="pt-3 hairline-t space-y-2 text-xs">
+                    <div className="pt-3 hairline-t space-y-2.5 text-xs">
                       <div className="flex items-center justify-between">
                         <span className="text-muted">Registrar:</span>
                         <span className="font-medium text-primary">Vatsin Certification</span>
@@ -144,7 +147,10 @@ export function QhseCertificationsSection() {
                       </div>
                       <div className="flex items-center justify-between">
                         <span className="text-muted">Audit Registry:</span>
-                        <span className="font-mono text-emerald-600 dark:text-emerald-400 font-semibold">Active & Valid</span>
+                        <span className="font-mono text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                          Active & Valid
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -152,9 +158,9 @@ export function QhseCertificationsSection() {
                   <div className="pt-4 hairline-t">
                     <button
                       onClick={() => setSelectedDoc(cert)}
-                      className="w-full btn-outline text-xs !h-10 flex items-center justify-center gap-2"
+                      className="w-full btn-outline text-xs !h-11 !rounded-lg flex items-center justify-center gap-2 group"
                     >
-                      <Eye className="w-3.5 h-3.5" />
+                      <Eye className="w-3.5 h-3.5 text-cobalt-accent group-hover:scale-110 transition-transform" />
                       <span>{locale === "en" ? "VERIFY CERTIFICATE" : "معاينة وثيقة الاعتماد"}</span>
                     </button>
                   </div>
@@ -164,10 +170,10 @@ export function QhseCertificationsSection() {
           </div>
 
           {/* Administrative Transparency Notice */}
-          <div className="mt-8 p-5 border border-hairline bg-subtle flex items-start gap-4">
+          <div className="mt-8 p-5 rounded-xl border border-hairline bg-subtle flex items-start gap-4">
             <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
             <div className="space-y-1">
-              <span className="label-tech text-amber-600 dark:text-amber-400 block font-bold">
+              <span className="label-tech text-amber-600 dark:text-amber-400 block font-bold text-[11px]">
                 {locale === "en" ? "ADMINISTRATIVE FACILITY DISCLOSURE" : "إفصاح إداري حول مقار ومنشآت الشركة"}
               </span>
               <p className="text-xs text-secondary leading-relaxed">

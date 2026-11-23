@@ -46,10 +46,10 @@ export function WhyChooseSection() {
           <span className="badge-tech inline-block">
             {t("whyChoose.badge")}
           </span>
-          <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-primary uppercase">
+          <h2 className="text-h2 font-bold font-display tracking-tight text-primary uppercase">
             {t("whyChoose.headline")}
           </h2>
-          <p className="text-base sm:text-lg text-secondary mx-auto max-w-2xl leading-relaxed">
+          <p className="body-large text-secondary mx-auto max-w-2xl leading-relaxed">
             {t("whyChoose.subheadline")}
           </p>
         </div>
@@ -61,18 +61,18 @@ export function WhyChooseSection() {
             return (
               <div
                 key={idx}
-                className="p-6 border border-hairline bg-page flex flex-col justify-between space-y-4 hover:border-brand-cobalt transition-colors duration-200"
+                className="p-6 rounded-2xl border border-hairline bg-page flex flex-col justify-between space-y-4 hover:border-cobalt-accent shadow-subtle hover:shadow-card transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 border border-hairline bg-surface text-brand-cobalt flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-xl border border-hairline bg-wash text-cobalt-accent flex items-center justify-center">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <span className="text-[11px] font-mono-tech text-muted">
+                    <span className="label-tech text-cobalt-accent text-xs font-mono">
                       {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}
                     </span>
                   </div>
-                  <h3 className="text-base font-bold font-display text-primary tracking-tight uppercase">
+                  <h3 className="text-lg font-bold font-display text-primary tracking-tight uppercase">
                     {item.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-secondary leading-relaxed font-body">
@@ -82,7 +82,7 @@ export function WhyChooseSection() {
 
                 <div className="pt-3 border-t border-hairline flex items-center justify-between text-[11px] font-mono-tech text-muted">
                   <span>ADVANTAGE {idx + 1 < 10 ? `0${idx + 1}` : idx + 1}</span>
-                  <span className="w-1.5 h-1.5 rounded-full bg-brand-cobalt" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-cobalt-accent" />
                 </div>
               </div>
             );

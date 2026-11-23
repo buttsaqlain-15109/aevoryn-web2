@@ -59,11 +59,11 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-surface border border-hairline shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-2xl bg-surface rounded-2xl border border-hairline shadow-2xl overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 hairline-b bg-subtle">
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 border border-hairline bg-wash text-cobalt-accent flex items-center justify-center">
+            <div className="w-10 h-10 rounded-xl border border-hairline bg-wash text-cobalt-accent flex items-center justify-center">
               <Building2 className="w-5 h-5" />
             </div>
             <div>

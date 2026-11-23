@@ -25,7 +25,7 @@ export function PageHeader({
   const Chevron = isRTL ? ChevronLeft : ChevronRight;
 
   return (
-    <div className="relative py-20 lg:py-28 bg-[#111111] text-white overflow-hidden hairline-b">
+    <div className="relative py-20 lg:py-28 bg-[#0B1728] text-white overflow-hidden hairline-b">
       {/* Background Industrial Image with Contrast Gradients */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -34,9 +34,9 @@ export function PageHeader({
           fill
           priority
           sizes="100vw"
-          className="object-cover object-center filter brightness-[0.32] contrast-[1.12]"
+          className="object-cover object-center filter brightness-[0.28] contrast-[1.15]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#111111]/95 via-[#111111]/85 to-[#111111]/70" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0B1728]/95 via-[#0B1728]/85 to-[#0B1728]/70" />
       </div>
 
       {/* Decorative Technical Grid */}
@@ -65,8 +65,8 @@ export function PageHeader({
 
         {/* Badge */}
         {badge && (
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-hairline bg-surface/20 text-blue-300 label-tech backdrop-blur-md">
-            <span className="w-2 h-2 bg-cobalt-accent" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-neutral-700 bg-surface/20 text-blue-300 label-tech text-[11px] backdrop-blur-md">
+            <span className="w-2 h-2 rounded-full bg-cobalt-accent animate-pulse" />
             <span>{badge}</span>
           </div>
         )}

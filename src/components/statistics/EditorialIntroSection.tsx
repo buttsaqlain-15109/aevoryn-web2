@@ -53,14 +53,14 @@ export function EditorialIntroSection() {
     <section className="section-padding bg-page hairline-y relative">
       <div className="site-container">
         {/* Section Overline */}
-        <div className="flex items-center justify-between pb-8 hairline-b mb-12 lg:mb-16">
+        <div className="flex items-center justify-between pb-6 hairline-b mb-12 lg:mb-16">
           <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 bg-cobalt-accent" />
-            <span className="label-tech text-secondary">
+            <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
+            <span className="label-tech text-secondary text-[11px]">
               {locale === "en" ? "SECTION 03 // CORPORATE FOUNDATION" : "القسم 03 // الأسس المؤسسية"}
             </span>
           </div>
-          <span className="label-tech text-muted hidden sm:inline">
+          <span className="label-tech text-muted text-[11px] hidden sm:inline">
             EST. KINGDOM OF SAUDI ARABIA
           </span>
         </div>
@@ -69,7 +69,7 @@ export function EditorialIntroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column: Oversized Condensed Headline + Large Industrial Photo */}
           <div className="lg:col-span-6 space-y-8">
-            <h2 className="text-h1 text-primary font-display leading-[0.98] tracking-tight">
+            <h2 className="text-h2 text-primary font-display leading-[1.02] tracking-tight">
               {locale === "en" ? (
                 <>
                   WE BUILD<br />
@@ -87,19 +87,19 @@ export function EditorialIntroSection() {
               )}
             </h2>
 
-            {/* Industrial Photograph with Hairline Frame */}
-            <div className="relative h-[380px] sm:h-[460px] w-full overflow-hidden border border-hairline bg-subtle group">
+            {/* Industrial Photograph with Refined Frame */}
+            <div className="relative h-[380px] sm:h-[460px] w-full overflow-hidden rounded-xl border border-hairline bg-subtle group shadow-card">
               <Image
                 src="/images/content/hero-industrial.jpg"
                 alt="Aevoryn Heavy Industrial Infrastructure Project"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover filter contrast-[1.05] grayscale-[20%] group-hover:scale-[1.02] group-hover:grayscale-0 transition-all duration-700 ease-out"
+                className="object-cover filter contrast-[1.05] grayscale-[15%] group-hover:scale-[1.03] group-hover:grayscale-0 transition-all duration-700 ease-out"
               />
               {/* Technical Photo Metadata Strip */}
               <div className="absolute bottom-0 inset-x-0 p-4 bg-page/90 backdrop-blur-md hairline-t flex items-center justify-between text-xs">
-                <span className="label-tech text-primary">CIVIL & INDUSTRIAL CAPABILITY</span>
-                <span className="label-tech text-cobalt-accent">ISO 9001:2015 COMPLIANT</span>
+                <span className="label-tech text-primary text-[11px]">CIVIL & INDUSTRIAL CAPABILITY</span>
+                <span className="label-tech text-cobalt-accent text-[11px]">ISO 9001:2015 COMPLIANT</span>
               </div>
             </div>
           </div>
@@ -120,18 +120,20 @@ export function EditorialIntroSection() {
             </div>
 
             {/* 4 Capability Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               {capabilityHighlights.map((cap, idx) => {
                 const Icon = cap.icon;
                 return (
                   <div
                     key={idx}
-                    className="p-6 border border-hairline bg-surface hover:border-cobalt-accent transition-colors duration-200 flex flex-col justify-between space-y-4"
+                    className="p-6 rounded-xl border border-hairline bg-surface hover:border-cobalt-accent shadow-subtle hover:shadow-card transition-all duration-300 flex flex-col justify-between space-y-4 hover:-translate-y-0.5"
                   >
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="label-tech text-cobalt-accent">{cap.num}</span>
-                        <Icon className="w-4 h-4 text-secondary" />
+                        <span className="label-tech text-cobalt-accent text-xs">{cap.num}</span>
+                        <div className="w-8 h-8 rounded-lg bg-wash flex items-center justify-center text-cobalt-accent">
+                          <Icon className="w-4 h-4" />
+                        </div>
                       </div>
                       <h3 className="text-base font-bold text-primary tracking-tight">
                         {cap.title}

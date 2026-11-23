@@ -12,7 +12,6 @@ import {
   Compass,
   ArrowRight,
   ArrowLeft,
-  ChevronRight,
 } from "lucide-react";
 
 export function ServicesScrollSection() {
@@ -134,26 +133,26 @@ export function ServicesScrollSection() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Compute horizontal translation percentage: from 0% to approximately -68% across the 5 cards
-  const translateXPercent = scrollProgress * 70;
+  // Compute horizontal translation percentage across the 5 cards
+  const translateXPercent = scrollProgress * 68;
 
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#111111] text-white selection:bg-cobalt-accent selection:text-white"
-      style={{ minHeight: "300vh" }}
+      className="relative bg-[#0B1728] text-white selection:bg-cobalt-accent selection:text-white"
+      style={{ minHeight: "280vh" }}
       aria-label="Aevoryn Core Capabilities Showcase"
     >
       {/* Sticky Viewport Container */}
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden py-8 lg:py-12">
+      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden py-6 lg:py-10">
         {/* Massive Background Ghost Typography */}
         <div
-          className="absolute inset-0 z-0 flex items-center justify-start pointer-events-none select-none opacity-[0.06] whitespace-nowrap overflow-hidden"
+          className="absolute inset-0 z-0 flex items-center justify-start pointer-events-none select-none opacity-[0.04] whitespace-nowrap overflow-hidden"
           style={{
-            transform: `translate3d(${isRTL ? translateXPercent * 0.5 : -translateXPercent * 0.5}%, 0, 0)`,
+            transform: `translate3d(${isRTL ? translateXPercent * 0.4 : -translateXPercent * 0.4}%, 0, 0)`,
           }}
         >
-          <span className="font-display text-[26vw] leading-none uppercase tracking-tighter">
+          <span className="font-display text-[24vw] leading-none uppercase tracking-tighter">
             AEVORYN CAPABILITIES // INFRASTRUCTURE // LOGISTICS
           </span>
         </div>
@@ -163,8 +162,8 @@ export function ServicesScrollSection() {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-800">
             <div className="space-y-3 max-w-[800px]">
               <div className="flex items-center gap-2.5">
-                <span className="w-2 h-2 bg-cobalt-accent" />
-                <span className="label-tech text-blue-400">
+                <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
+                <span className="label-tech text-blue-400 text-[11px]">
                   {locale === "en" ? "SECTION 04 // SERVICES SCROLL EXPERIENCE" : "القسم 04 // استعراض مجالات الاختصاص"}
                 </span>
               </div>
@@ -194,7 +193,7 @@ export function ServicesScrollSection() {
         </div>
 
         {/* Horizontal Moving Cards Track */}
-        <div className="relative z-10 w-full my-auto overflow-hidden">
+        <div className="relative z-10 w-full my-auto overflow-hidden py-4">
           <div
             className="flex items-stretch gap-6 px-6 lg:px-12 transition-transform duration-75 ease-out"
             style={{
@@ -206,40 +205,43 @@ export function ServicesScrollSection() {
               return (
                 <div
                   key={idx}
-                  className="w-[85vw] sm:w-[460px] lg:w-[480px] flex-shrink-0 bg-[#161C26] border border-neutral-800 hover:border-cobalt-accent transition-colors duration-300 flex flex-col justify-between group"
+                  className="w-[85vw] sm:w-[440px] lg:w-[460px] flex-shrink-0 bg-[#111F36] border border-neutral-800 hover:border-cobalt-accent rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group shadow-card hover:shadow-card-hover"
                 >
-                  {/* Card Media Preview */}
-                  <div className="relative h-56 sm:h-64 w-full overflow-hidden bg-neutral-900 border-b border-neutral-800">
+                  {/* Card Media Preview (Consistent 16:9 ratio) */}
+                  <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-neutral-900 border-b border-neutral-800">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      sizes="480px"
+                      sizes="460px"
                       className="object-cover filter contrast-[1.08] brightness-90 group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#161C26] via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 p-2 bg-[#111111]/90 backdrop-blur-md border border-neutral-700 rounded-sm">
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#111F36] via-transparent to-transparent" />
+                    <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 p-2.5 bg-[#0B1728]/90 backdrop-blur-md border border-neutral-700 rounded-lg">
                       <Icon className="w-5 h-5 text-cobalt-accent" />
                     </div>
-                    <span className="absolute top-4 right-4 rtl:right-auto rtl:left-4 label-tech text-xs text-white/80 font-mono bg-[#111111]/80 px-2.5 py-1 border border-neutral-800">
+                    <span className="absolute top-4 right-4 rtl:right-auto rtl:left-4 label-tech text-xs text-white/90 font-mono bg-[#0B1728]/85 px-3 py-1 rounded-full border border-neutral-800">
                       {item.id} / 05
                     </span>
                   </div>
 
                   {/* Card Editorial Content */}
-                  <div className="p-6 sm:p-8 space-y-4 flex-grow flex flex-col justify-between">
+                  <div className="p-6 sm:p-7 space-y-4 flex-grow flex flex-col justify-between">
                     <div className="space-y-2">
-                      <span className="label-tech text-blue-400 block">{item.code}</span>
-                      <h3 className="text-h3 font-display tracking-tight text-white">
+                      <div className="flex items-center justify-between">
+                        <span className="label-tech text-blue-400 text-[11px]">{item.code}</span>
+                        <span className="text-[11px] text-neutral-400 font-medium">{item.subtitle}</span>
+                      </div>
+                      <h3 className="text-h3 font-display tracking-tight text-white pt-1">
                         {item.title}
                       </h3>
-                      <p className="text-xs text-neutral-400 leading-relaxed pt-1">
+                      <p className="text-xs text-neutral-300 leading-relaxed pt-1">
                         {item.desc}
                       </p>
                     </div>
 
-                    <div className="pt-4 border-t border-neutral-800 space-y-2">
-                      <span className="label-tech text-[11px] text-neutral-400 block">
+                    <div className="pt-4 border-t border-neutral-800/80 space-y-2.5">
+                      <span className="label-tech text-[10px] text-neutral-400 tracking-wider block">
                         {locale === "en" ? "CAPABILITY SPECIFICATIONS:" : "المواصفات والمعايير:"}
                       </span>
                       <ul className="space-y-1.5 text-xs text-neutral-300">
@@ -269,14 +271,14 @@ export function ServicesScrollSection() {
         </div>
 
         {/* Bottom Scroll Progress Bar */}
-        <div className="site-container relative z-10 w-full pt-4">
-          <div className="flex items-center justify-between text-xs text-neutral-500 pb-2">
-            <span className="label-tech">SCROLL PROGRESS</span>
-            <span className="label-tech font-mono text-white">
+        <div className="site-container relative z-10 w-full pt-2">
+          <div className="flex items-center justify-between text-xs text-neutral-400 pb-2 font-mono">
+            <span className="label-tech text-[10px]">SCROLL PROGRESS</span>
+            <span className="label-tech font-mono text-white text-[10px]">
               {Math.round(scrollProgress * 100)}%
             </span>
           </div>
-          <div className="w-full h-1 bg-neutral-800 overflow-hidden">
+          <div className="w-full h-1 bg-neutral-800 rounded-full overflow-hidden">
             <div
               className="h-full bg-cobalt-accent transition-all duration-75"
               style={{ width: `${Math.round(scrollProgress * 100)}%` }}

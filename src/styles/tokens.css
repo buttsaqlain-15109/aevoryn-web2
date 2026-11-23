@@ -1,27 +1,35 @@
 /**
- * AEVORYN MASTER DESIGN SYSTEM — NEW MASTER VISUAL IDENTITY (KV FREIGHT DIRECTION)
- * Section 2: Minimalist Editorial Industrial Aesthetics
- * Section 3: Approved Color Palette & Fixed Brand Tokens
+ * AEVORYN MASTER DESIGN SYSTEM — MASTER VISUAL IDENTITY
+ * Section 4: Approved Color Palette & Fixed Brand Tokens
  */
 
 :root {
-  /* Master Palette - Core Tokens */
-  --color-primary-ink: #111111;
-  --color-background: #FFFFFF;
-  --color-brand-cobalt: #123D70;
+  /* =========================================================================
+     Master Approved Corporate Palette
+     ========================================================================= */
+  --color-corporate-navy: #123D70;
+  --color-deep-ink: #0B1728;
   --color-cobalt-accent: #2F63FF;
   --color-cobalt-hover: #1F4FE0;
-  --color-muted-text: #5D6270;
-  --color-secondary-text: #6B6F78;
-  --color-light-blue-wash: #EEF2FF;
-  --color-hairline: #D9DBE0;
-  --color-dark-section: #111111;
+  --color-white: #FFFFFF;
+  --color-light-surface: #F4F6F9;
+  --color-border: #DCE2EA;
+  --color-muted-text: #697586;
+  --color-primary-text: #172536;
 
-  /* Editorial Spacing System (4px base) */
+  /* Additional Tonal Utility Tokens */
+  --color-light-blue-wash: #EEF2FF;
+  --color-dark-section: #0B1728;
+  --color-hairline: #DCE2EA;
+
+  /* =========================================================================
+     8px Spacing Scale & Layout Proportions
+     ========================================================================= */
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 12px;
   --space-4: 16px;
+  --space-5: 20px;
   --space-6: 24px;
   --space-8: 32px;
   --space-10: 40px;
@@ -31,24 +39,40 @@
   --space-24: 96px;
   --space-32: 128px;
 
-  /* Architectural Sharp/Refined Radii */
-  --radius-sharp: 0px;
-  --radius-xs: 2px;
-  --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
+  /* Section Spacing: 100–140px on desktop */
+  --section-spacing: clamp(72px, 8vw, 130px);
+  --section-spacing-sm: clamp(48px, 5vw, 80px);
+
+  /* Card Gaps: 20–28px */
+  --card-gap: clamp(20px, 2.4vw, 28px);
+
+  /* Card Radii: 12–16px */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-card: 14px;
+  --radius-lg: 14px;
+  --radius-xl: 16px;
   --radius-pill: 9999px;
 
-  /* Layout Widths */
-  --container-max: 1440px;
+  /* Buttons: 48–52px height */
+  --btn-height: 50px;
+
+  /* Layout Widths: Maximum desktop content width ~1280px */
+  --container-max: 1280px;
   --content-max: 1280px;
   --text-max: 760px;
   --heading-max: 1100px;
 
-  /* Transitions */
+  /* Transitions & Timing */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-in-out-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --transition-fast: 150ms var(--ease-out-expo);
   --transition-base: 250ms var(--ease-out-expo);
   --transition-slow: 400ms var(--ease-out-expo);
+
+  /* Elevation & Subtle Restrained Shadows */
+  --shadow-subtle: 0 1px 3px rgba(11, 23, 40, 0.05), 0 4px 12px rgba(11, 23, 40, 0.04);
+  --shadow-card: 0 4px 16px rgba(11, 23, 40, 0.06);
+  --shadow-card-hover: 0 12px 32px rgba(11, 23, 40, 0.12), 0 0 20px rgba(47, 99, 255, 0.08);
 }

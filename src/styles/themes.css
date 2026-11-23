@@ -1,63 +1,65 @@
 /**
  * AEVORYN MASTER DESIGN SYSTEM — DAY & NIGHT DUAL MODE
- * Section 3: Palette Adaptation & Section 13: Theme Retention
+ * Section 4: Palette Adaptation & Theme Retention
  */
 
 :root {
   /* =========================================================================
-     DAY MODE (Default Master Editorial Aesthetic)
+     DAY MODE (Corporate Clean Master Aesthetic)
      ========================================================================= */
   --bg-page: #FFFFFF;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F8F9FA;
+  --bg-subtle: #F4F6F9; /* Light surface */
   --bg-wash: #EEF2FF;
-  --bg-dark-section: #111111;
+  --bg-dark-section: #0B1728; /* Deep ink */
 
-  --text-primary: #111111;
-  --text-secondary: #5D6270;
-  --text-muted: #6B6F78;
+  --text-primary: #172536; /* Primary text */
+  --text-secondary: #697586; /* Muted corporate text */
+  --text-muted: #8492A6;
   --text-inverse: #FFFFFF;
 
-  --border-hairline: #D9DBE0;
+  --border-hairline: #DCE2EA; /* Border token */
   --border-subtle: #E8EAEE;
   --border-focus: #2F63FF;
 
+  --brand-navy: #123D70; /* Corporate navy */
   --brand-cobalt: #123D70;
-  --cobalt-accent: #2F63FF;
+  --cobalt-accent: #2F63FF; /* Cobalt accent */
   --cobalt-hover: #1F4FE0;
-  --cobalt-glow: rgba(47, 99, 255, 0.25);
+  --cobalt-glow: rgba(47, 99, 255, 0.2);
 
   --nav-bg: rgba(255, 255, 255, 0.94);
   --card-bg: #FFFFFF;
-  --card-hover-bg: #F8F9FC;
+  --card-hover-bg: #F4F6F9;
 }
 
 [data-theme="dark"],
 .dark {
   /* =========================================================================
-     NIGHT MODE (Deep Architectural Navy / Obsidian)
+     NIGHT MODE (Deep Architectural Obsidian & Corporate Navy)
      ========================================================================= */
-  --bg-page: #0B0F19;
-  --bg-surface: #121826;
-  --bg-subtle: #161D2E;
+  --bg-page: #0B1728; /* Deep ink */
+  --bg-surface: #111F36;
+  --bg-subtle: #152744;
   --bg-wash: rgba(47, 99, 255, 0.08);
-  --bg-dark-section: #070A12;
+  --bg-dark-section: #070E1A;
 
-  --text-primary: #F4F5F8;
-  --text-secondary: #A2A9B8;
-  --text-muted: #7E8799;
-  --text-inverse: #111111;
+  --text-primary: #F4F6F9;
+  --text-secondary: #A8B3C4;
+  --text-muted: #7E8A9E;
+  --text-inverse: #0B1728;
 
-  --border-hairline: #1F293D;
-  --border-subtle: #243047;
+  --border-hairline: #1D2D45;
+  --border-subtle: #243652;
   --border-focus: #3B72FF;
 
+  --brand-navy: #1E4E8C;
   --brand-cobalt: #1E4E8C;
   --cobalt-accent: #3B72FF;
   --cobalt-hover: #2663FF;
   --cobalt-glow: rgba(59, 114, 255, 0.35);
 
-  --nav-bg: rgba(11, 15, 25, 0.94);
-  --card-bg: #121826;
-  --card-hover-bg: #172033;
+  --nav-bg: rgba(11, 23, 40, 0.94);
+  --card-bg: #111F36;
+  --card-hover-bg: #162744;
 }

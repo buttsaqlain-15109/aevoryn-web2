@@ -39,14 +39,14 @@ export function ClientsSection() {
     <section className="section-padding bg-page hairline-y relative">
       <div className="site-container">
         {/* Section Overline */}
-        <div className="flex items-center justify-between pb-8 hairline-b mb-12 lg:mb-16">
+        <div className="flex items-center justify-between pb-6 hairline-b mb-12 lg:mb-16">
           <div className="flex items-center gap-3">
-            <span className="w-2.5 h-2.5 bg-cobalt-accent" />
-            <span className="label-tech text-secondary">
+            <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
+            <span className="label-tech text-secondary text-[11px]">
               {locale === "en" ? "SECTION 07 // CLIENTS & COLLABORATIONS" : "القسم 07 // الشركاء والتعاون المؤسسي"}
             </span>
           </div>
-          <span className="label-tech text-muted hidden sm:inline">
+          <span className="label-tech text-muted text-[11px] hidden sm:inline">
             KINGDOM-WIDE EPC ENGAGEMENT
           </span>
         </div>
@@ -82,13 +82,13 @@ export function ClientsSection() {
           {clients.map((client, idx) => (
             <div
               key={idx}
-              className="p-6 border border-hairline bg-surface hover:border-cobalt-accent transition-colors duration-200 flex flex-col justify-between text-start space-y-4 group"
+              className="p-7 rounded-2xl border border-hairline bg-surface hover:border-cobalt-accent shadow-subtle hover:shadow-card transition-all duration-300 flex flex-col justify-between text-start space-y-5 group hover:-translate-y-1"
             >
               <div className="space-y-3">
-                <span className="label-tech text-cobalt-accent text-xs">
+                <span className="label-tech text-cobalt-accent text-xs font-mono bg-wash px-2.5 py-1 rounded-md inline-block">
                   0{idx + 1}
                 </span>
-                <h3 className="text-xl font-display text-primary tracking-wide group-hover:text-cobalt-accent transition-colors">
+                <h3 className="text-2xl font-display text-primary tracking-wide group-hover:text-cobalt-accent transition-colors">
                   {client.name}
                 </h3>
                 <span className="label-tech text-[10px] text-muted block">
@@ -105,7 +105,7 @@ export function ClientsSection() {
           ))}
         </div>
 
-        {/* Verification Note */}
+        {/* Verification Transparency Note */}
         <div className="mt-8 text-center">
           <p className="label-tech text-muted text-[11px]">
             {locale === "en"
