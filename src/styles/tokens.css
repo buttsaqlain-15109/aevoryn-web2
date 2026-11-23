@@ -1,25 +1,42 @@
 /**
- * AEVORYN MASTER DESIGN SYSTEM — MASTER VISUAL IDENTITY
- * Section 4: Approved Color Palette & Fixed Brand Tokens
+ * AEVORYN DESIGN SYSTEM: MASTER VISUAL IDENTITY
+ * Single brand accent color sampled from official logo: #123D70
+ * Neutrals: Off-white, charcoal, mid-grey
  */
 
 :root {
   /* =========================================================================
-     Master Approved Corporate Palette
+     Single Brand Accent (Sampled from official Aevoryn logo)
      ========================================================================= */
+  --brand-accent: #123D70;
+  --brand-accent-hover: #0E2F56;
+  --brand-accent-subtle: #EBF1F8;
+  --brand-accent-border: #92B1D3;
+
+  /* Backward-compatible alias mappings */
   --color-corporate-navy: #123D70;
   --color-deep-ink: #0B1728;
-  --color-cobalt-accent: #2F63FF;
-  --color-cobalt-hover: #1F4FE0;
+  --color-cobalt-accent: #123D70;
+  --color-cobalt-hover: #0E2F56;
   --color-white: #FFFFFF;
-  --color-light-surface: #F4F6F9;
+  --color-light-surface: #F8F9FA;
   --color-border: #DCE2EA;
-  --color-muted-text: #697586;
-  --color-primary-text: #172536;
+  --color-muted-text: #596780;
+  --color-primary-text: #111827;
 
-  /* Additional Tonal Utility Tokens */
-  --color-light-blue-wash: #EEF2FF;
-  --color-dark-section: #0B1728;
+  /* Neutrals: pure white, off-white, mid-greys, deep charcoal */
+  --color-neutral-50: #F8F9FA;
+  --color-neutral-100: #F1F3F5;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-400: #94A3B8;
+  --color-neutral-500: #64748B;
+  --color-neutral-600: #475569;
+  --color-neutral-700: #334155;
+  --color-neutral-800: #1E293B;
+  --color-neutral-900: #0F172A;
+  --color-neutral-950: #090E17;
+
   --color-hairline: #DCE2EA;
 
   /* =========================================================================
@@ -39,26 +56,26 @@
   --space-24: 96px;
   --space-32: 128px;
 
-  /* Section Spacing: 100–140px on desktop */
+  /* Section Spacing: 80-130px */
   --section-spacing: clamp(72px, 8vw, 130px);
   --section-spacing-sm: clamp(48px, 5vw, 80px);
 
-  /* Card Gaps: 20–28px */
+  /* Card Gaps & Proportions */
   --card-gap: clamp(20px, 2.4vw, 28px);
 
-  /* Card Radii: 12–16px */
+  /* Restrained Card Radii */
   --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 10px;
-  --radius-card: 14px;
-  --radius-lg: 14px;
-  --radius-xl: 16px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-card: 10px;
+  --radius-lg: 10px;
+  --radius-xl: 12px;
   --radius-pill: 9999px;
 
-  /* Buttons: 48–52px height */
+  /* Buttons: 48-52px height */
   --btn-height: 50px;
 
-  /* Layout Widths: Maximum desktop content width ~1280px */
+  /* Layout Widths: Maximum desktop content width 1280px */
   --container-max: 1280px;
   --content-max: 1280px;
   --text-max: 760px;
@@ -71,8 +88,8 @@
   --transition-base: 250ms var(--ease-out-expo);
   --transition-slow: 400ms var(--ease-out-expo);
 
-  /* Elevation & Subtle Restrained Shadows */
-  --shadow-subtle: 0 1px 3px rgba(11, 23, 40, 0.05), 0 4px 12px rgba(11, 23, 40, 0.04);
-  --shadow-card: 0 4px 16px rgba(11, 23, 40, 0.06);
-  --shadow-card-hover: 0 12px 32px rgba(11, 23, 40, 0.12), 0 0 20px rgba(47, 99, 255, 0.08);
+  /* Elevation: Crisp, non-glowing borders & subtle mechanical shadow */
+  --shadow-subtle: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 4px 12px rgba(15, 23, 42, 0.08);
 }

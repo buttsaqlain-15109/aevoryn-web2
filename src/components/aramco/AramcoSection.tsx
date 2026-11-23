@@ -65,7 +65,7 @@ export function AramcoSection() {
               </h2>
 
               {/* Exact Approved Statement Banner */}
-              <div className="inline-block p-5 sm:p-6 rounded-2xl border border-emerald-500/40 bg-[#111F36] shadow-[0_0_30px_rgba(16,185,129,0.12)]">
+              <div className="inline-block p-5 sm:p-6 rounded-2xl border border-emerald-500/40 bg-[#111F36] shadow-sm">
                 <p className="text-xl sm:text-2xl font-display text-emerald-400 tracking-wide flex items-center justify-center gap-3">
                   <CheckCircle2 className="w-6 h-6 flex-shrink-0" />
                   <span>&ldquo;Registered in the Saudi Aramco Supplier Management System.&rdquo;</span>

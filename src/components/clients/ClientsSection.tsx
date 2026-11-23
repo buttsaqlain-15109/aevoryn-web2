@@ -57,13 +57,13 @@ export function ClientsSection() {
             <h2 className="text-h2 font-display text-primary leading-tight">
               {locale === "en" ? (
                 <>
-                  TRUSTED BY INDUSTRY<br />
-                  LEADERS ACROSS THE KINGDOM.
+                  CONTRACTING PARTNERS &amp;<br />
+                  INDUSTRIAL COLLABORATIONS.
                 </>
               ) : (
                 <>
-                  شراكات موثوقة مع كبرى<br />
-                  شركات المقاولات بالمملكة.
+                  شركاء المقاولات<br />
+                  والتعاون الميداني بالمملكة.
                 </>
               )}
             </h2>

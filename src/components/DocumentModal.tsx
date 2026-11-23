@@ -63,7 +63,7 @@ export function DocumentModal({ document, onClose }: DocumentModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/85 animate-in fade-in duration-200">
       <div className="relative w-full max-w-4xl max-h-[92vh] flex flex-col bg-surface rounded-2xl border border-hairline shadow-2xl overflow-hidden">
         {/* Header Bar */}
         <div className="flex items-center justify-between px-6 py-4 hairline-b bg-subtle">

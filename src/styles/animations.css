@@ -1,13 +1,13 @@
 /**
- * AEVORYN MASTER DESIGN SYSTEM — ANIMATIONS & TRANSITIONS
- * Section 6: Globe Hero, Section 2: Horizon Glow Transition, Section 7: Services Scroll
+ * AEVORYN DESIGN SYSTEM: ANIMATIONS AND MOTION
+ * Purposeful motion only. Respects prefers-reduced-motion.
  */
 
-/* Staggered entrance for hero elements */
+/* Clean entrance for section elements */
 @keyframes editorialFadeUp {
   0% {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(16px);
   }
   100% {
     opacity: 1;
@@ -15,59 +15,8 @@
   }
 }
 
-@keyframes editorialGlitch {
-  0% {
-    transform: translate(0);
-  }
-  20% {
-    transform: translate(-2px, 2px);
-  }
-  40% {
-    transform: translate(-2px, -2px);
-  }
-  60% {
-    transform: translate(2px, 2px);
-  }
-  80% {
-    transform: translate(2px, -2px);
-  }
-  100% {
-    transform: translate(0);
-  }
-}
-
-@keyframes pulseCobaltGlow {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.8;
-  }
-  50% {
-    transform: scale(1.6);
-    opacity: 0;
-  }
-}
-
-@keyframes horizonGlowRise {
-  0% {
-    transform: translateY(100%) scaleY(0.5);
-    opacity: 0;
-  }
-  50% {
-    opacity: 0.8;
-  }
-  100% {
-    transform: translateY(0) scaleY(1);
-    opacity: 1;
-  }
-}
-
-/* Utility Animation Classes */
 .animate-editorial-fade-up {
-  animation: editorialFadeUp 0.8s var(--ease-out-expo) forwards;
-}
-
-.animate-pulse-glow {
-  animation: pulseCobaltGlow 2.5s infinite ease-out;
+  animation: editorialFadeUp 0.6s var(--ease-out-expo) forwards;
 }
 
 /* Reduced Motion Override */

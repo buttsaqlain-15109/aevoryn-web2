@@ -1,7 +1,6 @@
 /**
- * AEVORYN MASTER DESIGN SYSTEM — REFINED EDITORIAL COMPONENTS
- * Section 4: Design System & Centralized Tokens
- * Section 8: Buttons, Cards, Inputs, and Badges
+ * AEVORYN DESIGN SYSTEM: COMPONENTS
+ * Industrial, precise, durable engineering styling
  */
 
 /* ==========================================================================
@@ -45,7 +44,7 @@
 }
 
 /* ==========================================================================
-   Editorial Buttons (Section 4: Height 48–52px, Restrained Radius 10–12px)
+   Buttons (Height 50px, Restrained Radius 8px, No glowing blooms)
    ========================================================================== */
 .btn-cobalt,
 .btn-primary {
@@ -53,12 +52,12 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  height: 50px;
+  height: var(--btn-height, 50px);
   padding: 0 28px;
-  background-color: var(--cobalt-accent);
+  background-color: var(--brand-accent);
   color: #FFFFFF;
-  border: 1px solid var(--cobalt-accent);
-  border-radius: var(--radius-md, 10px);
+  border: 1px solid var(--brand-accent);
+  border-radius: var(--radius-md, 8px);
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 13px;
   font-weight: 600;
@@ -67,14 +66,14 @@
   transition: all var(--transition-base);
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: 0 2px 8px rgba(47, 99, 255, 0.2);
+  box-shadow: 0 1px 2px rgba(18, 61, 112, 0.15);
 }
 
 .btn-cobalt:hover,
 .btn-primary:hover {
-  background-color: var(--cobalt-hover);
-  border-color: var(--cobalt-hover);
-  box-shadow: 0 4px 16px rgba(47, 99, 255, 0.35);
+  background-color: var(--brand-accent-hover);
+  border-color: var(--brand-accent-hover);
+  box-shadow: 0 2px 6px rgba(18, 61, 112, 0.25);
   transform: translateY(-1px);
 }
 
@@ -89,12 +88,12 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  height: 50px;
+  height: var(--btn-height, 50px);
   padding: 0 28px;
   background-color: transparent;
   color: var(--text-primary);
   border: 1px solid var(--border-hairline);
-  border-radius: var(--radius-md, 10px);
+  border-radius: var(--radius-md, 8px);
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 13px;
   font-weight: 600;
@@ -107,28 +106,27 @@
 
 .btn-outline:hover,
 .btn-secondary:hover {
-  border-color: var(--cobalt-accent);
-  color: var(--cobalt-accent);
-  background-color: var(--bg-wash);
+  border-color: var(--brand-accent);
+  color: var(--brand-accent);
+  background-color: var(--brand-accent-subtle);
   transform: translateY(-1px);
 }
 
 /* ==========================================================================
-   Editorial Cards & Panels (Radius 12–16px, Restrained Depth)
+   Editorial Cards & Panels (Radius 10px, Crisp Border)
    ========================================================================== */
 .card-editorial {
   background-color: var(--card-bg);
   border: 1px solid var(--border-hairline);
-  border-radius: var(--radius-card, 14px);
-  box-shadow: var(--shadow-subtle);
+  border-radius: var(--radius-card, 10px);
+  box-shadow: var(--shadow-card);
   transition: all var(--transition-base);
 }
 
 .card-editorial:hover {
-  border-color: var(--cobalt-accent);
+  border-color: var(--brand-accent-border, var(--border-subtle));
   background-color: var(--card-hover-bg);
   box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
 }
 
 /* Technical Badges */
@@ -136,27 +134,27 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px;
+  padding: 5px 12px;
   background-color: var(--bg-wash);
   border: 1px solid var(--border-hairline);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-xs, 4px);
   font-family: var(--font-jetbrains-mono), monospace;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--cobalt-accent);
+  color: var(--brand-accent);
 }
 
 .badge-tech-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--cobalt-accent);
+  background-color: var(--brand-accent);
 }
 
 /* ==========================================================================
-   Editorial Form Controls
+   Form Controls
    ========================================================================== */
 .form-input-editorial {
   width: 100%;
@@ -164,7 +162,7 @@
   padding: 0 16px;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-hairline);
-  border-radius: var(--radius-md, 10px);
+  border-radius: var(--radius-md, 8px);
   font-family: var(--font-archivo), sans-serif;
   font-size: 15px;
   color: var(--text-primary);
@@ -173,8 +171,8 @@
 }
 
 .form-input-editorial:focus {
-  border-color: var(--cobalt-accent);
-  box-shadow: 0 0 0 1px var(--cobalt-accent);
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 1px var(--brand-accent);
 }
 
 .form-textarea-editorial {
@@ -183,7 +181,7 @@
   padding: 14px 16px;
   background-color: var(--bg-surface);
   border: 1px solid var(--border-hairline);
-  border-radius: var(--radius-md, 10px);
+  border-radius: var(--radius-md, 8px);
   font-family: var(--font-archivo), sans-serif;
   font-size: 15px;
   color: var(--text-primary);
@@ -193,8 +191,8 @@
 }
 
 .form-textarea-editorial:focus {
-  border-color: var(--cobalt-accent);
-  box-shadow: 0 0 0 1px var(--cobalt-accent);
+  border-color: var(--brand-accent);
+  box-shadow: 0 0 0 1px var(--brand-accent);
 }
 
 .form-label-editorial {

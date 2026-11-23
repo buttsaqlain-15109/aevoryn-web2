@@ -39,9 +39,6 @@ export function PageHeader({
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B1728]/95 via-[#0B1728]/85 to-[#0B1728]/70" />
       </div>
 
-      {/* Decorative Technical Grid */}
-      <div className="absolute inset-0 z-0 opacity-15 bg-[radial-gradient(#2F63FF_1px,transparent_1px)] [background-size:28px_28px] pointer-events-none" />
-
       <div className="site-container relative z-10 space-y-6">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 label-tech text-xs text-neutral-400">
@@ -57,7 +54,7 @@ export function PageHeader({
                   {crumb.label}
                 </Link>
               ) : (
-                <span className="text-cobalt-accent font-semibold">{crumb.label}</span>
+                <span className="text-blue-300 font-semibold">{crumb.label}</span>
               )}
             </React.Fragment>
           ))}
@@ -65,8 +62,8 @@ export function PageHeader({
 
         {/* Badge */}
         {badge && (
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-neutral-700 bg-surface/20 text-blue-300 label-tech text-[11px] backdrop-blur-md">
-            <span className="w-2 h-2 rounded-full bg-cobalt-accent animate-pulse" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-neutral-700 bg-[#0B1728] text-neutral-200 label-tech text-[11px]">
+            <span className="w-2 h-2 rounded-full bg-emerald-400" />
             <span>{badge}</span>
           </div>
         )}

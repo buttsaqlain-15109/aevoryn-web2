@@ -108,77 +108,80 @@ export function QhseCertificationsSection() {
             </div>
           </div>
 
-          {/* 3 Matching Editorial Certificate Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {certificates.map((cert) => {
-              const Icon = cert.icon;
-              return (
-                <div
-                  key={cert.id}
-                  className="p-8 rounded-2xl border border-hairline bg-surface hover:border-cobalt-accent shadow-subtle hover:shadow-card transition-all duration-300 flex flex-col justify-between space-y-6 hover:-translate-y-1"
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-center justify-between">
-                      <div className={`p-2.5 rounded-xl border border-hairline ${cert.badgeBg}`}>
-                        <Icon className={`w-5 h-5 ${cert.color}`} />
+          {/* Official Document Register Docket */}
+          <div className="border border-hairline rounded-xl bg-surface overflow-hidden shadow-card">
+            {/* Register Top Data Bar */}
+            <div className="p-4 bg-wash border-b border-hairline flex flex-wrap items-center justify-between gap-4 text-xs font-mono-tech">
+              <div className="flex items-center gap-2">
+                <FileCheck2 className="w-4 h-4 text-brand-accent" />
+                <span className="font-bold text-primary">AUDIT REGISTRY: VATSIN CERTIFICATION PRIVATE LIMITED</span>
+              </div>
+              <div className="flex items-center gap-4 text-muted text-[11px]">
+                <span>VALIDITY CYCLE: 04 AUG 2026 TO 03 AUG 2029</span>
+                <span>STATUS: ACTIVE &amp; VERIFIED</span>
+              </div>
+            </div>
+
+            {/* Document Register Rows */}
+            <div className="divide-y divide-hairline">
+              {certificates.map((cert) => {
+                const Icon = cert.icon;
+                return (
+                  <div
+                    key={cert.id}
+                    className="p-6 lg:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6 hover:bg-subtle transition-colors"
+                  >
+                    <div className="flex items-start gap-4 max-w-2xl">
+                      <div className="w-12 h-12 rounded-lg border border-hairline bg-page text-primary flex items-center justify-center flex-shrink-0 mt-1">
+                        <Icon className="w-6 h-6 text-brand-accent" />
                       </div>
-                      <span className="label-tech text-xs text-cobalt-accent font-mono bg-wash px-2.5 py-1 rounded-md">
-                        {cert.certNo}
-                      </span>
+                      <div className="space-y-1.5">
+                        <div className="flex flex-wrap items-center gap-2.5">
+                          <h3 className="text-xl font-bold font-display text-primary uppercase">
+                            {cert.title}
+                          </h3>
+                          <span className="label-tech text-xs font-mono bg-page border border-hairline px-2 py-0.5 rounded text-primary">
+                            CERT NO: {cert.certNo}
+                          </span>
+                        </div>
+                        <p className="text-xs font-bold text-primary font-mono-tech">
+                          {cert.standard}
+                        </p>
+                        <p className="text-xs text-secondary leading-relaxed font-body">
+                          {cert.scope}
+                        </p>
+                      </div>
                     </div>
 
-                    <div>
-                      <h3 className="text-h3 font-display text-primary leading-tight">
-                        {cert.title}
-                      </h3>
-                      <p className="label-tech text-cobalt-accent text-xs pt-1">
-                        {cert.standard}
-                      </p>
-                    </div>
-
-                    <div className="pt-3 hairline-t space-y-2.5 text-xs">
-                      <div className="flex items-center justify-between">
-                        <span className="text-muted">Registrar:</span>
-                        <span className="font-medium text-primary">Vatsin Certification</span>
+                    <div className="flex flex-col sm:flex-row lg:flex-col items-start lg:items-end justify-between gap-3 flex-shrink-0 border-t lg:border-t-0 pt-4 lg:pt-0 border-hairline">
+                      <div className="text-xs font-mono-tech space-y-0.5 text-start lg:text-end">
+                        <span className="text-muted text-[10px] block uppercase">Valid Until</span>
+                        <span className="font-bold text-primary text-xs">{cert.expiryDate}</span>
                       </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-muted">Valid Through:</span>
-                        <span className="font-mono text-primary">{cert.expiryDate}</span>
-                      </div>
-                      <div className="flex items-center justify-between">
-                        <span className="text-muted">Audit Registry:</span>
-                        <span className="font-mono text-emerald-600 dark:text-emerald-400 font-semibold flex items-center gap-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                          Active & Valid
-                        </span>
-                      </div>
+                      <button
+                        onClick={() => setSelectedDoc(cert)}
+                        className="btn-outline !h-10 !px-4 !text-xs !rounded-md flex items-center gap-2"
+                      >
+                        <Eye className="w-3.5 h-3.5 text-brand-accent" />
+                        <span>{locale === "en" ? "INSPECT CERTIFICATE" : "معاينة الوثيقة"}</span>
+                      </button>
                     </div>
                   </div>
-
-                  <div className="pt-4 hairline-t">
-                    <button
-                      onClick={() => setSelectedDoc(cert)}
-                      className="w-full btn-outline text-xs !h-11 !rounded-lg flex items-center justify-center gap-2 group"
-                    >
-                      <Eye className="w-3.5 h-3.5 text-cobalt-accent group-hover:scale-110 transition-transform" />
-                      <span>{locale === "en" ? "VERIFY CERTIFICATE" : "معاينة وثيقة الاعتماد"}</span>
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
           {/* Administrative Transparency Notice */}
-          <div className="mt-8 p-5 rounded-xl border border-hairline bg-subtle flex items-start gap-4">
-            <AlertTriangle className="w-5 h-5 text-amber-500 flex-shrink-0 mt-0.5" />
+          <div className="mt-6 p-5 rounded-lg border border-hairline bg-subtle flex items-start gap-4">
+            <AlertTriangle className="w-5 h-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
             <div className="space-y-1">
-              <span className="label-tech text-amber-600 dark:text-amber-400 block font-bold text-[11px]">
+              <span className="label-tech text-primary block font-bold text-[11px]">
                 {locale === "en" ? "ADMINISTRATIVE FACILITY DISCLOSURE" : "إفصاح إداري حول مقار ومنشآت الشركة"}
               </span>
-              <p className="text-xs text-secondary leading-relaxed">
+              <p className="text-xs text-secondary leading-relaxed font-body">
                 {locale === "en"
-                  ? "All displayed certificate numbers (VC23032689, VC23018822, VC23022982) are officially registered by Vatsin Certification Private Limited (valid 04 August 2026 – 03 August 2029). The certified site facility is situated in Baish, Jizan Region, while corporate contracting and executive operations are executed from our Riyadh headquarters."
+                  ? "All displayed certificate numbers (VC23032689, VC23018822, VC23022982) are officially registered by Vatsin Certification Private Limited (valid 04 August 2026 to 03 August 2029). The certified site facility is situated in Baish, Jizan Region, while corporate contracting and executive operations are executed from our Riyadh headquarters."
                   : "تتوافق كافة أرقام الشهادات المعروضة مع سجلات التدقيق الرسمية لهيئة Vatsin Certification (صالحة من 04 أغسطس 2026 إلى 03 أغسطس 2029). تقع المنشأة التشغيلية المعتمدة في بيش بمنطقة جازان، وتتم التعاقدات والعمليات التنفيذية عبر المقر الرئيسي بالرياض."}
               </p>
             </div>

@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { GlobeCanvas } from "@/components/globe/GlobeCanvas";
-import { ArrowRight, ArrowLeft, ShieldCheck, Award, Building2 } from "lucide-react";
+import { ArrowRight, ArrowLeft, ShieldCheck, Award, Building2, HardHat, Truck } from "lucide-react";
 
 interface GlobeHeroProps {
   onOpenConsultation?: () => void;
@@ -15,59 +15,45 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
   const { t, locale, isRTL } = useLanguage();
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
 
-  // Gentle, controlled opacity fade only when deep into the next section
-  const heroOpacity = Math.max(0, Math.min(1, 1 - scrollProgress * 1.2));
-  const heroTranslateY = scrollProgress * -30;
-
   return (
     <section
-      aria-label="Aevoryn Master Hero"
-      className="relative min-h-[88vh] lg:min-h-[92vh] flex items-center justify-center overflow-hidden bg-page transition-colors duration-300"
-      style={{
-        opacity: heroOpacity,
-        transform: `translate3d(0, ${heroTranslateY}px, 0)`,
-        pointerEvents: heroOpacity < 0.1 ? "none" : "auto",
-      }}
+      aria-label="Aevoryn Hero Section"
+      className="relative min-h-[85vh] lg:min-h-[88vh] flex items-center justify-center overflow-hidden bg-page transition-colors duration-200"
     >
-      {/* Background Architectural Grid (Refined Minimalist hairline) */}
-      <div className="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[radial-gradient(#2F63FF_1px,transparent_1px)] [background-size:32px_32px]" />
-
-      <div className="site-container relative z-10 py-16 lg:py-20 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Editorial Headline & Actions (7 cols) */}
-          <div className="lg:col-span-7 space-y-6 lg:space-y-7">
-            {/* Overline Technical Badge */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-wash border border-hairline shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-cobalt-accent animate-pulse" />
-              <span className="label-tech text-cobalt-accent text-[11px]">
-                {locale === "en" ? "ENGINEERING PROGRESS // SAUDI ARABIA" : "هندسة التقدم والتطوير // المملكة العربية السعودية"}
+      <div className="site-container py-12 lg:py-16 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+          {/* Left Column: Direct Engineering Positioning (7 cols) */}
+          <div className="lg:col-span-7 space-y-6">
+            {/* Technical Verification Badge */}
+            <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-md bg-wash border border-hairline">
+              <span className="w-2 h-2 rounded-full bg-emerald-500" />
+              <span className="label-tech text-primary text-[11px]">
+                {locale === "en" ? "COMMERCIAL REGISTRATION: 7054401679" : "سجل تجاري رقم: 7054401679"}
               </span>
             </div>
 
-            {/* Oversized Condensed Headline (Anton English / IBM Plex Arabic) */}
+            {/* Direct Engineering Headline */}
             <div className="space-y-1">
-              <h1 className="text-hero-display text-primary font-display tracking-tight">
+              <h1 className="text-hero-display text-primary font-display tracking-tight leading-[0.98]">
                 {locale === "en" ? (
                   <>
-                    BUILDING<br />
-                    BEYOND<br />
-                    BOUNDARIES.
+                    CIVIL INFRASTRUCTURE &amp;<br />
+                    CONTRACTING SUPPORT.
                   </>
                 ) : (
                   <>
-                    نبني<br />
-                    ما وراء<br />
-                    الحدود.
+                    دعم البنية التحتية<br />
+                    والمقاولات المدنية.
                   </>
                 )}
               </h1>
             </div>
 
-            {/* Supporting Brand Copy */}
+            {/* Direct, Concrete Engineering Copy: What we do, for whom, proof */}
             <p className="body-large text-secondary leading-relaxed max-w-[620px]">
               {locale === "en"
-                ? "Aevoryn Services & Contracting Co. brings together infrastructure support, manpower, materials and equipment to support industrial and development projects across Saudi Arabia."
-                : "تجمع شركة إيفورين للخدمات والمقاولات بين دعم البنية التحتية، والكوادر البشرية، وتوريد المواد، والآليات الثقيلة لتمكين المشاريع الصناعية والتنموية الكبرى في المملكة العربية السعودية."}
+                ? "Aevoryn Services & Contracting Co. provides earthworks, certified manpower, testing-compliant aggregates, and heavy equipment fleets to EPC contractors and industrial developers across Saudi Arabia. Aramco Vendor Code 10120422. Triple ISO certified (9001, 14001, 45001)."
+                : "توفر شركة إيفورين للخدمات والمقاولات الأعمال الترابية، والكوادر الفنية المعتمدة، ومواد البناء المفحوصة، وأسطول الآليات الثقيلة لمقاولي الهندسة والتوريد والإنشاء (EPC) والمطورين بالمملكة. مورد معتمد لدى أرامكو برمز 10120422 وحاصلة على اعتمادات الآيزو 9001 و14001 و45001."}
             </p>
 
             {/* Action Buttons */}
@@ -76,7 +62,7 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
                 href="/capabilities/infrastructure"
                 className="btn-cobalt group"
               >
-                <span>{locale === "en" ? "EXPLORE OUR CAPABILITIES" : "استكشف قدراتنا"}</span>
+                <span>{locale === "en" ? "EXPLORE CAPABILITIES" : "استعراض القدرات"}</span>
                 <Arrow className="w-4 h-4 transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
               </Link>
 
@@ -84,37 +70,77 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
                 href="/contact"
                 className="btn-outline"
               >
-                <span>{locale === "en" ? "CONTACT OUR TEAM" : "تواصل مع فريقنا"}</span>
+                <span>{locale === "en" ? "CONTACT RIYADH OFFICE" : "الاتصال بمكتب الرياض"}</span>
               </Link>
             </div>
 
-            {/* Bottom Technical Accreditations Ticker */}
-            <div className="pt-8 hairline-t flex flex-wrap items-center gap-6 text-xs text-muted">
+            {/* Verified Accreditation Strip */}
+            <div className="pt-6 border-t border-hairline flex flex-wrap items-center gap-6 text-xs text-muted">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-500 flex-shrink-0" />
+                <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400 flex-shrink-0" />
                 <span className="label-tech text-muted text-[11px]">
                   Aramco Vendor: <strong className="text-primary font-mono">10120422</strong>
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-cobalt-accent flex-shrink-0" />
+                <Award className="w-4 h-4 text-brand-accent flex-shrink-0" />
                 <span className="label-tech text-muted text-[11px]">
                   ISO <strong className="text-primary font-mono">9001 • 14001 • 45001</strong>
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Building2 className="w-4 h-4 text-cobalt-accent flex-shrink-0" />
+                <Building2 className="w-4 h-4 text-brand-accent flex-shrink-0" />
                 <span className="label-tech text-muted text-[11px]">
-                  CR: <strong className="text-primary font-mono">7054401679</strong>
+                  HQ: <strong className="text-primary">RIYADH, SAUDI ARABIA</strong>
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: 3D Dotted Rotating Earth Globe (5 cols) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[500px] aspect-square flex items-center justify-center">
-              <GlobeCanvas size={500} />
+          {/* Right Column: Authentic Industrial Site Image Card (5 cols) */}
+          <div className="lg:col-span-5">
+            <div className="border border-hairline bg-surface rounded-xl overflow-hidden shadow-card">
+              <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-neutral-900">
+                <Image
+                  src="/images/content/hero-industrial.jpg"
+                  alt="Aevoryn Heavy Earthmoving and Jobsite Equipment in Saudi Arabia"
+                  fill
+                  priority
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 right-4 text-white text-xs space-y-1">
+                  <div className="flex items-center gap-2 font-mono-tech text-[11px] text-emerald-400 font-bold uppercase">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                    <span>{locale === "en" ? "Active Jobsite Fleet Operations" : "عمليات الأسطول الميداني"}</span>
+                  </div>
+                  <p className="text-neutral-200 text-xs font-body">
+                    {locale === "en"
+                      ? "Heavy earthmoving, grading, and material mobilization across central and regional project zones."
+                      : "أعمال تحريك التربة، والتسوية، وحشد المعدات في مناطق المشاريع بالمملكة."}
+                  </p>
+                </div>
+              </div>
+
+              {/* Scope Quick Ledger */}
+              <div className="p-4 grid grid-cols-2 gap-3 bg-subtle border-t border-hairline text-xs font-mono-tech">
+                <div className="p-2.5 bg-page border border-hairline rounded-md">
+                  <span className="text-[10px] text-muted block uppercase">{locale === "en" ? "Division 01" : "القطاع 01"}</span>
+                  <span className="font-bold text-primary text-xs">{locale === "en" ? "Civil Infrastructure" : "البنية التحتية"}</span>
+                </div>
+                <div className="p-2.5 bg-page border border-hairline rounded-md">
+                  <span className="text-[10px] text-muted block uppercase">{locale === "en" ? "Division 02" : "القطاع 02"}</span>
+                  <span className="font-bold text-primary text-xs">{locale === "en" ? "Technical Manpower" : "الكوادر الفنية"}</span>
+                </div>
+                <div className="p-2.5 bg-page border border-hairline rounded-md">
+                  <span className="text-[10px] text-muted block uppercase">{locale === "en" ? "Division 03" : "القطاع 03"}</span>
+                  <span className="font-bold text-primary text-xs">{locale === "en" ? "Testing Aggregates" : "مواد البناء"}</span>
+                </div>
+                <div className="p-2.5 bg-page border border-hairline rounded-md">
+                  <span className="text-[10px] text-muted block uppercase">{locale === "en" ? "Division 04" : "القطاع 04"}</span>
+                  <span className="font-bold text-primary text-xs">{locale === "en" ? "Heavy Equipment" : "الآليات الثقيلة"}</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>

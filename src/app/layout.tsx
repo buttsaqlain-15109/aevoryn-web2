@@ -33,10 +33,13 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aevoryn.net"),
-  title: "Aevoryn Services & Contracting Co. | Engineering Progress Across Saudi Arabia",
+  metadataBase: new URL("https://aevoryn-web-17d.pages.dev"),
+  title: {
+    default: "Aevoryn Services & Contracting Co. | Industrial Infrastructure & Support",
+    template: "%s | Aevoryn Services & Contracting Co.",
+  },
   description:
-    "Aevoryn Services & Contracting Co. (CR 7054401679) provides integrated infrastructure support, manpower, materials and heavy equipment solutions for demanding industrial and development projects across Saudi Arabia.",
+    "Aevoryn Services & Contracting Co. (CR 7054401679) provides civil infrastructure support, certified manpower, testing-compliant materials, and heavy equipment fleets across Saudi Arabia. Aramco Vendor Code: 10120422. Triple ISO certified.",
   keywords: [
     "Aevoryn Services & Contracting Co.",
     "Saudi Arabia contracting",
@@ -49,16 +52,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Aevoryn Services & Contracting Co." }],
   openGraph: {
-    title: "Aevoryn Services & Contracting Co. | Engineering Progress",
+    title: "Aevoryn Services & Contracting Co. | Industrial Infrastructure & Support",
     description:
-      "Integrated infrastructure support, manpower, materials and equipment across Saudi Arabia. Triple ISO certified, registered in the Saudi Aramco Supplier Management System.",
-    url: "https://aevoryn.net",
+      "Civil infrastructure support, certified manpower, materials and heavy equipment across Saudi Arabia. Aramco Vendor Code: 10120422. Triple ISO certified.",
+    url: "https://aevoryn-web-17d.pages.dev",
     siteName: "Aevoryn Services & Contracting Co.",
     images: [
       {
-        url: "/images/aevoryn-logo.jpg",
-        width: 1024,
-        height: 662,
+        url: "/images/branding/aevoryn-logo.png",
+        width: 430,
+        height: 430,
         alt: "Aevoryn Services & Contracting Co. Official Emblem",
       },
     ],
@@ -66,9 +69,17 @@ export const metadata: Metadata = {
     type: "website",
   },
   icons: {
-    icon: "/images/aevoryn-logo-circle.png",
-    apple: "/images/aevoryn-logo-circle.png",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
+  manifest: "/manifest.json",
 };
 
 export default function RootLayout({
@@ -84,6 +95,10 @@ export default function RootLayout({
       className={`${anton.variable} ${archivo.variable} ${jetbrainsMono.variable} ${ibmPlexSansArabic.variable}`}
     >
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

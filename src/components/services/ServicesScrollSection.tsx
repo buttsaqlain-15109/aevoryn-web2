@@ -217,10 +217,10 @@ export function ServicesScrollSection() {
                       className="object-cover filter contrast-[1.08] brightness-90 group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111F36] via-transparent to-transparent" />
-                    <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 p-2.5 bg-[#0B1728]/90 backdrop-blur-md border border-neutral-700 rounded-lg">
-                      <Icon className="w-5 h-5 text-cobalt-accent" />
+                    <div className="absolute top-4 left-4 rtl:left-auto rtl:right-4 p-2.5 bg-[#0B1728] border border-neutral-700 rounded-lg">
+                      <Icon className="w-5 h-5 text-blue-400" />
                     </div>
-                    <span className="absolute top-4 right-4 rtl:right-auto rtl:left-4 label-tech text-xs text-white/90 font-mono bg-[#0B1728]/85 px-3 py-1 rounded-full border border-neutral-800">
+                    <span className="absolute top-4 right-4 rtl:right-auto rtl:left-4 label-tech text-xs text-white/90 font-mono bg-[#0B1728] px-3 py-1 rounded-full border border-neutral-700">
                       {item.id} / 05
                     </span>
                   </div>

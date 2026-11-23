@@ -138,7 +138,7 @@ export const translations = {
       pillars: [
         {
           title: "Operational Coordination",
-          desc: "Seamless synchronization between procurement, field logistics, and daily site production schedules.",
+          desc: "Direct synchronization between procurement, field logistics, and daily site production schedules.",
         },
         {
           title: "Technical & Field Support",

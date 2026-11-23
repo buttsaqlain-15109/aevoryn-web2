@@ -117,13 +117,13 @@ export function Header() {
       <header
         className={`sticky top-0 z-40 transition-all duration-200 ${
           isScrolled
-            ? "bg-page/95 backdrop-blur-md border-b border-hairline shadow-card"
+            ? "bg-page border-b border-hairline shadow-sm"
             : "bg-page border-b border-hairline"
         }`}
       >
         <div className="site-container">
           <div className="flex items-center justify-between h-[92px] gap-4">
-            {/* ZONE 1: LEFT — Official Brand Identity & Wordmark */}
+            {/* ZONE 1: LEFT: Official Brand Identity and Wordmark */}
             <Link
               href="/"
               className="flex items-center gap-3.5 group flex-shrink-0"
@@ -148,7 +148,7 @@ export function Header() {
               </div>
             </Link>
 
-            {/* ZONE 2: CENTER — Desktop Navigation (Archivo Medium, 14px, No Awkward Wrapping) */}
+            {/* ZONE 2: CENTER: Desktop Navigation (Archivo Medium, 14px, No Awkward Wrapping) */}
             <nav className="hidden xl:flex items-center justify-center gap-5 2xl:gap-7 font-body text-[14px] font-medium text-secondary">
               <Link
                 href="/about"
@@ -242,7 +242,7 @@ export function Header() {
               </Link>
             </nav>
 
-            {/* ZONE 3: RIGHT — Utility Controls & Consultation CTA (Height 48px) */}
+            {/* ZONE 3: RIGHT: Utility Controls & Consultation CTA (Height 48px) */}
             <div className="flex items-center gap-2.5 sm:gap-3 flex-shrink-0">
               <LanguageToggle />
               <ThemeToggle />

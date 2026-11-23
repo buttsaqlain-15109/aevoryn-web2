@@ -1,65 +1,74 @@
 /**
- * AEVORYN MASTER DESIGN SYSTEM — DAY & NIGHT DUAL MODE
- * Section 4: Palette Adaptation & Theme Retention
+ * AEVORYN DESIGN SYSTEM: DAY & NIGHT DUAL MODE
+ * Tone: Serious, precise, industrial contracting
+ * Single accent: #123D70 (corporate navy from logo)
  */
 
 :root {
   /* =========================================================================
-     DAY MODE (Corporate Clean Master Aesthetic)
+     DAY MODE: Corporate Clean Industrial
      ========================================================================= */
   --bg-page: #FFFFFF;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F4F6F9; /* Light surface */
-  --bg-wash: #EEF2FF;
-  --bg-dark-section: #0B1728; /* Deep ink */
+  --bg-subtle: #F8F9FA;
+  --bg-wash: #F1F3F5;
+  --bg-dark-section: #0B1728;
 
-  --text-primary: #172536; /* Primary text */
-  --text-secondary: #697586; /* Muted corporate text */
-  --text-muted: #8492A6;
+  --text-primary: #111827;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
   --text-inverse: #FFFFFF;
 
-  --border-hairline: #DCE2EA; /* Border token */
-  --border-subtle: #E8EAEE;
-  --border-focus: #2F63FF;
+  --border-hairline: #DCE2EA;
+  --border-subtle: #E2E8F0;
+  --border-focus: #123D70;
 
-  --brand-navy: #123D70; /* Corporate navy */
+  --brand-navy: #123D70;
   --brand-cobalt: #123D70;
-  --cobalt-accent: #2F63FF; /* Cobalt accent */
-  --cobalt-hover: #1F4FE0;
-  --cobalt-glow: rgba(47, 99, 255, 0.2);
+  --brand-accent: #123D70;
+  --brand-accent-hover: #0E2F56;
+  --brand-accent-subtle: #EBF1F8;
 
-  --nav-bg: rgba(255, 255, 255, 0.94);
+  --cobalt-accent: #123D70;
+  --cobalt-hover: #0E2F56;
+  --cobalt-glow: transparent;
+
+  --nav-bg: #FFFFFF;
   --card-bg: #FFFFFF;
-  --card-hover-bg: #F4F6F9;
+  --card-hover-bg: #F8F9FA;
 }
 
 [data-theme="dark"],
 .dark {
   /* =========================================================================
-     NIGHT MODE (Deep Architectural Obsidian & Corporate Navy)
+     NIGHT MODE: Deep Industrial Charcoal & Navy
      ========================================================================= */
-  --bg-page: #0B1728; /* Deep ink */
-  --bg-surface: #111F36;
-  --bg-subtle: #152744;
-  --bg-wash: rgba(47, 99, 255, 0.08);
-  --bg-dark-section: #070E1A;
+  --bg-page: #0B131E;
+  --bg-surface: #111C2B;
+  --bg-subtle: #172436;
+  --bg-wash: #152233;
+  --bg-dark-section: #070D15;
 
-  --text-primary: #F4F6F9;
-  --text-secondary: #A8B3C4;
-  --text-muted: #7E8A9E;
-  --text-inverse: #0B1728;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  --text-inverse: #0B131E;
 
-  --border-hairline: #1D2D45;
-  --border-subtle: #243652;
-  --border-focus: #3B72FF;
+  --border-hairline: #1E2D42;
+  --border-subtle: #2A3C55;
+  --border-focus: #3B82F6;
 
-  --brand-navy: #1E4E8C;
-  --brand-cobalt: #1E4E8C;
-  --cobalt-accent: #3B72FF;
-  --cobalt-hover: #2663FF;
-  --cobalt-glow: rgba(59, 114, 255, 0.35);
+  --brand-navy: #2B6CB0;
+  --brand-cobalt: #2B6CB0;
+  --brand-accent: #2B6CB0;
+  --brand-accent-hover: #3182CE;
+  --brand-accent-subtle: #162B44;
 
-  --nav-bg: rgba(11, 23, 40, 0.94);
-  --card-bg: #111F36;
-  --card-hover-bg: #162744;
+  --cobalt-accent: #2B6CB0;
+  --cobalt-hover: #3182CE;
+  --cobalt-glow: transparent;
+
+  --nav-bg: #0B131E;
+  --card-bg: #111C2B;
+  --card-hover-bg: #172436;
 }

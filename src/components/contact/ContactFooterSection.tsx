@@ -29,26 +29,26 @@ export function ContactFooterSection() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-            {/* Left Column: Oversized Master Callout */}
+            {/* Left Column: Direct Commercial Callout */}
             <div className="lg:col-span-7 space-y-6">
               <h2 className="text-hero-display text-primary font-display leading-[0.98] tracking-tight">
                 {locale === "en" ? (
                   <>
-                    LET&apos;S BUILD<br />
-                    WHAT&apos;S NEXT.
+                    COMMERCIAL INQUIRIES &amp;<br />
+                    PROJECT ESTIMATION.
                   </>
                 ) : (
                   <>
-                    لنبني معاً<br />
-                    مستقبل الإنجاز.
+                    الاستفسارات التجارية<br />
+                    وعروض أسعار المشاريع.
                   </>
                 )}
               </h2>
 
               <p className="body-large text-secondary leading-relaxed max-w-[620px]">
                 {locale === "en"
-                  ? "Connect with Aevoryn to discuss your infrastructure, manpower, materials and equipment requirements across Saudi Arabia."
-                  : "تواصل مع إيفورين لمناقشة متطلبات مشاريعكم في البنية التحتية، القوى العاملة، المواد، والآليات في كافة أنحاء المملكة."}
+                  ? "Contact our commercial estimation and operations team in Riyadh to submit project specifications, inspect equipment availability, or schedule workforce deployment across the Kingdom."
+                  : "تواصل مع فريق التقدير التجاري والعمليات الميدانية بالرياض لتقديم مواصفات المشاريع، أو الاستفسار عن جاهزية المعدات، أو جدولة حشد الكوادر الفنية بالمملكة."}
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">

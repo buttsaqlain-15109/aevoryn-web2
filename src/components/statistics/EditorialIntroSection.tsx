@@ -90,16 +90,16 @@ export function EditorialIntroSection() {
             {/* Industrial Photograph with Refined Frame */}
             <div className="relative h-[380px] sm:h-[460px] w-full overflow-hidden rounded-xl border border-hairline bg-subtle group shadow-card">
               <Image
-                src="/images/content/hero-industrial.jpg"
-                alt="Aevoryn Heavy Industrial Infrastructure Project"
+                src="/images/content/about-hero.jpg"
+                alt="Aevoryn Civil and Industrial Infrastructure Operations in Saudi Arabia"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover filter contrast-[1.05] grayscale-[15%] group-hover:scale-[1.03] group-hover:grayscale-0 transition-all duration-700 ease-out"
               />
               {/* Technical Photo Metadata Strip */}
-              <div className="absolute bottom-0 inset-x-0 p-4 bg-page/90 backdrop-blur-md hairline-t flex items-center justify-between text-xs">
+              <div className="absolute bottom-0 inset-x-0 p-4 bg-surface border-t border-hairline flex items-center justify-between text-xs">
                 <span className="label-tech text-primary text-[11px]">CIVIL & INDUSTRIAL CAPABILITY</span>
-                <span className="label-tech text-cobalt-accent text-[11px]">ISO 9001:2015 COMPLIANT</span>
+                <span className="label-tech text-primary font-bold text-[11px]">ISO 9001:2015 COMPLIANT</span>
               </div>
             </div>
           </div>
