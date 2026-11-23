@@ -68,15 +68,15 @@ export default function AboutPage() {
 
                 {/* Key Fact Boxes */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-6 border-t border-hairline">
-                  <div className="p-4 border border-hairline bg-page text-center">
+                  <div className="p-4 border border-hairline bg-page rounded-xl text-center shadow-sm">
                     <span className="block text-lg sm:text-xl font-bold text-brand-cobalt font-mono-tech">7054401679</span>
                     <span className="text-[10px] sm:text-xs font-mono-tech text-muted uppercase">CR REGISTRATION</span>
                   </div>
-                  <div className="p-4 border border-hairline bg-page text-center">
+                  <div className="p-4 border border-hairline bg-page rounded-xl text-center shadow-sm">
                     <span className="block text-lg sm:text-xl font-bold text-emerald-600 dark:text-emerald-400 font-mono-tech">10120422</span>
                     <span className="text-[10px] sm:text-xs font-mono-tech text-muted uppercase">ARAMCO VENDOR</span>
                   </div>
-                  <div className="p-4 border border-hairline bg-page text-center col-span-2 sm:col-span-1">
+                  <div className="p-4 border border-hairline bg-page rounded-xl text-center col-span-2 sm:col-span-1 shadow-sm">
                     <span className="block text-lg sm:text-xl font-bold text-amber-600 dark:text-amber-400 font-mono-tech">ISO TRIPLE</span>
                     <span className="text-[10px] sm:text-xs font-mono-tech text-muted uppercase">QMS / HSE AUDITED</span>
                   </div>
@@ -85,7 +85,7 @@ export default function AboutPage() {
 
               {/* Right Column: Editorial Image & Address Disclosure */}
               <div className="lg:col-span-6 space-y-6">
-                <div className="relative h-96 border border-hairline bg-page overflow-hidden">
+                <div className="relative h-96 border border-hairline bg-page rounded-2xl overflow-hidden shadow-subtle">
                   <Image
                     src="/images/content/riyadh-skyline.jpg"
                     alt="Riyadh Development & Skyline"
@@ -93,7 +93,7 @@ export default function AboutPage() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5 p-4 border border-white/20 bg-black/75 backdrop-blur-md">
+                  <div className="absolute bottom-5 left-5 right-5 p-4 border border-white/20 bg-black/75 backdrop-blur-md rounded-xl">
                     <p className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono-tech">
                       {locale === "en" ? "HEADQUARTERS LOCATION" : "المقر الرئيسي للإدارة"}
                     </p>
@@ -104,7 +104,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Administrative Address Verification Box */}
-                <div className="p-5 border border-amber-500/30 bg-amber-500/5 text-xs space-y-2">
+                <div className="p-5 border border-amber-500/30 bg-amber-500/5 rounded-xl text-xs space-y-2">
                   <div className="flex items-center gap-2 font-bold text-amber-600 dark:text-amber-400 font-mono-tech">
                     <AlertTriangle className="w-4 h-4 flex-shrink-0" />
                     <span>{locale === "en" ? "ADMINISTRATIVE ADDRESS DISCLOSURE" : "إفصاح إداري حول مقار ومنشآت الشركة"}</span>

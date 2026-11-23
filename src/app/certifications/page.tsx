@@ -65,7 +65,7 @@ export default function CertificationsPage() {
         {/* Document Experience & Transparency Notice */}
         <section className="section-padding bg-surface border-t border-hairline">
           <div className="site-container max-w-[820px]">
-            <div className="p-8 border border-hairline bg-page space-y-4">
+            <div className="p-8 border border-hairline bg-page rounded-2xl shadow-subtle space-y-4">
               <div className="flex items-center gap-2.5 text-brand-cobalt font-bold text-sm font-mono-tech uppercase">
                 <FileCheck2 className="w-5 h-5" />
                 <span>{locale === "en" ? "DOCUMENT VERIFICATION & AUDIT DISCLOSURE" : "سياسة التحقق من الوثائق والشفافية"}</span>

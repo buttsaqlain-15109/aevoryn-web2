@@ -13,10 +13,10 @@ export function LanguageToggle({ className = "" }: { className?: string }) {
       type="button"
       aria-label={locale === "en" ? "تبديل إلى العربية" : "Switch to English"}
       title={locale === "en" ? "تبديل إلى العربية" : "Switch to English"}
-      className={`inline-flex items-center gap-1.5 h-9 px-3 rounded-sm border border-hairline bg-surface hover:border-cobalt-accent text-primary transition-colors duration-200 label-tech text-[11px] ${className}`}
+      className={`inline-flex items-center justify-center gap-2 h-12 px-4 rounded-xl border border-hairline bg-surface hover:border-cobalt-accent text-primary transition-all duration-200 font-body text-[13px] font-medium shadow-sm hover:shadow-subtle ${className}`}
     >
-      <Globe className="w-3.5 h-3.5 text-cobalt-accent" />
-      <span>{locale === "en" ? "العربية" : "EN"}</span>
+      <Globe className="w-4 h-4 text-cobalt-accent flex-shrink-0" />
+      <span className="font-semibold">{locale === "en" ? "العربية" : "EN"}</span>
     </button>
   );
 }

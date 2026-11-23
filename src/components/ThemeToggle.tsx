@@ -14,18 +14,16 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
       type="button"
       aria-label={isDark ? "Switch to Day Mode" : "Switch to Night Mode"}
       title={isDark ? "Switch to Day Mode" : "Switch to Night Mode"}
-      className={`relative inline-flex items-center justify-between h-9 px-2.5 rounded-sm border border-hairline bg-surface hover:border-cobalt-accent transition-colors duration-200 text-xs font-mono-tech ${className}`}
+      className={`inline-flex items-center justify-center gap-2 h-12 px-3.5 rounded-xl border border-hairline bg-surface hover:border-cobalt-accent text-primary transition-all duration-200 font-body text-[13px] font-medium shadow-sm hover:shadow-subtle ${className}`}
     >
-      <div className="flex items-center gap-2">
-        {isDark ? (
-          <Moon className="w-3.5 h-3.5 text-blue-400" />
-        ) : (
-          <Sun className="w-3.5 h-3.5 text-amber-500" />
-        )}
-        <span className="label-tech text-[10px] text-primary">
-          {isDark ? "NIGHT" : "DAY"}
-        </span>
-      </div>
+      {isDark ? (
+        <Moon className="w-4 h-4 text-blue-400 flex-shrink-0" />
+      ) : (
+        <Sun className="w-4 h-4 text-amber-500 flex-shrink-0" />
+      )}
+      <span className="font-semibold text-xs tracking-wider">
+        {isDark ? "NIGHT" : "DAY"}
+      </span>
     </button>
   );
 }

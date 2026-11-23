@@ -72,7 +72,7 @@ export default function ContactPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
               {/* Left Column: Form (7 cols) */}
               <div className="lg:col-span-7">
-                <div className="p-8 sm:p-10 border border-hairline bg-page space-y-6">
+                <div className="p-8 sm:p-10 border border-hairline bg-page rounded-2xl shadow-subtle space-y-6">
                   <div>
                     <span className="badge-tech inline-block mb-3">
                       {locale === "en" ? "INQUIRY SUBMISSION" : "تقديم طلب"}
@@ -89,7 +89,7 @@ export default function ContactPage() {
 
                   {submitted ? (
                     <div className="py-12 text-center space-y-4">
-                      <div className="w-16 h-16 border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
+                      <div className="w-16 h-16 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-500 flex items-center justify-center mx-auto">
                         <CheckCircle2 className="w-10 h-10" />
                       </div>
                       <h4 className="text-xl font-bold font-display uppercase tracking-tight text-primary">
@@ -99,7 +99,7 @@ export default function ContactPage() {
                         {t("contactPage.success")}
                       </p>
                       {inquiryRef && (
-                        <div className="p-3 border border-hairline bg-surface max-w-xs mx-auto">
+                        <div className="p-3 border border-hairline bg-surface rounded-xl max-w-xs mx-auto">
                           <span className="text-[11px] font-mono-tech text-muted block">REFERENCE TRACKING ID</span>
                           <span className="font-mono-tech font-bold text-brand-cobalt text-xs">{inquiryRef}</span>
                         </div>
@@ -117,7 +117,7 @@ export default function ContactPage() {
                   ) : (
                     <form onSubmit={handleSubmit} className="space-y-4">
                       {apiErrors.length > 0 && (
-                        <div className="p-4 border border-rose-500/30 bg-rose-500/5 text-rose-600 dark:text-rose-400 text-xs space-y-1">
+                        <div className="p-4 border border-rose-500/30 bg-rose-500/5 rounded-xl text-rose-600 dark:text-rose-400 text-xs space-y-1">
                           <div className="flex items-center gap-2 font-bold font-mono-tech">
                             <AlertTriangle className="w-4 h-4 flex-shrink-0" />
                             <span>{locale === "en" ? "PLEASE REVIEW REQUIRED FIELDS" : "يرجى مراجعة الحقول المطلوبة"}</span>
@@ -253,9 +253,9 @@ export default function ContactPage() {
               {/* Right Column: Corporate Addresses & Contacts (5 cols) */}
               <div className="lg:col-span-5 space-y-6">
                 {/* Riyadh Corporate Headquarters */}
-                <div className="p-8 border border-hairline bg-page space-y-4">
+                <div className="p-8 border border-hairline bg-page rounded-2xl shadow-subtle space-y-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 border border-hairline bg-surface text-brand-cobalt flex items-center justify-center">
+                    <div className="w-10 h-10 border border-hairline bg-surface rounded-xl text-brand-cobalt flex items-center justify-center">
                       <Building2 className="w-5 h-5" />
                     </div>
                     <div>
@@ -284,24 +284,24 @@ export default function ContactPage() {
                 </div>
 
                 {/* Direct Communications Matrix */}
-                <div className="p-8 border border-hairline bg-page space-y-4">
+                <div className="p-8 border border-hairline bg-page rounded-2xl shadow-subtle space-y-4">
                   <h4 className="text-xs font-mono-tech font-bold uppercase tracking-wider text-muted pb-2 border-b border-hairline">
                     {t("contactPage.directContacts")}
                   </h4>
                   <div className="space-y-2 text-xs">
-                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface">
+                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface rounded-xl">
                       <span className="text-muted font-medium">Administration:</span>
                       <a href="mailto:admin@aevoryn.net" className="font-mono-tech font-bold text-primary hover:text-brand-cobalt">
                         admin@aevoryn.net
                       </a>
                     </div>
-                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface">
+                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface rounded-xl">
                       <span className="text-muted font-medium">Executive Office (CEO):</span>
                       <a href="mailto:ceo@aevoryn.net" className="font-mono-tech font-bold text-primary hover:text-brand-cobalt">
                         ceo@aevoryn.net
                       </a>
                     </div>
-                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface">
+                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface rounded-xl">
                       <span className="text-muted font-medium">Chairman Office:</span>
                       <a href="mailto:chairman@aevoryn.net" className="font-mono-tech font-bold text-primary hover:text-brand-cobalt">
                         chairman@aevoryn.net
@@ -311,7 +311,7 @@ export default function ContactPage() {
                 </div>
 
                 {/* Administrative Address Verification Box */}
-                <div className="p-5 border border-amber-500/30 bg-amber-500/5 text-xs space-y-2">
+                <div className="p-5 border border-amber-500/30 bg-amber-500/5 rounded-xl text-xs space-y-2">
                   <div className="flex items-center gap-2 font-bold text-amber-600 dark:text-amber-400 font-mono-tech uppercase">
                     <AlertTriangle className="w-4 h-4 flex-shrink-0" />
                     <span>{locale === "en" ? "ADDRESS DISCLOSURE & FACILITY NOTICE" : "إفصاح إداري حول مقار ومنشآت الشركة"}</span>

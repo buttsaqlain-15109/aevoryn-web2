@@ -28,7 +28,13 @@ html, body {
   font-family: var(--font-archivo), -apple-system, sans-serif;
 }
 
-/* English Navigation & Technical Labels (JetBrains Mono) */
+/* English Navigation (Archivo Medium) */
+.font-nav {
+  font-family: var(--font-archivo), -apple-system, sans-serif;
+  font-weight: 500;
+}
+
+/* Technical Labels (JetBrains Mono) */
 .font-mono-tech {
   font-family: var(--font-jetbrains-mono), "SF Mono", Consolas, monospace;
 }
@@ -58,9 +64,9 @@ body[dir="rtl"],
 }
 
 /* ==========================================================================
-   Desktop Typography Scale (Section 3)
+   Desktop Typography Scale (Section 3 Hierarchy)
    ========================================================================== */
-/* Hero Headline: 88–112px desktop */
+/* Hero Headings: 88–112px desktop */
 .text-hero-display {
   font-family: var(--font-anton), Impact, sans-serif;
   font-size: clamp(52px, 8.5vw, 112px);
@@ -69,37 +75,37 @@ body[dir="rtl"],
   text-transform: uppercase;
 }
 
-/* H1: Section headings (52–72px desktop) */
-h1, .text-h1 {
+/* Page Headings: 56–76px desktop */
+h1, .text-h1, .text-page-title {
   font-family: var(--font-anton), Impact, sans-serif;
-  font-size: clamp(40px, 5.5vw, 68px);
+  font-size: clamp(40px, 5.8vw, 72px);
   line-height: 1.02;
   letter-spacing: -0.02em;
   text-transform: uppercase;
 }
 
-/* H2: Section sub-headings (52–64px desktop) */
-h2, .text-h2 {
+/* Section Headings: 44–64px desktop */
+h2, .text-h2, .text-section-title {
   font-family: var(--font-anton), Impact, sans-serif;
-  font-size: clamp(34px, 4.8vw, 60px);
+  font-size: clamp(32px, 4.5vw, 60px);
   line-height: 1.05;
   letter-spacing: -0.015em;
   text-transform: uppercase;
 }
 
-/* H3: Service titles (28–34px desktop) */
-h3, .text-h3 {
+/* Card Headings: 24–32px desktop */
+h3, .text-h3, .text-card-title {
   font-family: var(--font-anton), Impact, sans-serif;
-  font-size: clamp(24px, 3vw, 32px);
+  font-size: clamp(22px, 2.6vw, 32px);
   line-height: 1.15;
   letter-spacing: -0.01em;
   text-transform: uppercase;
 }
 
-/* H4: Card Subtitles & Highlights (20–24px) */
+/* H4: Card Subtitles & Highlights (18–24px) */
 h4, .text-h4 {
   font-family: var(--font-archivo), sans-serif;
-  font-size: clamp(18px, 2.2vw, 24px);
+  font-size: clamp(18px, 2.0vw, 24px);
   font-weight: 600;
   line-height: 1.25;
 }
@@ -107,7 +113,7 @@ h4, .text-h4 {
 /* Body Scales: 16–18px */
 .body-large {
   font-family: var(--font-archivo), sans-serif;
-  font-size: clamp(16px, 1.3vw, 18px);
+  font-size: clamp(16px, 1.25vw, 18px);
   line-height: 1.65;
   color: var(--text-secondary);
 }
@@ -125,19 +131,26 @@ h4, .text-h4 {
   color: var(--text-secondary);
 }
 
-/* Navigation: 13–15px */
+/* Navigation: 13–15px (Archivo Medium) */
+.nav-archivo, .nav-link {
+  font-family: var(--font-archivo), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
 .nav-tech {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
-/* Technical Labels: 10–12px */
+/* Small / Technical Labels: 11–13px */
 .label-tech {
   font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;

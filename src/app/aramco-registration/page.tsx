@@ -40,7 +40,7 @@ export default function AramcoRegistrationPage() {
         {/* Detailed Compliance & Scope Explanation */}
         <section className="section-padding bg-surface border-t border-hairline">
           <div className="site-container max-w-[820px] space-y-6">
-            <div className="p-8 border border-hairline bg-page space-y-4">
+            <div className="p-8 border border-hairline bg-page rounded-2xl shadow-subtle space-y-4">
               <div className="flex items-center gap-2.5 text-emerald-600 dark:text-emerald-400 font-bold text-sm font-mono-tech uppercase">
                 <ShieldCheck className="w-5 h-5" />
                 <span>{locale === "en" ? "REGISTRATION VERIFICATION & GOVERNANCE" : "حوكمة وإجراءات التسجيل والتحقق"}</span>
@@ -53,7 +53,7 @@ export default function AramcoRegistrationPage() {
             </div>
 
             {/* Mandatory Disclaimer Box */}
-            <div className="p-6 border border-amber-500/30 bg-amber-500/5 text-xs space-y-2">
+            <div className="p-6 border border-amber-500/30 bg-amber-500/5 rounded-xl text-xs space-y-2">
               <div className="flex items-center gap-2 font-bold text-amber-600 dark:text-amber-400 font-mono-tech uppercase">
                 <AlertTriangle className="w-4 h-4 flex-shrink-0" />
                 <span>{locale === "en" ? "MANDATORY REGULATORY DISCLAIMER" : "إخلاء مسؤولية تنظيمي إلزامي"}</span>

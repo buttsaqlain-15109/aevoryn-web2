@@ -97,7 +97,7 @@ export default function QHSEPage() {
 
                 {/* ISO Seal Badges */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-hairline">
-                  <div className="p-4 border border-hairline bg-page flex items-center gap-3">
+                  <div className="p-4 border border-hairline bg-page rounded-xl shadow-sm flex items-center gap-3">
                     <ShieldAlert className="w-6 h-6 text-rose-500 flex-shrink-0" />
                     <div>
                       <p className="text-xs font-bold text-primary font-mono-tech">ISO 45001:2018</p>
@@ -105,7 +105,7 @@ export default function QHSEPage() {
                     </div>
                   </div>
 
-                  <div className="p-4 border border-hairline bg-page flex items-center gap-3">
+                  <div className="p-4 border border-hairline bg-page rounded-xl shadow-sm flex items-center gap-3">
                     <Award className="w-6 h-6 text-brand-cobalt flex-shrink-0" />
                     <div>
                       <p className="text-xs font-bold text-primary font-mono-tech">ISO 9001:2015</p>
@@ -113,7 +113,7 @@ export default function QHSEPage() {
                     </div>
                   </div>
 
-                  <div className="p-4 border border-hairline bg-page flex items-center gap-3">
+                  <div className="p-4 border border-hairline bg-page rounded-xl shadow-sm flex items-center gap-3">
                     <Leaf className="w-6 h-6 text-emerald-500 flex-shrink-0" />
                     <div>
                       <p className="text-xs font-bold text-primary font-mono-tech">ISO 14001:2015</p>
@@ -125,7 +125,7 @@ export default function QHSEPage() {
 
               {/* Right Media */}
               <div className="lg:col-span-5">
-                <div className="relative h-96 border border-hairline bg-page overflow-hidden">
+                <div className="relative h-96 border border-hairline bg-page rounded-2xl overflow-hidden shadow-subtle">
                   <Image
                     src="/images/content/qhse.jpg"
                     alt="Rigorous QHSE Site Safety Inspection"
@@ -133,7 +133,7 @@ export default function QHSEPage() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5 p-4 border border-white/20 bg-black/75 backdrop-blur-md">
+                  <div className="absolute bottom-5 left-5 right-5 p-4 border border-white/20 bg-black/75 backdrop-blur-md rounded-xl">
                     <p className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono-tech">
                       {locale === "en" ? "PROACTIVE RISK MITIGATION" : "الوقاية الاستباقية من المخاطر"}
                     </p>
@@ -168,7 +168,7 @@ export default function QHSEPage() {
               {safetyProtocols.map((sp, idx) => (
                 <div
                   key={idx}
-                  className="p-8 border border-hairline bg-surface flex flex-col justify-between space-y-4 hover:border-brand-cobalt transition-colors duration-200"
+                  className="p-8 border border-hairline bg-surface rounded-2xl flex flex-col justify-between space-y-4 hover:border-brand-cobalt transition-all duration-200 shadow-subtle hover:shadow-card-hover"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">

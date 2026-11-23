@@ -119,7 +119,7 @@ export default function InfrastructurePage() {
 
               {/* Right Media Box */}
               <div className="lg:col-span-5">
-                <div className="relative h-96 border border-hairline bg-page overflow-hidden">
+                <div className="relative h-96 border border-hairline bg-page rounded-2xl overflow-hidden shadow-subtle">
                   <Image
                     src="/images/content/infrastructure.jpg"
                     alt="Civil Infrastructure Project"
@@ -127,7 +127,7 @@ export default function InfrastructurePage() {
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5 p-4 border border-white/20 bg-black/75 backdrop-blur-md">
+                  <div className="absolute bottom-5 left-5 right-5 p-4 border border-white/20 bg-black/75 backdrop-blur-md rounded-xl">
                     <p className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono-tech">
                       {locale === "en" ? "FULL QUALITY CONTROL REGIME" : "مراقبة جودة ميدانية شاملة"}
                     </p>
@@ -162,7 +162,7 @@ export default function InfrastructurePage() {
               {services.map((item, idx) => (
                 <div
                   key={idx}
-                  className="p-8 border border-hairline bg-surface flex flex-col justify-between space-y-6 hover:border-brand-cobalt transition-colors duration-200"
+                  className="p-8 border border-hairline bg-surface rounded-2xl flex flex-col justify-between space-y-6 hover:border-brand-cobalt transition-all duration-200 shadow-subtle hover:shadow-card-hover"
                 >
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
