@@ -357,6 +357,11 @@ const BANNED_PATTERNS: { pattern: RegExp; reason: string }[] = [
   { pattern: /\+966\s*17\s*322\s*9527/, reason: "Pending client landline number" },
   { pattern: /\+966173229527/, reason: "Pending client landline number" },
   { pattern: /href=["']\/admin\/suppliers["']/i, reason: "Admin portal link exposed in public navigation" },
+  { pattern: /\bzero-harm\b/i, reason: "Unverified marketing safety claim" },
+  { pattern: /national address filings/i, reason: "Expired document must not be offered for public download" },
+  { pattern: /\bbottlenecks?\b/i, reason: "Prohibited colloquial marketing term" },
+  { pattern: /VERIFIED SCOPE BULLETS/i, reason: "Internal data label exposed in production UI" },
+  { pattern: /\bverified partner\b/i, reason: "Prohibited unverified endorsement label" },
 ];
 
 function scanDirectory(dir: string) {

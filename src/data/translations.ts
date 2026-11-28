@@ -84,7 +84,7 @@ export const translations = {
       badge: "Core Divisions",
       headline: "Four Integrated Infrastructure Capabilities",
       subheadline:
-        "We deliver synchronized contracting support services engineered to resolve critical site bottlenecks and accelerate project velocity.",
+        "We deliver synchronized contracting support services engineered to resolve critical site challenges and accelerate project velocity.",
       viewDetails: "View Full Capability Scope",
       items: [
         {
@@ -302,7 +302,7 @@ export const translations = {
       quickLinks: "Quick Navigation",
       divisions: "Core Capabilities",
       governance: "Compliance & Legal",
-      headquarters: "Registered Office",
+      registeredOffice: "Registered Office",
       rights: "All rights reserved. Aevoryn Services & Contracting Co.",
       crNotice: `Commercial Registration No. ${getVerified(legalIdentityFacts.crNumber)} | Kingdom of Saudi Arabia`,
     },
@@ -612,7 +612,7 @@ export const translations = {
       quickLinks: "روابط سريعة",
       divisions: "القطاعات والخدمات",
       governance: "الحوكمة والامتثال",
-      headquarters: "المقر المسجل",
+      registeredOffice: "المقر المسجل",
       rights: "جميع الحقوق محفوظة. شركة ايفورين للخدمات والمقاولات.",
       crNotice: `سجل تجاري رقم ${getVerified(legalIdentityFacts.crNumber)} | المملكة العربية السعودية`,
     },

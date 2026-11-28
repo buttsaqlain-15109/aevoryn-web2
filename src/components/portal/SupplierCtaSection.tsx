@@ -113,22 +113,22 @@ export function SupplierCtaSection() {
 
               <p className="text-sm text-secondary font-body leading-relaxed">
                 {locale === "en"
-                  ? "Access and download authenticated Commercial Registration (CR 7054401679), Saudi Aramco vendor verification (10120422), ISO 9001/14001/45001 certificates, and national address filings."
-                  : "استعرض وحمّل شهادات السجل التجاري، وسجل المورد المعتمد لدى أرامكو السعودية، وشهادات الأيزو الدولية، وإثباتات العنوان الوطني."}
+                  ? "Access authenticated Commercial Registration (CR 7054401679), Saudi Aramco supplier registration letter (10120422), and ISO 9001/14001/45001 certificates."
+                  : "استعرض شهادات السجل التجاري، وخطاب المورد المسجل لدى أرامكو السعودية، وشهادات الأيزو الدولية المعتمدة."}
               </p>
 
               <div className="p-3.5 rounded bg-surface border border-border text-xs font-mono text-secondary space-y-1">
                 <div className="flex items-center justify-between">
                   <span>CR: 7054401679</span>
-                  <span className="text-emerald-500 font-bold">VERIFIED</span>
+                  <span className="text-secondary font-mono">Ministry of Commerce</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>Aramco Code: 10120422</span>
-                  <span className="text-emerald-500 font-bold">ACTIVE</span>
+                  <span className="text-secondary font-mono">Service Provider</span>
                 </div>
                 <div className="flex items-center justify-between">
                   <span>ISO 9001 • 14001 • 45001</span>
-                  <span className="text-emerald-500 font-bold">ACCREDITED</span>
+                  <span className="text-secondary font-mono">Vatsin Certified</span>
                 </div>
               </div>
             </div>

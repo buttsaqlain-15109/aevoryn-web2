@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/config/site";
 import type { Metadata } from "next";
 import AdminSuppliersClient from "./AdminSuppliersClient";
 
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     follow: false,
   },
   alternates: {
-    canonical: "https://aevoryn-web-17d.pages.dev/admin/suppliers",
+    canonical: `${SITE_URL}/admin/suppliers`,
   },
 };
 

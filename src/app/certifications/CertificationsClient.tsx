@@ -72,8 +72,8 @@ export default function CertificationsClient() {
               </div>
               <p className="text-xs sm:text-sm text-secondary leading-relaxed font-body">
                 {locale === "en"
-                  ? "All displayed certificate numbers (ISO 45001: VC23032689, ISO 9001: VC23018822, ISO 14001: VC23022982) correspond to official audit records registered on 04 August 2026 and valid through 03 August 2029. In compliance with corporate transparency guidelines, administrative verification notes that the certified operational site is situated in Baish, Jizan Region, while corporate governance and contracting reside at our Riyadh headquarters."
-                  : "تتوافق كافة أرقام الشهادات المعروضة (ISO 45001: VC23032689، وISO 9001: VC23018822، وISO 14001: VC23022982) مع سجلات التدقيق الرسمية المسجلة بتاريخ 04 أغسطس 2026 والصالحة حتى 03 أغسطس 2029. والتزاماً بالشفافية المؤسسية، يُشار إلى أن المنشأة التشغيلية المعتمدة تقع في بيش بمنطقة جازان، في حين يتولى المقر الرئيسي بالرياض إدارة كافة العمليات التعاقدية."}
+                  ? "All displayed certificate numbers (ISO 45001: VC23032689, ISO 9001: VC23018822, ISO 14001: VC23022982) correspond to official audit records registered on 04 August 2026 and valid through 03 August 2029. In compliance with corporate transparency guidelines, administrative verification notes that the certified operational site is situated in Baish, Jizan Region, Saudi Arabia."
+                  : "تتوافق كافة أرقام الشهادات المعروضة (ISO 45001: VC23032689، وISO 9001: VC23018822، وISO 14001: VC23022982) مع سجلات التدقيق الرسمية المسجلة بتاريخ 04 أغسطس 2026 والصالحة حتى 03 أغسطس 2029. والتزاماً بالشفافية المؤسسية، يُشار إلى أن المنشأة التشغيلية المعتمدة تقع في بيش بمنطقة جازان بالمملكة العربية السعودية."}
               </p>
             </div>
           </div>

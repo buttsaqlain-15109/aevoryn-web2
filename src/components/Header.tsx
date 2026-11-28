@@ -125,19 +125,19 @@ export function Header() {
   return (
     <>
       {/* Top Credentials Micro-bar */}
-      <div className="bg-[#0B1728] text-white text-[11px] py-2 border-b border-neutral-800 relative z-40">
+      <div className="bg-[#0B1728] text-white text-[11px] py-2 border-b border-neutral-800 relative z-40 overflow-hidden">
         <div className="site-container flex items-center justify-between gap-3 font-mono-tech">
-          <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-none py-0.5">
+          <div className="flex items-center gap-2 overflow-x-auto whitespace-nowrap scrollbar-none py-0.5 max-w-full">
             <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold flex-shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
               {locale === "en" ? "ARAMCO VENDOR:" : "مورد أرامكو:"}
             </span>
             <span className="text-white font-mono font-bold flex-shrink-0">10120422</span>
-            <span className="text-neutral-600 hidden sm:inline">//</span>
+            <span className="text-neutral-500 hidden sm:inline">•</span>
             <span className="text-neutral-300 hidden sm:inline font-mono flex-shrink-0">
               ISO 9001 • 14001 • 45001
             </span>
-            <span className="text-neutral-600 hidden md:inline">//</span>
+            <span className="text-neutral-500 hidden md:inline">•</span>
             <span className="text-neutral-400 hidden md:inline flex-shrink-0">
               CR: <strong className="text-neutral-200 font-mono">7054401679</strong>
             </span>
@@ -158,23 +158,23 @@ export function Header() {
         </div>
       </div>
 
-      {/* Main Corporate Header (Height 80px-88px, 3 Structured Zones) */}
+      {/* Main Corporate Header (Height 76px-84px, 3 Structured Zones) */}
       <header
         className={`sticky top-0 z-40 transition-all duration-200 ${
           isScrolled
-            ? "bg-page/95 backdrop-blur-md border-b border-hairline shadow-sm"
+            ? "bg-page/95 backdrop-blur-md border-b border-hairline shadow-1"
             : "bg-page border-b border-hairline"
         }`}
       >
         <div className="site-container">
-          <div className="flex items-center justify-between h-[80px] lg:h-[88px] gap-3">
+          <div className="flex items-center justify-between h-[76px] lg:h-[84px] gap-4">
             {/* ZONE 1: LEFT: Official Brand Identity and Wordmark */}
             <Link
               href="/"
-              className="flex items-center gap-3 group flex-shrink-0"
+              className="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0"
               aria-label="Aevoryn Services & Contracting Co."
             >
-              <div className="relative w-11 h-11 lg:w-12 lg:h-12 rounded-xl overflow-hidden p-1 bg-white border border-hairline shadow-sm transition-transform duration-300 group-hover:scale-105 flex items-center justify-center flex-shrink-0">
+              <div className="relative w-10 h-10 lg:w-11 lg:h-11 rounded-xl overflow-hidden p-1 bg-white border border-hairline shadow-1 transition-transform duration-300 group-hover:scale-105 flex items-center justify-center flex-shrink-0">
                 <Image
                   src="/images/branding/aevoryn-logo.png"
                   alt="Aevoryn Emblem"
@@ -184,17 +184,17 @@ export function Header() {
                 />
               </div>
               <div className="flex flex-col justify-center">
-                <span className="font-display text-2xl lg:text-[26px] tracking-tight text-primary leading-none">
+                <span className="font-display text-xl sm:text-2xl lg:text-[25px] tracking-tight text-primary leading-none">
                   AEVORYN
                 </span>
-                <span className="font-body text-[10px] lg:text-[10.5px] font-semibold text-secondary tracking-[0.14em] uppercase pt-1 block leading-none">
+                <span className="font-body text-[9.5px] sm:text-[10px] font-semibold text-secondary tracking-[0.12em] uppercase pt-1 hidden xs:block leading-none">
                   {locale === "en" ? "SERVICES & CONTRACTING CO." : "للخدمات والمقاولات"}
                 </span>
               </div>
             </Link>
 
             {/* ZONE 2: CENTER: Clean Grouped Desktop Navigation */}
-            <nav className="hidden xl:flex items-center justify-center gap-5 2xl:gap-6 font-body text-[13.5px] font-medium text-secondary">
+            <nav className="hidden xl:flex items-center justify-center gap-6 2xl:gap-7 font-body text-[13.5px] font-medium text-secondary">
               <Link
                 href="/about"
                 className={`py-2 whitespace-nowrap transition-colors hover:text-cobalt-accent ${

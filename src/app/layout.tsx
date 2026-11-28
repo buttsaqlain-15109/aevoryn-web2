@@ -32,8 +32,10 @@ const ibmPlexSansArabic = IBM_Plex_Sans_Arabic({
   display: "swap",
 });
 
+import { SITE_URL, SITE_NAME } from "@/config/site";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://aevoryn-web-17d.pages.dev"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Aevoryn Services & Contracting Co. | Industrial Infrastructure & Support",
     template: "%s | Aevoryn Services & Contracting Co.",
@@ -55,8 +57,8 @@ export const metadata: Metadata = {
     title: "Aevoryn Services & Contracting Co. | Industrial Infrastructure & Support",
     description:
       "Civil infrastructure support, certified manpower, materials and heavy equipment across Saudi Arabia. Aramco Vendor Code: 10120422. Triple ISO certified.",
-    url: "https://aevoryn-web-17d.pages.dev",
-    siteName: "Aevoryn Services & Contracting Co.",
+    url: SITE_URL,
+    siteName: SITE_NAME,
     images: [
       {
         url: "/images/branding/aevoryn-logo.png",

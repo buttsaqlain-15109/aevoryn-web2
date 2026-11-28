@@ -29,9 +29,9 @@ body {
   transition: background-color var(--transition-base), color var(--transition-base);
 }
 
-/* Headings inherit Anton display font */
+/* Headings inherit Anton display font and inherit container color */
 h1, h2, h3 {
-  color: var(--text-primary);
+  color: inherit;
 }
 
 /* Custom Minimalist Scrollbar */

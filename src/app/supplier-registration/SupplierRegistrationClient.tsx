@@ -291,6 +291,7 @@ export default function SupplierRegistrationClient() {
                     <button
                       key={st.num}
                       type="button"
+                      aria-label={locale === "en" ? st.labelEn : st.labelAr}
                       onClick={() => {
                         if (isDone) setCurrentStep(st.num);
                       }}
@@ -375,7 +376,7 @@ export default function SupplierRegistrationClient() {
                         required
                         value={form.companyName}
                         onChange={handleInputChange}
-                        placeholder={locale === "en" ? "e.g. Al-Riyadh Heavy Equipment Co." : "مثال: شركة الرياض للمعدات الثقيلة"}
+                        placeholder={locale === "en" ? "e.g. Modern Equipment Supply Co." : "مثال: شركة المعدات الحديثة"}
                         className="w-full px-4 py-3 rounded border border-border bg-surface text-primary text-sm font-body focus:outline-none focus:ring-2 focus:ring-accent"
                       />
                     </div>

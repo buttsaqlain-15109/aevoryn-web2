@@ -32,18 +32,18 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
               </span>
             </div>
 
-            {/* Direct Engineering Headline with Balanced Typography (No Orphaned Ampersands) */}
+            {/* Direct Engineering Headline with Balanced Typography */}
             <div className="space-y-1">
               <h1 className="text-hero-display text-primary font-display tracking-tight leading-[0.98]">
                 {locale === "en" ? (
                   <>
-                    <span className="block">CIVIL INFRASTRUCTURE</span>
-                    <span className="block text-secondary">&amp;&nbsp;CONTRACTING SUPPORT.</span>
+                    <span className="block">INTEGRATED INFRASTRUCTURE</span>
+                    <span className="block text-secondary">SUPPORT SERVICES.</span>
                   </>
                 ) : (
                   <>
-                    <span className="block">دعم البنية التحتية</span>
-                    <span className="block text-secondary">والمقاولات المدنية.</span>
+                    <span className="block">خدمات متكاملة</span>
+                    <span className="block text-secondary">لدعم البنية التحتية.</span>
                   </>
                 )}
               </h1>
@@ -52,8 +52,8 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
             {/* Direct, Concrete Engineering Copy: What we do, for whom, proof */}
             <p className="body-large text-secondary leading-relaxed max-w-[620px]">
               {locale === "en"
-                ? "Aevoryn Services & Contracting Co. provides project development support, manpower supply, construction materials supply, and equipment supply to commercial contractors and industrial developers across Saudi Arabia. Aramco Vendor Code 10120422. Triple ISO certified (9001, 14001, 45001)."
-                : "توفر شركة إيفورين للخدمات والمقاولات دعم وتطوير المشاريع، والكوادر الفنية، وتوريد مواد البناء، ومعدات المشاريع للمقاولين والمطورين بالمملكة. مسجلة لدى أرامكو برمز مورد 10120422 وحاصلة على اعتمادات الآيزو 9001 و14001 و45001."}
+                ? "Aevoryn Services & Contracting Co. provides project development support, manpower supply, construction materials supply, and equipment supply as a trusted partner to contractors, developers, and industrial clients across Saudi Arabia. Aramco Vendor Code 10120422. Triple ISO certified (9001, 14001, 45001)."
+                : "توفر شركة إيفورين للخدمات والمقاولات دعم وتطوير المشاريع، والكوادر الفنية، وتوريد مواد البناء، ومعدات المشاريع كشريك موثوق للمقاولين والمطورين بالمملكة. مسجلة لدى أرامكو برمز مورد 10120422 وحاصلة على اعتمادات الآيزو 9001 و14001 و45001."}
             </p>
 
             {/* Action Buttons */}
@@ -116,7 +116,7 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
                 <div className="absolute bottom-4 left-4 right-4 text-white text-xs space-y-1">
                   <div className="flex items-center gap-2 font-mono-tech text-[11px] text-emerald-400 font-bold uppercase">
                     <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                    <span>{locale === "en" ? "Active Jobsite Fleet Operations" : "عمليات الأسطول الميداني"}</span>
+                    <span>{locale === "en" ? "Equipment Fleet & Jobsite Mobilization" : "حشد المعدات والعمليات الميدانية"}</span>
                   </div>
                   <p className="text-neutral-200 text-xs font-body">
                     {locale === "en"

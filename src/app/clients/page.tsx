@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/config/site";
 import type { Metadata } from "next";
 import ClientsClient from "./ClientsClient";
 
@@ -5,12 +6,12 @@ export const metadata: Metadata = {
   title: "Contracting Partners & Project Collaborations",
   description: "Field collaboration record and industrial partnerships across energy, industrial construction, and civil infrastructure projects throughout the Kingdom of Saudi Arabia.",
   alternates: {
-    canonical: "https://aevoryn-web-17d.pages.dev/clients",
+    canonical: `${SITE_URL}/clients`,
   },
   openGraph: {
     title: "Contracting Partners & Project Collaborations",
     description: "Field collaboration record and industrial partnerships across energy, industrial construction, and civil infrastructure projects throughout the Kingdom of Saudi Arabia.",
-    url: "https://aevoryn-web-17d.pages.dev/clients",
+    url: `${SITE_URL}/clients`,
     siteName: "Aevoryn Services & Contracting Co.",
     locale: "en_US",
     type: "website",

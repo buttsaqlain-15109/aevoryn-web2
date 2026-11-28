@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/config/site";
 import type { Metadata } from "next";
 import { HomeClient } from "./HomeClient";
 
@@ -6,13 +7,13 @@ export const metadata: Metadata = {
   description:
     "Aevoryn Services & Contracting Co. (CR 7054401679) provides project development support, manpower supply, construction materials supply, and equipment supply across Saudi Arabia. Aramco Vendor Code: 10120422. Triple ISO certified.",
   alternates: {
-    canonical: "https://aevoryn-web-17d.pages.dev/",
+    canonical: `${SITE_URL}/`,
   },
   openGraph: {
     title: "Civil Infrastructure & Contracting Support | Aevoryn Services & Contracting Co.",
     description:
       "Aevoryn Services & Contracting Co. (CR 7054401679) provides project development support, manpower supply, construction materials supply, and equipment supply across Saudi Arabia. Aramco Vendor Code: 10120422.",
-    url: "https://aevoryn-web-17d.pages.dev/",
+    url: `${SITE_URL}/`,
     siteName: "Aevoryn Services & Contracting Co.",
     images: [
       {

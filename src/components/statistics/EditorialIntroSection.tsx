@@ -57,7 +57,7 @@ export function EditorialIntroSection() {
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
             <span className="label-tech text-secondary text-[11px]">
-              {locale === "en" ? "CORPORATE OVERVIEW // INSTITUTIONAL CAPABILITY" : "نبذة عامة // القدرات المؤسسية"}
+              {locale === "en" ? "CORPORATE OVERVIEW • INSTITUTIONAL CAPABILITY" : "نبذة عامة • القدرات المؤسسية"}
             </span>
           </div>
           <span className="label-tech text-muted text-[11px] hidden sm:inline">
@@ -109,13 +109,13 @@ export function EditorialIntroSection() {
             <div className="space-y-4 body-large text-secondary">
               <p className="text-primary font-medium text-lg lg:text-xl leading-relaxed">
                 {locale === "en"
-                  ? "Aevoryn Services & Contracting Co. operates as a strategic execution and logistics partner for prime engineering, procurement, and construction leaders across Saudi Arabia."
-                  : "تعمل شركة إيفورين للخدمات والمقاولات كشريك تنفيذي ولوجستي استراتيجي لكبرى شركات الهندسة والمقاولات والمشاريع الكبرى في المملكة العربية السعودية."}
+                  ? "Aevoryn Services & Contracting Co. operates as a strategic execution and logistics partner for engineering, procurement, and contracting leaders across Saudi Arabia."
+                  : "تعمل شركة إيفورين للخدمات والمقاولات كشريك تنفيذي ولوجستي استراتيجي لشركات الهندسة والمقاولات بالمملكة العربية السعودية."}
               </p>
               <p>
                 {locale === "en"
-                  ? "We solve core operational bottlenecks on civil and energy jobsites by coordinating project support, mobilizing compliant workforce disciplines, supplying verified construction materials, and deploying maintained plant fleets."
-                  : "نتولى إزالة العقبات الميدانية واللوجستية في مواقع المشاريع من خلال التنسيق التشغيلي، وتوفير الكوادر المهنية المؤهلة، وتوريد مواد البناء المعتمدة، وتشغيل أساطيل الآليات والمعدات."}
+                  ? "We address operational demands on civil and industrial jobsites by coordinating project support, mobilizing compliant workforce disciplines, supplying verified construction materials, and deploying maintained plant fleets."
+                  : "نلبي المتطلبات التشغيلية في مواقع المشاريع من خلال التنسيق، وتوفير الكوادر المهنية المؤهلة، وتوريد مواد البناء المعتمدة، وتشغيل أساطيل الآليات والمعدات."}
               </p>
             </div>
 

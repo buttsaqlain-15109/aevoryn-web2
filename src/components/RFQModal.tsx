@@ -22,7 +22,7 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
     email: "",
     phone: "",
     division: "infrastructure",
-    location: "Riyadh",
+    location: "",
     message: "",
   });
 
@@ -72,8 +72,8 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
               </h3>
               <p className="label-tech text-[10px] text-muted">
                 {locale === "en"
-                  ? "AEVORYN COMMERCIAL ESTIMATION TEAM // SAUDI ARABIA"
-                  : "فريق التقدير التجاري وإدارة المشاريع // المملكة العربية السعودية"}
+                  ? "AEVORYN COMMERCIAL ESTIMATION TEAM • SAUDI ARABIA"
+                  : "فريق التقدير التجاري وإدارة المشاريع • المملكة العربية السعودية"}
               </p>
             </div>
           </div>
@@ -99,8 +99,8 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
               </h4>
               <p className="body-regular text-secondary max-w-md mx-auto leading-relaxed text-sm">
                 {locale === "en"
-                  ? "Thank you for contacting Aevoryn Services & Contracting Co. Our commercial management team in Riyadh has received your specifications and will respond promptly."
-                  : "شكراً لتواصلكم مع شركة إيفورين للخدمات والمقاولات. لقد استلم فريقنا التجاري بالرياض متطلباتكم وسيتواصل معكم في أقرب وقت."}
+                  ? "Thank you for contacting Aevoryn Services & Contracting Co. Our commercial management team has received your specifications and will respond promptly."
+                  : "شكراً لتواصلكم مع شركة إيفورين للخدمات والمقاولات. لقد استلم فريقنا التجاري متطلباتكم وسيتواصل معكم في أقرب وقت."}
               </p>
               {rfqRef && (
                 <div className="p-3 border border-hairline bg-surface max-w-xs mx-auto">
@@ -222,7 +222,7 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
                     type="text"
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                    placeholder={locale === "en" ? "e.g., Riyadh, Eastern Province, NEOM" : "مثال: الرياض، المنطقة الشرقية"}
+                    placeholder={locale === "en" ? "e.g., Jazan, Eastern Province, NEOM" : "مثال: جازان، المنطقة الشرقية، نيوم"}
                     className="form-input-editorial"
                   />
                 </div>
@@ -248,7 +248,7 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
 
               <div className="pt-3 flex items-center justify-between">
                 <span className="label-tech text-[10px] text-muted">
-                  CR: 7054401679 // ARAMCO: 10120422
+                  CR: 7054401679 • ARAMCO: 10120422
                 </span>
 
                 <button

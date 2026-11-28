@@ -64,7 +64,7 @@ export function Footer() {
                       Saudi Aramco Registered Vendor
                     </span>
                     <span className="text-[11px] text-emerald-400 font-mono">
-                      Vendor Code: 10120422 // E-Ref: 0019448
+                      Vendor Code: 10120422 • E-Ref: 0019448
                     </span>
                   </div>
                 </div>
@@ -221,12 +221,12 @@ export function Footer() {
           </div>
 
           {/* Bottom Sub-footer */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono-tech text-[11px] text-neutral-500">
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono-tech text-[11px] text-neutral-400">
             <p>
               © 2026 AEVORYN SERVICES & CONTRACTING CO. ALL RIGHTS RESERVED.
             </p>
             <p className="font-mono">
-              CR: <strong className="text-neutral-400">7054401679</strong> // BAISH, KINGDOM OF SAUDI ARABIA
+              CR: <strong className="text-neutral-400">7054401679</strong> • BAISH, KINGDOM OF SAUDI ARABIA
             </p>
           </div>
         </div>

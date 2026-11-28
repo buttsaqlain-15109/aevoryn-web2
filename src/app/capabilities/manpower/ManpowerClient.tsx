@@ -76,7 +76,7 @@ export default function ManpowerClient() {
       title: locale === "en" ? "Workforce Safety & Supervision" : "سلامة وإشراف القوى العاملة",
       desc:
         locale === "en"
-          ? "Field supervision and safety inductions aligned with ISO 45001:2018 standards to maintain a proactive Zero-Harm safety culture."
+          ? "Field supervision and safety inductions aligned with ISO 45001:2018 standards to maintain a proactive Safety-First Culture."
           : "إشراف ميداني وتدريبات سلامة متوافقة مع معايير ISO 45001:2018 لترسيخ بيئة عمل آمنة وثقافة الوقاية من الحوادث.",
       specs: [
         locale === "en" ? "Experienced site supervisors ensuring safe execution" : "مشرفون ميدانيون لضمان أداء الأعمال بأمان تام",

@@ -1,7 +1,7 @@
 /**
  * AEVORYN 3D DOTTED GLOBE ENGINE
  * High-performance HTML Canvas 3D Fibonacci sphere with geographic landmass sampling,
- * Riyadh headquarters beacon, atmospheric rim glow, and inertia rotation.
+ * registered facility beacon, atmospheric rim glow, and inertia rotation.
  */
 
 export interface GlobePoint {
@@ -117,11 +117,11 @@ export function generateGlobePoints(count: number = 2800): GlobePoint[] {
 }
 
 /**
- * Converts Riyadh coordinates (24.7136° N, 46.6753° E) to unit sphere vector
+ * Converts registered Baish facility coordinates (17.37° N, 42.53° E) to unit sphere vector
  */
-export function getRiyadhCoordinates(): { x: number; y: number; z: number } {
-  const latRad = 24.7136 * (Math.PI / 180);
-  const lngRad = 46.6753 * (Math.PI / 180);
+export function getFacilityCoordinates(): { x: number; y: number; z: number } {
+  const latRad = 17.37 * (Math.PI / 180);
+  const lngRad = 42.53 * (Math.PI / 180);
 
   const y = Math.sin(latRad);
   const cosLat = Math.cos(latRad);

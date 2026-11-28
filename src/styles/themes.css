@@ -6,20 +6,20 @@
 
 :root {
   /* =========================================================================
-     DAY MODE: Corporate Clean Industrial
+     DAY MODE: Corporate Clean Industrial (WCAG AAA/AA Compliant)
      ========================================================================= */
   --bg-page: #FFFFFF;
   --bg-surface: #FFFFFF;
-  --bg-subtle: #F8F9FA;
-  --bg-wash: #F1F3F5;
+  --bg-subtle: #F8FAFC;
+  --bg-wash: #F1F5F9;
   --bg-dark-section: #0B1728;
 
-  --text-primary: #111827;
-  --text-secondary: #475569;
-  --text-muted: #64748B;
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #475569;
   --text-inverse: #FFFFFF;
 
-  --border-hairline: #DCE2EA;
+  --border-hairline: #CBD5E1;
   --border-subtle: #E2E8F0;
   --border-focus: #123D70;
 
@@ -35,40 +35,53 @@
 
   --nav-bg: #FFFFFF;
   --card-bg: #FFFFFF;
-  --card-hover-bg: #F8F9FA;
+  --card-hover-bg: #F8FAFC;
+
+  --shadow-1: 0 1px 2px rgba(15, 23, 42, 0.05);
+  --shadow-2: 0 2px 4px -1px rgba(15, 23, 42, 0.06), 0 1px 2px -1px rgba(15, 23, 42, 0.04);
+  --shadow-3: 0 4px 8px -2px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-4: 0 8px 16px -4px rgba(15, 23, 42, 0.08), 0 4px 6px -2px rgba(15, 23, 42, 0.03);
+  --shadow-5: 0 16px 24px -6px rgba(15, 23, 42, 0.1), 0 6px 12px -4px rgba(15, 23, 42, 0.04);
 }
 
 [data-theme="dark"],
 .dark {
   /* =========================================================================
-     NIGHT MODE: Deep Industrial Charcoal & Navy
+     NIGHT MODE: Deep Industrial Charcoal & Navy (WCAG AAA/AA Compliant)
      ========================================================================= */
-  --bg-page: #0B131E;
-  --bg-surface: #111C2B;
+  --bg-page: #0B1320;
+  --bg-surface: #111C2E;
   --bg-subtle: #172436;
   --bg-wash: #152233;
   --bg-dark-section: #070D15;
 
   --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
-  --text-inverse: #0B131E;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --text-inverse: #0B1320;
 
   --border-hairline: #1E2D42;
   --border-subtle: #2A3C55;
   --border-focus: #3B82F6;
 
-  --brand-navy: #2B6CB0;
-  --brand-cobalt: #2B6CB0;
-  --brand-accent: #2B6CB0;
-  --brand-accent-hover: #3182CE;
+  --brand-navy: #1D4ED8;
+  --brand-cobalt: #1D4ED8;
+  --brand-accent: #1D4ED8;
+  --brand-accent-hover: #2563EB;
   --brand-accent-subtle: #162B44;
 
-  --cobalt-accent: #2B6CB0;
-  --cobalt-hover: #3182CE;
+  --cobalt-accent: #1D4ED8;
+  --cobalt-hover: #2563EB;
   --cobalt-glow: transparent;
 
-  --nav-bg: #0B131E;
-  --card-bg: #111C2B;
+  --nav-bg: #0B1320;
+  --card-bg: #111C2E;
   --card-hover-bg: #172436;
+
+  /* Ambient 1px edge highlight so elevation is visible against dark surfaces */
+  --shadow-1: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-2: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-3: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 4px 8px rgba(0, 0, 0, 0.6);
+  --shadow-4: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 8px 16px rgba(0, 0, 0, 0.65);
+  --shadow-5: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 16px 24px rgba(0, 0, 0, 0.75);
 }

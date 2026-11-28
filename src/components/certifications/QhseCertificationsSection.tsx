@@ -73,7 +73,7 @@ export function QhseCertificationsSection() {
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
               <span className="label-tech text-secondary text-[11px]">
-                {locale === "en" ? "TRIPLE ISO CERTIFICATIONS // QHSE STANDARDS" : "شهادات الآيزو الثلاثية // معايير الجودة والسلامة"}
+                {locale === "en" ? "TRIPLE ISO CERTIFICATIONS • QHSE STANDARDS" : "شهادات الآيزو الثلاثية • معايير الجودة والسلامة"}
               </span>
             </div>
             <span className="label-tech text-muted text-[11px] hidden sm:inline">
@@ -101,8 +101,8 @@ export function QhseCertificationsSection() {
             <div className="lg:col-span-4">
               <p className="body-regular text-secondary text-sm leading-relaxed">
                 {locale === "en"
-                  ? "Independently audited management systems certified through 2029. We embed Zero-Harm safety culture across all contracting operations."
-                  : "أنظمة إدارة مدققة وموثقة حتى عام 2029 من جهات اعتماد مستقلة، مع ترسيخ ثقافة 'صفر حوادث' في كافة العمليات."}
+                  ? "Independently audited management systems certified through 2029. We embed a Safety-First Culture across all contracting operations."
+                  : "أنظمة إدارة مدققة وموثقة حتى عام 2029 من جهات اعتماد مستقلة، مع ترسيخ ثقافة السلامة أولاً في كافة العمليات."}
               </p>
             </div>
           </div>
@@ -180,8 +180,8 @@ export function QhseCertificationsSection() {
               </span>
               <p className="text-xs text-secondary leading-relaxed font-body">
                 {locale === "en"
-                  ? "All displayed certificate numbers (VC23032689, VC23018822, VC23022982) are officially registered by Vatsin Certification Private Limited (valid 04 August 2026 to 03 August 2029). The certified site facility is situated in Baish, Jizan Region, while corporate contracting and executive operations are executed from our Riyadh headquarters."
-                  : "تتوافق كافة أرقام الشهادات المعروضة مع سجلات التدقيق الرسمية لهيئة Vatsin Certification (صالحة من 04 أغسطس 2026 إلى 03 أغسطس 2029). تقع المنشأة التشغيلية المعتمدة في بيش بمنطقة جازان، وتتم التعاقدات والعمليات التنفيذية عبر المقر الرئيسي بالرياض."}
+                  ? "All displayed certificate numbers (VC23032689, VC23018822, VC23022982) are officially registered by Vatsin Certification Private Limited (valid 04 August 2026 to 03 August 2029). The certified site facility is situated in Baish, Jizan Region, Saudi Arabia."
+                  : "تتوافق كافة أرقام الشهادات المعروضة مع سجلات التدقيق الرسمية لهيئة Vatsin Certification (صالحة من 04 أغسطس 2026 إلى 03 أغسطس 2029). تقع المنشأة التشغيلية المعتمدة في بيش بمنطقة جازان بالمملكة العربية السعودية."}
               </p>
             </div>
           </div>

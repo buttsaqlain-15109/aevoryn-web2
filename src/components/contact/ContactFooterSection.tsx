@@ -20,11 +20,11 @@ export function ContactFooterSection() {
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
               <span className="label-tech text-secondary text-[11px]">
-                {locale === "en" ? "CONTACT & ESTIMATION // COMMERCIAL INQUIRIES" : "التواصل وبدء التعاقد // الاستفسارات التجارية"}
+                {locale === "en" ? "CONTACT & ESTIMATION • COMMERCIAL INQUIRIES" : "التواصل وبدء التعاقد • الاستفسارات التجارية"}
               </span>
             </div>
             <span className="label-tech text-muted text-[11px] hidden sm:inline">
-              BAISH REGISTERED OFFICE // PROJECT MOBILIZATION
+              BAISH REGISTERED FACILITY • PROJECT MOBILIZATION
             </span>
           </div>
 
@@ -47,8 +47,8 @@ export function ContactFooterSection() {
 
               <p className="body-large text-secondary leading-relaxed max-w-[620px]">
                 {locale === "en"
-                  ? "Contact our commercial estimation and operations team in Riyadh to submit project specifications, inspect equipment availability, or schedule workforce deployment across the Kingdom."
-                  : "تواصل مع فريق التقدير التجاري والعمليات الميدانية بالرياض لتقديم مواصفات المشاريع، أو الاستفسار عن جاهزية المعدات، أو جدولة حشد الكوادر الفنية بالمملكة."}
+                  ? "Contact our commercial estimation and operations team to submit project specifications, inspect equipment availability, or schedule workforce deployment across the Kingdom."
+                  : "تواصل مع فريق التقدير التجاري والعمليات الميدانية لتقديم مواصفات المشاريع، أو الاستفسار عن جاهزية المعدات، أو جدولة حشد الكوادر الفنية بالمملكة."}
               </p>
 
               <div className="flex flex-wrap items-center gap-4 pt-2">

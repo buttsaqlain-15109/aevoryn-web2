@@ -74,7 +74,7 @@ export function DocumentModal({ document, onClose }: DocumentModalProps) {
             <div>
               <h3 className="font-bold text-base text-primary font-display tracking-wide">{document.title}</h3>
               <p className="label-tech text-[10px] text-muted">
-                {document.code ? `${document.code} // ` : ""}OFFICIAL AUDIT CREDENTIAL
+                {document.code ? `${document.code} • ` : ""}OFFICIAL AUDIT CREDENTIAL
               </p>
             </div>
           </div>
@@ -206,7 +206,7 @@ export function DocumentModal({ document, onClose }: DocumentModalProps) {
             <div>
               <p className="font-bold mb-0.5 label-tech text-[10px]">FACILITY REGISTRATION DISCLOSURE</p>
               <p className="leading-relaxed opacity-90">
-                {document.locationNote} Commercial operations, client contract execution, and project mobilization reside at our confirmed Riyadh commercial headquarters.
+                {document.locationNote} Commercial operations and contract administration are conducted through our verified facility in Baish, Jazan Region.
               </p>
             </div>
           </div>

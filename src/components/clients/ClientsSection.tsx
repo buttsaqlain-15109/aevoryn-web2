@@ -19,7 +19,7 @@ export function ClientsSection() {
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
             <span className="label-tech text-secondary text-[11px]">
-              {locale === "en" ? "CLIENT REGISTER // STRATEGIC COLLABORATIONS" : "سجل العملاء // التعاون المؤسسي"}
+              {locale === "en" ? "CLIENT REGISTER • STRATEGIC COLLABORATIONS" : "سجل العملاء • التعاون المؤسسي"}
             </span>
           </div>
           <span className="label-tech text-muted text-[11px] hidden sm:inline">
@@ -71,7 +71,7 @@ export function ClientsSection() {
 
               <div className="pt-2 hairline-t">
                 <span className="label-tech text-[10px] text-muted block uppercase">
-                  {locale === "en" ? "Verified Partner" : "شريك معتمد"}
+                  {locale === "en" ? "Commercial Client" : "شريك تجاري"}
                 </span>
               </div>
             </div>

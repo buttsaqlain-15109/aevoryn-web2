@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { generateGlobePoints, getRiyadhCoordinates, GlobePoint } from "@/lib/globe-engine";
+import { generateGlobePoints, getFacilityCoordinates, GlobePoint } from "@/lib/globe-engine";
 import { useTheme } from "@/context/ThemeContext";
 
 interface GlobeCanvasProps {
@@ -49,7 +49,7 @@ export function GlobeCanvas({ className = "", size = 560 }: GlobeCanvasProps) {
 
     let animationFrameId: number;
     let pulseProgress = 0;
-    const riyadhBase = getRiyadhCoordinates();
+    const facilityBase = getFacilityCoordinates();
 
     const render = () => {
       if (!isVisibleRef.current) {
@@ -66,7 +66,7 @@ export function GlobeCanvas({ className = "", size = 560 }: GlobeCanvasProps) {
         velocityRef.current.y *= 0.95;
       }
 
-      // Smooth pulse for Riyadh beacon
+      // Smooth pulse for facility beacon
       pulseProgress = (pulseProgress + 0.02) % 1;
 
       // Handle Canvas Sizing with capped DPR
@@ -175,43 +175,43 @@ export function GlobeCanvas({ className = "", size = 560 }: GlobeCanvasProps) {
         }
       }
 
-      // 3. Render Riyadh Primary Geographic Marker
-      const rx1 = riyadhBase.x * cosY + riyadhBase.z * sinY;
-      const rz1 = -riyadhBase.x * sinY + riyadhBase.z * cosY;
-      const ry2 = riyadhBase.y * cosX - rz1 * sinX;
-      const rz2 = riyadhBase.y * sinX + rz1 * cosX;
+      // 3. Render Saudi Arabia Registered Facility Marker (Baish)
+      const rx1 = facilityBase.x * cosY + facilityBase.z * sinY;
+      const rz1 = -facilityBase.x * sinY + facilityBase.z * cosY;
+      const ry2 = facilityBase.y * cosX - rz1 * sinX;
+      const rz2 = facilityBase.y * sinX + rz1 * cosX;
 
       if (rz2 > -0.05) {
-        // Riyadh is visible on front hemisphere
-        const riyadhScreenX = cx + rx1 * globeRadius;
-        const riyadhScreenY = cy - ry2 * globeRadius;
+        // Marker is visible on front hemisphere
+        const facilityScreenX = cx + rx1 * globeRadius;
+        const facilityScreenY = cy - ry2 * globeRadius;
         const markerAlpha = Math.max(0.3, (rz2 + 0.05) / 1.05);
 
         // Expanding pulse ring
         ctx.beginPath();
-        ctx.arc(riyadhScreenX, riyadhScreenY, 4 + pulseProgress * 14, 0, Math.PI * 2);
+        ctx.arc(facilityScreenX, facilityScreenY, 4 + pulseProgress * 14, 0, Math.PI * 2);
         ctx.strokeStyle = `rgba(47, 99, 255, ${(1 - pulseProgress) * markerAlpha * 0.9})`;
         ctx.lineWidth = 1.5;
         ctx.stroke();
 
         // Solid beacon center
         ctx.beginPath();
-        ctx.arc(riyadhScreenX, riyadhScreenY, 4, 0, Math.PI * 2);
+        ctx.arc(facilityScreenX, facilityScreenY, 4, 0, Math.PI * 2);
         ctx.fillStyle = "#2F63FF";
         ctx.fill();
 
         ctx.beginPath();
-        ctx.arc(riyadhScreenX, riyadhScreenY, 2, 0, Math.PI * 2);
+        ctx.arc(facilityScreenX, facilityScreenY, 2, 0, Math.PI * 2);
         ctx.fillStyle = "#FFFFFF";
         ctx.fill();
 
         // Technical callout leader line & HUD Pill
-        const lineEndX = riyadhScreenX + 42;
-        const lineEndY = riyadhScreenY - 32;
+        const lineEndX = facilityScreenX + 42;
+        const lineEndY = facilityScreenY - 32;
 
         ctx.beginPath();
-        ctx.moveTo(riyadhScreenX, riyadhScreenY);
-        ctx.lineTo(riyadhScreenX + 16, lineEndY);
+        ctx.moveTo(facilityScreenX, facilityScreenY);
+        ctx.lineTo(facilityScreenX + 16, lineEndY);
         ctx.lineTo(lineEndX + 70, lineEndY);
         ctx.strokeStyle = `rgba(47, 99, 255, ${markerAlpha * 0.6})`;
         ctx.lineWidth = 1;
@@ -220,10 +220,10 @@ export function GlobeCanvas({ className = "", size = 560 }: GlobeCanvasProps) {
         // Callout text
         ctx.font = '500 10px var(--font-jetbrains-mono), monospace';
         ctx.fillStyle = isDark ? `rgba(244, 245, 248, ${markerAlpha})` : `rgba(17, 17, 17, ${markerAlpha})`;
-        ctx.fillText("SAUDI ARABIA • OPERATIONS", riyadhScreenX + 20, lineEndY - 6);
+        ctx.fillText("SAUDI ARABIA • BAISH FACILITY", facilityScreenX + 20, lineEndY - 6);
         ctx.font = '400 9px var(--font-jetbrains-mono), monospace';
         ctx.fillStyle = `rgba(47, 99, 255, ${markerAlpha * 0.9})`;
-        ctx.fillText("24.71° N, 46.68° E", riyadhScreenX + 20, lineEndY + 12);
+        ctx.fillText("17.37° N, 42.53° E", facilityScreenX + 20, lineEndY + 12);
       }
 
       ctx.restore();
@@ -301,7 +301,7 @@ export function GlobeCanvas({ className = "", size = 560 }: GlobeCanvasProps) {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       role="img"
-      aria-label="Interactive 3D Dotted Earth Globe featuring Riyadh Headquarters coordinates"
+      aria-label="Interactive 3D Dotted Earth Globe featuring Saudi Arabia registered facility coordinates"
     >
       <canvas
         ref={canvasRef}

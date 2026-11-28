@@ -38,8 +38,8 @@ function ThankYouContent() {
       step: "01",
       titleEn: "Compliance & Document Audit",
       titleAr: "التدقيق النظامي والمطابقة",
-      descEn: "Our Riyadh procurement team cross-checks your Commercial Registration (CR), VAT certificate, and Chamber records with official Saudi government databases within 3-5 business days.",
-      descAr: "تقوم إدارة المشتريات بالرياض بالتحقق من السجل التجاري، والشهادة الضريبية، واشتراك الغرفة التجارية عبر المنصات الحكومية الرسمية خلال 3 إلى 5 أيام عمل.",
+      descEn: "Our procurement and compliance team cross-checks your Commercial Registration (CR), VAT certificate, and Chamber records with official Saudi government databases within 3-5 business days.",
+      descAr: "تقوم إدارة المشتريات والالتزام بالتحقق من السجل التجاري، والشهادة الضريبية، واشتراك الغرفة التجارية عبر المنصات الحكومية الرسمية خلال 3 إلى 5 أيام عمل.",
     },
     {
       step: "02",

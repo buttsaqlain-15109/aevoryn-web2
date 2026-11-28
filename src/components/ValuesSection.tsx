@@ -98,7 +98,7 @@ export function ValuesSection() {
               {t("values.valuesTitle")}
             </h3>
             <span className="label-tech text-muted text-[11px]">
-              GOVERNANCE STANDARDS // 01 - 06
+              GOVERNANCE STANDARDS • 01 - 06
             </span>
           </div>
 

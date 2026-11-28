@@ -189,10 +189,12 @@ export default function ContactClient() {
                       </div>
 
                       <div>
-                        <label className="form-label-editorial">
+                        <label htmlFor="contact-division" className="form-label-editorial">
                           {t("contactPage.division")}
                         </label>
                         <select
+                          id="contact-division"
+                          aria-label={t("contactPage.division")}
                           value={formData.division}
                           onChange={(e) => setFormData({ ...formData, division: e.target.value })}
                           className="form-input-editorial"

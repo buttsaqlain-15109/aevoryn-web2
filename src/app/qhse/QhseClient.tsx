@@ -85,8 +85,8 @@ export default function QhseClient() {
                 <div className="space-y-4 text-sm sm:text-base text-secondary font-body leading-relaxed">
                   <p>
                     {locale === "en"
-                      ? "At Aevoryn Services & Contracting Co., every worker has the right to complete their shift safely. Our zero-harm policy is an active operational discipline enforced across every material consignment delivered, every machine inspected, and every tradesperson deployed on site."
-                      : "في شركة إيفورين للخدمات والمقاولات، نلتزم بحق كل عامل في العودة سالماً بعد كل وردية عمل. إن سياسة صفر حوادث لدينا هي انضباط تشغيلي ميداني صارم يُطبق على كل شحنة مواد نوردها، وكل آلية نفحصها، وكل كادر فني نحشده للميدان."}
+                      ? "At Aevoryn Services & Contracting Co., every worker has the right to complete their shift safely. Our safety-first policy is an active operational discipline enforced across every material consignment delivered, every machine inspected, and every tradesperson deployed on site."
+                      : "في شركة إيفورين للخدمات والمقاولات، نلتزم بحق كل عامل في العودة سالماً بعد كل وردية عمل. إن سياسة السلامة أولاً لدينا هي انضباط تشغيلي ميداني صارم يُطبق على كل شحنة مواد نوردها، وكل آلية نفحصها، وكل كادر فني نحشده للميدان."}
                   </p>
                   <p>
                     {locale === "en"

@@ -80,6 +80,16 @@ const BANNED_OUTPUT_PATTERNS = [
   { pattern: /\+966\s*17\s*322\s*9527/, reason: "Pending client landline number" },
   { pattern: /\+966173229527/, reason: "Pending client landline number" },
   { pattern: /info@aevoryn\.net/i, reason: "Unverified email (admin@aevoryn.net is verified)" },
+  { pattern: /\briyadh\b/i, reason: "Unverified location claim (use Baish, Jazan Region)" },
+  { pattern: /الرياض/, reason: "Unverified location claim (use Baish, Jazan Region)" },
+  { pattern: /\bheadquarters\b/i, reason: "Unverified headquarters designation" },
+  { pattern: /المقر الرئيسي/, reason: "Unverified headquarters designation" },
+  { pattern: /\bzero-harm\b/i, reason: "Unverified marketing safety claim" },
+  { pattern: /انعدام الحوادث/, reason: "Unverified marketing safety claim" },
+  { pattern: /\bverified partner\b/i, reason: "Prohibited unverified endorsement label" },
+  { pattern: /national address filings/i, reason: "Expired document must not be offered for public download" },
+  { pattern: /\bbottlenecks?\b/i, reason: "Prohibited colloquial marketing term" },
+  { pattern: /VERIFIED SCOPE BULLETS/i, reason: "Internal data label exposed in production UI" },
 ];
 
 let scannedFilesCount = 0;

@@ -20,6 +20,7 @@ export function ServicesScrollSection() {
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
 
   const divisionIcons = [Building2, HardHat, Boxes, Truck];
   const divisionImages = [
@@ -57,6 +58,15 @@ export function ServicesScrollSection() {
   }));
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
@@ -79,21 +89,23 @@ export function ServicesScrollSection() {
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#0B1728] text-white selection:bg-cobalt-accent selection:text-white"
-      style={{ minHeight: "240vh" }}
+      className="relative bg-[#0B1728] text-white selection:bg-cobalt-accent selection:text-white py-14 lg:py-0"
+      style={{ minHeight: isDesktop ? "220vh" : "auto" }}
       aria-label="Aevoryn Core Capabilities Showcase"
     >
-      <div className="sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden py-6 lg:py-10">
-        <div
-          className="absolute inset-0 z-0 flex items-center justify-start pointer-events-none select-none opacity-[0.04] whitespace-nowrap overflow-hidden"
-          style={{
-            transform: `translate3d(${isRTL ? translateXPercent * 0.4 : -translateXPercent * 0.4}%, 0, 0)`,
-          }}
-        >
-          <span className="font-display text-[24vw] leading-none uppercase tracking-tighter">
-            AEVORYN CAPABILITIES // INFRASTRUCTURE // LOGISTICS
-          </span>
-        </div>
+      <div className={isDesktop ? "sticky top-0 h-screen w-full flex flex-col justify-between overflow-hidden py-8" : "w-full space-y-10"}>
+        {isDesktop && (
+          <div
+            className="absolute inset-0 z-0 flex items-center justify-start pointer-events-none select-none opacity-[0.03] whitespace-nowrap overflow-hidden"
+            style={{
+              transform: `translate3d(${isRTL ? translateXPercent * 0.4 : -translateXPercent * 0.4}%, 0, 0)`,
+            }}
+          >
+            <span className="font-display text-[24vw] leading-none uppercase tracking-tighter">
+              AEVORYN CAPABILITIES • INFRASTRUCTURE • LOGISTICS
+            </span>
+          </div>
+        )}
 
         <div className="site-container relative z-10 w-full">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-neutral-800">
@@ -101,7 +113,7 @@ export function ServicesScrollSection() {
               <div className="flex items-center gap-2.5">
                 <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
                 <span className="label-tech text-blue-400 text-[11px]">
-                  {locale === "en" ? "CORE CAPABILITIES // FOUR DIVISIONS" : "القطاعات الرئيسية // أربعة قطاعات متكاملة"}
+                  {locale === "en" ? "CORE CAPABILITIES • FOUR DIVISIONS" : "القطاعات الرئيسية • أربعة قطاعات متكاملة"}
                 </span>
               </div>
               <h2 className="text-h2 font-display tracking-tight text-white leading-none">
@@ -127,12 +139,20 @@ export function ServicesScrollSection() {
           </div>
         </div>
 
-        <div className="relative z-10 w-full my-auto overflow-hidden py-4">
+        <div className={isDesktop ? "relative z-10 w-full my-auto overflow-hidden py-4" : "site-container relative z-10 w-full"}>
           <div
-            className="flex items-stretch gap-6 px-6 lg:px-12 transition-transform duration-75 ease-out"
-            style={{
-              transform: `translate3d(${isRTL ? translateXPercent : -translateXPercent}%, 0, 0)`,
-            }}
+            className={
+              isDesktop
+                ? "flex items-stretch gap-6 px-6 lg:px-12 transition-transform duration-75 ease-out"
+                : "grid grid-cols-1 md:grid-cols-2 gap-6 w-full"
+            }
+            style={
+              isDesktop
+                ? {
+                    transform: `translate3d(${isRTL ? translateXPercent : -translateXPercent}%, 0, 0)`,
+                  }
+                : undefined
+            }
           >
             {services.map((item, idx) => {
               const Icon = item.icon;
@@ -140,14 +160,18 @@ export function ServicesScrollSection() {
                 <div
                   key={idx}
                   data-division-card="true"
-                  className="w-[85vw] sm:w-[440px] lg:w-[460px] flex-shrink-0 bg-[#111F36] border border-neutral-800 hover:border-cobalt-accent rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group shadow-card hover:shadow-card-hover"
+                  className={
+                    isDesktop
+                      ? "w-[460px] flex-shrink-0 bg-[#111F36] border border-neutral-800 hover:border-cobalt-accent rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group shadow-card hover:shadow-card-hover"
+                      : "w-full bg-[#111F36] border border-neutral-800 hover:border-cobalt-accent rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group shadow-card"
+                  }
                 >
                   <div className="relative h-52 sm:h-56 w-full overflow-hidden bg-neutral-900 border-b border-neutral-800">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      sizes="460px"
+                      sizes="(max-width: 768px) 100vw, 460px"
                       className="object-cover filter contrast-[1.08] brightness-90 group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#111F36] via-transparent to-transparent" />
@@ -173,9 +197,9 @@ export function ServicesScrollSection() {
                       </p>
                     </div>
 
-                    <div className="pt-4 border-t border-neutral-800/80 space-y-2.5">
+                    <div className="pt-4 border-t border-neutral-800/80 space-y-2">
                       <span className="label-tech text-[10px] text-neutral-400 tracking-wider block">
-                        {locale === "en" ? "VERIFIED SCOPE BULLETS:" : "نطاق العمل المعتمد:"}
+                        {locale === "en" ? "CORE SCOPE CAPABILITIES:" : "القدرات ونطاق العمل:"}
                       </span>
                       <ul className="space-y-1.5 text-xs text-neutral-300">
                         {item.features.map((feat, fIdx) => (
@@ -200,21 +224,6 @@ export function ServicesScrollSection() {
                 </div>
               );
             })}
-          </div>
-        </div>
-
-        <div className="site-container relative z-10 w-full pt-2">
-          <div className="flex items-center justify-between text-xs text-neutral-400 pb-2 font-mono">
-            <span className="label-tech text-[10px]">SECTION TIMELINE</span>
-            <span className="label-tech font-mono text-white text-[10px]">
-              {Math.round(scrollProgress * 100)}%
-            </span>
-          </div>
-          <div className="w-full h-1 bg-neutral-800 rounded-full overflow-hidden">
-            <div
-              className="h-full bg-cobalt-accent transition-all duration-75"
-              style={{ width: `${Math.round(scrollProgress * 100)}%` }}
-            />
           </div>
         </div>
       </div>

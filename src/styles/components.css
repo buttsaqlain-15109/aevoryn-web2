@@ -157,6 +157,11 @@
   color: var(--brand-accent);
 }
 
+[data-theme="dark"] .badge-tech,
+.dark .badge-tech {
+  color: #60A5FA;
+}
+
 .badge-tech-dot {
   width: 6px;
   height: 6px;
