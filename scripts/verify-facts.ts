@@ -131,15 +131,14 @@ if (isoCertificationFacts.sharedVerbatimScopeEn.value !== REQUIRED_ISO_SCOPE) {
 }
 
 // ----------------------------------------------------------------------------
-// RULE 4: Client Registry Contains Exactly 5 Approved Names
+// RULE 4: Client Registry Contains Exactly 4 Approved Names (Aldayfe is pending_client)
 // ----------------------------------------------------------------------------
 const verifiedClients = clientFacts.verifiedList.map((c) => c.nameEn);
 const EXPECTED_CLIENTS = [
   "Alfanar",
   "Masco",
-  "Aldayfe",
   "Tamimi",
-  "China Harbour Engineering Company (CHEC)",
+  "China Harbour",
 ];
 
 if (JSON.stringify(verifiedClients) !== JSON.stringify(EXPECTED_CLIENTS)) {
@@ -150,6 +149,16 @@ if (JSON.stringify(verifiedClients) !== JSON.stringify(EXPECTED_CLIENTS)) {
     )}, got ${JSON.stringify(verifiedClients)}`,
   });
 }
+
+// Ensure no invented client scopes exist
+clientFacts.verifiedList.forEach((client: any) => {
+  if ("scope" in client || "scopeEn" in client || "projectScope" in client) {
+    violations.push({
+      type: "INVENTED_CLIENT_SCOPE",
+      message: `Client '${client.nameEn}' contains unverified project scope. Clients must have no invented scopes.`,
+    });
+  }
+});
 
 // ----------------------------------------------------------------------------
 // RULE 5: Document Expiration & Expiry Policy Check
@@ -179,18 +188,24 @@ if (fs.existsSync(docsJsonPath)) {
       }
     }
 
-    // Specific check for National Address proof
+    // Specific check for National Address proof: must be internal and not public
     if (d.id === "doc-national-address") {
+      if (d.isPublic === true) {
+        violations.push({
+          type: "EXPIRED_DOCUMENT_POLICY_VIOLATION",
+          message: "Expired National Address Certificate GEMB7140 must have isPublic: false (kept internal).",
+        });
+      }
       if (d.isCurrent !== false) {
         violations.push({
           type: "EXPIRED_DOCUMENT_POLICY_VIOLATION",
           message: "National Address Certificate GEMB7140 expired on 17/11/2026 and must have isCurrent: false.",
         });
       }
-      if (!d.status || !d.status.includes("EXPIRED")) {
+      if (!d.status || !d.status.includes("Expired 17/11/2026")) {
         violations.push({
           type: "EXPIRED_DOCUMENT_POLICY_VIOLATION",
-          message: "National Address Certificate GEMB7140 must display EXPIRED status.",
+          message: "National Address Certificate GEMB7140 must display 'Expired 17/11/2026' status.",
         });
       }
     }
@@ -203,18 +218,25 @@ if (fs.existsSync(docsJsonPath)) {
 const BANNED_PATTERNS: { pattern: RegExp; reason: string }[] = [
   { pattern: /\bproctor\b/i, reason: "Invented soil testing claim" },
   { pattern: /\bsieve analysis\b/i, reason: "Invented aggregate testing claim" },
-  { pattern: /\bASTM C33\b/i, reason: "Invented material ASTM standard" },
-  { pattern: /\bSASO 204\b/i, reason: "Invented material SASO standard" },
+  { pattern: /\bASTM\b/i, reason: "Invented material ASTM standard" },
+  { pattern: /\bSASO\b/i, reason: "Invented material SASO standard" },
+  { pattern: /Aramco approved vendor/i, reason: "Contradicts 'Service Provider Only' letter" },
   { pattern: /Aramco Approved Safety Officers/i, reason: "Contradicts 'Service Provider Only' letter" },
   { pattern: /Aramco-approved/i, reason: "Contradicts 'Service Provider Only' letter" },
   { pattern: /\btelematics\b/i, reason: "Invented equipment tracking claim" },
   { pattern: /\bTUV\b/i, reason: "Unverified third-party inspection claim" },
+  { pattern: /\bwet lease\b/i, reason: "Invented leasing claim" },
   { pattern: /\bwet\/dry lease\b/i, reason: "Invented leasing claim" },
+  { pattern: /\bQiwa\b/i, reason: "Unverified platform claim" },
+  { pattern: /\bgiga-project\b/i, reason: "Unverified marketing claim" },
   { pattern: /\bSECTION 0\d\b/i, reason: "Developer wireframe artifact" },
   { pattern: /\bSCROLL PROGRESS\b/i, reason: "Developer wireframe artifact" },
   { pattern: /\bEST\. 2026\b/i, reason: "Contradicts incorporation timeline" },
   { pattern: /\bActive & Verified\b/i, reason: "Prohibited endorsement label" },
-  { pattern: /\bAldsfey\b/i, reason: "Misspelled client name (use Aldayfe)" },
+  { pattern: /\bRenewal in Progress\b/i, reason: "Unverified status (use 'Expired 17/11/2026')" },
+  { pattern: /\bAldsfey\b/i, reason: "Misspelled client name (use Aldayfe or pending_client)" },
+  { pattern: /\+966\s*53\s*075\s*2206/, reason: "Unverified phone number" },
+  { pattern: /ceo@aevoryn\.net/i, reason: "Executive email removed from public pages" },
   { pattern: /href=["']\/admin\/suppliers["']/i, reason: "Admin portal link exposed in public navigation" },
 ];
 
@@ -264,6 +286,6 @@ if (violations.length > 0) {
   });
   process.exit(1);
 } else {
-  console.log("\nSUCCESS: All compliance rules and facts verified. Clean build authorized.\n");
+  console.log("\nSUCCESS: Consistent with facts file.\n");
   process.exit(0);
 }

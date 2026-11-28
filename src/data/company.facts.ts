@@ -124,7 +124,7 @@ export const locationFacts = {
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
     notes:
-      "National Address Certificate GEMB7140 was issued on 21/05/2026 and expired on 17/11/2026. Official renewal documentation pending from client.",
+      "National Address Certificate GEMB7140 was issued on 21/05/2026 and expired on 17/11/2026. Kept internal and flagged; not rendered on public pages.",
   } satisfies FactItem,
 
   /**
@@ -188,26 +188,6 @@ export const communicationFacts = {
     quote: "chairman@aevoryn.net",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
-  } satisfies FactItem<string>,
-
-  unverifiedMobile: {
-    value: "+966 53 075 2206",
-    sourceDoc: "Company Profile PDF",
-    sourcePage: "Back Cover",
-    quote: "+966 53 075 2206",
-    status: "PENDING_CLIENT",
-    verifiedOn: "2026-11-28",
-    notes: "Not verified against official telecom billing or commercial register.",
-  } satisfies FactItem<string>,
-
-  unverifiedCeoEmail: {
-    value: "ceo@aevoryn.net",
-    sourceDoc: "Internal directory",
-    sourcePage: "N/A",
-    quote: "ceo@aevoryn.net",
-    status: "PENDING_CLIENT",
-    verifiedOn: "2026-11-28",
-    notes: "Removed from public pages per compliance instructions.",
   } satisfies FactItem<string>,
 };
 
@@ -513,7 +493,7 @@ export const divisionFacts = {
   list: divisionList,
   value: divisionList,
   sourceDoc: "Company Profile PDF",
-  sourcePage: "Pages 4, 5, 6, 7 (Divisions of Aevoryn)",
+  sourcePage: "Project Development Support p.9, Manpower p.10, Materials p.11, Equipment p.12",
   quote:
     "Division 01: Project Development Support | Division 02: Manpower Supply | Division 03: Construction Materials | Division 04: Equipment Supply",
   status: "VERIFIED" as const,
@@ -528,6 +508,8 @@ export interface ClientFact {
   nameEn: string;
   nameAr: string;
   sourceType: "LOGO_AND_TEXT" | "LOGO_ONLY";
+  status: "VERIFIED" | "PENDING_CLIENT";
+  notes?: string;
 }
 
 const clientList: readonly ClientFact[] = [
@@ -535,39 +517,49 @@ const clientList: readonly ClientFact[] = [
     nameEn: "Alfanar",
     nameAr: "الفنار",
     sourceType: "LOGO_AND_TEXT",
+    status: "VERIFIED",
   },
   {
     nameEn: "Masco",
     nameAr: "ماسكو",
     sourceType: "LOGO_AND_TEXT",
-  },
-  {
-    nameEn: "Aldayfe",
-    nameAr: "الضيف",
-    sourceType: "LOGO_ONLY",
+    status: "VERIFIED",
   },
   {
     nameEn: "Tamimi",
     nameAr: "التميمي",
     sourceType: "LOGO_AND_TEXT",
+    status: "VERIFIED",
   },
   {
-    nameEn: "China Harbour Engineering Company (CHEC)",
-    nameAr: "شركة الصين لهندسة الموانئ",
+    nameEn: "China Harbour",
+    nameAr: "تشاينا هاربر",
     sourceType: "LOGO_AND_TEXT",
+    status: "VERIFIED",
+    notes:
+      "Profile text reads 'China Harbour'. Profile logo reads 'CHEAC' (marked pending_client logo alignment).",
+  },
+  {
+    nameEn: "Aldayfe",
+    nameAr: "الضيف",
+    sourceType: "LOGO_ONLY",
+    status: "PENDING_CLIENT",
+    notes:
+      "PENDING_CLIENT: Marked pending because profile body text misspells as 'Aldsfey' while logo reads 'Aldayfe'. Kept internal in ledger; excluded from verified public list until client confirms.",
   },
 ];
 
 export const clientFacts = {
-  verifiedList: clientList,
-  value: clientList,
+  list: clientList,
+  verifiedList: clientList.filter((c) => c.status === "VERIFIED"),
+  value: clientList.filter((c) => c.status === "VERIFIED"),
   sourceDoc: "Company Profile PDF",
-  sourcePage: "Our Clients Section, Page 11",
-  quote: "Alfanar, Masco, Aldayfe, Tamimi, China Harbour",
+  sourcePage: "Our Clients Section, Page 13",
+  quote: "Alfanar, Masco, Tamimi, China Harbour",
   status: "VERIFIED" as const,
   verifiedOn: "2026-11-28",
   notes:
-    "Profile logo displays 'Aldayfe', whereas profile text misspelled it as 'Aldsfey'. The verified name is Aldayfe. Display names only; all invented scopes and unauthorized logos removed.",
+    "China Harbour uses profile text (logo reads CHEAC, pending_client). Aldayfe kept in ledger but marked pending_client because profile text spells Aldsfey.",
 };
 
 // ============================================================================
@@ -579,7 +571,7 @@ export const corporateStatements = {
     value:
       "To be a trusted partner in providing comprehensive industrial and project support services across the Kingdom of Saudi Arabia.",
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Vision Section, Page 2",
+    sourcePage: "Vision Section, Page 3",
     quote:
       "To be a trusted partner in providing comprehensive industrial and project support services across the Kingdom of Saudi Arabia.",
     status: "VERIFIED",
@@ -590,7 +582,7 @@ export const corporateStatements = {
     value:
       "أن نكون الشريك الموثوق في تقديم خدمات الدعم الصناعي والمشاريع المتكاملة في جميع أنحاء المملكة العربية السعودية.",
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Vision Section (Arabic)",
+    sourcePage: "Vision Section (Arabic), Page 3",
     quote:
       "أن نكون الشريك الموثوق في تقديم خدمات الدعم الصناعي والمشاريع المتكاملة في جميع أنحاء المملكة العربية السعودية.",
     status: "VERIFIED",
@@ -601,7 +593,7 @@ export const corporateStatements = {
     value:
       "To deliver reliable, high-quality, and compliant solutions in manpower, materials, equipment, and project development support, contributing to our clients' success and the Kingdom's growth.",
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Mission Section, Page 2",
+    sourcePage: "Mission Section, Page 3",
     quote:
       "To deliver reliable, high-quality, and compliant solutions in manpower, materials, equipment, and project development support, contributing to our clients' success and the Kingdom's growth.",
     status: "VERIFIED",
@@ -612,7 +604,7 @@ export const corporateStatements = {
     value:
       "تقديم حلول موثوقة وعالية الجودة ومتوافقة في مجالات القوى العاملة والمواد والمعدات ودعم تطوير المشاريع، بما يسهم في نجاح عملائنا ودعم نمو وازدهار المملكة.",
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Mission Section (Arabic)",
+    sourcePage: "Mission Section (Arabic), Page 3",
     quote:
       "تقديم حلول موثوقة وعالية الجودة ومتوافقة في مجالات القوى العاملة والمواد والمعدات ودعم تطوير المشاريع، بما يسهم في نجاح عملائنا ودعم نمو وازدهار المملكة.",
     status: "VERIFIED",
@@ -646,7 +638,7 @@ export const corporateStatements = {
       "التميز التشغيلي",
     ],
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Core Values (Arabic)",
+    sourcePage: "Core Values (Arabic), Page 3",
     quote:
       "السلامة أولاً، النزاهة والامتثال، الموثوقية والجودة، المرونة وسرعة الاستجابة، شراكة العملاء، التميز التشغيلي",
     status: "VERIFIED",

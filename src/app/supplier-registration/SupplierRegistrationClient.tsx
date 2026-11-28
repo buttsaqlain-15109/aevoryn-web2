@@ -602,7 +602,7 @@ export default function SupplierRegistrationClient() {
                         onChange={handleInputChange}
                         placeholder={
                           locale === "en"
-                            ? "List EPC contractors, Aramco subcontractors, infrastructure projects, or giga-project references..."
+                            ? "List EPC contractors, major subcontractors, or infrastructure project references..."
                             : "اذكر المقاولين الرئيسيين، مقاولي أرامكو، مشاريع البنية التحتية، أو المشاريع الكبرى..."
                         }
                         className="w-full px-4 py-3 rounded border border-border bg-surface text-primary text-sm font-body focus:outline-none focus:ring-2 focus:ring-accent"

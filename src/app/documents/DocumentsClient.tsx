@@ -117,11 +117,6 @@ export default function DocumentsClient() {
                           <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface border border-border text-secondary">
                             {locale === "en" ? doc.category : doc.categoryAr}
                           </span>
-                          {"isCurrent" in doc && doc.isCurrent === false && (
-                            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400">
-                              {locale === "en" ? "RENEWAL IN PROGRESS (EXPIRED)" : "قيد التجديد الرسمي (منتهية الصلاحية)"}
-                            </span>
-                          )}
                         </div>
                         <h4 className="text-lg font-bold font-display uppercase tracking-tight text-primary">
                           {locale === "en" ? doc.title : doc.titleAr}

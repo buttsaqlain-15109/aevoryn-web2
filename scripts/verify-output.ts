@@ -47,16 +47,21 @@ const violations: OutputViolation[] = [];
 const BANNED_OUTPUT_PATTERNS = [
   { pattern: /\bproctor\b/i, reason: "Invented soil testing claim" },
   { pattern: /\bsieve analysis\b/i, reason: "Invented aggregate testing claim" },
-  { pattern: /\bASTM C33\b/i, reason: "Invented material ASTM standard" },
-  { pattern: /\bSASO 204\b/i, reason: "Invented material SASO standard" },
+  { pattern: /\bASTM\b/i, reason: "Invented material ASTM standard" },
+  { pattern: /\bSASO\b/i, reason: "Invented material SASO standard" },
+  { pattern: /Aramco approved vendor/i, reason: "Contradicts 'Service Provider Only' letter" },
   { pattern: /Aramco Approved/i, reason: "Contradicts 'Service Provider Only' letter" },
   { pattern: /Aramco-approved/i, reason: "Contradicts 'Service Provider Only' letter" },
   { pattern: /\btelematics\b/i, reason: "Invented equipment tracking claim" },
   { pattern: /\bTUV\b/i, reason: "Unverified third-party inspection claim" },
+  { pattern: /\bwet lease\b/i, reason: "Invented equipment lease claim" },
   { pattern: /\bwet\/dry lease\b/i, reason: "Invented leasing claim" },
+  { pattern: /\bQiwa\b/i, reason: "Unverified platform claim" },
+  { pattern: /\bgiga-project\b/i, reason: "Unverified marketing claim" },
   { pattern: /\bSECTION 0\d\b/i, reason: "Developer wireframe artifact" },
   { pattern: /\bSCROLL PROGRESS\b/i, reason: "Developer wireframe artifact" },
   { pattern: /\bActive & Verified\b/i, reason: "Prohibited endorsement label" },
+  { pattern: /\bRenewal in Progress\b/i, reason: "Unverified status (use 'Expired 17/11/2026')" },
   { pattern: /\+966\s*53\s*075\s*2206/, reason: "Unverified phone number" },
   { pattern: /\+966\s*53\s*439\s*7780/, reason: "Unverified phone number" },
   { pattern: /ceo@aevoryn\.net/i, reason: "Internal executive email exposed publicly" },
@@ -186,6 +191,6 @@ if (violations.length > 0) {
   });
   process.exit(1);
 } else {
-  console.log("\nSUCCESS: All output files verified clean. Production deployment ready.\n");
+  console.log("\nSUCCESS: Consistent with facts file.\n");
   process.exit(0);
 }

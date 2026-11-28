@@ -28,15 +28,16 @@ If a fact has status `"PENDING_CLIENT"`, calling `getVerified()` immediately thr
 Expired documents (such as certificates awaiting periodic renewal) are governed by strict automated rules:
 
 1. **Zero Active Linking of Expired Documents:** Expired documents (e.g. SPL National Address Proof GEMB7140) must NEVER be displayed or linked as active/current in UI badges or metadata.
-2. **Mandatory Expiry Status:** Any expired certificate must carry `isCurrent: false` and explicitly state `EXPIRED - Renewal in Progress` in both English and Arabic.
+2. **Mandatory Expiry Status:** Any expired certificate must carry `isCurrent: false` and explicitly state `Expired 17/11/2026` in both English and Arabic.
 3. **Automated Expiry Scanner:** `scripts/verify-facts.ts` scans all entries in `src/data/documents.json`:
    - **Build Failure:** If a document is marked `isCurrent: true` but its expiry date is in the past, the build immediately aborts with `EXPIRED_DOCUMENT_MARKED_CURRENT`.
+   - **Internal Flagging:** Expired documents carry `isPublic: false` and are kept internal; they are not rendered on public library routes until renewed.
    - **30-Day Expiry Warning:** If a valid document has an expiry date within 30 days of build execution, a high-priority warning is emitted to notify project managers.
 4. **Current Status of Key Documents:**
    - **Commercial Registration (CR 7054401679):** Active / Valid.
    - **Saudi Aramco Supplier Code (10120422 / E-Ref 0019448):** Active Service Provider.
    - **Triple ISO Certificates (VC23018822, VC23022982, VC23032689):** Active (Expiry: 03 August 2029).
-   - **National Address Certificate (GEMB7140):** Expired 17/11/2026. Official renewal documentation currently in progress with SPL; displayed as `EXPIRED - Renewal in Progress`.
+   - **National Address Certificate (GEMB7140):** Expired 17/11/2026. Kept internal and flagged; not rendered on public pages.
 
 ---
 
@@ -46,17 +47,17 @@ The build pipeline enforces three layers of pre-commit and pre-deployment valida
 
 ### 1. `npm run verify:facts`
 - Audits `src/data/company.facts.ts` assertions.
-- Scans `src/` for 16 banned or fabricated terms (e.g. "Proctor testing", "Aramco Approved", "telematics", "ASTM C33", "SASO 204", "Active & Verified").
+- Scans `src/` for 21 banned or fabricated terms (e.g. "Proctor testing", "Aramco approved vendor", "sieve analysis", "ASTM", "SASO", "telematics", "TUV", "wet lease", "Qiwa", "giga-project", "Active & Verified", "Renewal in Progress").
 - Enforces shared verbatim ISO scope across all three ISO standards.
 - Validates the Document Expiry Policy.
 
 ### 2. `npm run test:negative`
-Automated test suite demonstrating that the build system rigorously fails when fed invalid inputs:
-- **Test 1:** Detects and fails on injected "Proctor testing".
-- **Test 2:** Detects and fails on injected "Aramco Approved".
-- **Test 3:** Detects and fails if a 5th division is introduced.
-- **Test 4:** Detects and fails if ISO scope text is altered from official certificate wording.
-- **Test 5:** Detects and fails with `[FACT_VIOLATION]` when attempting to render a `PENDING_CLIENT` fact.
+Automated 15-case test suite demonstrating that the build system rigorously fails when fed invalid inputs:
+- **Tests 1–11 (Banned Terms):** Prohibits "Proctor compaction and soil testing", "Aramco approved vendor", "sieve analysis", "ASTM", "SASO", "telematics", "TUV", "wet lease", "Qiwa", "giga-project", "Active & Verified".
+- **Test 12 (5th Division Card):** Detects an injected 5th division card and fails with `Expected exactly 4 divisions, found 5`.
+- **Test 13 (Invented Client Scope):** Detects and rejects an invented project scope attached to client records.
+- **Test 14 (Altered ISO Scope):** Detects any discrepancy in verbatim ISO scope text.
+- **Test 15 (Pending Client Fact):** Confirms that accessing a `PENDING_CLIENT` fact via `getVerified()` throws a blocking `[FACT_VIOLATION]` exception.
 
 ### 3. `npm run verify:out`
 Post-build scanner across the compiled `out/` static directory:

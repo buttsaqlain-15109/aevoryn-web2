@@ -64,8 +64,8 @@ export default function ManpowerClient() {
       title: locale === "en" ? "Compliance with Project Standards" : "الامتثال لمعايير المشروع",
       desc:
         locale === "en"
-          ? "Strict adherence to Saudi Labor Law, Qiwa platform mandates, and project-specific engineering and governance specifications."
-          : "الالتزام التام بنظام العمل السعودي، ومنصة قوى، وكافة المواصفات والمعايير الهندسية والتنظيمية المحددة للمشروع.",
+          ? "Strict adherence to Saudi Labor Law and project-specific engineering and governance specifications."
+          : "الالتزام التام بنظام العمل السعودي وكافة المواصفات والمعايير الهندسية والتنظيمية المحددة للمشروع.",
       specs: [
         locale === "en" ? "100% legal compliance under Saudi Ministry regulations" : "امتثال قانوني كامل لأنظمة وزارة الموارد البشرية",
         locale === "en" ? "Valid medical insurance, Iqama, and documentation" : "سريان التأمين الطبي والإقامات والوثائق الرسمية",
@@ -158,7 +158,7 @@ export default function ManpowerClient() {
                       {locale === "en" ? "REGULATORY & SAFETY COMPLIANT" : "التزام تنظيمي ومعايير سلامة"}
                     </p>
                     <p className="text-xs text-white/80 leading-relaxed font-body">
-                      Full adherence to Saudi labor regulations, Qiwa platform, and ISO 45001:2018 safety standards.
+                      Full adherence to Saudi labor regulations and ISO 45001:2018 safety standards.
                     </p>
                   </div>
                 </div>

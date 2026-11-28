@@ -159,7 +159,7 @@ export default function AdminSuppliersClient() {
         setSelectedSubmission({
           ...sub,
           address: "King Abdulaziz Road, Industrial Area Phase 2, Riyadh 14321",
-          capability_summary: "Tier-1 specification aggregate quarries in Riyadh and Eastern Province. Monthly crushing capacity 85,000 metric tons. ASTM / Saudi Aramco standard compliance.",
+          capability_summary: "Tier-1 specification aggregate quarries in Riyadh and Eastern Province. Monthly crushing capacity 85,000 metric tons. Compliance with project specifications.",
           past_clients: "Alfanar Construction, Nesma & Partners, China Harbour Engineering.",
           admin_notes: "Initial CR and ZATCA compliance verified. Rate sheet received for 20mm & 37.5mm crushed aggregate.",
           documents: [

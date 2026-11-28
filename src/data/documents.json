@@ -108,18 +108,18 @@
     "number": "Certificate GEMB7140 | Base: Baish / Jizan",
     "issueDate": "21 May 2026",
     "issueDateAr": "21 مايو 2026",
-    "expiryDate": "17 Nov 2026 (Expired)",
-    "expiryDateAr": "17 نوفمبر 2026 (منتهية الصلاحية)",
+    "expiryDate": "Expired 17/11/2026",
+    "expiryDateAr": "منتهية الصلاحية 17/11/2026",
     "verificationMethod": "SPL National Address Verification Portal",
     "verificationMethodAr": "بوابة التحقق من العنوان الوطني - سبل",
     "verificationUrl": "https://splonline.com.sa",
     "category": "Corporate Registration",
     "categoryAr": "السجلات الرسمية",
-    "isPublic": true,
+    "isPublic": false,
     "isCurrent": false,
-    "status": "EXPIRED (17/11/2026) - Renewal in Progress",
-    "statusAr": "منتهية الصلاحية (17/11/2026) - قيد التجديد الرسمي",
-    "summaryEn": "Registered legal address: Building No. 7140, Zaid Ibn Al Khattab Street, An Nahdah Dist., Zipcode 87311, Baish, Jazan Region, Saudi Arabia. Note: SPL Certificate GEMB7140 expired on 17/11/2026; renewal documentation is pending from the client and not displayed as active.",
-    "summaryAr": "العنوان الوطني القانوني المسجل: مبنى رقم 7140، شارع زيد بن الخطاب، حي النهضة، الرمز البريدي 87311، بيش، منطقة جازان، المملكة العربية السعودية. ملاحظة: انتهت صلاحية شهادة سبل رقم GEMB7140 في 17/11/2026، وجاري تجديدها رسمياً مع العميل ولا تُعرض كشهادة سارية."
+    "status": "Expired 17/11/2026",
+    "statusAr": "منتهية الصلاحية 17/11/2026",
+    "summaryEn": "Registered legal address: Building No. 7140, Zaid Ibn Al Khattab Street, An Nahdah Dist., Zipcode 87311, Baish, Jazan Region, Saudi Arabia. Note: SPL Certificate GEMB7140 expired on 17/11/2026. Kept internal and flagged; not rendered on public pages.",
+    "summaryAr": "العنوان الوطني القانوني المسجل: مبنى رقم 7140، شارع زيد بن الخطاب، حي النهضة، الرمز البريدي 87311، بيش، منطقة جازان، المملكة العربية السعودية. ملاحظة: انتهت صلاحية شهادة سبل رقم GEMB7140 في 17/11/2026، وهي محفوظة داخلياً ولا تُعرض في الصفحات العامة."
   }
 ]
