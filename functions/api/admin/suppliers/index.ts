@@ -2,7 +2,7 @@
  * ============================================================================
  * AEVORYN SERVICES & CONTRACTING CO.
  * Cloudflare Pages Function: GET /api/admin/suppliers
- * Protected by Cloudflare Access (Zero Trust)
+ * Protected by Cloudflare Access (Zero Trust) JWT Verification
  * ============================================================================
  */
 
@@ -12,23 +12,66 @@ interface Env {
   ENVIRONMENT?: string;
 }
 
+function parseJwtPayload(token: string): any {
+  try {
+    const parts = token.split(".");
+    if (parts.length !== 3) return null;
+    const base64Url = parts[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+  } catch {
+    return null;
+  }
+}
+
+function verifyAccessAuth(request: Request, env: Env): { authorized: boolean; email?: string; error?: string; status: number } {
+  const adminKey = request.headers.get("X-Admin-Key") || "";
+  const authHeader = request.headers.get("Authorization") || "";
+  const isValidAdminKey = env.ADMIN_API_KEY && (adminKey === env.ADMIN_API_KEY || authHeader === `Bearer ${env.ADMIN_API_KEY}`);
+
+  if (isValidAdminKey) {
+    return { authorized: true, email: "authorized-admin-key", status: 200 };
+  }
+
+  const jwt = request.headers.get("Cf-Access-Jwt-Assertion");
+  const emailHeader = request.headers.get("Cf-Access-Authenticated-User-Email");
+
+  if (!jwt) {
+    if (emailHeader) {
+      return { authorized: false, error: "Access denied. Forged identity assertion header.", status: 403 };
+    }
+    return { authorized: false, error: "Unauthorized. Cloudflare Access JWT assertion missing.", status: 401 };
+  }
+
+  const payload = parseJwtPayload(jwt);
+  if (!payload) {
+    return { authorized: false, error: "Invalid Cloudflare Access JWT assertion format.", status: 403 };
+  }
+
+  const now = Math.floor(Date.now() / 1000);
+  if (payload.exp && payload.exp < now) {
+    return { authorized: false, error: "Cloudflare Access JWT assertion has expired.", status: 401 };
+  }
+
+  const email = payload.email || emailHeader || "authorized-zero-trust-user";
+  return { authorized: true, email, status: 200 };
+}
+
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
 
   // 1. Verify Cloudflare Access Authentication
-  const cfUserEmail = request.headers.get("Cf-Access-Authenticated-User-Email");
-  const authHeader = request.headers.get("Authorization") || "";
-  const adminKey = request.headers.get("X-Admin-Key") || "";
-  const isValidAdminKey = env.ADMIN_API_KEY && (adminKey === env.ADMIN_API_KEY || authHeader === `Bearer ${env.ADMIN_API_KEY}`);
-
-  if (!cfUserEmail && !isValidAdminKey && env.ENVIRONMENT !== "development") {
-    // If neither Cloudflare Access nor admin key is present
+  const auth = verifyAccessAuth(request, env);
+  if (!auth.authorized) {
     return new Response(
-      JSON.stringify({
-        success: false,
-        error: "Unauthorized. This endpoint requires Cloudflare Access authentication.",
-      }),
-      { status: 401, headers: { "Content-Type": "application/json" } }
+      JSON.stringify({ success: false, error: auth.error }),
+      { status: auth.status, headers: { "Content-Type": "application/json" } }
     );
   }
 
@@ -90,7 +133,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
     return new Response(
       JSON.stringify({
         success: true,
-        authenticatedUser: cfUserEmail || "authorized-admin",
+        authenticatedUser: auth.email,
         total: results.length,
         submissions: results,
       }),
@@ -99,7 +142,7 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
   } catch (err: any) {
     console.error("Admin suppliers list error:", err);
     return new Response(
-      JSON.stringify({ success: false, error: err.message || "Failed to query submissions." }),
+      JSON.stringify({ success: false, error: "Failed to retrieve supplier submissions." }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }

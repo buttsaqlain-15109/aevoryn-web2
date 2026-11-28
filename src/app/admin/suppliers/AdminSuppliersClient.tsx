@@ -94,41 +94,9 @@ export default function AdminSuppliersClient() {
         setError(data.error || "Failed to load submissions.");
       }
     } catch (e: any) {
-      console.warn("Admin fetch notice:", e);
-      // Fallback mock dataset for local preview if backend is not yet populated
-      setSubmissions([
-        {
-          id: "mock_1",
-          reference_number: "AEV-SUP-2026-0001",
-          company_name: "Saudi Al-Mashreq Construction Aggregates Co.",
-          cr_number: "1010458921",
-          vat_number: "300458921000003",
-          year_established: 2016,
-          category: "materials",
-          contact_name: "Eng. Fahad Al-Zahrani",
-          contact_email: "f.zahrani@almashreq-sa.com",
-          contact_phone: "+966 50 442 8819",
-          status: "New",
-          created_at: new Date().toISOString(),
-          document_count: 4,
-        },
-        {
-          id: "mock_2",
-          reference_number: "AEV-SUP-2026-0002",
-          company_name: "Al-Takamul Heavy Plant & Crane Logistics",
-          cr_number: "2050119834",
-          vat_number: "300119834000003",
-          year_established: 2012,
-          category: "equipment",
-          contact_name: "Sultan Al-Ghamdi",
-          contact_email: "procurement@takamul-logistics.sa",
-          contact_phone: "+966 55 981 2234",
-          status: "Under Review",
-          created_at: new Date(Date.now() - 86400000).toISOString(),
-          document_count: 5,
-        },
-      ]);
-      setCurrentUser("Cloudflare Access (Simulated Local Mode)");
+      console.warn("Admin fetch error:", e);
+      setError("Cloudflare Access authentication required to access procurement administration.");
+      setSubmissions([]);
     } finally {
       setLoading(false);
     }
@@ -155,25 +123,11 @@ export default function AdminSuppliersClient() {
         setEditStatus(full.status);
         setEditNotes(full.admin_notes || "");
       } else {
-        // Fallback for preview
-        setSelectedSubmission({
-          ...sub,
-          address: "King Abdulaziz Road, Industrial Area Phase 2, Riyadh 14321",
-          capability_summary: "Tier-1 specification aggregate quarries in Riyadh and Eastern Province. Monthly crushing capacity 85,000 metric tons. Compliance with project specifications.",
-          past_clients: "Alfanar Construction, Nesma & Partners, China Harbour Engineering.",
-          admin_notes: "Initial CR and ZATCA compliance verified. Rate sheet received for 20mm & 37.5mm crushed aggregate.",
-          documents: [
-            { id: "d1", doc_type: "cr_certificate", file_name: "CR_Certificate_1010458921.pdf", file_size: 1420000, mime_type: "application/pdf", created_at: sub.created_at },
-            { id: "d2", doc_type: "vat_certificate", file_name: "VAT_ZATCA_Registration.pdf", file_size: 980000, mime_type: "application/pdf", created_at: sub.created_at },
-            { id: "d3", doc_type: "national_address", file_name: "National_Address_SPL.pdf", file_size: 650000, mime_type: "application/pdf", created_at: sub.created_at },
-            { id: "d4", doc_type: "company_profile", file_name: "Company_Profile_2026.pdf", file_size: 4200000, mime_type: "application/pdf", created_at: sub.created_at },
-          ],
-        });
-        setEditStatus(sub.status);
-        setEditNotes("Initial CR and ZATCA compliance verified. Rate sheet received for 20mm & 37.5mm crushed aggregate.");
+        setError(data.error || "Failed to load submission details.");
       }
     } catch (e) {
-      console.warn("Detail fetch fallback:", e);
+      console.warn("Detail fetch error:", e);
+      setError("Failed to load submission details.");
     } finally {
       setDetailLoading(false);
     }
@@ -200,11 +154,7 @@ export default function AdminSuppliersClient() {
         );
       }
     } catch (e) {
-      setSaveSuccess(true);
-      setTimeout(() => setSaveSuccess(false), 3000);
-      setSubmissions((prev) =>
-        prev.map((s) => (s.id === selectedSubmission.id ? { ...s, status: editStatus as any } : s))
-      );
+      console.warn("Status update error:", e);
     }
   };
 
@@ -255,7 +205,15 @@ export default function AdminSuppliersClient() {
             </div>
           </div>
 
-          {/* Search & Filter Toolbar */}
+          {error ? (
+            <div className="p-12 rounded-xl border border-red-500/20 bg-red-500/5 text-center max-w-xl mx-auto my-12 space-y-4">
+              <Lock className="w-10 h-10 text-red-500 mx-auto" />
+              <h2 className="text-xl font-bold font-display uppercase tracking-tight text-primary">Access Restricted</h2>
+              <p className="text-sm text-secondary leading-relaxed font-body">{error}</p>
+            </div>
+          ) : (
+            <>
+              {/* Search & Filter Toolbar */}
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-6">
             <div className="flex flex-wrap items-center gap-2">
               {["ALL", "New", "Under Review", "Approved", "Rejected"].map((st) => (
@@ -548,6 +506,8 @@ export default function AdminSuppliersClient() {
               </div>
             </div>
           )}
+        </>
+      )}
         </div>
       </main>
       <Footer />

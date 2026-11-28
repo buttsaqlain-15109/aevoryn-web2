@@ -562,7 +562,7 @@ export default function SupplierRegistrationClient() {
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 rounded border border-border bg-surface text-primary text-sm font-body focus:outline-none focus:ring-2 focus:ring-accent"
                       >
-                        <option value="materials">{locale === "en" ? "Construction Materials & Raw Aggregates" : "مواد البناء والركام والخرسانة"}</option>
+                        <option value="materials">{locale === "en" ? "Construction Materials Supply" : "توريد مواد البناء"}</option>
                         <option value="equipment">{locale === "en" ? "Heavy Equipment & Plant Machinery Fleet" : "المعدات الثقيلة والآليات الإنشائية"}</option>
                         <option value="manpower">{locale === "en" ? "Certified Technical Manpower Supply" : "الكوادر الفنية والمهنية المعتمدة"}</option>
                         <option value="services">{locale === "en" ? "Civil Contracting & Site Support Services" : "خدمات المقاولات المدنية والدعم الميداني"}</option>
@@ -602,7 +602,7 @@ export default function SupplierRegistrationClient() {
                         onChange={handleInputChange}
                         placeholder={
                           locale === "en"
-                            ? "List EPC contractors, major subcontractors, or infrastructure project references..."
+                            ? "List major contractors, subcontractors, or infrastructure project references..."
                             : "اذكر المقاولين الرئيسيين، مقاولي أرامكو، مشاريع البنية التحتية، أو المشاريع الكبرى..."
                         }
                         className="w-full px-4 py-3 rounded border border-border bg-surface text-primary text-sm font-body focus:outline-none focus:ring-2 focus:ring-accent"

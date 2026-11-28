@@ -44,7 +44,7 @@ export default function DocumentsClient() {
           title={locale === "en" ? "Company Documents & Legal Library" : "وثائق الشركة والمكتبة القانونية"}
           subtitle={
             locale === "en"
-              ? "Official commercial registration, ISO accreditations, Saudi Aramco vendor credentials, and national address documentation for EPC audit compliance."
+              ? "Official commercial registration, ISO accreditations, Saudi Aramco vendor credentials, and legal compliance documentation for audit verification."
               : "السجلات التجارية الرسمية، اعتمادات الأيزو العالمية، بيانات التأهيل لدى أرامكو السعودية، وإثباتات العنوان الوطني المعتمدة."
           }
           badge={locale === "en" ? "VERIFIED DOCUMENT REGISTER" : "سجل الوثائق المعتمد"}
@@ -174,12 +174,12 @@ export default function DocumentsClient() {
             {/* Verification & Audit Note */}
             <div className="mt-8 p-6 rounded-lg border border-border bg-page text-xs text-secondary font-mono space-y-2">
               <p className="font-bold uppercase tracking-wider text-primary">
-                {locale === "en" ? "Notice for EPC Procurement & Compliance Officers:" : "ملاحظة لمديري المشتريات ومسؤولي الامتثال:"}
+                {locale === "en" ? "Notice for Procurement & Compliance Officers:" : "ملاحظة لمديري المشتريات ومسؤولي الامتثال:"}
               </p>
               <p className="leading-relaxed">
                 {locale === "en"
-                  ? "Certified hard copies, audited records, and registration summaries are available upon execution of formal pre-qualification tenders. Contact our administration at admin@aevoryn.net or call +966 17 322 9527."
-                  : "النسخ الأصلية المعتمدة وسجلات التسجيل متاحة عند إجراءات التأهيل المسبق للمشاريع. يرجى التواصل مع الإدارة العامة عبر admin@aevoryn.net أو الاتصال بالرقم +966 17 322 9527."}
+                  ? "Certified hard copies, audited records, and registration summaries are available upon execution of formal pre-qualification tenders. Contact our administration at admin@aevoryn.net."
+                  : "النسخ الأصلية المعتمدة وسجلات التسجيل متاحة عند إجراءات التأهيل المسبق للمشاريع. يرجى التواصل مع الإدارة العامة عبر admin@aevoryn.net."}
               </p>
             </div>
           </div>

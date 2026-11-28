@@ -115,8 +115,8 @@ try {
   },
 ];`;
   const modifiedFacts = originalFactsContent.replace(
-    /route: "\/capabilities\/equipment",\s*\n\s*},\s*\n\s*\];/,
-    `route: "/capabilities/equipment",\n  },\n${fifthDivisionObject}`
+    /quote: "Division 04: Equipment Supply",\s*\n\s*},\s*\n\s*\];/,
+    `quote: "Division 04: Equipment Supply",\n  },\n${fifthDivisionObject}`
   );
   fs.writeFileSync(factsFile, modifiedFacts);
   runVerifyExpectingFailure("12. 5th division card", /Expected exactly 4 divisions, found 5/i);

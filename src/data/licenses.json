@@ -7,9 +7,58 @@
     "notes": "Official company asset"
   },
   {
+    "path": "/images/branding/aevoryn-og-share.png",
+    "description": "Open Graph social preview image (1200x630)",
+    "source": "Generated from official corporate logo asset",
+    "status": "APPROVED",
+    "notes": "Official metadata asset"
+  },
+  {
+    "path": "/images/aevoryn-logo.jpg",
+    "description": "Aevoryn brand logo raster asset",
+    "source": "Aevoryn Corporate Profile PDF & Brand Assets",
+    "status": "APPROVED",
+    "notes": "Official company asset"
+  },
+  {
+    "path": "/images/aevoryn-logo-square.png",
+    "description": "Aevoryn square icon and avatar asset",
+    "source": "Aevoryn Corporate Profile PDF & Brand Assets",
+    "status": "APPROVED",
+    "notes": "Official company asset"
+  },
+  {
+    "path": "/images/aevoryn-logo-circle.png",
+    "description": "Aevoryn circular brand icon asset",
+    "source": "Aevoryn Corporate Profile PDF & Brand Assets",
+    "status": "APPROVED",
+    "notes": "Official company asset"
+  },
+  {
     "path": "/images/content/hero-industrial.jpg",
     "description": "Hero section industrial contracting backdrop",
     "source": "Unsplash Commercial License (Editorial Industrial Infrastructure)",
+    "status": "APPROVED",
+    "notes": "Verified royalty-free industrial photography"
+  },
+  {
+    "path": "/images/content/about-hero.jpg",
+    "description": "About page corporate contracting backdrop",
+    "source": "Unsplash Commercial License",
+    "status": "APPROVED",
+    "notes": "Verified royalty-free industrial photography"
+  },
+  {
+    "path": "/images/content/contact-hero.jpg",
+    "description": "Contact page operations backdrop",
+    "source": "Unsplash Commercial License",
+    "status": "APPROVED",
+    "notes": "Verified royalty-free industrial photography"
+  },
+  {
+    "path": "/images/content/clients-hero.jpg",
+    "description": "Clients & partners page engineering backdrop",
+    "source": "Unsplash Commercial License",
     "status": "APPROVED",
     "notes": "Verified royalty-free industrial photography"
   },
@@ -54,5 +103,33 @@
     "source": "Unsplash Commercial License",
     "status": "APPROVED",
     "notes": "Verified royalty-free site safety compliance"
+  },
+  {
+    "path": "/images/documents/iso-9001-preview.jpg",
+    "description": "ISO 9001:2015 certificate verification document preview",
+    "source": "Official Vatsin VC23018822 certificate preview thumbnail",
+    "status": "APPROVED",
+    "notes": "Official compliance record thumbnail"
+  },
+  {
+    "path": "/images/documents/iso-14001-preview.jpg",
+    "description": "ISO 14001:2015 certificate verification document preview",
+    "source": "Official Vatsin VC23022982 certificate preview thumbnail",
+    "status": "APPROVED",
+    "notes": "Official compliance record thumbnail"
+  },
+  {
+    "path": "/images/documents/iso-45001-preview.jpg",
+    "description": "ISO 45001:2018 certificate verification document preview",
+    "source": "Official Vatsin VC23032689 certificate preview thumbnail",
+    "status": "APPROVED",
+    "notes": "Official compliance record thumbnail"
+  },
+  {
+    "path": "/images/documents/aramco-preview.jpg",
+    "description": "Saudi Aramco vendor registration letter verification preview",
+    "source": "Official Aramco vendor registration notice thumbnail",
+    "status": "APPROVED",
+    "notes": "Official compliance record thumbnail"
   }
 ]

@@ -224,6 +224,23 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       if (!ALLOWED_MIME_TYPES.has(file.type) && !ALLOWED_EXTENSIONS.has(ext)) {
         errors.push(`${item.label} must be a PDF, JPG, or PNG document.`);
       }
+
+      // Magic byte verification (validates true file content signatures)
+      try {
+        const headerSlice = await file.slice(0, 8).arrayBuffer();
+        const b = new Uint8Array(headerSlice);
+        const isPdf = b[0] === 0x25 && b[1] === 0x50 && b[2] === 0x44 && b[3] === 0x47; // %PDF
+        const isJpg = b[0] === 0xFF && b[1] === 0xD8 && b[2] === 0xFF; // JPEG
+        const isPng = b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47 &&
+                      b[4] === 0x0D && b[5] === 0x0A && b[6] === 0x1A && b[7] === 0x0A; // PNG
+
+        if (!isPdf && !isJpg && !isPng) {
+          errors.push(`${item.label} binary signature does not match allowed file types (PDF, JPG, PNG).`);
+        }
+      } catch (err) {
+        errors.push(`Failed to verify document signature for ${item.label}.`);
+      }
+
       filesToUpload.push({
         field: item.field,
         type: item.type,

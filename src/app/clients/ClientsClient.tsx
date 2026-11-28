@@ -43,7 +43,7 @@ export default function ClientsClient() {
             </h2>
             <p className="text-base sm:text-lg text-secondary leading-relaxed max-w-2xl mx-auto font-body">
               {locale === "en"
-                ? "Aevoryn builds durable, contractually transparent relationships with prime EPCs, general contractors, and developers across the Kingdom. By providing verified manpower, robust heavy machinery, and quality construction materials, we assist our partners in overcoming critical project milestones."
+                ? "Aevoryn builds durable, contractually transparent relationships with prime contractors, general contractors, and developers across the Kingdom. By providing verified manpower, robust heavy machinery, and quality construction materials, we assist our partners in overcoming critical project milestones."
                 : "تبني إيفورين علاقات وثيقة وشفافة مع المقاولين الرئيسيين والمطورين الإنشائيين في كافة مناطق المملكة. ومن خلال توفير الكوادر المؤهلة والآليات الثقيلة ومواد البناء المعتمدة، نساعد شركاءنا على إنجاز مراحل المشاريع الحرجة بكفاءة تامة."}
             </p>
           </div>

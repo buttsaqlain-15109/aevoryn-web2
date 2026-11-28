@@ -105,8 +105,8 @@ export default function EquipmentClient() {
                 <div className="space-y-4 text-sm sm:text-base text-secondary font-body leading-relaxed">
                   <p>
                     {locale === "en"
-                      ? "Aevoryn's Equipment Supply division supports civil, commercial, and industrial contracting projects across Saudi Arabia with dependable plant machinery. We deploy heavy lifting cranes, earthmoving machines, and auxiliary support equipment maintained to strict safety and performance specifications."
-                      : "يدعم قطاع توريد المعدات في ايفورين مشاريع المقاولات المدنية والصناعية في مختلف مناطق المملكة بالآليات والمعدات الموثوقة. نحن نوفر رافعات الرفع الثقيل، وآليات تحريك التربة، ومعدات الدعم المساندة المدارة وفق أعلى معايير السلامة والأداء."}
+                      ? "Aevoryn's Equipment Supply division supports civil, commercial, and industrial contracting projects across Saudi Arabia with dependable plant machinery. We deploy heavy lifting cranes, construction machinery for civil works, and auxiliary support equipment maintained to strict safety and performance specifications."
+                      : "يدعم قطاع توريد المعدات في ايفورين مشاريع المقاولات المدنية والصناعية في مختلف مناطق المملكة بالآليات والمعدات الموثوقة. نحن نوفر رافعات الرفع الثقيل، والآليات الإنشائية للأعمال المدنية، ومعدات الدعم المساندة المدارة وفق أعلى معايير السلامة والأداء."}
                   </p>
                   <p>
                     {locale === "en"

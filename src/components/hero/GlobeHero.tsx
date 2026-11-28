@@ -52,8 +52,8 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
             {/* Direct, Concrete Engineering Copy: What we do, for whom, proof */}
             <p className="body-large text-secondary leading-relaxed max-w-[620px]">
               {locale === "en"
-                ? "Aevoryn Services & Contracting Co. provides earthworks, certified manpower, testing-compliant aggregates, and heavy equipment fleets to EPC contractors and industrial developers across Saudi Arabia. Aramco Vendor Code 10120422. Triple ISO certified (9001, 14001, 45001)."
-                : "توفر شركة إيفورين للخدمات والمقاولات الأعمال الترابية، والكوادر الفنية المعتمدة، ومواد البناء المفحوصة، وأسطول الآليات الثقيلة لمقاولي الهندسة والتوريد والإنشاء (EPC) والمطورين بالمملكة. مورد معتمد لدى أرامكو برمز 10120422 وحاصلة على اعتمادات الآيزو 9001 و14001 و45001."}
+                ? "Aevoryn Services & Contracting Co. provides project development support, manpower supply, construction materials supply, and equipment supply to commercial contractors and industrial developers across Saudi Arabia. Aramco Vendor Code 10120422. Triple ISO certified (9001, 14001, 45001)."
+                : "توفر شركة إيفورين للخدمات والمقاولات دعم وتطوير المشاريع، والكوادر الفنية، وتوريد مواد البناء، ومعدات المشاريع للمقاولين والمطورين بالمملكة. مسجلة لدى أرامكو برمز مورد 10120422 وحاصلة على اعتمادات الآيزو 9001 و14001 و45001."}
             </p>
 
             {/* Action Buttons */}
@@ -70,7 +70,7 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
                 href="/contact"
                 className="btn-outline"
               >
-                <span>{locale === "en" ? "CONTACT RIYADH OFFICE" : "الاتصال بمكتب الرياض"}</span>
+                <span>{locale === "en" ? "CONTACT COMMERCIAL INQUIRIES" : "التواصل للاستفسارات التجارية"}</span>
               </Link>
             </div>
 
@@ -103,7 +103,7 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
               <div className="relative h-72 sm:h-80 w-full overflow-hidden bg-neutral-900">
                 <Image
                   src="/images/content/hero-industrial.jpg"
-                  alt="Aevoryn Heavy Earthmoving and Jobsite Equipment in Saudi Arabia"
+                  alt="Aevoryn Industrial Contracting and Jobsite Equipment in Saudi Arabia"
                   fill
                   priority
                   className="object-cover"
@@ -116,8 +116,8 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
                   </div>
                   <p className="text-neutral-200 text-xs font-body">
                     {locale === "en"
-                      ? "Heavy earthmoving, grading, and material mobilization across central and regional project zones."
-                      : "أعمال تحريك التربة، والتسوية، وحشد المعدات في مناطق المشاريع بالمملكة."}
+                      ? "Operational coordination, technical support, and equipment mobilization across regional project zones."
+                      : "التنسيق التشغيلي، والدعم الفني، وحشد المعدات في مناطق المشاريع بالمملكة."}
                   </p>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
               <div className="p-4 grid grid-cols-2 gap-3 bg-subtle border-t border-hairline text-xs font-mono-tech">
                 <div className="p-2.5 bg-page border border-hairline rounded-md">
                   <span className="text-[10px] text-muted block uppercase">{locale === "en" ? "Division 01" : "القطاع 01"}</span>
-                  <span className="font-bold text-primary text-xs">{locale === "en" ? "Civil Infrastructure" : "البنية التحتية"}</span>
+                  <span className="font-bold text-primary text-xs">{locale === "en" ? "Project Development" : "دعم المشاريع"}</span>
                 </div>
                 <div className="p-2.5 bg-page border border-hairline rounded-md">
                   <span className="text-[10px] text-muted block uppercase">{locale === "en" ? "Division 02" : "القطاع 02"}</span>
@@ -134,7 +134,7 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
                 </div>
                 <div className="p-2.5 bg-page border border-hairline rounded-md">
                   <span className="text-[10px] text-muted block uppercase">{locale === "en" ? "Division 03" : "القطاع 03"}</span>
-                  <span className="font-bold text-primary text-xs">{locale === "en" ? "Testing Aggregates" : "مواد البناء"}</span>
+                  <span className="font-bold text-primary text-xs">{locale === "en" ? "Construction Materials" : "مواد البناء"}</span>
                 </div>
                 <div className="p-2.5 bg-page border border-hairline rounded-md">
                   <span className="text-[10px] text-muted block uppercase">{locale === "en" ? "Division 04" : "القطاع 04"}</span>

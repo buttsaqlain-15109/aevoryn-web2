@@ -1,0 +1,15 @@
+=== PAGE 1 ===
+Saudi Aramco
+Supplier Management System
+Vendor Registration Record
+Letter Date: 28 July 2026
+
+Vendor Code: 10120422
+Electronic Reference Number: 0019448
+Commercial Registration: 7054401679
+Company Name: Aevoryn Services & Contracting Co.
+Supplier Type: Service Provider Only
+
+Registration Notice & Mandatory Disclaimer:
+Registration as a supplier does not guarantee the award of any purchase order or contract, nor does it obligate Saudi Aramco to solicit bids from your company. Registered Saudi Aramco supplier (Service Provider), as of 28 July 2026. Registration is not a procurement commitment and not material-supplier approval.
+Verification: supplierhelpdesk@aramco.com

@@ -17,6 +17,7 @@ import {
   isoCertificationFacts,
   divisionFacts,
   clientFacts,
+  corporateStatements,
   getVerified,
 } from "../src/data/company.facts.ts";
 
@@ -24,6 +25,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, "..");
 const SRC_DIR = path.join(ROOT_DIR, "src");
+const SOURCE_DOCS_DIR = path.join(ROOT_DIR, "source-docs");
+const PUBLIC_DIR = path.join(ROOT_DIR, "public");
 
 interface Violation {
   type: string;
@@ -37,6 +40,68 @@ const warnings: string[] = [];
 console.log("====================================================");
 console.log("AEVORYN COMPLIANCE & FACT VERIFICATION AUDITOR");
 console.log("====================================================\n");
+
+// ----------------------------------------------------------------------------
+// RULE 0: Machine-Checked Evidence Against source-docs/*.txt
+// ----------------------------------------------------------------------------
+function loadSourceDocPages(filename: string): Map<number, string> {
+  const filePath = path.join(SOURCE_DOCS_DIR, filename);
+  const pages = new Map<number, string>();
+  if (!fs.existsSync(filePath)) {
+    violations.push({
+      type: "MISSING_SOURCE_DOC",
+      message: `Source doc file '${filename}' not found in ${SOURCE_DOCS_DIR}`,
+    });
+    return pages;
+  }
+
+  const content = fs.readFileSync(filePath, "utf-8");
+  const rawSections = content.split(/=== PAGE (\d+) ===/);
+  for (let i = 1; i < rawSections.length; i += 2) {
+    const pageNum = parseInt(rawSections[i], 10);
+    const pageText = rawSections[i + 1] || "";
+    pages.set(pageNum, pageText.trim());
+  }
+  return pages;
+}
+
+const sourceDocCache = new Map<string, Map<number, string>>();
+
+function verifyFactEvidence(factName: string, fact: any) {
+  if (fact && fact.status === "VERIFIED" && fact.sourceFile && fact.page && fact.quote) {
+    if (!sourceDocCache.has(fact.sourceFile)) {
+      sourceDocCache.set(fact.sourceFile, loadSourceDocPages(fact.sourceFile));
+    }
+    const pages = sourceDocCache.get(fact.sourceFile)!;
+    const pageContent = pages.get(fact.page);
+    if (!pageContent) {
+      violations.push({
+        type: "FACT_PAGE_NOT_FOUND",
+        message: `Fact '${factName}' cites ${fact.sourceFile} page ${fact.page}, but page was not found in source text.`,
+      });
+      return;
+    }
+
+    // Normalize whitespace for quote matching
+    const normalize = (s: string) => s.replace(/\r\n/g, "\n").replace(/\s+/g, " ").trim();
+    if (!normalize(pageContent).includes(normalize(fact.quote))) {
+      violations.push({
+        type: "FACT_QUOTE_MISMATCH",
+        message: `Fact '${factName}' quote "${fact.quote}" was NOT found verbatim in ${fact.sourceFile} on page ${fact.page}.`,
+      });
+    }
+  }
+}
+
+// Check all facts for verbatim machine evidence
+Object.entries(legalIdentityFacts).forEach(([k, f]) => verifyFactEvidence(`legalIdentityFacts.${k}`, f));
+Object.entries(locationFacts).forEach(([k, f]) => verifyFactEvidence(`locationFacts.${k}`, f));
+Object.entries(communicationFacts).forEach(([k, f]) => verifyFactEvidence(`communicationFacts.${k}`, f));
+Object.entries(aramcoFacts).forEach(([k, f]) => verifyFactEvidence(`aramcoFacts.${k}`, f));
+Object.entries(isoCertificationFacts).forEach(([k, f]) => verifyFactEvidence(`isoCertificationFacts.${k}`, f));
+Object.entries(corporateStatements).forEach(([k, f]) => verifyFactEvidence(`corporateStatements.${k}`, f));
+divisionFacts.list.forEach((div) => verifyFactEvidence(`division.${div.divisionNumber}`, div));
+verifyFactEvidence("clientFacts", clientFacts);
 
 // ----------------------------------------------------------------------------
 // RULE 1: Verify SSOT Integrity and getVerified() Assertions
@@ -213,30 +278,81 @@ if (fs.existsSync(docsJsonPath)) {
 }
 
 // ----------------------------------------------------------------------------
-// RULE 6: Banned & Invented Words Scan Across src/
+// RULE 6: Image License Registry Verification
+// ----------------------------------------------------------------------------
+const licensesPath = path.join(SRC_DIR, "data", "licenses.json");
+if (fs.existsSync(licensesPath)) {
+  const registeredLicenses: any[] = JSON.parse(fs.readFileSync(licensesPath, "utf-8"));
+  const licensedPaths = new Set(registeredLicenses.map((l) => l.path));
+
+  function scanPublicImages(dir: string) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const fullPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        scanPublicImages(fullPath);
+      } else if (entry.isFile() && /\.(jpg|jpeg|png|webp|svg)$/i.test(entry.name)) {
+        const relPath = "/" + path.relative(PUBLIC_DIR, fullPath).replace(/\\/g, "/");
+        if (!licensedPaths.has(relPath)) {
+          violations.push({
+            type: "UNLICENSED_IMAGE",
+            file: relPath,
+            message: `Public image '${relPath}' has no entry in src/data/licenses.json`,
+          });
+        }
+      }
+    }
+  }
+
+  const imagesDir = path.join(PUBLIC_DIR, "images");
+  if (fs.existsSync(imagesDir)) {
+    scanPublicImages(imagesDir);
+  }
+} else {
+  violations.push({
+    type: "MISSING_LICENSES_REGISTRY",
+    message: "src/data/licenses.json does not exist.",
+  });
+}
+
+// ----------------------------------------------------------------------------
+// RULE 7: Banned & Invented Words Scan Across src/
 // ----------------------------------------------------------------------------
 const BANNED_PATTERNS: { pattern: RegExp; reason: string }[] = [
   { pattern: /\bproctor\b/i, reason: "Invented soil testing claim" },
   { pattern: /\bsieve analysis\b/i, reason: "Invented aggregate testing claim" },
   { pattern: /\bASTM\b/i, reason: "Invented material ASTM standard" },
   { pattern: /\bSASO\b/i, reason: "Invented material SASO standard" },
-  { pattern: /Aramco approved vendor/i, reason: "Contradicts 'Service Provider Only' letter" },
-  { pattern: /Aramco Approved Safety Officers/i, reason: "Contradicts 'Service Provider Only' letter" },
-  { pattern: /Aramco-approved/i, reason: "Contradicts 'Service Provider Only' letter" },
+  { pattern: /\bMill Test\b/i, reason: "Invented mill testing certificate claim" },
+  { pattern: /\baggregate\b/i, reason: "Invented aggregate material supply claim" },
+  { pattern: /\bquarry\b/i, reason: "Invented quarry ownership claim" },
+  { pattern: /\bearthmoving\b/i, reason: "Invented earthmoving scope" },
+  { pattern: /\bearthworks?\b/i, reason: "Invented earthwork scope" },
+  { pattern: /\blaser grading\b/i, reason: "Invented laser grading claim" },
+  { pattern: /\btrenching\b/i, reason: "Invented utility trenching claim" },
   { pattern: /\btelematics\b/i, reason: "Invented equipment tracking claim" },
   { pattern: /\bTUV\b/i, reason: "Unverified third-party inspection claim" },
   { pattern: /\bwet lease\b/i, reason: "Invented leasing claim" },
   { pattern: /\bwet\/dry lease\b/i, reason: "Invented leasing claim" },
   { pattern: /\bQiwa\b/i, reason: "Unverified platform claim" },
   { pattern: /\bgiga-project\b/i, reason: "Unverified marketing claim" },
+  { pattern: /\bKingdom-wide\b/i, reason: "Unverified geographic claim" },
+  { pattern: /\bVision 2030\b/i, reason: "Unverified national vision claim" },
+  { pattern: /Aramco approved vendor/i, reason: "Contradicts 'Service Provider Only' letter" },
+  { pattern: /Aramco Approved/i, reason: "Contradicts 'Service Provider Only' letter" },
+  { pattern: /Aramco-approved/i, reason: "Contradicts 'Service Provider Only' letter" },
+  { pattern: /ISO\s+[0-9:]+\s+compliant/i, reason: "Must use 'certified', not 'compliant'" },
   { pattern: /\bSECTION 0\d\b/i, reason: "Developer wireframe artifact" },
   { pattern: /\bSCROLL PROGRESS\b/i, reason: "Developer wireframe artifact" },
   { pattern: /\bEST\. 2026\b/i, reason: "Contradicts incorporation timeline" },
+  { pattern: /\bEST\.\b/i, reason: "Unverified established prefix" },
   { pattern: /\bActive & Verified\b/i, reason: "Prohibited endorsement label" },
   { pattern: /\bRenewal in Progress\b/i, reason: "Unverified status (use 'Expired 17/11/2026')" },
   { pattern: /\bAldsfey\b/i, reason: "Misspelled client name (use Aldayfe or pending_client)" },
   { pattern: /\+966\s*53\s*075\s*2206/, reason: "Unverified phone number" },
+  { pattern: /\+966\s*53\s*439\s*7780/, reason: "Unverified phone number" },
   { pattern: /ceo@aevoryn\.net/i, reason: "Executive email removed from public pages" },
+  { pattern: /info@aevoryn\.net/i, reason: "Unverified email (admin@aevoryn.net is verified)" },
   { pattern: /href=["']\/admin\/suppliers["']/i, reason: "Admin portal link exposed in public navigation" },
 ];
 
@@ -275,7 +391,7 @@ scanDirectory(SRC_DIR);
 // ----------------------------------------------------------------------------
 // OUTPUT REPORT
 // ----------------------------------------------------------------------------
-console.log(`Audited: SSOT data registry, ISO scopes, division count, and ${SRC_DIR}`);
+console.log(`Audited: SSOT data registry, ISO scopes, division count, image licenses, and ${SRC_DIR}`);
 console.log(`Warnings: ${warnings.length}`);
 warnings.forEach((w) => console.log(`  [WARN] ${w}`));
 

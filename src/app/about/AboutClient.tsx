@@ -56,8 +56,8 @@ export default function AboutClient() {
                 <div className="space-y-4 text-sm sm:text-base text-secondary font-body leading-relaxed">
                   <p>
                     {locale === "en"
-                      ? "Aevoryn Services & Contracting Co. (CR: 7054401679) was established to fulfill the expanding demand for high-reliability contracting support across the Kingdom of Saudi Arabia. Operating in direct alignment with Saudi Vision 2030, our core mission centers on solving the operational bottlenecks that general contractors and developers encounter on massive civil and industrial jobsites."
-                      : "تأسست شركة إيفورين للخدمات والمقاولات (س.ت: 7054401679) لتلبية الطلب المتزايد على خدمات الدعم الإنشائي والصناعي الموثوق في المملكة العربية السعودية. وتماشياً مع رؤية السعودية 2030، تتمحور غايتنا التشغيلية حول إزالة العقبات الميدانية التي تواجه المقاولين الرئيسيين والمطورين في مشاريع البنية التحتية الضخمة."}
+                      ? "Aevoryn Services & Contracting Co. (CR: 7054401679) was established to fulfill the expanding demand for high-reliability contracting support across Saudi Arabia. Our core mission centers on providing comprehensive infrastructure support solutions that meet the highest standards of quality and safety."
+                      : "تأسست شركة إيفورين للخدمات والمقاولات (س.ت: 7054401679) لتلبية الطلب المتزايد على خدمات الدعم الإنشائي والصناعي الموثوق في المملكة العربية السعودية. وتتمحور مهمتنا حول تقديم حلول دعم شاملة للبنية التحتية تلبي أعلى معايير الجودة والسلامة."}
                   </p>
                   <p>
                     {locale === "en"
@@ -87,8 +87,8 @@ export default function AboutClient() {
               <div className="lg:col-span-6 space-y-6">
                 <div className="relative h-96 border border-hairline bg-page rounded-2xl overflow-hidden shadow-subtle">
                   <Image
-                    src="/images/content/riyadh-skyline.jpg"
-                    alt="Riyadh Commercial District and Development"
+                    src="/images/content/about-hero.jpg"
+                    alt="Aevoryn Corporate Infrastructure Operations in Saudi Arabia"
                     fill
                     className="object-cover"
                   />
@@ -111,8 +111,8 @@ export default function AboutClient() {
                   </div>
                   <p className="leading-relaxed text-secondary font-body">
                     {locale === "en"
-                      ? "Aevoryn Services & Contracting Co. operates from its registered facility in Baish, Jizan Region, supporting industrial and civil projects with Kingdom-wide deployment capabilities."
-                      : "تعمل شركة ايفورين للخدمات والمقاولات انطلاقاً من منشأتها المسجلة في بيش بمنطقة جازان، وتدعم المشاريع الصناعية والإنشائية مع جاهزية كاملة للتنفيذ في جميع مناطق المملكة."}
+                      ? "Aevoryn Services & Contracting Co. operates from its registered facility in Baish, Jizan Region, supporting industrial and civil projects across project locations."
+                      : "تعمل شركة ايفورين للخدمات والمقاولات انطلاقاً من منشأتها المسجلة في بيش بمنطقة جازان، وتدعم المشاريع الصناعية والإنشائية عبر مختلف مواقع العمل بالمملكة."}
                   </p>
                 </div>
               </div>

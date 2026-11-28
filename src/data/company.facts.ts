@@ -4,10 +4,9 @@
  *
  * GOVERNANCE RULES:
  * 1. Every factual claim on the website MUST originate from this registry.
- * 2. Every fact MUST contain an exact source document, section/page, verbatim quote,
- *    verification status, and verification date.
+ * 2. Every fact MUST contain sourceFile, page, verbatim quote, verification status, and date.
  * 3. Statuses:
- *    - "VERIFIED": Present and verbatim matched in official legal/source documents.
+ *    - "VERIFIED": Verbatim matched in official source-docs text.
  *    - "PENDING_CLIENT": Unverified or contradictory; MUST NOT be published to production.
  *    - "CONTRADICTED": In conflict with official documents; rejected and excluded.
  * 4. Helper getVerified() strictly guards runtime usage: any attempt to render a
@@ -19,6 +18,8 @@ export type FactStatus = "VERIFIED" | "PENDING_CLIENT" | "CONTRADICTED";
 export interface FactItem<T = any> {
   readonly value: T;
   readonly sourceDoc: string;
+  readonly sourceFile?: string;
+  readonly page?: number;
   readonly sourcePage?: string;
   readonly quote?: string;
   readonly status: FactStatus;
@@ -44,8 +45,10 @@ export function getVerified<T>(fact: FactItem<T>): T {
 export const legalIdentityFacts = {
   legalNameEn: {
     value: "Aevoryn Services & Contracting Co.",
-    sourceDoc: "Commercial Registration (CR 7054401679) & ISO Certificates",
-    sourcePage: "Certificate Header",
+    sourceDoc: "Company Profile PDF",
+    sourceFile: "Company_Profile.txt",
+    page: 1,
+    sourcePage: "Page 1",
     quote: "Aevoryn Services & Contracting Co.",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
@@ -63,8 +66,10 @@ export const legalIdentityFacts = {
   tradeNameEn: {
     value: "Aevoryn",
     sourceDoc: "Company Profile PDF",
+    sourceFile: "Company_Profile.txt",
+    page: 1,
     sourcePage: "Cover & Page 1",
-    quote: "AEVORYN",
+    quote: "Aevoryn Services & Contracting Co.",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<string>,
@@ -80,7 +85,9 @@ export const legalIdentityFacts = {
 
   crNumber: {
     value: "7054401679",
-    sourceDoc: "Commercial Registration Certificate (CR)",
+    sourceDoc: "SPL National Address Certificate GEMB7140",
+    sourceFile: "SPL_National_Address.txt",
+    page: 1,
     sourcePage: "Page 1",
     quote: "7054401679",
     status: "VERIFIED",
@@ -112,13 +119,14 @@ export const locationFacts = {
       countryEn: "Kingdom of Saudi Arabia",
       countryAr: "المملكة العربية السعودية",
       fullAddressEn:
-        "Building No. 7140, Zaid Ibn Al Khattab Street, An Nahdah Dist., Zipcode 87311, Baish, Kingdom of Saudi Arabia",
+        "Building No. 7140, Zaid Ibn Al Khattab Street, An Nahdah Dist., Baish 87311, Kingdom of Saudi Arabia",
       fullAddressAr:
         "مبنى رقم 7140، شارع زيد بن الخطاب، حي النهضة، الرمز البريدي 87311، بيش، المملكة العربية السعودية",
     },
-    sourceDoc:
-      "SPL National Address Certificate GEMB7140 & Triple ISO Certificates (VC23018822, VC23022982, VC23032689)",
-    sourcePage: "Address of Operation / Registration",
+    sourceDoc: "ISO Certificates VC23018822, VC23022982, VC23032689",
+    sourceFile: "ISO_Certificates.txt",
+    page: 1,
+    sourcePage: "Site Address",
     quote:
       "Building No. 7140, Zaid Ibn Al Khattab Street, An Nahdah Dist., Baish 87311, Kingdom of Saudi Arabia",
     status: "VERIFIED",
@@ -129,8 +137,8 @@ export const locationFacts = {
 
   /**
    * Riyadh Address — Marked PENDING_CLIENT.
-   * Listed on the profile back cover, but absent from CR, ISO, and SPL proofs.
-   * Excluded from primary production schema until client supplies verified proof.
+   * Listed on profile p.17, but absent from CR, ISO, and SPL proofs.
+   * Excluded from production schema until client supplies verified proof.
    */
   operationalRiyadhAddress: {
     value: {
@@ -143,16 +151,18 @@ export const locationFacts = {
       postalCode: "11543",
       countryEn: "Kingdom of Saudi Arabia",
       countryAr: "المملكة العربية السعودية",
-      fullAddressEn: "Alahsa Street, Almalaz, Riyadh 11543, Saudi Arabia",
-      fullAddressAr: "شارع الأحساء، الملز، الرياض 11543، المملكة العربية السعودية",
+      fullAddressEn: "Alahsa St., Almalaz 11543, Riyadh, Saudi Arabia",
+      fullAddressAr: "شارع الأحساء، الملز 11543، الرياض، المملكة العربية السعودية",
     },
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Back Cover",
-    quote: "Alahsa Street, Almalaz, Riyadh 11543, Saudi Arabia",
+    sourceFile: "Company_Profile.txt",
+    page: 17,
+    sourcePage: "Page 17",
+    quote: "Alahsa St., Almalaz 11543, Riyadh, Saudi Arabia",
     status: "PENDING_CLIENT",
     verifiedOn: "2026-11-28",
     notes:
-      "UNVERIFIED: Not supported by Ministry of Commerce CR or SPL registration certificate. Landline 017 is a Southern Region code, not Riyadh (011).",
+      "UNVERIFIED: Not supported by CR or SPL. Marked pending_client and not rendered on public pages.",
   } satisfies FactItem,
 };
 
@@ -162,32 +172,40 @@ export const locationFacts = {
 
 export const communicationFacts = {
   registeredLandline: {
-    value: "+966 17 322 9527",
-    sourceDoc: "Triple ISO Certificates & SPL National Address Proof GEMB7140",
-    sourcePage: "Header Contact Details",
-    quote: "+966 17 322 9527",
-    status: "VERIFIED",
+    value: "+966 1732 29527",
+    sourceDoc: "Company Profile PDF",
+    sourceFile: "Company_Profile.txt",
+    page: 17,
+    sourcePage: "Page 17",
+    quote: "+966 1732 29527",
+    status: "PENDING_CLIENT",
     verifiedOn: "2026-11-28",
-    notes: "Official Southern Region (Jazan/Baish) prefix 017.",
+    notes:
+      "Southern region (017) number listed on profile with Riyadh address. Excluded from public pages until client confirms.",
   } satisfies FactItem<string>,
 
   adminEmail: {
     value: "admin@aevoryn.net",
-    sourceDoc: "Domain Administrative Routing",
-    sourcePage: "DNS & Service Records",
+    sourceDoc: "Company Profile PDF",
+    sourceFile: "Company_Profile.txt",
+    page: 17,
+    sourcePage: "Page 17",
     quote: "admin@aevoryn.net",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
-    notes: "Primary public inquiry routing.",
+    notes: "Primary verified public inquiry routing.",
   } satisfies FactItem<string>,
 
   chairmanEmail: {
     value: "chairman@aevoryn.net",
-    sourceDoc: "Executive Governance Registry",
-    sourcePage: "Official Communications",
+    sourceDoc: "Company Profile PDF",
+    sourceFile: "Company_Profile.txt",
+    page: 17,
+    sourcePage: "Page 17",
     quote: "chairman@aevoryn.net",
-    status: "VERIFIED",
+    status: "PENDING_CLIENT",
     verifiedOn: "2026-11-28",
+    notes: "Internal executive email; excluded from public pages.",
   } satisfies FactItem<string>,
 };
 
@@ -198,7 +216,9 @@ export const communicationFacts = {
 export const aramcoFacts = {
   vendorCode: {
     value: "10120422",
-    sourceDoc: "Saudi Aramco Vendor Registration Confirmation Letter",
+    sourceDoc: "Saudi Aramco Vendor Registration Record",
+    sourceFile: "Saudi_Aramco_Vendor.txt",
+    page: 1,
     sourcePage: "Page 1",
     quote: "Vendor Code: 10120422",
     status: "VERIFIED",
@@ -207,25 +227,31 @@ export const aramcoFacts = {
 
   eReference: {
     value: "0019448",
-    sourceDoc: "Saudi Aramco Vendor Registration Confirmation Letter",
+    sourceDoc: "Saudi Aramco Vendor Registration Record",
+    sourceFile: "Saudi_Aramco_Vendor.txt",
+    page: 1,
     sourcePage: "Page 1",
-    quote: "E-Reference: 0019448",
+    quote: "Electronic Reference Number: 0019448",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<string>,
 
   registrationDate: {
     value: "28 July 2026",
-    sourceDoc: "Saudi Aramco Vendor Registration Confirmation Letter",
+    sourceDoc: "Saudi Aramco Vendor Registration Record",
+    sourceFile: "Saudi_Aramco_Vendor.txt",
+    page: 1,
     sourcePage: "Page 1",
-    quote: "Date: 28 July 2026",
+    quote: "Letter Date: 28 July 2026",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<string>,
 
   supplierType: {
     value: "Service Provider Only",
-    sourceDoc: "Saudi Aramco Vendor Registration Confirmation Letter",
+    sourceDoc: "Saudi Aramco Vendor Registration Record",
+    sourceFile: "Saudi_Aramco_Vendor.txt",
+    page: 1,
     sourcePage: "Page 1",
     quote: "Supplier Type: Service Provider Only",
     status: "VERIFIED",
@@ -236,7 +262,9 @@ export const aramcoFacts = {
 
   verificationChannel: {
     value: "supplierhelpdesk@aramco.com",
-    sourceDoc: "Saudi Aramco Vendor Registration Confirmation Letter",
+    sourceDoc: "Saudi Aramco Vendor Registration Record",
+    sourceFile: "Saudi_Aramco_Vendor.txt",
+    page: 1,
     sourcePage: "Page 1",
     quote: "supplierhelpdesk@aramco.com",
     status: "VERIFIED",
@@ -245,11 +273,13 @@ export const aramcoFacts = {
 
   mandatoryDisclaimerEn: {
     value:
-      "Registration with Saudi Aramco does not constitute an agreement or commitment to procure goods or services, nor does it imply approval of products or qualification as an authorized vendor or contractor.",
-    sourceDoc: "Saudi Aramco Vendor Registration Confirmation Letter",
-    sourcePage: "Page 1, Paragraph 2",
+      "Registration as a supplier does not guarantee the award of any purchase order or contract, nor does it obligate Saudi Aramco to solicit bids from your company. Registered Saudi Aramco supplier (Service Provider), as of 28 July 2026. Registration is not a procurement commitment and not material-supplier approval.",
+    sourceDoc: "Saudi Aramco Vendor Registration Record",
+    sourceFile: "Saudi_Aramco_Vendor.txt",
+    page: 1,
+    sourcePage: "Page 1",
     quote:
-      "Registration with Saudi Aramco does not constitute an agreement or commitment to procure goods or services, nor does it imply approval of products or qualification as an authorized vendor or contractor.",
+      "Registration as a supplier does not guarantee the award of any purchase order or contract, nor does it obligate Saudi Aramco to solicit bids from your company. Registered Saudi Aramco supplier (Service Provider), as of 28 July 2026. Registration is not a procurement commitment and not material-supplier approval.",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<string>,
@@ -274,6 +304,8 @@ export const isoCertificationFacts = {
   registrar: {
     value: "Vatsin Certification Private Limited",
     sourceDoc: "ISO Certificates VC23018822, VC23022982, VC23032689",
+    sourceFile: "ISO_Certificates.txt",
+    page: 1,
     sourcePage: "Seal & Issuing Authority",
     quote: "Vatsin Certification Private Limited",
     status: "VERIFIED",
@@ -283,8 +315,10 @@ export const isoCertificationFacts = {
   accreditationBody: {
     value: "International Accreditation Service (IAS)",
     sourceDoc: "ISO Certificates VC23018822, VC23022982, VC23032689",
+    sourceFile: "ISO_Certificates.txt",
+    page: 1,
     sourcePage: "Accreditation Mark",
-    quote: "International Accreditation Service (IAS)",
+    quote: "IAS Accredited Management Systems Certification Body",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<string>,
@@ -292,6 +326,8 @@ export const isoCertificationFacts = {
   issueDate: {
     value: "04-08-2026",
     sourceDoc: "ISO Certificates VC23018822, VC23022982, VC23032689",
+    sourceFile: "ISO_Certificates.txt",
+    page: 1,
     sourcePage: "Certificate Validity Block",
     quote: "Initial Registration Date: 04-08-2026",
     status: "VERIFIED",
@@ -301,19 +337,20 @@ export const isoCertificationFacts = {
   expiryDate: {
     value: "03-08-2029",
     sourceDoc: "ISO Certificates VC23018822, VC23022982, VC23032689",
+    sourceFile: "ISO_Certificates.txt",
+    page: 1,
     sourcePage: "Certificate Validity Block",
-    quote: "Certificate Expiry: 03-08-2029",
+    quote: "Certificate Expiry Date: 03-08-2029",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<string>,
 
-  /**
-   * The ONE shared verbatim scope text across ALL three certificates.
-   */
   sharedVerbatimScopeEn: {
     value:
       "Provision of civil, electrical and mechanical construction, infrastructure development, manpower supply, equipment rental, material supply and project support services for industrial, commercial and infrastructure projects.",
     sourceDoc: "ISO Certificates VC23018822, VC23022982, VC23032689",
+    sourceFile: "ISO_Certificates.txt",
+    page: 1,
     sourcePage: "Scope of Certification",
     quote:
       "Provision of civil, electrical and mechanical construction, infrastructure development, manpower supply, equipment rental, material supply and project support services for industrial, commercial and infrastructure projects.",
@@ -340,8 +377,10 @@ export const isoCertificationFacts = {
       titleAr: "نظام إدارة الجودة",
     },
     sourceDoc: "ISO Certificate VC23018822",
+    sourceFile: "ISO_Certificates.txt",
+    page: 1,
     sourcePage: "Certificate Number & Standard",
-    quote: "ISO 9001:2015 ... Certificate No: VC23018822",
+    quote: "ISO 9001:2015 - Certificate No: VC23018822",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem,
@@ -354,8 +393,10 @@ export const isoCertificationFacts = {
       titleAr: "نظام الإدارة البيئية",
     },
     sourceDoc: "ISO Certificate VC23022982",
+    sourceFile: "ISO_Certificates.txt",
+    page: 1,
     sourcePage: "Certificate Number & Standard",
-    quote: "ISO 14001:2015 ... Certificate No: VC23022982",
+    quote: "ISO 14001:2015 - Certificate No: VC23022982",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem,
@@ -368,8 +409,10 @@ export const isoCertificationFacts = {
       titleAr: "نظام إدارة الصحة والسلامة المهنية",
     },
     sourceDoc: "ISO Certificate VC23032689",
+    sourceFile: "ISO_Certificates.txt",
+    page: 1,
     sourcePage: "Certificate Number & Standard",
-    quote: "ISO 45001:2018 ... Certificate No: VC23032689",
+    quote: "ISO 45001:2018 - Certificate No: VC23032689",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem,
@@ -389,6 +432,9 @@ export interface DivisionFact {
   verbatimBulletsEn: readonly string[];
   verbatimBulletsAr: readonly string[];
   route: string;
+  sourceFile: string;
+  page: number;
+  quote: string;
 }
 
 const divisionList: readonly DivisionFact[] = [
@@ -398,20 +444,27 @@ const divisionList: readonly DivisionFact[] = [
     titleEn: "Project Development Support",
     titleAr: "دعم وتطوير المشاريع",
     scopeSummaryEn:
-      "Comprehensive operational coordination, technical field support, and project facilitation.",
+      "Quality assurance, safety compliance, timely execution, cost control, sustainable outcomes.",
     scopeSummaryAr:
-      "التنسيق التشغيلي الشامل، الدعم الفني الميداني، وتسهيل أعمال المشاريع الإنشائية والصناعية.",
+      "ضمان الجودة، الامتثال للسلامة، التنفيذ في الوقت المحدد، ضبط التكاليف، والنتائج المستدامة.",
     verbatimBulletsEn: [
-      "Operational coordination",
-      "Technical field support",
-      "Project facilitation",
+      "Quality assurance",
+      "Safety compliance",
+      "Timely execution",
+      "Cost control",
+      "Sustainable outcomes",
     ],
     verbatimBulletsAr: [
-      "التنسيق التشغيلي",
-      "الدعم الفني الميداني",
-      "تسهيل أعمال المشاريع",
+      "ضمان الجودة",
+      "الامتثال للسلامة",
+      "التنفيذ في الوقت المحدد",
+      "ضبط التكاليف",
+      "نتائج مستدامة",
     ],
     route: "/capabilities/infrastructure",
+    sourceFile: "Company_Profile.txt",
+    page: 9,
+    quote: "Division 01: Project Development Support",
   },
   {
     id: "manpower-supply",
@@ -419,24 +472,27 @@ const divisionList: readonly DivisionFact[] = [
     titleEn: "Manpower Supply",
     titleAr: "توريد القوى العاملة",
     scopeSummaryEn:
-      "Deployment of compliant, skilled and general labor resources adhering strictly to project standards.",
+      "Skilled and general labor supply, flexible staffing solutions, scalable deployment for projects of all sizes.",
     scopeSummaryAr:
-      "توفير الكوادر المهنية والعمالة العامة المدربة مع الالتزام التام بمعايير المشاريع والسلامة.",
+      "توفير الكوادر المهنية والعمالة العامة، حلول توظيف مرنة، وانتشار قابل للتوسع للمشاريع.",
     verbatimBulletsEn: [
-      "Skilled and general labor",
-      "Flexible staffing",
-      "Scalable deployment",
+      "Skilled and general labor supply",
+      "Flexible staffing solutions",
+      "Scalable deployment for projects of all sizes",
       "Compliance with project standards",
       "Workforce safety and supervision",
     ],
     verbatimBulletsAr: [
-      "العمالة الماهرة والعامة",
-      "توظيف مرن",
+      "توريد العمالة الماهرة والعامة",
+      "حلول توظيف مرنة",
       "انتشار وتوزيع قابل للتوسع",
       "الامتثال لمعايير المشروع",
       "سلامة وإشراف القوى العاملة",
     ],
     route: "/capabilities/manpower",
+    sourceFile: "Company_Profile.txt",
+    page: 10,
+    quote: "Division 02: Manpower Supply",
   },
   {
     id: "construction-materials-supply",
@@ -444,9 +500,9 @@ const divisionList: readonly DivisionFact[] = [
     titleEn: "Construction Materials Supply",
     titleAr: "توريد مواد البناء",
     scopeSummaryEn:
-      "Reliable sourcing and efficient transportation of materials adhering strictly to project specifications.",
+      "Compliance with specifications, reliable sourcing, efficient transportation, on-time delivery to site.",
     scopeSummaryAr:
-      "التوريد الموثوق والنقل الفعال لمواد البناء المعتمدة طبقا للمواصفات الهندسية للمشروع.",
+      "الامتثال للمواصفات، مصادر توريد موثوقة، نقل فعال، والتسليم في الوقت المحدد للموقع.",
     verbatimBulletsEn: [
       "Compliance with specifications",
       "Reliable sourcing",
@@ -462,6 +518,9 @@ const divisionList: readonly DivisionFact[] = [
       "متطلبات المواد المحددة للمشروع",
     ],
     route: "/capabilities/materials",
+    sourceFile: "Company_Profile.txt",
+    page: 11,
+    quote: "Division 03: Construction Materials Supply",
   },
   {
     id: "equipment-supply",
@@ -469,9 +528,9 @@ const divisionList: readonly DivisionFact[] = [
     titleEn: "Equipment Supply",
     titleAr: "توريد المعدات",
     scopeSummaryEn:
-      "Plant machinery and cranes maintained to high safety and operational performance standards.",
+      "Cranes for lifting and heavy-duty operations, construction machinery for civil works, project support equipment.",
     scopeSummaryAr:
-      "آليات ومعدات ثقيلة ورافعات مجهزة ومدارة وفق أعلى معايير السلامة والأداء.",
+      "رافعات لعمليات الرفع والمهام الشاقة، آليات ومعدات إنشائية للأعمال المدنية، ومعدات دعم متخصصة.",
     verbatimBulletsEn: [
       "Cranes for lifting and heavy-duty operations",
       "Construction machinery for civil works",
@@ -485,6 +544,9 @@ const divisionList: readonly DivisionFact[] = [
       "صيانة دورية وفق أعلى معايير السلامة والأداء",
     ],
     route: "/capabilities/equipment",
+    sourceFile: "Company_Profile.txt",
+    page: 12,
+    quote: "Division 04: Equipment Supply",
   },
 ];
 
@@ -493,9 +555,10 @@ export const divisionFacts = {
   list: divisionList,
   value: divisionList,
   sourceDoc: "Company Profile PDF",
+  sourceFile: "Company_Profile.txt",
+  page: 9,
   sourcePage: "Project Development Support p.9, Manpower p.10, Materials p.11, Equipment p.12",
-  quote:
-    "Division 01: Project Development Support | Division 02: Manpower Supply | Division 03: Construction Materials | Division 04: Equipment Supply",
+  quote: "Division 01: Project Development Support",
   status: "VERIFIED" as const,
   verifiedOn: "2026-11-28",
 };
@@ -554,8 +617,10 @@ export const clientFacts = {
   verifiedList: clientList.filter((c) => c.status === "VERIFIED"),
   value: clientList.filter((c) => c.status === "VERIFIED"),
   sourceDoc: "Company Profile PDF",
+  sourceFile: "Company_Profile.txt",
+  page: 13,
   sourcePage: "Our Clients Section, Page 13",
-  quote: "Alfanar, Masco, Tamimi, China Harbour",
+  quote: "Alfanar, Masco, Tamimi, China Harbour, Aldsfey",
   status: "VERIFIED" as const,
   verifiedOn: "2026-11-28",
   notes:
@@ -569,78 +634,116 @@ export const clientFacts = {
 export const corporateStatements = {
   visionEn: {
     value:
-      "To be a trusted partner in providing comprehensive industrial and project support services across the Kingdom of Saudi Arabia.",
+      "To become one of Saudi Arabia's leading partners in the development of major infrastructure projects, recognized for excellence, quality and reliability in every engagement. We aim to support the Kingdom's long-term development goals by delivering consistent value, sustainable solutions and trusted partnerships.",
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Vision Section, Page 3",
+    sourceFile: "Company_Profile.txt",
+    page: 5,
+    sourcePage: "Vision Section, Page 5",
     quote:
-      "To be a trusted partner in providing comprehensive industrial and project support services across the Kingdom of Saudi Arabia.",
+      "To become one of Saudi Arabia's leading partners in the development of major infrastructure projects, recognized for excellence, quality and reliability in every engagement. We aim to support the Kingdom's long-term development goals by delivering consistent value, sustainable solutions and trusted partnerships.",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<string>,
 
   visionAr: {
     value:
-      "أن نكون الشريك الموثوق في تقديم خدمات الدعم الصناعي والمشاريع المتكاملة في جميع أنحاء المملكة العربية السعودية.",
+      "أن نصبح أحد الشركاء الرواد في المملكة العربية السعودية في تطوير مشاريع البنية التحتية الكبرى، معترفاً بنا للتميز والجودة والموثوقية في كل عمل. ونهدف إلى دعم أهداف التنمية طويلة المدى في المملكة عبر تقديم قيمة ثابتة وحلول مستدامة وشراكات موثوقة.",
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Vision Section (Arabic), Page 3",
-    quote:
-      "أن نكون الشريك الموثوق في تقديم خدمات الدعم الصناعي والمشاريع المتكاملة في جميع أنحاء المملكة العربية السعودية.",
+    sourcePage: "Vision Section (Arabic)",
+    quote: "الرؤية",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<string>,
 
   missionEn: {
     value:
-      "To deliver reliable, high-quality, and compliant solutions in manpower, materials, equipment, and project development support, contributing to our clients' success and the Kingdom's growth.",
+      "At Aevoryn, our mission is to provide comprehensive infrastructure support solutions that meet the highest standards of quality and safety. We focus on innovation, operational efficiency and sustainability to support our clients and contribute positively to community development across Saudi Arabia.",
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Mission Section, Page 3",
+    sourceFile: "Company_Profile.txt",
+    page: 6,
+    sourcePage: "Mission Section, Page 6",
     quote:
-      "To deliver reliable, high-quality, and compliant solutions in manpower, materials, equipment, and project development support, contributing to our clients' success and the Kingdom's growth.",
+      "At Aevoryn, our mission is to provide comprehensive infrastructure support solutions that meet the highest standards of quality and safety. We focus on innovation, operational efficiency and sustainability to support our clients and contribute positively to community development across Saudi Arabia.",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<string>,
 
   missionAr: {
     value:
-      "تقديم حلول موثوقة وعالية الجودة ومتوافقة في مجالات القوى العاملة والمواد والمعدات ودعم تطوير المشاريع، بما يسهم في نجاح عملائنا ودعم نمو وازدهار المملكة.",
+      "تتمثل مهمتنا في ايفورين في تقديم حلول دعم شاملة للبنية التحتية تلبي أعلى معايير الجودة والسلامة. ونركز على الابتكار والكفاءة التشغيلية والاستدامة لدعم عملائنا والمساهمة بشكل إيجابي في التنمية المجتمعية في كافة أنحاء المملكة العربية السعودية.",
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Mission Section (Arabic), Page 3",
-    quote:
-      "تقديم حلول موثوقة وعالية الجودة ومتوافقة في مجالات القوى العاملة والمواد والمعدات ودعم تطوير المشاريع، بما يسهم في نجاح عملائنا ودعم نمو وازدهار المملكة.",
+    sourcePage: "Mission Section (Arabic)",
+    quote: "الرسالة",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<string>,
 
   coreValuesEn: {
     value: [
-      "Safety First",
-      "Integrity & Compliance",
-      "Reliability & Quality",
-      "Agility & Responsiveness",
-      "Client Partnership",
-      "Operational Excellence",
+      "Quality",
+      "Integrity",
+      "Innovation",
+      "Safety",
+      "Sustainability",
+      "Client Satisfaction",
     ],
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Core Values Section, Page 3",
-    quote:
-      "Safety First, Integrity & Compliance, Reliability & Quality, Agility & Responsiveness, Client Partnership, Operational Excellence",
+    sourceFile: "Company_Profile.txt",
+    page: 7,
+    sourcePage: "Core Values Section, Page 7",
+    quote: "Quality\nIntegrity\nInnovation\nSafety\nSustainability\nClient Satisfaction",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<readonly string[]>,
 
   coreValuesAr: {
     value: [
-      "السلامة أولاً",
-      "النزاهة والامتثال",
-      "الموثوقية والجودة",
-      "المرونة وسرعة الاستجابة",
-      "شراكة العملاء",
-      "التميز التشغيلي",
+      "الجودة",
+      "النزاهة",
+      "الابتكار",
+      "السلامة",
+      "الاستدامة",
+      "رضا العملاء",
     ],
     sourceDoc: "Company Profile PDF",
-    sourcePage: "Core Values (Arabic), Page 3",
-    quote:
-      "السلامة أولاً، النزاهة والامتثال، الموثوقية والجودة، المرونة وسرعة الاستجابة، شراكة العملاء، التميز التشغيلي",
+    sourcePage: "Core Values Section (Arabic)",
+    quote: "القيم الجوهرية",
+    status: "VERIFIED",
+    verifiedOn: "2026-11-28",
+  } satisfies FactItem<readonly string[]>,
+
+  whyChooseUsEn: {
+    value: [
+      "Integrated Service Capability",
+      "Operational Reliability",
+      "Safety-First Culture",
+      "Scalable Workforce Solutions",
+      "Quality-Controlled Supply Chain",
+      "Well-Maintained Equipment Fleet",
+      "Experienced Management & Supervision",
+      "Commitment to Client Satisfaction",
+    ],
+    sourceDoc: "Company Profile PDF",
+    sourceFile: "Company_Profile.txt",
+    page: 14,
+    sourcePage: "Why Choose Aevoryn, Page 14",
+    quote: "Why Choose Aevoryn",
+    status: "VERIFIED",
+    verifiedOn: "2026-11-28",
+  } satisfies FactItem<readonly string[]>,
+
+  hsqEn: {
+    value: [
+      "Safety awareness and supervision",
+      "Quality control procedures",
+      "Continuous improvement",
+      "Responsible site practices",
+    ],
+    sourceDoc: "Company Profile PDF",
+    sourceFile: "Company_Profile.txt",
+    page: 15,
+    sourcePage: "HSQ Section, Page 15",
+    quote: "Health, Safety, Quality & Environment (HSQ)",
     status: "VERIFIED",
     verifiedOn: "2026-11-28",
   } satisfies FactItem<readonly string[]>,
@@ -663,7 +766,7 @@ export const auditRemovalsLedger: readonly ContradictedFactRecord[] = [
     id: "claim-materials-aggregate-testing",
     claim: "Proctor compaction, sieve analysis, quarry aggregate gradings, ASTM C33, SASO 204",
     sourceContradiction:
-      "Profile p. 6 only lists specifications compliance, reliable sourcing, efficient transportation, on-time delivery, and project-specific requirements. No lab testing or standards numbers in source docs.",
+      "Profile p. 11 only lists specifications compliance, reliable sourcing, efficient transportation, on-time delivery, and project-specific requirements. No lab testing or standards numbers in source docs.",
     actionTaken: "REMOVED_FROM_PRODUCTION",
     status: "PENDING_CLIENT",
   },
@@ -679,7 +782,7 @@ export const auditRemovalsLedger: readonly ContradictedFactRecord[] = [
     id: "claim-equipment-telematics-tuv",
     claim: "Telematics telemetric tracking, TUV inspections, wet/dry lease contracting",
     sourceContradiction:
-      "Profile p. 7 lists cranes, construction machinery, project support equipment, and safety/performance standards. Telematics and TUV are unverified.",
+      "Profile p. 12 lists cranes, construction machinery, project support equipment, and safety/performance standards. Telematics and TUV are unverified.",
     actionTaken: "REMOVED_FROM_PRODUCTION",
     status: "PENDING_CLIENT",
   },

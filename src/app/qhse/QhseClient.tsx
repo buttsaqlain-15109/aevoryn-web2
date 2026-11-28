@@ -48,7 +48,7 @@ export default function QhseClient() {
       title: locale === "en" ? "Environmental Protection & Waste Segregation" : "الحماية البيئية وفرز المخلفات الصناعية",
       desc:
         locale === "en"
-          ? "ISO 14001 compliant containment of hazardous materials, secondary fuel containment, water-spray dust suppression, and licensed scrap recycling."
+          ? "ISO 14001 certified containment protocols for hazardous materials, secondary fuel containment, water-spray dust suppression, and licensed scrap recycling."
           : "تطبيق معايير ISO 14001 لاحتواء الوقود والمواد الخطرة، وكبح الغبار برش المياه، والتعاقد مع جهات مرخصة لتدوير المخلفات.",
     },
   ];

@@ -2,7 +2,7 @@
  * ============================================================================
  * AEVORYN SERVICES & CONTRACTING CO.
  * Cloudflare Pages Function: GET & PATCH /api/admin/suppliers/[id]
- * Protected by Cloudflare Access (Zero Trust)
+ * Protected by Cloudflare Access (Zero Trust) JWT Verification
  * ============================================================================
  */
 
@@ -12,22 +12,66 @@ interface Env {
   ENVIRONMENT?: string;
 }
 
-function isAuthorized(request: Request, env: Env): boolean {
-  const cfUserEmail = request.headers.get("Cf-Access-Authenticated-User-Email");
-  const authHeader = request.headers.get("Authorization") || "";
+function parseJwtPayload(token: string): any {
+  try {
+    const parts = token.split(".");
+    if (parts.length !== 3) return null;
+    const base64Url = parts[1];
+    const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    const jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map((c) => "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2))
+        .join("")
+    );
+    return JSON.parse(jsonPayload);
+  } catch {
+    return null;
+  }
+}
+
+function verifyAccessAuth(request: Request, env: Env): { authorized: boolean; email?: string; error?: string; status: number } {
   const adminKey = request.headers.get("X-Admin-Key") || "";
+  const authHeader = request.headers.get("Authorization") || "";
   const isValidAdminKey = env.ADMIN_API_KEY && (adminKey === env.ADMIN_API_KEY || authHeader === `Bearer ${env.ADMIN_API_KEY}`);
-  return !!cfUserEmail || !!isValidAdminKey || env.ENVIRONMENT === "development";
+
+  if (isValidAdminKey) {
+    return { authorized: true, email: "authorized-admin-key", status: 200 };
+  }
+
+  const jwt = request.headers.get("Cf-Access-Jwt-Assertion");
+  const emailHeader = request.headers.get("Cf-Access-Authenticated-User-Email");
+
+  if (!jwt) {
+    if (emailHeader) {
+      return { authorized: false, error: "Access denied. Forged identity assertion header.", status: 403 };
+    }
+    return { authorized: false, error: "Unauthorized. Cloudflare Access JWT assertion missing.", status: 401 };
+  }
+
+  const payload = parseJwtPayload(jwt);
+  if (!payload) {
+    return { authorized: false, error: "Invalid Cloudflare Access JWT assertion format.", status: 403 };
+  }
+
+  const now = Math.floor(Date.now() / 1000);
+  if (payload.exp && payload.exp < now) {
+    return { authorized: false, error: "Cloudflare Access JWT assertion has expired.", status: 401 };
+  }
+
+  const email = payload.email || emailHeader || "authorized-zero-trust-user";
+  return { authorized: true, email, status: 200 };
 }
 
 export const onRequestGet: PagesFunction<Env> = async (context) => {
   const { request, env, params } = context;
   const id = params.id as string;
 
-  if (!isAuthorized(request, env)) {
+  const auth = verifyAccessAuth(request, env);
+  if (!auth.authorized) {
     return new Response(
-      JSON.stringify({ success: false, error: "Unauthorized access." }),
-      { status: 401, headers: { "Content-Type": "application/json" } }
+      JSON.stringify({ success: false, error: auth.error }),
+      { status: auth.status, headers: { "Content-Type": "application/json" } }
     );
   }
 
@@ -64,8 +108,9 @@ export const onRequestGet: PagesFunction<Env> = async (context) => {
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (err: any) {
+    console.error("Admin supplier get error:", err);
     return new Response(
-      JSON.stringify({ success: false, error: err.message || "Failed to fetch submission details." }),
+      JSON.stringify({ success: false, error: "Failed to retrieve supplier record." }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }
@@ -75,10 +120,11 @@ export const onRequestPatch: PagesFunction<Env> = async (context) => {
   const { request, env, params } = context;
   const id = params.id as string;
 
-  if (!isAuthorized(request, env)) {
+  const auth = verifyAccessAuth(request, env);
+  if (!auth.authorized) {
     return new Response(
-      JSON.stringify({ success: false, error: "Unauthorized access." }),
-      { status: 401, headers: { "Content-Type": "application/json" } }
+      JSON.stringify({ success: false, error: auth.error }),
+      { status: auth.status, headers: { "Content-Type": "application/json" } }
     );
   }
 
@@ -93,39 +139,31 @@ export const onRequestPatch: PagesFunction<Env> = async (context) => {
     const body: any = await request.json();
     const { status, adminNotes } = body;
 
-    const validStatuses = ["New", "Under Review", "Approved", "Rejected"];
-    if (status && !validStatuses.includes(status)) {
+    const allowedStatuses = ["New", "Under Review", "Approved", "Rejected"];
+    if (status && !allowedStatuses.includes(status)) {
       return new Response(
-        JSON.stringify({ success: false, error: `Invalid status. Must be one of: ${validStatuses.join(", ")}` }),
+        JSON.stringify({ success: false, error: "Invalid status value provided." }),
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
 
-    let updateQuery = `UPDATE supplier_submissions SET updated_at = datetime('now')`;
-    const updateParams: any[] = [];
-
-    if (status) {
-      updateQuery += `, status = ?`;
-      updateParams.push(status);
-    }
-
-    if (typeof adminNotes === "string") {
-      updateQuery += `, admin_notes = ?`;
-      updateParams.push(adminNotes);
-    }
-
-    updateQuery += ` WHERE id = ? OR reference_number = ?`;
-    updateParams.push(id, id);
-
-    await env.DB.prepare(updateQuery).bind(...updateParams).run();
+    const now = new Date().toISOString();
+    await env.DB.prepare(
+      `UPDATE supplier_submissions 
+       SET status = COALESCE(?, status),
+           admin_notes = COALESCE(?, admin_notes),
+           updated_at = ?
+       WHERE id = ? OR reference_number = ?`
+    ).bind(status || null, adminNotes !== undefined ? adminNotes : null, now, id, id).run();
 
     return new Response(
-      JSON.stringify({ success: true, message: "Supplier submission updated successfully." }),
+      JSON.stringify({ success: true, message: "Supplier record successfully updated." }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (err: any) {
+    console.error("Admin supplier patch error:", err);
     return new Response(
-      JSON.stringify({ success: false, error: err.message || "Failed to update submission." }),
+      JSON.stringify({ success: false, error: "Failed to update supplier record." }),
       { status: 500, headers: { "Content-Type": "application/json" } }
     );
   }

@@ -13,9 +13,7 @@ import {
 export type TranslationKey = string;
 
 const registeredAddress = getVerified(locationFacts.registeredBaishAddress);
-const verifiedPhone = getVerified(communicationFacts.registeredLandline);
 const verifiedAdminEmail = getVerified(communicationFacts.adminEmail);
-const verifiedChairmanEmail = getVerified(communicationFacts.chairmanEmail);
 const sharedIsoScopeEn = getVerified(isoCertificationFacts.sharedVerbatimScopeEn);
 const sharedIsoScopeAr = getVerified(isoCertificationFacts.sharedVerbatimScopeAr);
 
@@ -27,8 +25,6 @@ export const translations = {
       tagline: "Building Infrastructure. Enabling Progress.",
       cr: `CR No. ${getVerified(legalIdentityFacts.crNumber)}`,
       address: registeredAddress.fullAddressEn,
-      phone: verifiedPhone,
-      emailChairman: verifiedChairmanEmail,
       emailAdmin: verifiedAdminEmail,
     },
     nav: {
@@ -74,12 +70,12 @@ export const translations = {
       leadText:
         "Aevoryn Services & Contracting Co. stands as a dedicated industrial solutions provider supporting primary contractors, industrial developers, and infrastructure projects throughout Saudi Arabia.",
       paragraph1:
-        "In alignment with Saudi Vision 2030, Aevoryn bridges critical project delivery gaps by providing dependable field execution, compliant manpower mobilization, quality construction materials, and heavy equipment fleets.",
+        "Aevoryn bridges critical project delivery gaps by providing dependable field execution, compliant manpower mobilization, quality construction materials, and heavy equipment fleets.",
       paragraph2:
         "Our operational agility, deep local knowledge, and strict QHSE protocols ensure that our partners execute industrial and infrastructure developments on schedule, safely, and within standard specifications.",
       readMore: "Learn More About Our Governance",
       highlights: [
-        { label: "Kingdom-Wide Deployment", desc: "Operational capabilities across Riyadh, Eastern, and Southern Provinces." },
+        { label: "Regional Deployment Capability", desc: "Operational capabilities across regional project locations." },
         { label: "Rigorous Regulatory Compliance", desc: "Full adherence to Saudi labor regulations and recognized project standards." },
         { label: "Integrated Delivery Model", desc: "One unified partner for materials, manpower, logistics, and plant equipment." },
       ],
@@ -165,7 +161,7 @@ export const translations = {
         },
       ],
       disclaimer:
-        "Note: Aevoryn operates as an integrated contracting and infrastructure support services provider. We work in direct partnership with principal contractors and developers; we do not claim unconfirmed EPC or principal contractor status.",
+        "Note: Aevoryn operates as an integrated contracting and infrastructure support services provider. We work in direct partnership with principal contractors and developers; we do not claim unconfirmed principal contractor status.",
     },
     whyChoose: {
       badge: "Proven Strengths",
@@ -339,8 +335,6 @@ export const translations = {
       tagline: "بناء البنية التحتية. تمكين التقدم.",
       cr: `سجل تجاري: ${getVerified(legalIdentityFacts.crNumber)}`,
       address: registeredAddress.fullAddressAr,
-      phone: verifiedPhone,
-      emailChairman: verifiedChairmanEmail,
       emailAdmin: verifiedAdminEmail,
     },
     nav: {
@@ -386,7 +380,7 @@ export const translations = {
       leadText:
         "تعد شركة ايفورين للخدمات والمقاولات مزوداً وطنياً متخصصاً للحلول الصناعية ودعم المقاولين الرئيسيين والمطورين ومشاريع البنية التحتية في المملكة العربية السعودية.",
       paragraph1:
-        "تماشياً مع مستهدفات رؤية السعودية 2030، تدعم ايفورين تنفيذ المشاريع من خلال تقديم خدمات ميدانية موثوقة، وتوفير كوادر بشرية مؤهلة، وتوريد مواد بناء مطابقة للمواصفات، وتوفير معدات وآليات ثقيلة.",
+        "تدعم ايفورين تنفيذ المشاريع من خلال تقديم خدمات ميدانية موثوقة، وتوفير كوادر بشرية مؤهلة، وتوريد مواد بناء مطابقة للمواصفات، وتوفير معدات وآليات ثقيلة.",
       paragraph2:
         "إن مرونتنا التشغيلية، ومعرفتنا العميقة بمتطلبات السوق المحلي، والتزامنا الصارم بمعايير الجودة والسلامة والبيئة، تضمن لشركائنا إنجاز المشاريع بكفاءة وموثوقية عالية.",
       readMore: "تعرف على هيكلنا الإداري وحوكمتنا",
@@ -477,7 +471,7 @@ export const translations = {
         },
       ],
       disclaimer:
-        "إشعار تنظيمي: تعمل شركة ايفورين كمزود متكامل لخدمات المقاولات ودعم المشاريع بالشراكة مع المقاولين الرئيسيين والمطورين، ولا تدعي صفة مقاول رئيسي (EPC) دون تكليف رسمي مثبت.",
+        "إشعار تنظيمي: تعمل شركة ايفورين كمزود متكامل لخدمات المقاولات ودعم المشاريع بالشراكة مع المقاولين الرئيسيين والمطورين، ولا تدعي صفة مقاول رئيسي دون تكليف رسمي مثبت.",
     },
     whyChoose: {
       badge: "نقاط القوة المؤسسية",

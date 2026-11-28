@@ -23,7 +23,7 @@ export function ClientsSection() {
             </span>
           </div>
           <span className="label-tech text-muted text-[11px] hidden sm:inline">
-            KINGDOM-WIDE ENGAGEMENT
+            STRATEGIC PROJECT PARTNERSHIPS
           </span>
         </div>
 

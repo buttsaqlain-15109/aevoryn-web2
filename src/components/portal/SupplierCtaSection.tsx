@@ -66,7 +66,7 @@ export function SupplierCtaSection() {
 
               <p className="text-sm text-secondary font-body leading-relaxed">
                 {locale === "en"
-                  ? "Submit commercial credentials, equipment fleet catalogs, aggregate quarry certifications, or technical manpower capabilities to join our verified supply network."
+                  ? "Submit commercial credentials, equipment fleet catalogs, construction material compliance documentation, or technical manpower capabilities to join our verified supply network."
                   : "سجل بيانات منشأتك، وقوائم المعدات، ومصادر المواد، والكوادر الفنية للانضمام إلى شبكة التوريد المعتمدة لدى إيفورين."}
               </p>
 

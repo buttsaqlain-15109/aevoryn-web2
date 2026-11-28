@@ -43,8 +43,8 @@ export function EditorialIntroSection() {
       title: locale === "en" ? "Saudi-Based Operations" : "عمليات وطنية بالمملكة",
       desc:
         locale === "en"
-          ? "Operating under commercial registration CR 7054401679 with official facility in Baish and Kingdom-wide project deployment capabilities."
-          : "نعمل بموجب سجل تجاري رقم 7054401679 مع منشأة رسمية مسجلة في بيش وجاهزية تشغيلية لتغطية المشاريع في كافة أرجاء المملكة.",
+          ? "Operating under commercial registration CR 7054401679 with official facility in Baish and project deployment capabilities across project sites."
+          : "نعمل بموجب سجل تجاري رقم 7054401679 مع منشأة رسمية مسجلة في بيش وجاهزية تشغيلية لتغطية المشاريع في مختلف مواقع العمل.",
       icon: MapPin,
     },
   ];
@@ -61,7 +61,7 @@ export function EditorialIntroSection() {
             </span>
           </div>
           <span className="label-tech text-muted text-[11px] hidden sm:inline">
-            EST. KINGDOM OF SAUDI ARABIA
+            KINGDOM OF SAUDI ARABIA
           </span>
         </div>
 
@@ -99,7 +99,7 @@ export function EditorialIntroSection() {
               {/* Technical Photo Metadata Strip */}
               <div className="absolute bottom-0 inset-x-0 p-4 bg-surface border-t border-hairline flex items-center justify-between text-xs">
                 <span className="label-tech text-primary text-[11px]">CIVIL & INDUSTRIAL CAPABILITY</span>
-                <span className="label-tech text-primary font-bold text-[11px]">ISO 9001:2015 COMPLIANT</span>
+                <span className="label-tech text-primary font-bold text-[11px]">ISO 9001:2015 CERTIFIED</span>
               </div>
             </div>
           </div>
@@ -114,8 +114,8 @@ export function EditorialIntroSection() {
               </p>
               <p>
                 {locale === "en"
-                  ? "Aligned with the kingdom's Vision 2030 industrial transformation, we solve core operational bottlenecks on civil and energy jobsites by orchestrating heavy earthworks, mobilizing tested workforce disciplines, supplying verified construction aggregates, and deploying maintained plant fleets."
-                  : "تماشياً مع التحول الصناعي لرؤية السعودية 2030، نتولى إزالة العقبات الميدانية واللوجستية في مواقع المشاريع المدنية ومشاريع الطاقة من خلال إدارة الأعمال الترابية، وحشد الكوادر المهنية المؤهلة، وتوريد مواد البناء المفحوصة، وتشغيل أساطيل الآليات الثقيلة."}
+                  ? "We solve core operational bottlenecks on civil and energy jobsites by coordinating project support, mobilizing compliant workforce disciplines, supplying verified construction materials, and deploying maintained plant fleets."
+                  : "نتولى إزالة العقبات الميدانية واللوجستية في مواقع المشاريع من خلال التنسيق التشغيلي، وتوفير الكوادر المهنية المؤهلة، وتوريد مواد البناء المعتمدة، وتشغيل أساطيل الآليات والمعدات."}
               </p>
             </div>
 

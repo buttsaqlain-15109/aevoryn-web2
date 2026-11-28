@@ -24,7 +24,7 @@ export function ContactFooterSection() {
               </span>
             </div>
             <span className="label-tech text-muted text-[11px] hidden sm:inline">
-              BAISH REGISTERED OFFICE // KINGDOM-WIDE MOBILIZATION
+              BAISH REGISTERED OFFICE // PROJECT MOBILIZATION
             </span>
           </div>
 
