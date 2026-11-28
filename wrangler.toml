@@ -8,10 +8,10 @@ compatibility_flags = ["nodejs_compat"]
 # database_name = "aevoryn-production"
 # database_id = "2c831b5f-4048-4f97-901e-06198806d401"
 
-[[r2_buckets]]
-binding = "SUPPLIER_FILES"
-bucket_name = "aevoryn-supplier-files"
+# [[r2_buckets]]
+# binding = "SUPPLIER_FILES"
+# bucket_name = "aevoryn-supplier-files"
 
 [vars]
 ENVIRONMENT = "production"
-ADMIN_NOTIFICATION_EMAIL = "info@aevoryn.net"
+ADMIN_NOTIFICATION_EMAIL = "admin@aevoryn.net"
