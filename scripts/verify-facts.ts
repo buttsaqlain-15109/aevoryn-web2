@@ -353,6 +353,9 @@ const BANNED_PATTERNS: { pattern: RegExp; reason: string }[] = [
   { pattern: /\+966\s*53\s*439\s*7780/, reason: "Unverified phone number" },
   { pattern: /ceo@aevoryn\.net/i, reason: "Executive email removed from public pages" },
   { pattern: /info@aevoryn\.net/i, reason: "Unverified email (admin@aevoryn.net is verified)" },
+  { pattern: /chairman@aevoryn\.net/i, reason: "Executive email removed from public pages" },
+  { pattern: /\+966\s*17\s*322\s*9527/, reason: "Pending client landline number" },
+  { pattern: /\+966173229527/, reason: "Pending client landline number" },
   { pattern: /href=["']\/admin\/suppliers["']/i, reason: "Admin portal link exposed in public navigation" },
 ];
 

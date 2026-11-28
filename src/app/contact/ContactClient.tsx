@@ -8,7 +8,6 @@ import { PageHeader } from "@/components/PageHeader";
 import { useLanguage } from "@/context/LanguageContext";
 import {
   MapPin,
-  Phone,
   Mail,
   Building2,
   Send,
@@ -272,15 +271,6 @@ export default function ContactClient() {
                     <MapPin className="w-4 h-4 text-brand-cobalt flex-shrink-0 mt-0.5" />
                     <span>{t("contactPage.baishAddress")}</span>
                   </p>
-
-                  <div className="pt-3 border-t border-hairline space-y-2 text-xs">
-                    <div className="flex items-center gap-2">
-                      <Phone className="w-4 h-4 text-brand-cobalt" />
-                      <a href="tel:+966173229527" className="font-mono-tech text-primary hover:text-brand-cobalt font-semibold">
-                        +966 17 322 9527
-                      </a>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Direct Communications Matrix */}
@@ -293,12 +283,6 @@ export default function ContactClient() {
                       <span className="text-muted font-medium">Administration:</span>
                       <a href="mailto:admin@aevoryn.net" className="font-mono-tech font-bold text-primary hover:text-brand-cobalt">
                         admin@aevoryn.net
-                      </a>
-                    </div>
-                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface rounded-xl">
-                      <span className="text-muted font-medium">Chairman Office:</span>
-                      <a href="mailto:chairman@aevoryn.net" className="font-mono-tech font-bold text-primary hover:text-brand-cobalt">
-                        chairman@aevoryn.net
                       </a>
                     </div>
                   </div>

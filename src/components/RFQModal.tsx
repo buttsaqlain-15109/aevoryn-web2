@@ -72,8 +72,8 @@ export function RFQModal({ isOpen, onClose }: RFQModalProps) {
               </h3>
               <p className="label-tech text-[10px] text-muted">
                 {locale === "en"
-                  ? "AEVORYN COMMERCIAL ESTIMATION TEAM // RIYADH"
-                  : "فريق التقدير التجاري وإدارة المشاريع // الرياض"}
+                  ? "AEVORYN COMMERCIAL ESTIMATION TEAM // SAUDI ARABIA"
+                  : "فريق التقدير التجاري وإدارة المشاريع // المملكة العربية السعودية"}
               </p>
             </div>
           </div>

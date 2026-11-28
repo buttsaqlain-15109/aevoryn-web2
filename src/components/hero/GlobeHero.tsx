@@ -4,7 +4,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { ArrowRight, ArrowLeft, ShieldCheck, Award, Building2, HardHat, Truck } from "lucide-react";
+import { ArrowRight, ArrowLeft, ShieldCheck, Award, MapPin } from "lucide-react";
 
 interface GlobeHeroProps {
   onOpenConsultation?: () => void;
@@ -32,18 +32,18 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
               </span>
             </div>
 
-            {/* Direct Engineering Headline */}
+            {/* Direct Engineering Headline with Balanced Typography (No Orphaned Ampersands) */}
             <div className="space-y-1">
               <h1 className="text-hero-display text-primary font-display tracking-tight leading-[0.98]">
                 {locale === "en" ? (
                   <>
-                    CIVIL INFRASTRUCTURE &amp;<br />
-                    CONTRACTING SUPPORT.
+                    <span className="block">CIVIL INFRASTRUCTURE</span>
+                    <span className="block text-secondary">&amp;&nbsp;CONTRACTING SUPPORT.</span>
                   </>
                 ) : (
                   <>
-                    دعم البنية التحتية<br />
-                    والمقاولات المدنية.
+                    <span className="block">دعم البنية التحتية</span>
+                    <span className="block text-secondary">والمقاولات المدنية.</span>
                   </>
                 )}
               </h1>
@@ -89,9 +89,13 @@ export function GlobeHero({ onOpenConsultation, scrollProgress = 0 }: GlobeHeroP
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Building2 className="w-4 h-4 text-brand-accent flex-shrink-0" />
+                <MapPin className="w-4 h-4 text-brand-accent flex-shrink-0" />
                 <span className="label-tech text-muted text-[11px]">
-                  HQ: <strong className="text-primary">RIYADH, SAUDI ARABIA</strong>
+                  {locale === "en" ? (
+                    <>FACILITY: <strong className="text-primary">BAISH, SAUDI ARABIA</strong></>
+                  ) : (
+                    <>المقر المسجل: <strong className="text-primary">بيش، المملكة العربية السعودية</strong></>
+                  )}
                 </span>
               </div>
             </div>

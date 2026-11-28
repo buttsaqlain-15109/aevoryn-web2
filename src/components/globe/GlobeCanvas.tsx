@@ -220,7 +220,7 @@ export function GlobeCanvas({ className = "", size = 560 }: GlobeCanvasProps) {
         // Callout text
         ctx.font = '500 10px var(--font-jetbrains-mono), monospace';
         ctx.fillStyle = isDark ? `rgba(244, 245, 248, ${markerAlpha})` : `rgba(17, 17, 17, ${markerAlpha})`;
-        ctx.fillText("RIYADH • HQ", riyadhScreenX + 20, lineEndY - 6);
+        ctx.fillText("SAUDI ARABIA • OPERATIONS", riyadhScreenX + 20, lineEndY - 6);
         ctx.font = '400 9px var(--font-jetbrains-mono), monospace';
         ctx.fillStyle = `rgba(47, 99, 255, ${markerAlpha * 0.9})`;
         ctx.fillText("24.71° N, 46.68° E", riyadhScreenX + 20, lineEndY + 12);

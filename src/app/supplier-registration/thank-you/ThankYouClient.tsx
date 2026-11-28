@@ -12,7 +12,7 @@ import {
   Clock,
   ShieldCheck,
   Mail,
-  Phone,
+  MapPin,
   ArrowRight,
   ArrowLeft,
   Copy,
@@ -133,8 +133,8 @@ function ThankYouContent() {
             <span>{locale === "en" ? "Procurement Inquiries: admin@aevoryn.net" : "استفسارات المشتريات: admin@aevoryn.net"}</span>
           </div>
           <div className="flex items-center gap-2">
-            <Phone className="w-4 h-4 text-accent" />
-            <span>+966 17 322 9527</span>
+            <MapPin className="w-4 h-4 text-accent" />
+            <span>{locale === "en" ? "Registered Facility: Baish, Saudi Arabia" : "المنشأة المسجلة: بيش، المملكة العربية السعودية"}</span>
           </div>
         </div>
 

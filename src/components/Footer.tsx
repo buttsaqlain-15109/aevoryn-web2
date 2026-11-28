@@ -7,7 +7,6 @@ import { useLanguage } from "@/context/LanguageContext";
 import { RFQModal } from "@/components/RFQModal";
 import {
   MapPin,
-  Phone,
   Mail,
   ShieldCheck,
   Award,
@@ -198,24 +197,11 @@ export function Footer() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2.5 font-mono">
-                  <Phone className="w-4 h-4 text-cobalt-accent flex-shrink-0" />
-                  <a href="tel:+966173229527" className="hover:text-white transition-colors text-white font-semibold">
-                    +966 17 322 9527
-                  </a>
-                </div>
-
                 <div className="space-y-1.5 pt-1 font-mono text-[11px]">
                   <div className="flex items-center gap-2">
                     <Mail className="w-3.5 h-3.5 text-cobalt-accent" />
                     <a href="mailto:admin@aevoryn.net" className="hover:text-white transition-colors text-neutral-300">
                       admin@aevoryn.net
-                    </a>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-3.5 h-3.5 text-cobalt-accent" />
-                    <a href="mailto:chairman@aevoryn.net" className="hover:text-white transition-colors text-neutral-300">
-                      chairman@aevoryn.net
                     </a>
                   </div>
                 </div>

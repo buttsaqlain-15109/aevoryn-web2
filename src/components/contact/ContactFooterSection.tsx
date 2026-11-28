@@ -91,21 +91,9 @@ export function ContactFooterSection() {
 
                 <div className="hairline-t pt-4 space-y-3.5 text-xs">
                   <div className="flex items-center justify-between">
-                    <span className="text-muted">Telephone:</span>
-                    <a href="tel:+966173229527" className="font-mono text-primary hover:text-cobalt-accent font-semibold transition-colors">
-                      +966 17 322 9527
-                    </a>
-                  </div>
-                  <div className="flex items-center justify-between">
                     <span className="text-muted">Official Administration:</span>
                     <a href="mailto:admin@aevoryn.net" className="font-mono text-primary hover:text-cobalt-accent font-medium transition-colors">
                       admin@aevoryn.net
-                    </a>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-muted">Executive Chairman:</span>
-                    <a href="mailto:chairman@aevoryn.net" className="font-mono text-primary hover:text-cobalt-accent font-medium transition-colors">
-                      chairman@aevoryn.net
                     </a>
                   </div>
                   <div className="flex items-center justify-between">

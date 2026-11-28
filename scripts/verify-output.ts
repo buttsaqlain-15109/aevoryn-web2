@@ -76,6 +76,9 @@ const BANNED_OUTPUT_PATTERNS = [
   { pattern: /\+966\s*53\s*075\s*2206/, reason: "Unverified phone number" },
   { pattern: /\+966\s*53\s*439\s*7780/, reason: "Unverified phone number" },
   { pattern: /ceo@aevoryn\.net/i, reason: "Internal executive email exposed publicly" },
+  { pattern: /chairman@aevoryn\.net/i, reason: "Internal executive email exposed publicly" },
+  { pattern: /\+966\s*17\s*322\s*9527/, reason: "Pending client landline number" },
+  { pattern: /\+966173229527/, reason: "Pending client landline number" },
   { pattern: /info@aevoryn\.net/i, reason: "Unverified email (admin@aevoryn.net is verified)" },
 ];
 

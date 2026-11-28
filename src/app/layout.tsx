@@ -132,7 +132,6 @@ export default function RootLayout({
               alternateName: "شركة إيفورين للخدمات والمقاولات",
               url: "https://aevoryn.net",
               logo: "https://aevoryn.net/images/aevoryn-logo-circle.png",
-              telephone: "+966173229527",
               email: "admin@aevoryn.net",
               taxID: "7054401679",
               address: {
