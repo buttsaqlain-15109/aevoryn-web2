@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "verify:facts": "node --experimental-strip-types scripts/verify-facts.ts",
+    "verify:out": "node --experimental-strip-types scripts/verify-output.ts",
+    "test:negative": "node --experimental-strip-types scripts/test-negative.ts",
+    "build": "npm run verify:facts && next build && npm run verify:out",
     "start": "next start",
     "lint": "eslint",
     "deploy:pages": "wrangler pages deploy out --project-name aevoryn-web --commit-dirty=true",

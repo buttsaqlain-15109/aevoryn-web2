@@ -8,16 +8,12 @@ import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { RFQModal } from "@/components/RFQModal";
 import { useLanguage } from "@/context/LanguageContext";
+import { divisionFacts } from "@/data/company.facts";
 import {
-  Layers,
+  Boxes,
   CheckCircle2,
-  ShieldCheck,
-  Truck,
-  Award,
   ArrowRight,
   ArrowLeft,
-  FileCheck2,
-  Boxes,
 } from "lucide-react";
 
 export default function MaterialsClient() {
@@ -25,38 +21,68 @@ export default function MaterialsClient() {
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
   const [rfqOpen, setRfqOpen] = useState(false);
 
-  const materials = [
+  const division03 = divisionFacts.list[2];
+
+  const packages = [
     {
-      name: locale === "en" ? "Aggregates, Road Base & Structural Fill" : "الركام والبحص وطبقات التأسيس والردم الإنشائي",
+      title: locale === "en" ? "Compliance with Specifications" : "الامتثال للمواصفات",
       desc:
         locale === "en"
-          ? "Certified limestone aggregates, crushed stone, subbase Class A & B, marl fill, and washed sand complying with MOT and SASO standards."
-          : "ركام جيري معتمد، وحجر مكسر، وطبقات بيس كورس (Subbase) من الفئتين A وB، ومارل الردم، ورمل مغسول مطابق لمواصفات وزارة النقل وهيئة المواصفات.",
-      specs: ["Quarry sieve analysis & Proctor testing", "Zero organic impurities", "Bulk tipper delivery fleets"],
+          ? "Rigorous verification ensuring all supplied materials strictly adhere to client, architectural, and structural project specifications."
+          : "تدقيق صارم يضمن تطابق كافة المواد الموردة مع المخططات الهندسية والمواصفات المعتمدة للمشروع.",
+      specs: [
+        locale === "en" ? "Verification against approved project submittals" : "مطابقة العينات مع اعتمادات المشروع المعتمدة",
+        locale === "en" ? "Manufacturer quality documentation archived" : "توثيق وأرشفة شهادات الجودة الصادرة من المصنع",
+        locale === "en" ? "Zero tolerance for non-compliant batch deliveries" : "رفض قاطع لأي توريدات غير مطابقة للاشتراطات",
+      ],
     },
     {
-      name: locale === "en" ? "Deformed Rebar & Structural Steel" : "حديد التسليح عالي المقاومة والهياكل الفولاذية",
+      title: locale === "en" ? "Reliable Sourcing" : "مصادر توريد موثوقة",
       desc:
         locale === "en"
-          ? "High-yield deformed steel rebar (Grade 60), structural steel beams, hollow sections, angles, and welded wire fabric with full mill certificates."
-          : "حديد تسليح مشوه عالي الإجهاد (Grade 60)، قطاعات فولاذية إنشائية (Beams, Angles)، وشبك حديد ملحوم مع شهادات فحص المصنع الأصلية (MTC).",
-      specs: ["ASTM A615 / SASO 2/1992 compliant", "Cut-and-bend schedule support", "Traceable heat batch certification"],
+          ? "Established commercial relationships with primary domestic producers and certified suppliers across Saudi Arabia."
+          : "علاقات تجارية وثيقة مع كبرى المصانع الوطنية والمنتجين المعتمدين في المملكة العربية السعودية.",
+      specs: [
+        locale === "en" ? "Direct supply partnerships with established producers" : "شراكات توريد مباشرة مع مصانع ومنتجين معتمدين",
+        locale === "en" ? "Multi-vendor redundancy safeguarding supply continuity" : "تعدد مصادر التوريد لضمان تدفق المواد دون انقطاع",
+        locale === "en" ? "Transparent traceability and commercial pricing" : "شفافية تجارية وإمكانية تتبع أصول التوريد",
+      ],
     },
     {
-      name: locale === "en" ? "Industrial Piping, Valves & Fittings" : "الأنابيب الصناعية والصمامات ومستلزمات التمديدات",
+      title: locale === "en" ? "Efficient Transportation" : "نقل فعال",
       desc:
         locale === "en"
-          ? "HDPE pressure pipes, UPVC drainage systems, ductile iron conduits, industrial gate/check valves, and electrofusion fittings."
-          : "أنابيب بولي إيثيلين عالي الكثافة (HDPE)، وأنظمة UPVC للصرف، وأنابيب حديد دكتايل، وصمامات تحكم، ومستلزمات اللحام الحراري.",
-      specs: ["Pressure rated PN10 to PN25", "Aramco-compliant pipe markings", "Complete hydrostatic test documentation"],
+          ? "Dedicated haulage logistics, heavy tipper fleets, and flatbed transport networks connecting supply sources directly to jobsites."
+          : "إدارة لوجستية متطورة، وأساطيل شاحنات نقل ثقيل ومقطورات تربط مصادر المواد بمواقع المشاريع بكفاءة.",
+      specs: [
+        locale === "en" ? "Modern heavy tippers and flatbed transport trailers" : "أساطيل شاحنات قلاب ومقطورات نقل ثقيل مجهزة",
+        locale === "en" ? "Route planning avoiding municipal transit restrictions" : "تخطيط مسارات النقل لتفادي أوقات الحظر المروري",
+        locale === "en" ? "Safe load securement and transport hazard mitigation" : "تأمين الحمولات والامتثال لمعايير سلامة الطرق",
+      ],
     },
     {
-      name: locale === "en" ? "Geotextiles, Membranes & Site PPE" : "المنسوجات الأرضية وعوازل التسرب ومعدات السلامة",
+      title: locale === "en" ? "On-Time Delivery to Site" : "التسليم في الوقت المحدد للموقع",
       desc:
         locale === "en"
-          ? "Non-woven geotextile separation fabrics, HDPE geomembranes, bitumen waterproofing sheets, safety barriers, and certified personal PPE."
-          : "أقمشة جيوتكستايل غير منسوجة للفصل والترشيح، وأغشية جيوممبرين HDPE، ولفائف عزل مائي، وحواجز أمان، ومعدات حماية شخصية معتمدة.",
-      specs: ["UV resistant formulations", "Tensile strength test verification", "Turnkey site logistics delivery"],
+          ? "Coordinated delivery scheduling timed precisely to match contractor pouring schedules and daily site installation sequences."
+          : "جدولة تسليم منضبطة تتزامن بدقة مع مراحل الصب وجداول التركيب اليومية لفرق العمل في الموقع.",
+      specs: [
+        locale === "en" ? "Direct synchronization with site pour calendars" : "تزامن مباشر مع جداول الصب والتركيب بالموقع",
+        locale === "en" ? "Staged laydown drops minimizing jobsite congestion" : "تفريغ منظم في ساحات التشوين يمنع تكدس الآليات",
+        locale === "en" ? "Expedited emergency top-up delivery capacity" : "جاهزية استثنائية للتوريدات العاجلة والتعويضية",
+      ],
+    },
+    {
+      title: locale === "en" ? "Project-Specific Material Requirements" : "متطلبات المواد المحددة للمشروع",
+      desc:
+        locale === "en"
+          ? "Tailored material procurement catering to distinct infrastructure, industrial, commercial, and utility scope requirements."
+          : "توفير حلول مواد مخصصة تلبي الاحتياجات المحددة لمشاريع البنية التحتية، والصناعة، والمرافق العامة.",
+      specs: [
+        locale === "en" ? "Specialized material packages per bill of quantities (BOQ)" : "حزم مواد متخصصة ومطابقة لجداول الكميات (BOQ)",
+        locale === "en" ? "Custom dimensioning and batch sizing support" : "تجهيز الكميات والأبعاد طبقاً لمتطلبات المهندس المشرف",
+        locale === "en" ? "Full material submittal and catalog archiving" : "أرشفة شاملة لملفات الاعتماد وكتالوجات المواد",
+      ],
     },
   ];
 
@@ -65,12 +91,12 @@ export default function MaterialsClient() {
       <Header />
       <main className="flex-grow">
         <PageHeader
-          title={t("capabilities.items.2.title")}
-          subtitle={t("capabilities.items.2.subtitle")}
-          badge={locale === "en" ? "DIVISION 03 // CERTIFIED SUPPLY CHAIN" : "القطاع 03 // سلاسل إمداد المواد المعتمدة"}
+          title={locale === "en" ? division03.titleEn : division03.titleAr}
+          subtitle={locale === "en" ? division03.scopeSummaryEn : division03.scopeSummaryAr}
+          badge={locale === "en" ? "DIVISION 03 // CONSTRUCTION MATERIALS" : "القطاع 03 // توريد مواد البناء"}
           breadcrumbs={[
             { label: t("nav.capabilities"), href: "/#capabilities" },
-            { label: t("capabilities.items.2.title") },
+            { label: locale === "en" ? division03.titleEn : division03.titleAr },
           ]}
           imageSrc="/images/content/materials.jpg"
         />
@@ -81,23 +107,23 @@ export default function MaterialsClient() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6">
                 <span className="badge-tech inline-block">
-                  {locale === "en" ? "MATERIAL SUPPLY & LOGISTICS" : "اللوجستيات المباشرة لمواد البناء"}
+                  {locale === "en" ? "MATERIALS SUPPLY CHAIN" : "سلاسل إمداد مواد البناء"}
                 </span>
                 <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-primary">
                   {locale === "en"
-                    ? "Verified Raw & Finished Materials for Demanding Projects"
-                    : "مواد بناء خام ومصنعة مفحوصة ومطابقة لأعلى المواصفات"}
+                    ? "Reliable Sourcing & Specification-Compliant Material Supply"
+                    : "توريد موثوق ونقل فعال لمواد البناء المطابقة للمواصفات"}
                 </h2>
                 <div className="space-y-4 text-sm sm:text-base text-secondary font-body leading-relaxed">
                   <p>
                     {locale === "en"
-                      ? "Aevoryn's Materials Supply division coordinates reliable procurement and bulk logistics of tested construction materials across the Kingdom. We bridge the gap between accredited manufacturers, quarries, and demanding jobsites by delivering materials verified against ASTM, SASO, and client-specific engineering requirements."
-                      : "ينظم قطاع توريد مواد البناء في إيفورين سلاسل إمداد موثوقة وشحنات كبرى لمواد البناء المفحوصة عبر كافة أرجاء المملكة. نحن نسد الفجوة بين المصانع والمحاجر المعتمدة ومواقع العمل الدقيقة من خلال توريد مواد مفحوصة ومطابقة لمواصفات ASTM وهيئة المواصفات والمقاييس (SASO) ومتطلبات العملاء الهندسية."}
+                      ? "Aevoryn's Construction Materials Supply division supports contracting and infrastructure projects with dependable material delivery. We bridge the gap between primary producers and active jobsites by ensuring rigorous compliance with specifications, reliable sourcing, efficient transportation, and on-time delivery."
+                      : "يدعم قطاع توريد مواد البناء في ايفورين مشاريع المقاولات والبنية التحتية بالتوريد الموثوق والمنضبط. نحن نربط بين كبرى المصانع ومواقع العمل الميدانية من خلال ضمان الامتثال التام للمواصفات، ومصادر التوريد الموثوقة، والنقل الفعال، والتسليم في المواعيد المحددة."}
                   </p>
                   <p>
                     {locale === "en"
-                      ? "Every consignment is accompanied by certified mill test certificates (MTC), sieve analysis, or third-party laboratory verification, ensuring that materials achieve immediate site approval with zero delay to your pouring and installation schedules."
-                      : "ترفق كافة الإرساليات بشهادات فحص المنشأ الأصلية (MTC)، وتحليلات التدرج الحبيبي، وفحوصات المختبرات المستقلة المعتمدة، بما يضمن سرعة الاعتماد الميداني من استشاري المشروع دون أي تأخير في جداول الصب والتركيب."}
+                      ? "Governed by ISO 9001:2015 quality frameworks, our logistics operations safeguard project velocity by eliminating material-related site downtime and rejected shipments."
+                      : "وفقاً لأنظمة إدارة الجودة المعتمدة بموجب ISO 9001:2015، تسهم عملياتنا اللوجستية في حماية المسار الزمني للمشاريع وتفادي أي توقفات أو شحنات غير مطابقة."}
                   </p>
                 </div>
 
@@ -106,7 +132,7 @@ export default function MaterialsClient() {
                     onClick={() => setRfqOpen(true)}
                     className="btn-cobalt"
                   >
-                    {locale === "en" ? "Request Materials Price Schedule" : "طلب جدول أسعار توريد المواد"}
+                    {locale === "en" ? "Request Materials Quotation" : "طلب عرض سعر توريد مواد"}
                   </button>
                   <Link
                     href="/contact"
@@ -122,17 +148,17 @@ export default function MaterialsClient() {
                 <div className="relative h-96 border border-hairline bg-page rounded-2xl overflow-hidden shadow-subtle">
                   <Image
                     src="/images/content/materials.jpg"
-                    alt="Construction Materials & Steel Fabrication"
+                    alt="Construction Materials Logistics"
                     fill
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5 p-4 border border-neutral-700 bg-neutral-900/95 rounded-xl">
                     <p className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono-tech">
-                      {locale === "en" ? "BATCH TRACEABILITY GUARANTEED" : "تتبع كامل لعينات ودفعات التوريد"}
+                      {locale === "en" ? "QUALITY-MANAGED SUPPLY" : "توريد مُدار وفق معايير الجودة"}
                     </p>
                     <p className="text-xs text-white/80 leading-relaxed font-body">
-                      Complete mill test certificates and lab compliance logs archived for every shipment.
+                      ISO 9001:2015 certified material supply, specification compliance, and delivery logistics.
                     </p>
                   </div>
                 </div>
@@ -141,25 +167,25 @@ export default function MaterialsClient() {
           </div>
         </section>
 
-        {/* Categories Grid */}
+        {/* Five Profile Facets Grid */}
         <section className="section-padding bg-page border-t border-hairline">
           <div className="site-container">
             <div className="text-center max-w-[900px] mx-auto space-y-4 mb-14">
               <span className="badge-tech inline-block">
-                {locale === "en" ? "SUPPLY PORTFOLIO" : "قائمة الأصناف"}
+                {locale === "en" ? "VERIFIED DIVISION SCOPE" : "نطاق عمل القطاع المعتمد"}
               </span>
               <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-primary">
-                {locale === "en" ? "Primary Material Categories" : "أصناف ومجموعات المواد الرئيسية"}
+                {locale === "en" ? "Core Materials Capabilities" : "القدرات الرئيسية لتوريد مواد البناء"}
               </h2>
               <p className="text-base sm:text-lg text-secondary mx-auto max-w-2xl leading-relaxed">
                 {locale === "en"
-                  ? "Standardized and custom materials supplied directly to contractors across Riyadh and regional provinces."
-                  : "مواد قياسية ومخصصة يتم توريدها مباشرة للمقاولين في الرياض وكافة المناطق."}
+                  ? "Specification-compliant supply structured across the five verified capability points from our corporate profile."
+                  : "خدمات توريد مواد مطابقة للمواصفات قائمة على النقاط الخمس المعتمدة رسمياً في ملف الشركة."}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {materials.map((mat, idx) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {packages.map((item, idx) => (
                 <div
                   key={idx}
                   className="p-8 border border-hairline bg-surface rounded-2xl flex flex-col justify-between space-y-6 hover:border-brand-cobalt transition-all duration-200 shadow-subtle hover:shadow-card-hover"
@@ -167,27 +193,27 @@ export default function MaterialsClient() {
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-mono-tech text-brand-cobalt font-bold">
-                        CATEGORY // 0{idx + 1}
+                        FACET // 0{idx + 1}
                       </span>
                       <span className="w-2 h-2 rounded-full bg-brand-cobalt" />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold font-display uppercase tracking-tight text-primary">
-                      {mat.name}
+                      {item.title}
                     </h3>
                     <p className="text-xs sm:text-sm text-secondary leading-relaxed font-body">
-                      {mat.desc}
+                      {item.desc}
                     </p>
                   </div>
 
                   <div className="pt-4 border-t border-hairline space-y-2">
                     <span className="text-[11px] font-mono-tech font-bold uppercase tracking-wider text-muted block">
-                      {locale === "en" ? "QUALITY & SUPPLY ASSURANCE:" : "معايير الجودة والتوريد:"}
+                      {locale === "en" ? "OPERATIONAL MEASURES:" : "التدابير التشغيلية:"}
                     </span>
                     <ul className="space-y-1.5 text-xs text-secondary font-body">
-                      {mat.specs.map((sp, sIdx) => (
+                      {item.specs.map((sk, sIdx) => (
                         <li key={sIdx} className="flex items-center gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                          <span>{sp}</span>
+                          <span>{sk}</span>
                         </li>
                       ))}
                     </ul>

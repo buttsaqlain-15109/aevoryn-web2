@@ -11,20 +11,23 @@ export function QhseCertificationsSection() {
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
   const [selectedDoc, setSelectedDoc] = useState<DocumentData | null>(null);
 
+  const sharedScope =
+    locale === "en"
+      ? "Provision of civil, electrical and mechanical construction, infrastructure development, manpower supply, equipment rental, material supply and project support services for industrial, commercial and infrastructure projects."
+      : "تقديم خدمات الإنشاءات المدنية والكهربائية والميكانيكية، وتطوير البنية التحتية، وتوريد القوى العاملة، وتأجير المعدات، وتوريد المواد وخدمات دعم المشاريع للمشاريع الصناعية والتجارية ومشاريع البنية التحتية.";
+
   const certificates: (DocumentData & { icon: any; standard: string; color: string; badgeBg: string })[] = [
     {
       id: "iso-45001",
       type: "iso",
       title: "ISO 45001:2018",
       standard: "Occupational Health & Safety",
-      body: "Vatsin Certification Private Limited",
+      body: "Vatsin Certification Private Limited (IAS Accredited)",
       certNo: "VC23032689",
       issueDate: "04 August 2026",
       expiryDate: "03 August 2029",
-      scope:
-        "Provision of general contracting, infrastructure development, manpower supply, construction materials, and heavy equipment leasing.",
-      locationNote:
-        "Certified Operational Site: Baish, Jizan Region, Saudi Arabia. Corporate Headquarters: Riyadh.",
+      scope: sharedScope,
+      locationNote: "Certified Registered Facility: Baish, Jizan Region, Saudi Arabia.",
       icon: ShieldAlert,
       color: "text-rose-500",
       badgeBg: "bg-rose-500/10",
@@ -34,14 +37,12 @@ export function QhseCertificationsSection() {
       type: "iso",
       title: "ISO 9001:2015",
       standard: "Quality Management System",
-      body: "Vatsin Certification Private Limited",
+      body: "Vatsin Certification Private Limited (IAS Accredited)",
       certNo: "VC23018822",
       issueDate: "04 August 2026",
       expiryDate: "03 August 2029",
-      scope:
-        "Quality assurance management for civil engineering, industrial contracting, equipment rental, and materials logistics.",
-      locationNote:
-        "Certified Operational Site: Baish, Jizan Region, Saudi Arabia. Corporate Headquarters: Riyadh.",
+      scope: sharedScope,
+      locationNote: "Certified Registered Facility: Baish, Jizan Region, Saudi Arabia.",
       icon: Award,
       color: "text-blue-500",
       badgeBg: "bg-blue-500/10",
@@ -51,14 +52,12 @@ export function QhseCertificationsSection() {
       type: "iso",
       title: "ISO 14001:2015",
       standard: "Environmental Management",
-      body: "Vatsin Certification Private Limited",
+      body: "Vatsin Certification Private Limited (IAS Accredited)",
       certNo: "VC23022982",
       issueDate: "04 August 2026",
       expiryDate: "03 August 2029",
-      scope:
-        "Environmental compliance protocols, sustainable site waste management, and industrial spill prevention controls.",
-      locationNote:
-        "Certified Operational Site: Baish, Jizan Region, Saudi Arabia. Corporate Headquarters: Riyadh.",
+      scope: sharedScope,
+      locationNote: "Certified Registered Facility: Baish, Jizan Region, Saudi Arabia.",
       icon: Leaf,
       color: "text-emerald-500",
       badgeBg: "bg-emerald-500/10",
@@ -74,7 +73,7 @@ export function QhseCertificationsSection() {
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
               <span className="label-tech text-secondary text-[11px]">
-                {locale === "en" ? "SECTION 05 // QHSE & CERTIFICATIONS" : "القسم 05 // الجودة والسلامة والاعتمادات"}
+                {locale === "en" ? "TRIPLE ISO CERTIFICATIONS // QHSE STANDARDS" : "شهادات الآيزو الثلاثية // معايير الجودة والسلامة"}
               </span>
             </div>
             <span className="label-tech text-muted text-[11px] hidden sm:inline">
@@ -118,7 +117,7 @@ export function QhseCertificationsSection() {
               </div>
               <div className="flex items-center gap-4 text-muted text-[11px]">
                 <span>VALIDITY CYCLE: 04 AUG 2026 TO 03 AUG 2029</span>
-                <span>STATUS: ACTIVE &amp; VERIFIED</span>
+                <span>STATUS: REGISTRATION CURRENT</span>
               </div>
             </div>
 

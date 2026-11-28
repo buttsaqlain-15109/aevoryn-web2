@@ -20,7 +20,7 @@ This document details the architecture, deployment instructions, environment var
 [Cloudflare Pages Functions (/functions/api/)]
  ├── POST  /api/supplier-register ────────► [Cloudflare D1: supplier_submissions]
  │    ├── Turnstile anti-bot check        └► [Cloudflare R2: private doc storage]
- │    ├── File validation (10MB, max 8)   └► [Email Dispatch: info@aevoryn.net]
+ │    ├── File validation (10MB, max 8)   └► [Email Dispatch: admin@aevoryn.net]
  │    └── Rate-limiting by IP
  │
  └── /api/admin/suppliers/*
@@ -70,7 +70,7 @@ Under **Settings** -> **Environment variables**:
 | Variable Name | Required | Description |
 | :--- | :---: | :--- |
 | `TURNSTILE_SECRET_KEY` | Recommended | Cloudflare Turnstile Secret Key (created in Cloudflare Dashboard -> Turnstile). If omitted, falls back to pass-through in development. |
-| `ADMIN_NOTIFICATION_EMAIL`| Required | Target email for new supplier alerts: `info@aevoryn.net` |
+| `ADMIN_NOTIFICATION_EMAIL`| Required | Target email for new supplier alerts: `admin@aevoryn.net` |
 | `ADMIN_API_KEY` | Optional | Secure secret token for emergency / automated API queries. |
 | `ENVIRONMENT` | Optional | Set to `production` |
 
@@ -89,7 +89,7 @@ No custom password or login code is required on the site because the admin area 
 4. Add Policy:
    - **Policy name:** `Procurement Staff Only`
    - **Action:** `Allow`
-   - **Include Rule:** Emails ending in `@aevoryn.net` (or specific email `info@aevoryn.net`).
+   - **Include Rule:** Emails ending in `@aevoryn.net` (or specific email `admin@aevoryn.net`).
 5. Save Application. Cloudflare Access will automatically prompt users with a One-Time PIN or Google/SSO login and inject the verified `Cf-Access-Authenticated-User-Email` header.
 
 ---

@@ -117,6 +117,11 @@ export default function DocumentsClient() {
                           <span className="text-[11px] font-mono px-2 py-0.5 rounded bg-surface border border-border text-secondary">
                             {locale === "en" ? doc.category : doc.categoryAr}
                           </span>
+                          {"isCurrent" in doc && doc.isCurrent === false && (
+                            <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-600 dark:text-amber-400">
+                              {locale === "en" ? "RENEWAL IN PROGRESS (EXPIRED)" : "قيد التجديد الرسمي (منتهية الصلاحية)"}
+                            </span>
+                          )}
                         </div>
                         <h4 className="text-lg font-bold font-display uppercase tracking-tight text-primary">
                           {locale === "en" ? doc.title : doc.titleAr}
@@ -138,21 +143,13 @@ export default function DocumentsClient() {
 
                     <div className="flex items-center gap-3 w-full lg:w-auto shrink-0 pt-4 lg:pt-0 border-t lg:border-t-0 border-border">
                       <a
-                        href={doc.filePath}
-                        download
-                        className="flex-1 lg:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-mono uppercase font-bold tracking-wider bg-surface border border-border text-primary rounded hover:border-accent hover:text-accent transition-colors"
-                      >
-                        <Download className="w-4 h-4" />
-                        {locale === "en" ? "Download PDF" : "تحميل الوثيقة"}
-                      </a>
-                      <a
-                        href={doc.filePath}
+                        href={doc.verificationUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center p-2.5 text-secondary hover:text-accent rounded border border-border bg-surface transition-colors"
-                        title={locale === "en" ? "View in new tab" : "عرض في تبويب جديد"}
+                        className="flex-1 lg:flex-initial inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-mono uppercase font-bold tracking-wider bg-surface border border-border text-primary rounded hover:border-accent hover:text-accent transition-colors"
                       >
                         <ExternalLink className="w-4 h-4" />
+                        <span>{locale === "en" ? "Official Registry Verification" : "التحقق من السجل الرسمي"}</span>
                       </a>
                     </div>
                   </div>
@@ -172,8 +169,8 @@ export default function DocumentsClient() {
                   </h4>
                   <p className="text-xs sm:text-sm text-neutral-300 font-body leading-relaxed">
                     {locale === "en"
-                      ? "Registration with Saudi Aramco e-Marketplace as a vendor under Vendor Code 10120422 (approved 28 July 2026 for Service Provider Only scope) establishes eligibility to receive requests for quotation and participate in commercial bidding. It does not constitute pre-qualification, endorsement, technical approval, or a guarantee of contract award by Saudi Aramco or its affiliates. All commercial arrangements remain subject to formal bid evaluation and project-specific requirements."
-                      : "إن التسجيل في السوق الإلكتروني لأرامكو السعودية كمورد برمز 10120422 (المعتمد في 28 يوليو 2026 لنطاق مزود خدمات فقط) يؤهل الشركة لاستلام طلبات عروض الأسعار والمشاركة في المنافسات، ولا يعد تأهيلاً مسبقاً أو اعتماداً فنياً أو ضماناً للترسية من قبل أرامكو السعودية. وتخضع كافة التعاملات للتقييم الفني والتجاري لكل مشروع على حدة."}
+                      ? "Registration with Saudi Aramco does not constitute an agreement or commitment to procure goods or services, nor does it imply approval of products or qualification as an authorized vendor or contractor."
+                      : "التسجيل لدى أرامكو السعودية لا يشكل اتفاقاً أو التزاماً بشراء السلع أو الخدمات، ولا يعني اعتماد المنتجات أو التأهيل كمورد أو مقاول معتمد."}
                   </p>
                 </div>
               </div>
@@ -186,8 +183,8 @@ export default function DocumentsClient() {
               </p>
               <p className="leading-relaxed">
                 {locale === "en"
-                  ? "Certified hard copies, audited financial statements, and original stamped bank letters are available upon execution of formal pre-qualification tenders. Contact our Riyadh commercial headquarters at estimation@aevoryn.net or call +966 53 439 7780."
-                  : "النسخ الأصلية المعتمدة، القوائم المالية المدققة، والخطابات البنكية المصدقة متاحة عند إجراءات التأهيل المسبق للمشاريع. يرجى التواصل مع إدارة التقدير بالرياض عبر estimation@aevoryn.net أو الاتصال بالرقم +966 53 439 7780."}
+                  ? "Certified hard copies, audited records, and registration summaries are available upon execution of formal pre-qualification tenders. Contact our administration at admin@aevoryn.net or call +966 17 322 9527."
+                  : "النسخ الأصلية المعتمدة وسجلات التسجيل متاحة عند إجراءات التأهيل المسبق للمشاريع. يرجى التواصل مع الإدارة العامة عبر admin@aevoryn.net أو الاتصال بالرقم +966 17 322 9527."}
               </p>
             </div>
           </div>

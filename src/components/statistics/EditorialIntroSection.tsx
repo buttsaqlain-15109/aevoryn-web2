@@ -43,8 +43,8 @@ export function EditorialIntroSection() {
       title: locale === "en" ? "Saudi-Based Operations" : "عمليات وطنية بالمملكة",
       desc:
         locale === "en"
-          ? "Corporate headquarters in Riyadh with commercial registration CR 7054401679 serving infrastructure projects across the Kingdom."
-          : "مقر رئيسي للإدارة في الرياض بسجل تجاري رقم 7054401679 يخدم المشاريع التنموية في كافة أرجاء المملكة.",
+          ? "Operating under commercial registration CR 7054401679 with official facility in Baish and Kingdom-wide project deployment capabilities."
+          : "نعمل بموجب سجل تجاري رقم 7054401679 مع منشأة رسمية مسجلة في بيش وجاهزية تشغيلية لتغطية المشاريع في كافة أرجاء المملكة.",
       icon: MapPin,
     },
   ];
@@ -57,7 +57,7 @@ export function EditorialIntroSection() {
           <div className="flex items-center gap-3">
             <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
             <span className="label-tech text-secondary text-[11px]">
-              {locale === "en" ? "SECTION 03 // CORPORATE FOUNDATION" : "القسم 03 // الأسس المؤسسية"}
+              {locale === "en" ? "CORPORATE OVERVIEW // INSTITUTIONAL CAPABILITY" : "نبذة عامة // القدرات المؤسسية"}
             </span>
           </div>
           <span className="label-tech text-muted text-[11px] hidden sm:inline">

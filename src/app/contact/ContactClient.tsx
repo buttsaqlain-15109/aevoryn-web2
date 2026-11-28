@@ -82,8 +82,8 @@ export default function ContactClient() {
                     </h2>
                     <p className="text-sm sm:text-base text-secondary pt-1 font-body">
                       {locale === "en"
-                        ? "Complete the inquiry form below. Our commercial estimation team in Riyadh will review your requirements and respond promptly."
-                        : "يرجى ملء النموذج أدناه. سيتولى فريق التقدير التجاري بالرياض مراجعة متطلباتكم والتواصل معكم في أسرع وقت."}
+                        ? "Complete the inquiry form below. Our commercial estimation team will review your requirements and respond promptly."
+                        : "يرجى ملء النموذج أدناه. سيتولى فريق التقدير التجاري مراجعة متطلباتكم والتواصل معكم في أسرع وقت."}
                     </p>
                   </div>
 
@@ -252,7 +252,7 @@ export default function ContactClient() {
 
               {/* Right Column: Corporate Addresses & Contacts (5 cols) */}
               <div className="lg:col-span-5 space-y-6">
-                {/* Riyadh Corporate Headquarters */}
+                {/* Registered Corporate Facility */}
                 <div className="p-8 border border-hairline bg-page rounded-2xl shadow-subtle space-y-4">
                   <div className="flex items-center gap-3">
                     <div className="w-10 h-10 border border-hairline bg-surface rounded-xl text-brand-cobalt flex items-center justify-center">
@@ -260,24 +260,24 @@ export default function ContactClient() {
                     </div>
                     <div>
                       <h4 className="text-base font-bold font-display uppercase tracking-tight text-primary">
-                        {t("contactPage.riyadhTitle")}
+                        {t("contactPage.baishTitle")}
                       </h4>
                       <span className="text-[10px] text-brand-cobalt font-mono-tech uppercase tracking-wider block">
-                        {locale === "en" ? "EXECUTIVE HEADQUARTERS" : "المقر التنفيذي والإداري"}
+                        {locale === "en" ? "REGISTERED LEGAL FACILITY" : "المقر والمنشأة المسجلة نظاماً"}
                       </span>
                     </div>
                   </div>
 
                   <p className="text-xs text-secondary leading-relaxed flex items-start gap-2 font-body">
                     <MapPin className="w-4 h-4 text-brand-cobalt flex-shrink-0 mt-0.5" />
-                    <span>{t("contactPage.riyadhAddress")}</span>
+                    <span>{t("contactPage.baishAddress")}</span>
                   </p>
 
                   <div className="pt-3 border-t border-hairline space-y-2 text-xs">
                     <div className="flex items-center gap-2">
                       <Phone className="w-4 h-4 text-brand-cobalt" />
                       <a href="tel:+966173229527" className="font-mono-tech text-primary hover:text-brand-cobalt font-semibold">
-                        +966 1732 29527
+                        +966 17 322 9527
                       </a>
                     </div>
                   </div>
@@ -296,12 +296,6 @@ export default function ContactClient() {
                       </a>
                     </div>
                     <div className="flex items-center justify-between p-3 border border-hairline bg-surface rounded-xl">
-                      <span className="text-muted font-medium">Executive Office (CEO):</span>
-                      <a href="mailto:ceo@aevoryn.net" className="font-mono-tech font-bold text-primary hover:text-brand-cobalt">
-                        ceo@aevoryn.net
-                      </a>
-                    </div>
-                    <div className="flex items-center justify-between p-3 border border-hairline bg-surface rounded-xl">
                       <span className="text-muted font-medium">Chairman Office:</span>
                       <a href="mailto:chairman@aevoryn.net" className="font-mono-tech font-bold text-primary hover:text-brand-cobalt">
                         chairman@aevoryn.net
@@ -311,10 +305,10 @@ export default function ContactClient() {
                 </div>
 
                 {/* Administrative Address Verification Box */}
-                <div className="p-5 border border-amber-500/30 bg-amber-500/5 rounded-xl text-xs space-y-2">
-                  <div className="flex items-center gap-2 font-bold text-amber-600 dark:text-amber-400 font-mono-tech uppercase">
-                    <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-                    <span>{locale === "en" ? "ADDRESS DISCLOSURE & FACILITY NOTICE" : "إفصاح إداري حول مقار ومنشآت الشركة"}</span>
+                <div className="p-5 border border-hairline bg-surface rounded-xl text-xs space-y-2">
+                  <div className="flex items-center gap-2 font-bold text-brand-cobalt font-mono-tech uppercase">
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-500" />
+                    <span>{locale === "en" ? "OFFICIAL ADDRESS VERIFICATION" : "إثبات المقر والمنشأة المسجلة"}</span>
                   </div>
                   <p className="leading-relaxed text-secondary font-body">
                     {t("contactPage.adminVerification")}

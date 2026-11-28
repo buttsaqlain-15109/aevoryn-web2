@@ -8,16 +8,12 @@ import { Footer } from "@/components/Footer";
 import { PageHeader } from "@/components/PageHeader";
 import { RFQModal } from "@/components/RFQModal";
 import { useLanguage } from "@/context/LanguageContext";
+import { divisionFacts } from "@/data/company.facts";
 import {
   Truck,
   CheckCircle2,
-  ShieldCheck,
-  Wrench,
-  Gauge,
-  Clock,
   ArrowRight,
   ArrowLeft,
-  Calendar,
 } from "lucide-react";
 
 export default function EquipmentClient() {
@@ -25,38 +21,56 @@ export default function EquipmentClient() {
   const Arrow = isRTL ? ArrowLeft : ArrowRight;
   const [rfqOpen, setRfqOpen] = useState(false);
 
-  const fleet = [
+  const division04 = divisionFacts.list[3];
+
+  const packages = [
     {
-      type: locale === "en" ? "Earthmoving & Bulk Excavation Fleet" : "أسطول تحريك التربة والحفريات الكبرى",
+      type: locale === "en" ? "Cranes for Lifting & Heavy-Duty Operations" : "رافعات لعمليات الرفع والمهام الشاقة",
       desc:
         locale === "en"
-          ? "Crawler excavators (20T-50T), wheel loaders (CAT 950-966), articulated dump trucks, motor graders with GPS grading, and track dozers (D8R/D9R)."
-          : "حفارات جنزير (20-50 طن)، وشيولات كوماتسو وكاتربيلر (CAT 950-966)، وجليدرات تسوية موجهة، وجرافات دوسر (D8R/D9R).",
-      specs: ["Pre-mobilization certified inspection", "TUV / Saudi driving licensed operators", "Telemetry machine health tracking"],
+          ? "Mobile telescopic cranes, rough terrain units, and boom trucks deployed for precision lifting, structural erection, and equipment staging."
+          : "رافعات تلسكوبية متنقلة، وشاحنات بوم ترك مجهزة ومخصصة لعمليات الرفع الدقيقة، وتركيب الهياكل، ومناولة المعدات في المواقع.",
+      specs: [
+        locale === "en" ? "Precision lifting planning and safety rigging" : "تخطيط دقيق لعمليات الرفع وتدابير سلامة التوجيه",
+        locale === "en" ? "Regular load testing and maintenance records" : "فحوصات أحمال وسجلات صيانة دورية موثقة",
+        locale === "en" ? "Safe radius and ground stability protocols" : "بروتوكولات أمان لنصف قطر الرفع وثبات الأرضية",
+      ],
     },
     {
-      type: locale === "en" ? "Heavy Lifting & Crane Fleets" : "أسطول الرافعات المتنقلة ومعدات الرفع الثقيل",
+      type: locale === "en" ? "Construction Machinery for Civil Works" : "آليات ومعدات إنشائية للأعمال المدنية",
       desc:
         locale === "en"
-          ? "All-terrain mobile telescopic cranes (50T to 250T capacity), rough terrain cranes, boom trucks (10T-15T), and telehandlers."
-          : "رافعات تلسكوبية متنقلة لكافة التضاريس (حمولة 50 إلى 250 طن)، وشاحنات بوم ترك (10-15 طن)، ومناولات تلسكوبية.",
-      specs: ["Valid 3rd-party load test certification", "Certified Aramco riggers available", "Detailed lift planning & wind limit controls"],
+          ? "Modern fleet of excavators, wheel loaders, track dozers, and compactors supporting primary civil contractors across jobsite developments."
+          : "أسطول حديث من الحفارات، والشيولات، والبلدوزرات، والمداحل لمساندة مقاولي الأعمال المدنية والإنشائية في مختلف المواقع.",
+      specs: [
+        locale === "en" ? "Hydraulic crawler excavators and wheel loaders" : "حفارات هيدروليكية وشيولات بمختلف الأحجام",
+        locale === "en" ? "Vibratory compaction rollers and dozers" : "مداحل اهتزازية وجرافات للأعمال المدنية",
+        locale === "en" ? "Preventive maintenance regimes minimizing downtime" : "برامج صيانة وقائية تحد من توقف العمليات",
+      ],
     },
     {
-      type: locale === "en" ? "Compaction & Road Construction Equipment" : "معدات دمك التربة وإنشاء الطرق والأسفلت",
+      type: locale === "en" ? "Additional Project-Specific Support Equipment" : "معدات دعم إضافية متخصصة للمشاريع",
       desc:
         locale === "en"
-          ? "Single drum vibratory soil compactors (10T-16T), padfoot rollers, tandem asphalt rollers, and pneumatic multi-wheel rollers."
-          : "مداحل اهتزازية أحادية الأسطوانة للتربة (10-16 طن)، ومداحل شيبس فوت، ومداحل أسفلت ترادفية ومطاطية لدمك الطبقات.",
-      specs: ["Compaction meter & vibration audits", "Full lighting for night shift works", "Regular hydraulic fluid analysis"],
+          ? "Auxiliary plant machinery including site power generators, mobile lighting towers, air compressors, and logistical transport units."
+          : "معدات ومحطات دعم مساندة تشمل مولدات الطاقة للمواقع، وأبراج الإنارة المتنقلة، وضواغط الهواء، ووحدات النقل المساندة.",
+      specs: [
+        locale === "en" ? "Heavy-duty diesel power generation packages" : "مولدات ديزل صناعية لتغذية المواقع بالطاقة المؤقتة",
+        locale === "en" ? "Mobile LED site illumination towers" : "أبراج إنارة هيدروليكية للعمليات الليلية",
+        locale === "en" ? "Industrial air compressors and water distribution" : "ضواغط هواء صناعية ومعدات توزيع مياه للرش والدمك",
+      ],
     },
     {
-      type: locale === "en" ? "Site Utilities, Power & Lighting" : "مولدات الطاقة المؤقتة وأبراج الإنارة والضواغط",
+      type: locale === "en" ? "Maintained to High Safety & Performance Standards" : "صيانة وفق أعلى معايير السلامة والأداء",
       desc:
         locale === "en"
-          ? "Heavy-duty silent diesel generators (50 kVA to 1000 kVA), mobile LED lighting towers, industrial screw air compressors, and water tankers."
-          : "مولدات ديزل عازلة للصوت (من 50 إلى 1000 ك.ف.أ)، وأبراج إنارة هيدروليكية LED، وضواغط هواء صناعية، وصهاريج مياه.",
-      specs: ["Synchronized multi-generator packages", "Fuel delivery & maintenance contracts", "Rapid replacement on-site guarantee"],
+          ? "Rigorous technical inspection and preventive servicing frameworks adhering to ISO 9001 and ISO 45001 management systems."
+          : "فحوصات فنية صارمة وأطر صيانة وقائية منتظمة متوافقة مع أنظمة إدارة الجودة والسلامة بموجب ISO 9001 وISO 45001.",
+      specs: [
+        locale === "en" ? "Daily pre-use technical inspection checklists" : "قوائم فحص يومية قبل بدء تشغيل الآليات",
+        locale === "en" ? "Certified mechanical maintenance teams" : "فرق صيانة ميكانيكية متخصصة لمعالجة الأعطال",
+        locale === "en" ? "Emergency field servicing and rapid support" : "دعم فني ميداني سريع لضمان جاهزية الأسطول",
+      ],
     },
   ];
 
@@ -65,12 +79,12 @@ export default function EquipmentClient() {
       <Header />
       <main className="flex-grow">
         <PageHeader
-          title={t("capabilities.items.3.title")}
-          subtitle={t("capabilities.items.3.subtitle")}
-          badge={locale === "en" ? "DIVISION 04 // HEAVY PLANT & MACHINERY" : "القطاع 04 // الآليات والمعدات الثقيلة"}
+          title={locale === "en" ? division04.titleEn : division04.titleAr}
+          subtitle={locale === "en" ? division04.scopeSummaryEn : division04.scopeSummaryAr}
+          badge={locale === "en" ? "DIVISION 04 // EQUIPMENT SUPPLY" : "القطاع 04 // توريد المعدات"}
           breadcrumbs={[
             { label: t("nav.capabilities"), href: "/#capabilities" },
-            { label: t("capabilities.items.3.title") },
+            { label: locale === "en" ? division04.titleEn : division04.titleAr },
           ]}
           imageSrc="/images/content/equipment.jpg"
         />
@@ -81,23 +95,23 @@ export default function EquipmentClient() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6">
                 <span className="badge-tech inline-block">
-                  {locale === "en" ? "HEAVY EQUIPMENT FLEET" : "حلول أساطيل المعدات الثقيلة"}
+                  {locale === "en" ? "PLANT & MACHINERY" : "الآليات والمعدات"}
                 </span>
                 <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-primary">
                   {locale === "en"
-                    ? "Modern Plant Fleets with Uptime Guarantee & Certified Operators"
-                    : "أسطول معدات حديث مع ضمان الجاهزية التشغيلية ومشغلين معتمدين"}
+                    ? "Cranes & Heavy Plant Maintained to High Operational Standards"
+                    : "رافعات وآليات ثقيلة مدارة ومصانة وفق أعلى المعايير التشغيلية"}
                 </h2>
                 <div className="space-y-4 text-sm sm:text-base text-secondary font-body leading-relaxed">
                   <p>
                     {locale === "en"
-                      ? "Aevoryn's Equipment Supply & Rental division delivers heavy machinery solutions engineered for maximum site productivity. We understand that equipment breakdowns halt entire critical path timelines, which is why our plant fleet is maintained under strict preventive service regimens and monitored with telematics."
-                      : "يقدم قطاع توريد وتأجير المعدات في إيفورين حلول آليات ثقيلة مصممة لتحقيق أقصى درجات الإنتاجية الميدانية. نحن ندرك تماماً أن تعطل أي معدة قد يوقف مسار المشروع الحرج بأكمله؛ لذا يخضع أسطولنا لبرامج صيانة وقائية صارمة وأنظمة تتبع حديثة."}
+                      ? "Aevoryn's Equipment Supply division supports civil, commercial, and industrial contracting projects across Saudi Arabia with dependable plant machinery. We deploy heavy lifting cranes, earthmoving machines, and auxiliary support equipment maintained to strict safety and performance specifications."
+                      : "يدعم قطاع توريد المعدات في ايفورين مشاريع المقاولات المدنية والصناعية في مختلف مناطق المملكة بالآليات والمعدات الموثوقة. نحن نوفر رافعات الرفع الثقيل، وآليات تحريك التربة، ومعدات الدعم المساندة المدارة وفق أعلى معايير السلامة والأداء."}
                   </p>
                   <p>
                     {locale === "en"
-                      ? "Available on dry or wet lease (with certified operators and third-party inspection certificates), our earthmovers, telescopic cranes, rollers, and power generators are ready for deployment across all regions of Saudi Arabia on flexible short-term and multi-year project contracts."
-                      : "تتوفر معداتنا بنظامي التأجير الجاف أو الشامل (مع مشغلين معتمدين وشهادات فحص سارية من جهات ثالثة)، وتشمل معدات الحفر، والرافعات التلسكوبية، والمداحل، ومولدات الطاقة، مع جاهزية كاملة للحشد لكافة مناطق المملكة بعقود مرنة."}
+                      ? "Governed by audited ISO 9001 and ISO 45001 management systems, our maintenance regimes ensure equipment reliability and minimize operational interruptions on site."
+                      : "وفقاً لأنظمة الإدارة المعتمدة (ISO 9001 وISO 45001)، تضمن برامج الصيانة الدورية لدينا موثوقية المعدات وتحد من أي توقفات تشغيلية في المواقع."}
                   </p>
                 </div>
 
@@ -106,7 +120,7 @@ export default function EquipmentClient() {
                     onClick={() => setRfqOpen(true)}
                     className="btn-cobalt"
                   >
-                    {locale === "en" ? "Request Equipment Rental Rates" : "طلب أسعار استئجار المعدات"}
+                    {locale === "en" ? "Request Equipment Quotation" : "طلب عرض سعر معدات"}
                   </button>
                   <Link
                     href="/contact"
@@ -122,17 +136,17 @@ export default function EquipmentClient() {
                 <div className="relative h-96 border border-hairline bg-page rounded-2xl overflow-hidden shadow-subtle">
                   <Image
                     src="/images/content/equipment.jpg"
-                    alt="Modern Heavy Earthmoving Excavator"
+                    alt="Equipment Fleet & Heavy Machinery"
                     fill
                     className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5 p-4 border border-neutral-700 bg-neutral-900/95 rounded-xl">
                     <p className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono-tech">
-                      {locale === "en" ? "PREVENTIVE MAINTENANCE & RAPID RESPONSE" : "صيانة وقائية صارمة وضمان الجاهزية"}
+                      {locale === "en" ? "SAFETY & PERFORMANCE GOVERNED" : "معايير سلامة وأداء صارمة"}
                     </p>
                     <p className="text-xs text-white/80 leading-relaxed font-body">
-                      Mobile maintenance service trucks and certified mechanics on call 24/7.
+                      Equipment fleet maintained under ISO 9001:2015 and ISO 45001:2018 certified management standards.
                     </p>
                   </div>
                 </div>
@@ -141,25 +155,25 @@ export default function EquipmentClient() {
           </div>
         </section>
 
-        {/* Fleet Breakdown */}
+        {/* Four Profile Facets Grid */}
         <section className="section-padding bg-page border-t border-hairline">
           <div className="site-container">
             <div className="text-center max-w-[900px] mx-auto space-y-4 mb-14">
               <span className="badge-tech inline-block">
-                {locale === "en" ? "MACHINERY ROSTER" : "أصناف الأسطول"}
+                {locale === "en" ? "VERIFIED DIVISION SCOPE" : "نطاق عمل القطاع المعتمد"}
               </span>
               <h2 className="text-3xl sm:text-5xl font-bold font-display uppercase tracking-tight text-primary">
-                {locale === "en" ? "Equipment Fleet Classifications" : "تصنيفات وفئات أسطول المعدات"}
+                {locale === "en" ? "Core Equipment Capabilities" : "القدرات الرئيسية لأسطول المعدات"}
               </h2>
               <p className="text-base sm:text-lg text-secondary mx-auto max-w-2xl leading-relaxed">
                 {locale === "en"
-                  ? "Explore our heavy machinery, lifting equipment, road building, and temporary site power assets."
-                  : "استكشف أسطولنا من آليات الحفر ومعدات الرفع وإنشاء الطرق ومولدات الطاقة المؤقتة."}
+                  ? "Plant machinery and lifting operations structured across the four verified capability points from our corporate profile."
+                  : "خدمات توريد وتشغيل الآليات والرافعات المنظمة وفق النقاط الأربع المعتمدة رسمياً في ملف الشركة."}
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {fleet.map((fl, idx) => (
+              {packages.map((item, idx) => (
                 <div
                   key={idx}
                   className="p-8 border border-hairline bg-surface rounded-2xl flex flex-col justify-between space-y-6 hover:border-brand-cobalt transition-all duration-200 shadow-subtle hover:shadow-card-hover"
@@ -167,27 +181,27 @@ export default function EquipmentClient() {
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-mono-tech text-brand-cobalt font-bold">
-                        FLEET // 0{idx + 1}
+                        FACET // 0{idx + 1}
                       </span>
                       <span className="w-2 h-2 rounded-full bg-brand-cobalt" />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold font-display uppercase tracking-tight text-primary">
-                      {fl.type}
+                      {item.type}
                     </h3>
                     <p className="text-xs sm:text-sm text-secondary leading-relaxed font-body">
-                      {fl.desc}
+                      {item.desc}
                     </p>
                   </div>
 
                   <div className="pt-4 border-t border-hairline space-y-2">
                     <span className="text-[11px] font-mono-tech font-bold uppercase tracking-wider text-muted block">
-                      {locale === "en" ? "FLEET QUALITY STANDARDS:" : "معايير جاهزية الأسطول:"}
+                      {locale === "en" ? "OPERATIONAL MEASURES:" : "التدابير التشغيلية:"}
                     </span>
                     <ul className="space-y-1.5 text-xs text-secondary font-body">
-                      {fl.specs.map((sp, sIdx) => (
+                      {item.specs.map((sk, sIdx) => (
                         <li key={sIdx} className="flex items-center gap-2">
                           <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0" />
-                          <span>{sp}</span>
+                          <span>{sk}</span>
                         </li>
                       ))}
                     </ul>

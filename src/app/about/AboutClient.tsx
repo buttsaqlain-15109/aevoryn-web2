@@ -95,24 +95,24 @@ export default function AboutClient() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5 p-4 border border-neutral-700 bg-neutral-900/95 rounded-xl">
                     <p className="text-xs font-bold text-white uppercase tracking-wider mb-1 font-mono-tech">
-                      {locale === "en" ? "HEADQUARTERS LOCATION" : "المقر الرئيسي للإدارة"}
+                      {locale === "en" ? "REGISTERED FACILITY LOCATION" : "مقر المنشأة المسجلة"}
                     </p>
                     <p className="text-xs text-white/80 leading-relaxed font-body">
-                      Alahsa Street, Almalaz, Riyadh 11543, Kingdom of Saudi Arabia
+                      Building No. 7140, Zaid Ibn Al Khattab Street, An Nahdah Dist., Zipcode 87311, Baish, Jazan Region
                     </p>
                   </div>
                 </div>
 
-                {/* Administrative Address Verification Box */}
-                <div className="p-5 border border-amber-500/30 bg-amber-500/5 rounded-xl text-xs space-y-2">
-                  <div className="flex items-center gap-2 font-bold text-amber-600 dark:text-amber-400 font-mono-tech">
-                    <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-                    <span>{locale === "en" ? "ADMINISTRATIVE ADDRESS DISCLOSURE" : "إفصاح إداري حول مقار ومنشآت الشركة"}</span>
+                {/* Registered Address Verification Box */}
+                <div className="p-5 border border-hairline bg-surface rounded-xl text-xs space-y-2">
+                  <div className="flex items-center gap-2 font-bold text-brand-cobalt font-mono-tech">
+                    <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-500" />
+                    <span>{locale === "en" ? "REGISTERED FACILITY & MOBILIZATION" : "المنشأة المسجلة والجاهزية الميدانية"}</span>
                   </div>
                   <p className="leading-relaxed text-secondary font-body">
                     {locale === "en"
-                      ? "Aevoryn Services & Contracting Co. operates corporate management and commercial negotiations from Alahsa Street, Almalaz, Riyadh. Note: The company's ISO certificates reference an operational facility located in Baish, Jizan Region. Public-facing operations and general contracts are executed under our confirmed Riyadh commercial registration."
-                      : "تدير شركة إيفورين للخدمات والمقاولات عملياتها الإدارية والمفاوضات التجارية من شارع الأحساء، حي الملز، الرياض. ملاحظة: تشير شهادات الآيزو الخاصة بالشركة إلى منشأة تشغيلية في بيش بمنطقة جازان. وتتم كافة التعاقدات والعمليات العامة تحت مظلة سجلنا التجاري المعتمد بالرياض."}
+                      ? "Aevoryn Services & Contracting Co. operates from its registered facility in Baish, Jizan Region, supporting industrial and civil projects with Kingdom-wide deployment capabilities."
+                      : "تعمل شركة ايفورين للخدمات والمقاولات انطلاقاً من منشأتها المسجلة في بيش بمنطقة جازان، وتدعم المشاريع الصناعية والإنشائية مع جاهزية كاملة للتنفيذ في جميع مناطق المملكة."}
                   </p>
                 </div>
               </div>

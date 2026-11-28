@@ -65,7 +65,7 @@ async function sendEmailNotification(env: Env, data: {
   contactPhone: string;
   docCount: number;
 }) {
-  const recipient = env.ADMIN_NOTIFICATION_EMAIL || "info@aevoryn.net";
+  const recipient = env.ADMIN_NOTIFICATION_EMAIL || "admin@aevoryn.net";
   const subject = `[New Supplier Submission] ${data.companyName} (${data.referenceNumber})`;
   const bodyText = `New supplier registration submitted on Aevoryn Portal.
 

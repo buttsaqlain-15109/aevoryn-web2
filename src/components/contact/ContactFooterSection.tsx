@@ -20,11 +20,11 @@ export function ContactFooterSection() {
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-sm bg-cobalt-accent" />
               <span className="label-tech text-secondary text-[11px]">
-                {locale === "en" ? "SECTION 08 // ENGAGE AEVORYN" : "القسم 08 // التواصل وبدء التعاقد"}
+                {locale === "en" ? "CONTACT & ESTIMATION // COMMERCIAL INQUIRIES" : "التواصل وبدء التعاقد // الاستفسارات التجارية"}
               </span>
             </div>
             <span className="label-tech text-muted text-[11px] hidden sm:inline">
-              RIYADH COMMERCIAL HEADQUARTERS
+              BAISH REGISTERED OFFICE // KINGDOM-WIDE MOBILIZATION
             </span>
           </div>
 
@@ -74,14 +74,18 @@ export function ContactFooterSection() {
               <div className="p-8 rounded-2xl border border-hairline bg-surface space-y-6 shadow-card">
                 <div>
                   <span className="label-tech text-cobalt-accent block mb-1 text-[11px]">
-                    {locale === "en" ? "CONFIRMED PUBLIC LOCATION" : "المقر الرئيسي للإدارة"}
+                    {locale === "en" ? "REGISTERED LEGAL LOCATION" : "المقر القانوني المسجل"}
                   </span>
                   <h3 className="text-xl font-bold text-primary">
-                    {locale === "en" ? "Riyadh Corporate Headquarters" : "المقر التنفيذي - الرياض"}
+                    {locale === "en" ? "Baish Registered Facility" : "المقر المسجل - بيش"}
                   </h3>
                   <p className="text-xs text-secondary mt-1.5 flex items-start gap-2 leading-relaxed">
                     <MapPin className="w-4 h-4 text-cobalt-accent flex-shrink-0 mt-0.5" />
-                    <span>Alahsa Street, Almalaz, Riyadh 11543, Saudi Arabia</span>
+                    <span>
+                      {locale === "en"
+                        ? "Building No. 7140, Zaid Ibn Al Khattab Street, An Nahdah Dist., Zipcode 87311, Baish, Jazan Region, Saudi Arabia"
+                        : "مبنى رقم 7140، شارع زيد بن الخطاب، حي النهضة، الرمز البريدي 87311، بيش، منطقة جازان، المملكة العربية السعودية"}
+                    </span>
                   </p>
                 </div>
 
@@ -89,44 +93,25 @@ export function ContactFooterSection() {
                   <div className="flex items-center justify-between">
                     <span className="text-muted">Telephone:</span>
                     <a href="tel:+966173229527" className="font-mono text-primary hover:text-cobalt-accent font-semibold transition-colors">
-                      +966 1732 29527
+                      +966 17 322 9527
                     </a>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-muted">General Inquiries:</span>
-                    <a href="mailto:info@aevoryn.net" className="font-mono text-primary hover:text-cobalt-accent font-medium transition-colors">
-                      info@aevoryn.net
-                    </a>
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-muted">Administration:</span>
+                    <span className="text-muted">Official Administration:</span>
                     <a href="mailto:admin@aevoryn.net" className="font-mono text-primary hover:text-cobalt-accent font-medium transition-colors">
                       admin@aevoryn.net
                     </a>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="text-muted">Executive (CEO):</span>
-                    <a href="mailto:ceo@aevoryn.net" className="font-mono text-primary hover:text-cobalt-accent font-medium transition-colors">
-                      ceo@aevoryn.net
+                    <span className="text-muted">Executive Chairman:</span>
+                    <a href="mailto:chairman@aevoryn.net" className="font-mono text-primary hover:text-cobalt-accent font-medium transition-colors">
+                      chairman@aevoryn.net
                     </a>
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-muted">Commercial Register:</span>
                     <span className="font-mono text-primary font-bold">7054401679</span>
                   </div>
-                </div>
-
-                {/* Baish Administrative Facility Flag */}
-                <div className="p-4 rounded-xl border border-hairline bg-subtle text-[11px] text-secondary space-y-1">
-                  <div className="flex items-center gap-1.5 font-bold text-amber-600 dark:text-amber-400">
-                    <AlertTriangle className="w-3.5 h-3.5 flex-shrink-0" />
-                    <span>{locale === "en" ? "Administrative Note" : "إفصاح إداري"}</span>
-                  </div>
-                  <p className="leading-relaxed opacity-90">
-                    {locale === "en"
-                      ? "ISO documentation references an operational facility in Baish, Jizan Region. Riyadh serves as the confirmed corporate management headquarters."
-                      : "تشير وثائق الآيزو إلى منشأة تشغيلية في بيش بمنطقة جازان. والرياض هي المقر التنفيذي المعتمد لإدارة المشاريع والتعاقدات."}
-                  </p>
                 </div>
               </div>
             </div>

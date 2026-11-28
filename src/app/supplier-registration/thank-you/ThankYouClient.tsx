@@ -130,11 +130,11 @@ function ThankYouContent() {
         <div className="p-6 rounded-lg border border-border bg-surface text-xs font-mono text-secondary flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-accent" />
-            <span>{locale === "en" ? "Procurement Inquiries: info@aevoryn.net" : "استفسارات المشتريات: info@aevoryn.net"}</span>
+            <span>{locale === "en" ? "Procurement Inquiries: admin@aevoryn.net" : "استفسارات المشتريات: admin@aevoryn.net"}</span>
           </div>
           <div className="flex items-center gap-2">
             <Phone className="w-4 h-4 text-accent" />
-            <span>+966 53 439 7780 / Riyadh HQ</span>
+            <span>+966 17 322 9527</span>
           </div>
         </div>
 

@@ -1,0 +1,58 @@
+[
+  {
+    "path": "/images/branding/aevoryn-logo.png",
+    "description": "Official Aevoryn Corporate Logo",
+    "source": "Aevoryn Corporate Profile PDF & Brand Vector Assets",
+    "status": "APPROVED",
+    "notes": "Official company asset"
+  },
+  {
+    "path": "/images/content/hero-industrial.jpg",
+    "description": "Hero section industrial contracting backdrop",
+    "source": "Unsplash Commercial License (Editorial Industrial Infrastructure)",
+    "status": "APPROVED",
+    "notes": "Verified royalty-free industrial photography"
+  },
+  {
+    "path": "/images/content/infrastructure.jpg",
+    "description": "Project Development Support operational photography",
+    "source": "Unsplash Commercial License",
+    "status": "APPROVED",
+    "notes": "General industrial field coordination"
+  },
+  {
+    "path": "/images/content/manpower.jpg",
+    "description": "Industrial workforce safety & deployment photography",
+    "source": "Unsplash Commercial License",
+    "status": "APPROVED",
+    "notes": "Verified royalty-free industrial safety workforce"
+  },
+  {
+    "path": "/images/content/materials.jpg",
+    "description": "Construction materials logistics photography",
+    "source": "Unsplash Commercial License",
+    "status": "APPROVED",
+    "notes": "Verified royalty-free materials logistics"
+  },
+  {
+    "path": "/images/content/equipment.jpg",
+    "description": "Heavy cranes and plant equipment photography",
+    "source": "Unsplash Commercial License",
+    "status": "APPROVED",
+    "notes": "Verified royalty-free industrial plant"
+  },
+  {
+    "path": "/images/content/aramco-industrial.jpg",
+    "description": "Energy & infrastructure context photography",
+    "source": "Unsplash Commercial License",
+    "status": "APPROVED",
+    "notes": "Verified royalty-free energy sector backdrop"
+  },
+  {
+    "path": "/images/content/qhse.jpg",
+    "description": "Quality, Health, Safety & Environment photography",
+    "source": "Unsplash Commercial License",
+    "status": "APPROVED",
+    "notes": "Verified royalty-free site safety compliance"
+  }
+]

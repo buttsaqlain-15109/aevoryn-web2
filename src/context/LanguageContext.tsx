@@ -11,7 +11,7 @@ interface LanguageContextType {
   setLocale: (locale: Locale) => void;
   toggleLocale: () => void;
   t: (path: string, fallback?: string) => any;
-  translations: typeof translations.en;
+  translations: any;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);

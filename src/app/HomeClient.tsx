@@ -21,39 +21,39 @@ export function HomeClient() {
     <div className="min-h-screen flex flex-col bg-page text-primary transition-colors duration-200">
       <Header />
       <main className="flex-grow">
-        {/* SECTION 01: INDUSTRIAL POSITIONING HERO */}
+        {/* Industrial Positioning Hero */}
         <GlobeHero onOpenConsultation={() => setRfqOpen(true)} />
 
-        {/* SECTION 02: COMPANY INTRODUCTION & VERIFIED CAPABILITY HIGHLIGHTS */}
+        {/* Company Introduction & Capability Highlights */}
         <EditorialIntroSection />
 
-        {/* SECTION 03: SERVICES SCROLL EXPERIENCE */}
+        {/* Core Divisions & Capabilities */}
         <div id="capabilities">
           <ServicesScrollSection />
         </div>
 
-        {/* SECTION 04: QHSE & TRIPLE ISO CERTIFICATIONS */}
+        {/* QHSE & Triple ISO Certifications */}
         <div id="certifications">
           <QhseCertificationsSection />
         </div>
 
-        {/* SECTION 05: SAUDI ARAMCO SUPPLIER REGISTRATION */}
+        {/* Saudi Aramco Supplier Registration */}
         <div id="aramco">
           <AramcoSection />
         </div>
 
-        {/* SECTION 06: CLIENTS & COLLABORATIONS */}
+        {/* Clients & Collaborations */}
         <div id="clients">
           <ClientsSection />
         </div>
 
-        {/* SECTION 07: SUPPLIER INTAKE & DOCUMENTS PORTAL */}
+        {/* Supplier Intake & Documents Portal */}
         <SupplierCtaSection />
 
-        {/* SECTION 08: VERIFIED TESTIMONIALS (Hidden when empty) */}
+        {/* Client Testimonials */}
         <TestimonialsSection />
 
-        {/* SECTION 09: CONTACT & DIRECT ESTIMATION */}
+        {/* Contact & Direct Estimation */}
         <div id="contact">
           <ContactFooterSection />
         </div>

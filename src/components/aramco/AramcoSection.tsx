@@ -44,7 +44,7 @@ export function AramcoSection() {
             <div className="flex items-center gap-3">
               <span className="w-2.5 h-2.5 rounded-sm bg-emerald-400" />
               <span className="label-tech text-neutral-400 text-[11px]">
-                {locale === "en" ? "SECTION 06 // PREQUALIFIED SUPPLIER ACCREDITATION" : "القسم 06 // الاعتماد والتأهيل المعتمد"}
+                {locale === "en" ? "SAUDI ARAMCO REGISTRATION RECORD" : "سجل تسجيل المورد لدى أرامكو السعودية"}
               </span>
             </div>
             <span className="label-tech text-emerald-400 font-mono text-[11px] hidden sm:inline">
@@ -103,8 +103,8 @@ export function AramcoSection() {
                 <span className="label-tech text-neutral-400 block text-[11px]">REGISTRATION DATE</span>
                 <p className="text-lg font-mono font-bold text-white">28 July 2026</p>
                 <p className="text-[11px] text-emerald-400 font-semibold flex items-center gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  Active & Verified
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                  {locale === "en" ? "Service Provider Only" : "مزود خدمات فقط"}
                 </p>
               </div>
             </div>
@@ -129,8 +129,8 @@ export function AramcoSection() {
                 </span>
                 <p className="leading-relaxed opacity-90">
                   {locale === "en"
-                    ? "Saudi Aramco vendor registration qualifies Aevoryn Services & Contracting Co. as a commercial Service Provider in the supplier management system. It does not constitute a guaranteed procurement award, contract commitment, or endorsement, nor does it imply qualification as an approved material supplier until separate material documentation is verified."
-                    : "يؤهل التسجيل شركة إيفورين كمزود خدمات في نظام إدارة الموردين لدى أرامكو السعودية. ولا يمثل هذا التسجيل ترشيحاً تعاقدياً إلزامياً أو اعتماداً لتوريد المواد حتى يتم تدقيق الوثائق التخصصية المستقلة."}
+                    ? "Registration with Saudi Aramco does not constitute an agreement or commitment to procure goods or services, nor does it imply approval of products or qualification as an authorized vendor or contractor."
+                    : "التسجيل لدى أرامكو السعودية لا يشكل اتفاقاً أو التزاماً بشراء السلع أو الخدمات، ولا يعني اعتماد المنتجات أو التأهيل كمورد أو مقاول معتمد."}
                 </p>
               </div>
             </div>

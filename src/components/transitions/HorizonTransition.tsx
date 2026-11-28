@@ -35,7 +35,7 @@ export function HorizonTransition({ onProgress, children }: HorizonTransitionPro
     return () => window.removeEventListener("scroll", handleScroll);
   }, [onProgress]);
 
-  // Dynamic values based on scroll progress
+  // Interpolated horizon values based on scroll offset
   const arcScaleY = 0.2 + progress * 0.8;
   const glowOpacity = Math.min(1, progress * 1.5);
   const translateY = (1 - progress) * 80;

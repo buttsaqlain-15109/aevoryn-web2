@@ -47,26 +47,26 @@ export function Header() {
 
   const capabilities = [
     {
-      title: locale === "en" ? "Infrastructure & Site Support" : "دعم البنية التحتية والمشاريع",
-      desc: locale === "en" ? "Bulk grading & civil groundwork" : "الأعمال الترابية والمدنية وتجهيز المواقع",
+      title: locale === "en" ? "Project Development Support" : "دعم وتطوير المشاريع",
+      desc: locale === "en" ? "Operational coordination & field support" : "التنسيق التشغيلي والدعم الفني الميداني",
       href: "/capabilities/infrastructure",
       icon: Building2,
     },
     {
-      title: locale === "en" ? "Manpower Supply" : "القوى العاملة المتخصصة",
-      desc: locale === "en" ? "Certified technical field workforce" : "كوادر فنية ومهنية معتمدة لنظام قوى",
+      title: locale === "en" ? "Manpower Supply" : "توريد القوى العاملة",
+      desc: locale === "en" ? "Skilled & general compliant labor" : "كوادر مهنية وعمالة عامة متوافقة",
       href: "/capabilities/manpower",
       icon: HardHat,
     },
     {
       title: locale === "en" ? "Construction Materials" : "توريد مواد البناء",
-      desc: locale === "en" ? "Aggregates & certified civil supply" : "سلاسل إمداد مواد مفحوصة ومعتمدة",
+      desc: locale === "en" ? "Reliable sourcing & on-time delivery" : "توريد موثوق ونقل فعال للموقع",
       href: "/capabilities/materials",
       icon: Boxes,
     },
     {
-      title: locale === "en" ? "Equipment Supply & Rental" : "تأجير الآليات والمعدات الثقيلة",
-      desc: locale === "en" ? "Earthmovers & heavy plant machinery" : "آليات ثقيلة مع مشغلين معتمدين",
+      title: locale === "en" ? "Equipment Supply" : "توريد المعدات",
+      desc: locale === "en" ? "Cranes & plant construction machinery" : "رافعات وآليات ومعدات للأعمال المدنية",
       href: "/capabilities/equipment",
       icon: Truck,
     },
@@ -94,20 +94,20 @@ export function Header() {
           </div>
 
           <div className="hidden lg:flex items-center gap-4 text-neutral-300">
-            <span className="text-neutral-400">RIYADH, SAUDI ARABIA</span>
+            <span className="text-neutral-400">BAISH, SAUDI ARABIA</span>
             <span className="text-neutral-700">|</span>
             <a
               href="tel:+966173229527"
               className="hover:text-cobalt-accent transition-colors text-white font-mono flex items-center gap-1"
             >
-              +966 1732 29527
+              +966 17 322 9527
             </a>
             <span className="text-neutral-700">|</span>
             <a
-              href="mailto:info@aevoryn.net"
+              href="mailto:admin@aevoryn.net"
               className="hover:text-cobalt-accent transition-colors text-neutral-300 hover:text-white font-mono"
             >
-              info@aevoryn.net
+              admin@aevoryn.net
             </a>
           </div>
         </div>

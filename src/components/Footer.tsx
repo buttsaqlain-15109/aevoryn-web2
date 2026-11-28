@@ -52,8 +52,8 @@ export function Footer() {
 
               <p className="text-sm text-neutral-400 leading-relaxed max-w-sm font-body">
                 {locale === "en"
-                  ? "Aevoryn Services & Contracting Co. delivers integrated civil infrastructure support, certified technical workforce mobilization, testing-compliant construction materials, and heavy industrial machinery logistics across the Kingdom of Saudi Arabia."
-                  : "تقدم شركة إيفورين للخدمات والمقاولات حلولاً هندسية متكاملة لدعم مشاريع البنية التحتية، وتوفير الكوادر الفنية المعتمدة، وسلاسل إمداد مواد البناء المفحوصة، والآليات الإنشائية الثقيلة في كافة أنحاء المملكة."}
+                  ? "Aevoryn Services & Contracting Co. delivers integrated contracting support solutions through certified manpower, quality construction materials, heavy equipment fleets, and project development support across the Kingdom of Saudi Arabia."
+                  : "تقدم شركة ايفورين للخدمات والمقاولات حلول دعم متكاملة للمشاريع من خلال توفير الكوادر المتوافقة، ومواد البناء عالية الجودة، وأساطيل المعدات الثقيلة، ودعم تطوير المشاريع في كافة أنحاء المملكة."}
               </p>
 
               {/* Strategic Accreditation Badges */}
@@ -126,11 +126,6 @@ export function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/admin/suppliers" className="hover:text-white text-neutral-400 text-[11px] font-mono transition-colors block">
-                    {locale === "en" ? "Procurement Admin (Zero Trust)" : "إدارة المشتريات (وصول آمن)"}
-                  </Link>
-                </li>
-                <li>
                   <Link href="/qhse" className="hover:text-white transition-colors block">
                     {locale === "en" ? "QHSE Standards" : "معايير الجودة والسلامة"}
                   </Link>
@@ -149,7 +144,7 @@ export function Footer() {
                     href="/capabilities/infrastructure"
                     className="hover:text-cobalt-accent transition-colors flex items-center justify-between group"
                   >
-                    <span>{locale === "en" ? "Civil Infrastructure Support" : "دعم مشاريع البنية التحتية"}</span>
+                    <span>{locale === "en" ? "Project Development Support" : "دعم وتطوير المشاريع"}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>
@@ -158,7 +153,7 @@ export function Footer() {
                     href="/capabilities/manpower"
                     className="hover:text-cobalt-accent transition-colors flex items-center justify-between group"
                   >
-                    <span>{locale === "en" ? "Technical Manpower Supply" : "توريد الكوادر المتخصصة"}</span>
+                    <span>{locale === "en" ? "Manpower Supply" : "توريد القوى العاملة"}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>
@@ -167,7 +162,7 @@ export function Footer() {
                     href="/capabilities/materials"
                     className="hover:text-cobalt-accent transition-colors flex items-center justify-between group"
                   >
-                    <span>{locale === "en" ? "Construction Materials" : "توريد مواد البناء المعتمدة"}</span>
+                    <span>{locale === "en" ? "Construction Materials Supply" : "توريد مواد البناء"}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 </li>
@@ -176,40 +171,29 @@ export function Footer() {
                     href="/capabilities/equipment"
                     className="hover:text-cobalt-accent transition-colors flex items-center justify-between group"
                   >
-                    <span>{locale === "en" ? "Heavy Equipment Rental" : "تأجير المعدات الثقيلة"}</span>
+                    <span>{locale === "en" ? "Equipment Supply" : "توريد المعدات"}</span>
                     <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
-                </li>
-                <li className="pt-2 border-t border-neutral-800">
-                  <div className="p-2.5 rounded-lg border border-amber-500/20 bg-amber-500/5 text-[11px] space-y-1 text-neutral-300">
-                    <div className="flex items-center gap-1.5 font-bold text-amber-400">
-                      <AlertTriangle className="w-3 h-3 flex-shrink-0" />
-                      <span>{locale === "en" ? "Operational Facility Note" : "إفصاح إداري"}</span>
-                    </div>
-                    <p className="leading-relaxed opacity-85 text-[10px]">
-                      {locale === "en"
-                        ? "ISO certificates audit facility located in Baish, Jizan Region. Corporate contracting is conducted via our Riyadh headquarters."
-                        : "موقع التدقيق الميداني لشهادات الآيزو في بيش بمنطقة جازان، وتتم التعاقدات الرسمية عبر المقر الرئيسي بالرياض."}
-                    </p>
-                  </div>
                 </li>
               </ul>
             </div>
 
-            {/* Column 4: Contact & Commercial Headquarters (3 cols) */}
+            {/* Column 4: Contact & Registered Office (3 cols) */}
             <div className="lg:col-span-3 space-y-4">
               <h4 className="font-body text-xs font-bold text-white uppercase tracking-wider border-b border-neutral-800 pb-2">
-                {locale === "en" ? "Commercial Headquarters" : "المقر التجاري"}
+                {locale === "en" ? "Registered Legal Office" : "المقر القانوني المسجل"}
               </h4>
               <div className="space-y-3.5 text-xs text-neutral-300 font-body">
                 <div className="flex items-start gap-2.5">
                   <MapPin className="w-4 h-4 text-cobalt-accent flex-shrink-0 mt-0.5" />
                   <div>
                     <p className="font-bold text-white">
-                      {locale === "en" ? "Riyadh Management Office" : "المقر الرئيسي للإدارة - الرياض"}
+                      {locale === "en" ? "Baish Registered Facility" : "المقر المسجل - بيش"}
                     </p>
                     <p className="text-neutral-400 leading-relaxed text-[11px] pt-0.5">
-                      Alahsa Street, Almalaz, Riyadh 11543, Kingdom of Saudi Arabia
+                      {locale === "en"
+                        ? "Building No. 7140, Zaid Ibn Al Khattab Street, An Nahdah Dist., Zipcode 87311, Baish, Jazan Region, Saudi Arabia"
+                        : "مبنى رقم 7140، شارع زيد بن الخطاب، حي النهضة، الرمز البريدي 87311، بيش، منطقة جازان، المملكة العربية السعودية"}
                     </p>
                   </div>
                 </div>
@@ -217,17 +201,11 @@ export function Footer() {
                 <div className="flex items-center gap-2.5 font-mono">
                   <Phone className="w-4 h-4 text-cobalt-accent flex-shrink-0" />
                   <a href="tel:+966173229527" className="hover:text-white transition-colors text-white font-semibold">
-                    +966 1732 29527
+                    +966 17 322 9527
                   </a>
                 </div>
 
                 <div className="space-y-1.5 pt-1 font-mono text-[11px]">
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-3.5 h-3.5 text-cobalt-accent" />
-                    <a href="mailto:info@aevoryn.net" className="hover:text-white transition-colors text-neutral-300">
-                      info@aevoryn.net
-                    </a>
-                  </div>
                   <div className="flex items-center gap-2">
                     <Mail className="w-3.5 h-3.5 text-cobalt-accent" />
                     <a href="mailto:admin@aevoryn.net" className="hover:text-white transition-colors text-neutral-300">
@@ -236,8 +214,8 @@ export function Footer() {
                   </div>
                   <div className="flex items-center gap-2">
                     <Mail className="w-3.5 h-3.5 text-cobalt-accent" />
-                    <a href="mailto:ceo@aevoryn.net" className="hover:text-white transition-colors text-neutral-300">
-                      ceo@aevoryn.net
+                    <a href="mailto:chairman@aevoryn.net" className="hover:text-white transition-colors text-neutral-300">
+                      chairman@aevoryn.net
                     </a>
                   </div>
                 </div>
@@ -262,7 +240,7 @@ export function Footer() {
               © 2026 AEVORYN SERVICES & CONTRACTING CO. ALL RIGHTS RESERVED.
             </p>
             <p className="font-mono">
-              CR: <strong className="text-neutral-400">7054401679</strong> // RIYADH, KINGDOM OF SAUDI ARABIA
+              CR: <strong className="text-neutral-400">7054401679</strong> // BAISH, KINGDOM OF SAUDI ARABIA
             </p>
           </div>
         </div>
